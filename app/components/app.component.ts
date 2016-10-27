@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 
-import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
     selector: 'tasks-app',
     templateUrl: './app/components/app.component.html',
-    directives: [TasksComponent]
 })
 
 export class AppComponent {
@@ -13,5 +11,4 @@ export class AppComponent {
     constructor() {
         this.title = 'lomai';
     }
-
 }

@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './components/app.component';
 import { TaskListComponent } from  './components/tasks/task-list/task-list.component'

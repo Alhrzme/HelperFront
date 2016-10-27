@@ -1,8 +1,8 @@
 export class Task {
 	id: number;
-	name: string;
+	body: string;
 
-	constructor(name : string) {
-		this.name = name;
+	constructor( body: string) {
+		this.body = body;
 	}
 }

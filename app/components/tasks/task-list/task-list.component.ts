@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Task } from '../shared/task.model';
-import { TaskItemComponent } from '../task-item/task-item.component';
+import { TaskService } from '../shared/tasks.service';
 
 @Component({
 	selector: 'task-list',
 	templateUrl: './app/components/tasks/task-list/task-list.component.html',
-    providers: [TaskItemComponent]
+    providers: [TaskService]
 })
 
-export class TaskListComponent implements OnInit {
-	tasks : Task[] = [
-	    new Task('first task'),
-        new Task('second task'),
-        new Task('third task')
-    ];
-	ngOnInit() { }
+export class TaskListComponent {
+
+    @Input() tasks:Task[];
+
+    constructor(private taskService : TaskService) {
+
+    }
+
 }

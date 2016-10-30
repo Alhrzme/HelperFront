@@ -1,4 +1,4 @@
 <div class="ui text container">
     <task-form (created)="onTaskCreated($event)"></task-form>
-    <task-list [tasks] = "tasks" ></task-list>
+    <task-list [tasks] = "tasks"  (deleted)="onTaskDeleted($event)"></task-list>
 </div>

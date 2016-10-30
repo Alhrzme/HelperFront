@@ -11,19 +11,44 @@ import { Task } from './shared/task.model'
 
 export class TasksComponent implements OnInit {
 
-    tasks : Task[];
+    tasks : Task[] = [];
     taskService: TaskService;
+    errorMessage : string;
 
     constructor(taskService : TaskService) {
         this.taskService = taskService;
     }
 
     ngOnInit():void {
-        this.tasks = this.taskService.getTasks();
+        this.taskService.getTasks()
+            .subscribe(
+                tasks => this.tasks = tasks,
+                error => this.errorMessage = <any>error
+            );
     }
 
     onTaskCreated(task:Task) :void {
-        this.taskService.addTask(task);
+        this.taskService.addTask(task)
+            .subscribe(
+                task => this.tasks.push(task),
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    onTaskDeleted(task:Task) :void {
+        this.taskService.deleteTask(task)
+            .subscribe(
+                task => this.deleteTask(task),
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    private deleteTask(task: Task): void {
+        let index = this.tasks.indexOf(task);
+
+        if (index > -1) {
+            this.tasks.splice(index, 1);
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Task } from '../shared/task.model';
 import { TaskService } from '../shared/tasks.service';
@@ -12,9 +12,24 @@ import { TaskService } from '../shared/tasks.service';
 export class TaskListComponent {
 
     @Input() tasks:Task[];
+    @Output() deleted : EventEmitter<Task>;
 
-    constructor(private taskService : TaskService) {
+    constructor() {
+        this.deleted = new EventEmitter<Task>();
+    }
 
+    get sortedTasks(): Task[] {
+        return this.tasks
+            .map(task => task)
+            .sort((a, b) => {
+                if (a.title > b.title) return 1;
+                else if (a.title < b.title) return -1;
+                else return 0;
+            });
+    }
+
+    onTaskDeleted(task: Task): void {
+        this.deleted.emit(task);
     }
 
 }

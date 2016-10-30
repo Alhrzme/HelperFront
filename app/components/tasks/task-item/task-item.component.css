@@ -1,3 +1,9 @@
 .task-item {
-
+}
+.button {
+    margin-left: auto;
+    float: right;
+}
+.item {
+    height: 3em;
 }

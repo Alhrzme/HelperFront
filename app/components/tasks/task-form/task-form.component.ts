@@ -18,8 +18,8 @@ export class TaskFormComponent implements OnInit {
 
 	create(body: string) {
 		if (body) {
-			let todo = new Task(body);
-			this.created.emit(todo);
+			let task = new Task(body, body);
+			this.created.emit(task);
 		}
 	}
 

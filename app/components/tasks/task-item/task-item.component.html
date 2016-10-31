@@ -1,5 +1,8 @@
-<div class="ui item">
-    <span>{{ task.body }}</span>
-    <button type="button" class="ui red icon button" (click)="deleteTask()"><i class="trash outline icon"></i></button>
+<div>
+    <div class="ui item">
+        <span>{{ task.title }}</span>
+        <span>{{ task.body }}</span>
+        <button type="button" class="ui red icon button" (click)="deleteTask()"><i class="trash outline icon"></i></button>
+    </div>
 </div>
 

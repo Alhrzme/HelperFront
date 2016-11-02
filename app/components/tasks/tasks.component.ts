@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app',
-    templateUrl: './app/components/app.component.html',
+    selector: 'tasks',
+    templateUrl: './app/components/tasks/tasks.component.html',
 })
 
-export class AppComponent {
+export class TasksComponent {
     title: string;
     constructor() {
         this.title = 'lomai';

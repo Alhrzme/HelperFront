@@ -5,10 +5,12 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 
 import { AppComponent } from './components/app.component';
+import { TasksComponent } from './components/tasks/tasks.component'
 import { TaskListComponent } from  './components/tasks/taskList/task-list/task-list.component'
 import { TaskFormComponent } from  './components/tasks/taskList/task-form/task-form.component'
-import { TasksComponent} from './components/tasks/taskList/tasks.component'
-import {TaskListItemComponent} from "./components/tasks/taskList/task-list-item/task-list-item.component";
+import { TasksPageComponent} from './components/tasks/taskList/tasks-page.component'
+import { TaskListItemComponent } from "./components/tasks/taskList/task-list-item/task-list-item.component";
+import { TaskTreePageComponent } from  './components/tasks/taskTree/task-tree-page.component'
 
 
 
@@ -18,10 +20,13 @@ import {TaskListItemComponent} from "./components/tasks/taskList/task-list-item/
         HttpModule,
         JsonpModule,
         RouterModule.forRoot([
-            { path: 'hero-list' }
+            { path: 'tasks', component: TasksPageComponent },
+            { path: 'tasks/:id', component: TaskTreePageComponent },
+            { path: '', component: TasksPageComponent }
         ])
     ],
-    declarations: [ AppComponent, TaskListComponent, TaskFormComponent, TasksComponent, TaskListItemComponent ],
+    declarations: [ AppComponent, TaskListComponent, TaskFormComponent, TasksPageComponent,
+        TaskListItemComponent, TaskTreePageComponent, TasksComponent ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

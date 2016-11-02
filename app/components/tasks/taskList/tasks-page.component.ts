@@ -4,12 +4,12 @@ import {TaskService} from "./../shared/tasks.service";
 import { Task } from './../shared/task.model'
 
 @Component({
-	selector: 'tasks',
-	templateUrl: './app/components/tasks/taskList/tasks.component.html',
+	selector: 'tasks-page',
+	templateUrl: './app/components/tasks/taskList/tasks-page.component.html',
     providers: [TaskService]
 })
 
-export class TasksComponent implements OnInit {
+export class TasksPageComponent implements OnInit {
 
     tasks : Task[] = [];
     taskService: TaskService;

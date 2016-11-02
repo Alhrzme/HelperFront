@@ -2,18 +2,26 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { RouterModule }   from '@angular/router';
 
 import { AppComponent } from './components/app.component';
-import { TaskListComponent } from  './components/tasks/task-list/task-list.component'
-import { TaskFormComponent } from  './components/tasks/task-form/task-form.component'
-import { TasksComponent} from './components/tasks/tasks.component'
-import {TaskItemComponent} from "./components/tasks/task-item/task-item.component";
+import { TaskListComponent } from  './components/tasks/taskList/task-list/task-list.component'
+import { TaskFormComponent } from  './components/tasks/taskList/task-form/task-form.component'
+import { TasksComponent} from './components/tasks/taskList/tasks.component'
+import {TaskListItemComponent} from "./components/tasks/taskList/task-list-item/task-list-item.component";
 
 
 
 @NgModule({
-    imports:      [ BrowserModule, FormsModule, HttpModule, JsonpModule ],
-    declarations: [ AppComponent, TaskListComponent, TaskFormComponent, TasksComponent, TaskItemComponent ],
+    imports:      [ BrowserModule,
+        FormsModule,
+        HttpModule,
+        JsonpModule,
+        RouterModule.forRoot([
+            { path: 'hero-list' }
+        ])
+    ],
+    declarations: [ AppComponent, TaskListComponent, TaskFormComponent, TasksComponent, TaskListItemComponent ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import {TaskService} from "./shared/tasks.service";
-import { Task } from './shared/task.model'
+import {TaskService} from "./../shared/tasks.service";
+import { Task } from './../shared/task.model'
 
 @Component({
 	selector: 'tasks',
-	templateUrl: './app/components/tasks/tasks.component.html',
+	templateUrl: './app/components/tasks/taskList/tasks.component.html',
     providers: [TaskService]
 })
 

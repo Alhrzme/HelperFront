@@ -1,0 +1,5 @@
+<div class="ui raised segment" *ngIf="tasks.length > 0">
+    <div class="ui middle aligned divided selection list" >
+        <task-list-item *ngFor="let task of sortedTasks" (deleted)="onTaskDeleted($event)" [task]="task"></task-list-item>
+    </div>
+</div>

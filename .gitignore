@@ -4,3 +4,8 @@ app/**/*.map
 npm-debug.log# Created by .ignore support plugin (hsz.mobi)
 .idea
 typings/
+semantic/src
+semantic/tasks
+semantic/dist/themes
+semantic/dist/components
+semantic/gulpfile.js

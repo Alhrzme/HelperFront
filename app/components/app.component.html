@@ -1,16 +1,11 @@
-<nav class="ui attached menu">
+<nav class="ui attached stackable menu">
     <div class="ui container">
-        <div class="header item">
-            <h1><a routerLink="/tasks" routerLinkActive="active">{{ title }}</a></h1>
+        <div *ngFor="let menuItem of menuItems" class="header item">
+            <h1><a routerLink="{{menuItem.url}}" routerLinkActive="active">{{ menuItem.text }}</a></h1>
         </div>
-        <div class="header item">
-            <h1>nigger</h1>
-        </div>
-        <div class="header item">
-            <h1>Абсолютли уот так уот</h1>
-        </div>
-
     </div>
 </nav>
+<div class="ui padded container">
+    <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>

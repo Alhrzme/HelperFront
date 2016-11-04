@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-
 import {Task} from "./task.model";
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';

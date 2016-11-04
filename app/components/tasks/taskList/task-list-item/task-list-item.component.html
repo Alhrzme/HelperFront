@@ -1,8 +1,8 @@
-<div>
-    <div class="ui item">
-        <a routerLink="/tasks/{{ task.id }}" ><span>{{ task.title }}</span>
-        <span>{{ task.body }}</span></a>
-        <button type="button" class="ui red right floated icon button" (click)="deleteTask()"><i class="trash outline icon"></i></button>
-    </div>
+<div class="item">
+    <a routerLink="/tasks/{{ task.id }}">
+        <span>{{ task.title }}</span>
+    </a>
+    <button type="button" class="ui red right floated icon button" (click)="deleteTask()"><i
+            class="trash outline icon"></i></button>
 </div>
 

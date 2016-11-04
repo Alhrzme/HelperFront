@@ -6,11 +6,13 @@ import { Task } from './../shared/task.model'
 @Component({
 	selector: 'tasks-page',
 	templateUrl: './app/components/tasks/taskList/tasks-page.component.html',
+    styleUrls: ['./app/components/tasks/taskList/tasks-page.component.css'],
     providers: [TaskService]
 })
 
 export class TasksPageComponent implements OnInit {
 
+    title : string = 'Задачи';
     tasks : Task[] = [];
     taskService: TaskService;
     errorMessage : string;
@@ -22,23 +24,44 @@ export class TasksPageComponent implements OnInit {
     ngOnInit():void {
         this.taskService.getTasks()
             .subscribe(
-                tasks => this.tasks = tasks,
+                tasks => {
+                    this.tasks = tasks;
+                    this.removeDinnerActiveClass();
+                },
                 error => this.errorMessage = <any>error
             );
     }
 
+    private removeDinnerActiveClass() {
+        document.getElementById('loadDimmer').classList.remove('active');
+    }
+
+    private addDinnerActiveClass() {
+        document.getElementById('loadDimmer').classList.add('active');
+    }
+
     onTaskCreated(task:Task) :void {
+        this.addDinnerActiveClass();
+        document.getElementById('addButton').textContent = 'Добавляется';
         this.taskService.addTask(task)
             .subscribe(
-                task => this.tasks.push(task),
+                (task) => {
+                    this.tasks.push(task);
+                    this.removeDinnerActiveClass();
+                    document.getElementById('addButton').textContent = 'Добавить';
+                },
                 error => this.errorMessage = <any>error
             );
     }
 
     onTaskDeleted(task:Task) :void {
+        this.addDinnerActiveClass();
         this.taskService.deleteTask(task)
             .subscribe(
-                task => this.deleteTask(task),
+                task => {
+                    this.deleteTask(task);
+                    this.removeDinnerActiveClass();
+                },
                 error => this.errorMessage = <any>error
             );
     }

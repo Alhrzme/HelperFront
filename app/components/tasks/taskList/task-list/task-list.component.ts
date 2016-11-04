@@ -6,6 +6,7 @@ import { TaskService } from '../../shared/tasks.service';
 @Component({
 	selector: 'task-list',
 	templateUrl: './app/components/tasks/taskList/task-list/task-list.component.html',
+    styleUrls: ['./app/components/tasks/taskList/task-list/task-list.component.css'],
     providers: [TaskService]
 })
 

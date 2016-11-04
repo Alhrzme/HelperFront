@@ -3,11 +3,16 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app',
     templateUrl: './app/components/app.component.html',
+    styleUrls: ['./app/components/app.component.css']
 })
 
 export class AppComponent {
-    title: string;
+    menuItems = [
+        {'text' : 'Задачи', 'url' : '/tasks' },
+        {'text' : 'Еще что-то', 'url' : '/tasks' },
+        { 'text' : 'Ну, и еще одно', 'url' : '/tasks' }
+        ];
+
     constructor() {
-        this.title = 'lomai';
     }
 }

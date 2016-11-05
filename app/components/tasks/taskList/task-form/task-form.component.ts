@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import {Task} from "../../../shared/tasks/task.model";
+declare var $ : any;
 
 @Component({
 	selector: 'task-form',
@@ -19,6 +20,10 @@ export class TaskFormComponent implements OnInit {
 		if (title) {
 			let task = new Task(title, title);
 			this.created.emit(task);
+		} else {
+			$('input')
+				.transition('flash')
+			;
 		}
 	}
 

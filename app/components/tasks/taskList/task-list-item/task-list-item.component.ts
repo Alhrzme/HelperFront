@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 
 import {Task} from "../../../shared/tasks/task.model";
+declare var $ : any;
 
 @Component({
 	selector: 'task-list-item',
@@ -13,9 +14,11 @@ export class TaskListItemComponent implements OnInit {
 	@Input() task: Task;
 	@Output() deleted: EventEmitter<Task>;
 
-	ngOnInit() { }
+	ngOnInit() {
+		
+	}
 
-	constructor() {
+	constructor(private _ref : ElementRef) {
 		this.deleted = new EventEmitter<Task>();
 	}
 

@@ -1,6 +1,6 @@
 <div class="item">
     <a routerLink="/tasks/{{ task.id }}">
-        <span data-tooltip="{{ task.body }}" data-position="top center">{{ task.title }}</span>
+        <span>{{ task.title }}</span>
     </a>
     <button type="button" class="ui red right floated icon button" (click)="deleteTask()">
         <i class="trash icon"></i>

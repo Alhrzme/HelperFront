@@ -9,8 +9,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
     menuItems = [
         {'text' : 'Задачи', 'url' : '/tasks' },
-        {'text' : 'Еще что-то', 'url' : '/tasks' },
-        { 'text' : 'Ну, и еще одно', 'url' : '/tasks' }
+        {'text' : 'Расписание', 'url' : '/tasks' },
+        { 'text' : 'Ну, и еще одно', 'url' : '/tasks/' }
         ];
 
     constructor() {

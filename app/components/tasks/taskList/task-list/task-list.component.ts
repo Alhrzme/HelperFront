@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Task } from '../../shared/task.model';
-import { TaskService } from '../../shared/tasks.service';
+import {Task} from "../../../shared/tasks/task.model";
+import { TaskService } from "../../../shared/tasks/tasks.service";
 
 @Component({
 	selector: 'task-list',
@@ -10,7 +10,10 @@ import { TaskService } from '../../shared/tasks.service';
     providers: [TaskService]
 })
 
-export class TaskListComponent {
+export class TaskListComponent implements OnInit {
+
+    ngOnInit():void {
+    }
 
     @Input() tasks:Task[];
     @Output() deleted : EventEmitter<Task>;

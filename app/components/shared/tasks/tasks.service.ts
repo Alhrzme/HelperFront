@@ -24,6 +24,12 @@ export class TaskService {
             .catch(this.handleError);
     }
 
+    getTask(id : number) : Observable<Task> {
+        return this.http.get(this.apiUrl + '/' + id)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res:Response) {
         return res.json();
     }

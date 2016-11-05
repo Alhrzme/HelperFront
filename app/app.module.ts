@@ -11,8 +11,7 @@ import { TaskFormComponent } from  './components/tasks/taskList/task-form/task-f
 import { TasksPageComponent} from './components/tasks/taskList/tasks-page.component'
 import { TaskListItemComponent } from "./components/tasks/taskList/task-list-item/task-list-item.component";
 import { TaskTreePageComponent } from  './components/tasks/taskTree/task-tree-page.component'
-
-
+import { ModalComponent } from "./components/shared/modal.component";
 
 @NgModule({
     imports:      [ BrowserModule,
@@ -26,7 +25,7 @@ import { TaskTreePageComponent } from  './components/tasks/taskTree/task-tree-pa
         ])
     ],
     declarations: [ AppComponent, TaskListComponent, TaskFormComponent, TasksPageComponent,
-        TaskListItemComponent, TaskTreePageComponent, TasksComponent ],
+        TaskListItemComponent, TaskTreePageComponent, TasksComponent, ModalComponent ],
     bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

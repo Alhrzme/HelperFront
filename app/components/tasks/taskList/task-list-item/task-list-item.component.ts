@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Task } from '../../shared/task.model'
+import {Task} from "../../../shared/tasks/task.model";
 
 @Component({
 	selector: 'task-list-item',
@@ -22,4 +22,6 @@ export class TaskListItemComponent implements OnInit {
 	deleteTask() {
 		this.deleted.emit(this.task);
 	}
+
+
 }

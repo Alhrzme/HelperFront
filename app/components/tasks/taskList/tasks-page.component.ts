@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import {TaskService} from "./../shared/tasks.service";
-import { Task } from './../shared/task.model'
+import {Task} from "../../shared/tasks/task.model";
+import { TaskService } from "../../shared/tasks/tasks.service";
 
 @Component({
 	selector: 'tasks-page',

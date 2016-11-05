@@ -1,11 +1,11 @@
 <div class="ui text container piled segment">
-    <h1 class="ui center aligned icon header">
-        <i class="tasks circular icon"></i>
+    <h1 class="ui center aligned  header">
+        <i class="tasks  icon"></i>
         <div class="content">
             {{ title }}
         </div>
     </h1>
-    <div class="">
+    <div class="ui segment">
         <div id="form">
             <task-form (created)="onTaskCreated($event)"></task-form>
         </div>

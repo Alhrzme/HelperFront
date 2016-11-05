@@ -2,5 +2,5 @@
 
 }
 .item {
-    min-height: 3em;
+    min-height: 3em !important;
 }

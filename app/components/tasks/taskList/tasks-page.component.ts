@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Task} from "../../shared/tasks/task.model";
+import { Task } from "../../shared/tasks/task.model";
 import { TaskService } from "../../shared/tasks/tasks.service";
+import { Modal } from "../../shared/modal.model";
 
 @Component({
-	selector: 'tasks-page',
-	templateUrl: './app/components/tasks/taskList/tasks-page.component.html',
+    selector: 'tasks-page',
+    templateUrl: './app/components/tasks/taskList/tasks-page.component.html',
     styleUrls: ['./app/components/tasks/taskList/tasks-page.component.css'],
     providers: [TaskService]
 })
@@ -16,9 +17,11 @@ export class TasksPageComponent implements OnInit {
     tasks : Task[] = [];
     taskService: TaskService;
     errorMessage : string;
+    modal : Modal;
 
     constructor(taskService : TaskService) {
         this.taskService = taskService;
+        this.modal = new Modal();
     }
 
     ngOnInit():void {

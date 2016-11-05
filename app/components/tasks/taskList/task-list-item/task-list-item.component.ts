@@ -15,15 +15,25 @@ export class TaskListItemComponent implements OnInit {
 	@Output() deleted: EventEmitter<Task>;
 
 	ngOnInit() {
-		
 	}
 
-	constructor(private _ref : ElementRef) {
+	constructor() {
 		this.deleted = new EventEmitter<Task>();
 	}
 
 	deleteTask() {
-		this.deleted.emit(this.task);
+		var thisComponent = this;
+		$('.ui.basic.modal')
+			.modal('show')
+			.modal({
+				closable  : false,
+				onDeny : function () {
+				},
+				onApprove : function() {
+					thisComponent.deleted.emit(thisComponent.task);
+				}
+			})
+		;
 	}
 
 

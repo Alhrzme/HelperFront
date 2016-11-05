@@ -9,7 +9,7 @@ import { Modal } from "./modal.model";
 
 export class ModalComponent implements OnInit {
 
-    @Input() modal : Modal;
+    @Input() modal : Modal = new Modal();
     @Output() created: EventEmitter<Task>;
 
     constructor() {

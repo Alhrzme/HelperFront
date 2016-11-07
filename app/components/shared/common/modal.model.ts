@@ -3,7 +3,7 @@ export class Modal {
     body : string;
     icon : string;
 
-    constructor( body: string = 'Точно удалить?', title: string = 'Удалить?', icon : string = 'remove') {
+    constructor(title: string = 'Удалить?', icon : string = 'remove', body: string = 'Уверены?' ) {
         this.body = body;
         this.title = title;
         this.icon = icon;

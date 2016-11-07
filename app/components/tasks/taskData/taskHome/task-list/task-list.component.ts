@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import {Task} from "../../../shared/tasks/task.model";
-import { TaskService } from "../../../shared/tasks/tasks.service";
+import {Task} from "../../../../shared/tasks/task.model";
+import { TaskService } from "../../../../shared/tasks/tasks.service";
 
 @Component({
 	selector: 'task-list',
-	templateUrl: './app/components/tasks/taskList/task-list/task-list.component.html',
-    styleUrls: ['./app/components/tasks/taskList/task-list/task-list.component.css'],
+	templateUrl: './app/components/tasks/taskData/taskHome/task-list/task-list.component.html',
+    styleUrls: ['./app/components/tasks/taskData/taskHome/task-list/task-list.component.css'],
     providers: [TaskService]
 })
 

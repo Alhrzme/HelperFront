@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import {Task} from "../../../shared/tasks/task.model";
+import {Task} from "../../../../shared/tasks/task.model";
 declare var $ : any;
 
 @Component({
 	selector: 'task-form',
-	templateUrl: './app/components/tasks/taskList/task-form/task-form.component.html'
+	templateUrl: './app/components/tasks/taskData/taskHome/task-form/task-form.component.html'
 })
 
 export class TaskFormComponent implements OnInit {

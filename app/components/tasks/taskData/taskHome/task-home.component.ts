@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Task } from "../../shared/tasks/task.model";
-import { TaskService } from "../../shared/tasks/tasks.service";
-import { Modal } from "../../shared/modal.model";
+import { Task } from "../../../shared/tasks/task.model";
+import { TaskService } from "../../../shared/tasks/tasks.service";
+import { Modal } from "../../../shared/common/modal.model";
 
 @Component({
-    selector: 'tasks-page',
-    templateUrl: './app/components/tasks/taskList/tasks-page.component.html',
-    styleUrls: ['./app/components/tasks/taskList/tasks-page.component.css'],
+    selector: 'tasks-home',
+    templateUrl: './app/components/tasks/taskData/taskHome/task-home.component.html',
+    styleUrls: ['./app/components/tasks/taskData/taskHome/task-home.component.css'],
     providers: [TaskService]
 })
 
-export class TasksPageComponent implements OnInit {
+export class TaskHomeComponent implements OnInit {
 
     title : string = 'Задачи';
     tasks : Task[] = [];
-    taskService: TaskService;
     errorMessage : string;
-    modal : Modal;
+    modal : Modal = new Modal('Удалить?', 'remove', 'ТОЧНО УДАЛИТЬ????');
 
-    constructor(taskService : TaskService) {
-        this.taskService = taskService;
-        this.modal = new Modal();
+    constructor(
+        private taskService : TaskService,
+    ) {
     }
 
     ngOnInit():void {

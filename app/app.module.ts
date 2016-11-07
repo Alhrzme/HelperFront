@@ -5,23 +5,22 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './components/app.component';
 import { TasksComponent } from './components/tasks/tasks.component'
-import { TaskListComponent } from  './components/tasks/taskList/task-list/task-list.component'
-import { TaskFormComponent } from  './components/tasks/taskList/task-form/task-form.component'
-import { TasksPageComponent} from './components/tasks/taskList/tasks-page.component'
-import { TaskListItemComponent } from "./components/tasks/taskList/task-list-item/task-list-item.component";
-import { TaskTreePageComponent } from  './components/tasks/taskTree/task-tree-page.component'
-import { ModalComponent } from "./components/shared/modal.component";
 import {AppRoutingModule} from "./app-routing.module";
+import {TaskListComponent} from "./components/tasks/taskData/taskHome/task-list/task-list.component";
+import {TaskFormComponent} from "./components/tasks/taskData/taskHome/task-form/task-form.component";
+import {TaskListItemComponent} from "./components/tasks/taskData/taskHome/task-list-item/task-list-item.component";
+import {TaskTreeComponent} from "./components/tasks/taskData/taskDetail/task-tree/task-tree.component";
+import {ModalComponent} from "./components/shared/common/modal.component";
 
 @NgModule({
     imports:      [ BrowserModule,
         FormsModule,
         HttpModule,
         JsonpModule,
-        AppRoutingModule
+        AppRoutingModule,
     ],
-    declarations: [ AppComponent, TaskListComponent, TaskFormComponent, TasksPageComponent,
-        TaskListItemComponent, TaskTreePageComponent, TasksComponent, ModalComponent ],
+    declarations: [ AppComponent, TaskListComponent, TaskFormComponent,
+        TaskListItemComponent, TaskTreeComponent, TasksComponent, ModalComponent ],
     bootstrap:    [ AppComponent ],
 
 })

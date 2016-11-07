@@ -4,7 +4,7 @@ import { Modal } from "./modal.model";
 
 @Component({
     selector: 'modal',
-    templateUrl: './app/components/shared/modal.component.html'
+    templateUrl: './app/components/shared/common/modal.component.html',
 })
 
 export class ModalComponent implements OnInit {

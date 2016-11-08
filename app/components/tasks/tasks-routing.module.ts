@@ -35,4 +35,4 @@ import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
         RouterModule
     ]
 })
-export class CrisisCenterRoutingModule { }
+export class TasksRoutingModule { }

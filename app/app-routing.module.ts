@@ -7,6 +7,7 @@ import {TaskHomeComponent} from "./components/tasks/taskData/taskHome/task-home.
     imports: [
         RouterModule.forRoot([
             { path: 'tasks',  component: TaskHomeComponent },
+            { path: '', component: TaskHomeComponent }
         ])
     ],
     exports: [

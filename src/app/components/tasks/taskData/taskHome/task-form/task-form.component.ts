@@ -4,7 +4,8 @@ import {Task} from "../../../../shared/tasks/task.model";
 
 @Component({
 	selector: 'task-form',
-	templateUrl: './task-form.component.html'
+	templateUrl: './task-form.component.html',
+	styleUrls: ['./task-form.component.css']
 })
 
 export class TaskFormComponent implements OnInit {

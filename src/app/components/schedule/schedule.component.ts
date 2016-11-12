@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScheduleComponent implements OnInit {
 
+  title: string = 'Расписание';
+
   constructor() { }
 
   ngOnInit() {

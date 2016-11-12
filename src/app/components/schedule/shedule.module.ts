@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import {ScheduleRoutingModule} from "./shedule-routing.module";
 import {DayScheduleComponent} from "./day-schedule/day-schedule.component";
 import {CalendarComponent} from "./calendar/calendar.component";
+import {ScheduleComponent} from "./schedule.component";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {CalendarComponent} from "./calendar/calendar.component";
     ],
     declarations: [
         DayScheduleComponent,
-        CalendarComponent
+        CalendarComponent,
+        ScheduleComponent
     ],
     providers: [
 

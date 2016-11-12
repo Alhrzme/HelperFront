@@ -7,16 +7,11 @@ import { AppComponent } from './components/app.component';
 import { AppRoutingModule} from "./app-routing.module";
 import {TasksModule} from "./components/tasks/tasks.module";
 import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { ScheduleComponent } from './components/schedule/schedule.component';
-import { CalendarComponent } from './components/schedule/calendar/calendar.component';
-import { DayScheduleComponent } from './components/schedule/day-schedule/day-schedule.component';
+import {ScheduleModule} from "./components/schedule/shedule.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScheduleComponent,
-    CalendarComponent,
-    DayScheduleComponent
   ],
   imports: [
       BrowserModule,
@@ -25,6 +20,7 @@ import { DayScheduleComponent } from './components/schedule/day-schedule/day-sch
       JsonpModule,
       AppRoutingModule,
       TasksModule,
+      ScheduleModule,
       AlertModule
   ],
   providers: [],

@@ -8,6 +8,7 @@ import {ScheduleComponent} from "./schedule.component";
 import { PeriodComponent } from './day-schedule/period/period.component';
 import { ScheduleFormComponent } from './day-schedule/schedule-form/schedule-form.component';
 import { PeriodListComponent } from './day-schedule/period-list/period-list.component';
+import {ScheduleService} from "../shared/schedule/schedule.service";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { PeriodListComponent } from './day-schedule/period-list/period-list.comp
         PeriodListComponent,
     ],
     providers: [
-
+        ScheduleService
     ]
 })
 export class ScheduleModule {}

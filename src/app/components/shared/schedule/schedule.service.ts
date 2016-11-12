@@ -24,7 +24,7 @@ export class ScheduleService {
             .catch(this.handleError);
     }
 
-    private postSchedule(schedule: Schedule): Observable<Schedule> {
+    postSchedule(schedule: Schedule): Observable<Schedule> {
         let body = JSON.stringify(schedule);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers });

@@ -13,7 +13,7 @@ import {CalendarComponent} from "./calendar/calendar.component";
                 component: ScheduleComponent,
                 children: [
                     {
-                        path: '',
+                        path: ':date',
                         component: DayScheduleComponent,
                     },
                     {

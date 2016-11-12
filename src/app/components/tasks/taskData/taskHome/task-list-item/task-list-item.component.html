@@ -1,11 +1,12 @@
-<a class="list-group-item" routerLink="/tasks/{{ task.id }}">
-    <span>{{ task.title }}</span>
-    <button type="button" class="btn btn-primary btn-sm " (click)="deleteTask()">
-
-    </button>
-    <a routerLink="/tasks/{{ task.id }}" class="ui primary right floated icon button">
-        <i class="settings icon"></i>
-    </a>
+<a class="list-group-item" >
+    <div class="row">
+        <a class="col-xs-10">{{ task.title }} </a>
+        <span class="col-xs-1">
+            <button type="button" class="btn btn-danger btn-xs" (click)="deleteTask()">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+        </span>
+    </div>
 </a>
 
 

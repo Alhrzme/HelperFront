@@ -6,7 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './components/app.component';
 import { AppRoutingModule} from "./app-routing.module";
 import {TasksModule} from "./components/tasks/tasks.module";
-import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { MaterialModule } from '@angular/material';
 import {ScheduleModule} from "./components/schedule/shedule.module";
 
 @NgModule({
@@ -21,7 +21,7 @@ import {ScheduleModule} from "./components/schedule/shedule.module";
       AppRoutingModule,
       TasksModule,
       ScheduleModule,
-      AlertModule
+      MaterialModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

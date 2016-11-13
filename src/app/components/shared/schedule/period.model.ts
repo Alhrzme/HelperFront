@@ -5,9 +5,8 @@ export class Period {
     description:string;
     internal_number: number;
 
-    constructor(duration:number, description:string, internal_number: number) {
+    constructor(duration:number, description:string) {
         this.duration = duration;
         this.description = description;
-        this.internal_number = internal_number;
     }
 }

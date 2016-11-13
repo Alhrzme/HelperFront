@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Period} from "../../../shared/schedule/period.model";
 
 @Component({
   selector: 'period-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./period-list.component.css']
 })
 export class PeriodListComponent implements OnInit {
+
+  @Input() periods : Period[] = [];
 
   constructor() { }
 

@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="input-field col s6">
+        <label for="description"></label>
+        <input type="text" name="description" id="description" placeholder="Что будем делать?" #description>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="input-field inline">
+            Длительность
+            <input type="time" name="duration" class="validate" id="duration" #duration>
+            <label for="duration"></label>
+        </div>
+    </div>
+</div>
+<div class="row"></div>
+<button (click)="create(duration.value, description.value)" md-icon-button>
+    <i class="material-icons">note_add</i>
+</button>

@@ -1,7 +1,10 @@
 <div class="col-sm-offset-1 col-sm-10">
-    <schedule-form (created)="onScheduleCreated($event)"></schedule-form>
-    <div class="well">
-        <period-list></period-list>
+    <div class="form" *ngIf="!schedule" >
+        <schedule-form (created)="onScheduleCreated($event)"></schedule-form>
+    </div>
+    <div class="well" *ngIf="schedule">
+        <period-form (created)="onPeriodCreated($event)"></period-form>
+        <period-list [periods] ="schedule.periods"></period-list>
     </div>
 </div>
 <div class="col-sm-1"></div>

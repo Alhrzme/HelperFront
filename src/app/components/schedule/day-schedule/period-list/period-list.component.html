@@ -1,1 +1,1 @@
-<period *ngFor="let period of periods" [period] = "period"></period>
+<period *ngFor="let period of periods" [period] = "period" (removed)="onPeriodRemoved($event)"></period>

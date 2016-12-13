@@ -26,7 +26,8 @@ import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
             },
             {
                 path: '',
-                component: TaskHomeComponent,
+                redirectTo: '/tasks',
+                pathMatch: 'full'
             }
         ])
     ],

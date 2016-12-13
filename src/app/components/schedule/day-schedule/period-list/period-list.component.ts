@@ -1,5 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Period} from "../../../shared/schedule/period.model";
+import {PeriodService} from "../../../shared/schedule/period.service";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'period-list',
@@ -9,10 +11,24 @@ import {Period} from "../../../shared/schedule/period.model";
 export class PeriodListComponent implements OnInit {
 
   @Input() periods : Period[] = [];
+  errorMessage : string = '';
+  date : string;
 
-  constructor() { }
+  constructor(private periodService:PeriodService,
+              private route:ActivatedRoute,) { }
 
   ngOnInit() {
+    this.route.params.forEach((params:Params) => {
+      this.date = params['date'];
+    });
+  }
+
+  onPeriodRemoved(period : Period) : void {
+    this.periodService.deletePeriod(this.date, period)
+        .subscribe(
+            period => this.periods.splice(this.periods.indexOf(period), 1),
+            error => this.errorMessage = <any>error
+        )
   }
 
 }

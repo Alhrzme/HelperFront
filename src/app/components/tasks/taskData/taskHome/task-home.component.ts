@@ -47,9 +47,7 @@ export class TaskHomeComponent implements OnInit {
     onTaskDeleted(task:Task) :void {
         this.taskService.deleteTask(task)
             .subscribe(
-                task => {
-                    this.deleteTask(task);
-                },
+                task => this.deleteTask(task),
                 error => this.errorMessage = <any>error
             );
     }

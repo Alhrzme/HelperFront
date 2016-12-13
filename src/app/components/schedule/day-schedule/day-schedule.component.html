@@ -1,10 +1,12 @@
-<div class="col-sm-offset-1 col-sm-10">
+<div class="col offset-s1 col s10">
     <div class="form" *ngIf="!schedule" >
         <schedule-form (created)="onScheduleCreated($event)"></schedule-form>
     </div>
-    <div class="well" *ngIf="schedule">
-        <period-form (created)="onPeriodCreated($event)"></period-form>
-        <period-list [periods] ="schedule.periods"></period-list>
+    <div class="row" *ngIf="schedule">
+        <div class="col s8 offset-2s">
+            <period-form (created)="onPeriodCreated($event)"></period-form>
+            <period-list [periods] ="schedule.periods"></period-list>
+        </div>
     </div>
 </div>
-<div class="col-sm-1"></div>
+<div class="col s1"></div>

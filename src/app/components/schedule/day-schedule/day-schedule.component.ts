@@ -39,6 +39,14 @@ export class DayScheduleComponent implements OnInit {
             );
     }
 
+    onPeriodRemoved(period : Period) : void {
+        this.periodService.deletePeriod(this.date, period)
+            .subscribe(
+                period => this.schedule.periods.splice(this.schedule.periods.indexOf(period), 1),
+                error => this.errorMessage = <any>error
+            )
+    }
+
     ngOnInit() {
         this.route.params.forEach((params:Params) => {
             this.date = params['date'];

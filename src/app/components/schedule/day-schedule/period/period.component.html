@@ -1,11 +1,12 @@
 <div class="row">
     <div class="card">
+        <button class="remove" type="button" (click)="removeButton(period)">&times;</button>
         <div class="card-content">
             <div class="description">
-                Описание: {{ period.description }}
+                {{ period.description }}
             </div>
             <div class="duration">
-                Длительность: {{period.duration}}
+                Длительность: {{ period.duration }}
             </div>
         </div>
     </div>

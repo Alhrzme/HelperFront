@@ -1,17 +1,15 @@
-<nav>
-    <div class="nav-wrapper">
-        <a class="brand-logo right">
-            Danya
-        </a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li *ngFor="let menuItem of menuItems">
-                <a routerLink="{{menuItem.url}}" routerLinkActive="active">{{ menuItem.text }}</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<app-menu></app-menu>
+<!--<nav>-->
+    <!--<div class="nav-wrapper">-->
+        <!--<ul id="nav-mobile" class="left hide-on-med-and-down">-->
+            <!--<li *ngFor="let menuItem of menuItems">-->
+                <!--<a routerLink="{{menuItem.url}}" routerLinkActive="active">{{ menuItem.text }}</a>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</nav>-->
 <div class="container">
-    <div class="">
+    <div>
         <router-outlet></router-outlet>
     </div>
 </div>

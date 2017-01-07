@@ -24,8 +24,12 @@ export class PeriodFormComponent implements OnInit {
   }
 
   private getDurationInMinutes(timeString : string) {
-    var timeArray = timeString.split(":");
+    let timeArray = timeString.split(":");
     return +(timeArray[0]) * 60 + +timeArray[1];
+  }
+
+  public onHideButtonClick() {
+
   }
 
   ngOnInit() {

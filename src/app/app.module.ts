@@ -9,10 +9,12 @@ import { AppComponent } from './components/app.component';
 import { AppRoutingModule} from "./app-routing.module";
 import {TasksModule} from "./components/tasks/tasks.module";
 import {ScheduleModule} from "./components/schedule/shedule.module";
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MenuComponent,
   ],
   imports: [
       BrowserModule,
@@ -22,7 +24,7 @@ import {ScheduleModule} from "./components/schedule/shedule.module";
       AppRoutingModule,
       TasksModule,
       ScheduleModule,
-      MaterialModule.forRoot()
+      MaterialModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

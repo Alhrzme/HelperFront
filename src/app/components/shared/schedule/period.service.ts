@@ -10,7 +10,7 @@ import {Schedule} from "./schedule.model";
 @Injectable()
 export class PeriodService {
 
-  apiUrl:string = 'http://helper:8886/app_dev.php/api/v1';
+  apiUrl:string = 'http://localhost:8886/app_dev.php/api/v1';
 
   constructor(private http: Http) {
 

@@ -10,12 +10,14 @@ import { TaskService } from "../shared/tasks/tasks.service";
 import { TasksRoutingModule } from './tasks-routing.module';
 import {TasksComponent} from "./tasks.component";
 import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
+import {MaterialModule} from "@angular/material";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         TasksRoutingModule,
+        MaterialModule.forRoot()
     ],
     declarations: [
         TaskDataComponent,

@@ -1,1 +1,9 @@
-<period *ngFor="let period of periods" [period] = "period" (removed)="onPeriodRemoved($event)"></period>
+<div class="period-list-wrapper row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="row" *ngFor="let period of periods">
+            <period class="col-md-offset-1 col-md-9" [period]="period" (removed)="onPeriodRemoved($event)"></period>
+        </div>
+    </div>
+</div>
+
+

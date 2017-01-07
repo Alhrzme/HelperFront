@@ -12,7 +12,7 @@ import {Schedule} from "./schedule.model";
 @Injectable()
 export class ScheduleService {
 
-    apiUrl:string = 'http://helper:8886/app_dev.php/api/v1/schedules';
+    apiUrl:string = 'http://localhost:8886/app.php/api/v1/schedules';
 
     constructor(private http: Http) {
 

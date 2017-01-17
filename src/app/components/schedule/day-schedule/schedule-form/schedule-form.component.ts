@@ -1,6 +1,6 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {Schedule} from "../../../shared/schedule/schedule.model";
-import {ActivatedRoute, Params} from "@angular/router";
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Schedule } from "../../../shared/schedule/schedule.model";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
     selector: 'schedule-form',
@@ -9,6 +9,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class ScheduleFormComponent implements OnInit {
 
+    @Input() schedule : Schedule;
     @Output() created:EventEmitter<Schedule>;
     date : string;
 

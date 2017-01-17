@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and
 also import other style files */
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+.text-input-block {
+    margin-top: 6px;
+}
+.right-angle-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    font-size: 1.4em;
+    background-color: Transparent;
+}

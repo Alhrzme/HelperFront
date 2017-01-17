@@ -1,24 +1,24 @@
 <div class="row">
-  <div class="input-field col s6">
-    <label for="description"></label>
-    <md-input #description placeholder="Что будем делать?"></md-input>
-    <input type="text" name="description" id="description" placeholder="Что будем делать?" #description>
-  </div>
-</div>
-<div class="row">
-  <div class="col s4">
-    <div class="input-field inline">
-      <input type="time" name="duration" class="validate" id="duration" #duration>
-      <label for="duration"></label>
-    </div>
-  </div>
-  <div class="col s8">
-    <div class="row"></div>
+  <div class="col-md-10 col-md-offset-1">
     <div class="row">
-      <button class="btn" (click)="create(duration.value, description.value); description.value = ''; duration.value = '';" md-icon-button>
-        <i class="material-icons">note_add</i>Добавить
-      </button>
+      <div class="col-md-7 text-input-block">
+        <md-input-container class="example-full-width">
+          <label for="description"></label>
+          <input maxlength="50" floatingPlaceholder="false" md-input type="text"
+                 name="description" id="description" placeholder="Что будем делать?" #description>
+        </md-input-container>
+      </div>
+      <div class="col-md-2">
+        <md-input-container class="example-full-width">
+          <input md-input type="time" name="duration" class="validate" id="duration" #duration>
+          <label for="duration"></label>
+        </md-input-container>
+      </div>
+      <div class="col-md-3" style="padding-top: 1.5em">
+        <button md-raised-button (click)="create(duration.value, description.value); description.value = ''; duration.value = '';">
+          <md-icon class="material-icons">check</md-icon>Добавить
+        </button>
+      </div>
     </div>
   </div>
 </div>
-<div class="row"></div>

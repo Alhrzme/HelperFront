@@ -1,6 +1,9 @@
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <button class="right-angle-button" type="button" (click)="scheduleForm.style.display = 'none'">
+            <i class="material-icons">remove</i>
+        </button>
+        <div class="row well" id="schedule-form" #scheduleForm>
             <div class="col-md-2">
                 <md-input-container class="example-full-width">
                     <label for="begin"></label>
@@ -8,10 +11,10 @@
                     <md-hint align="end">Начало</md-hint>
                 </md-input-container>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 text-input-block">
                 <md-input-container class="example-full-width">
                     <label for="description"></label>
-                    <input maxlength="50" floatingPlaceholder="false" md-input type="text"
+                    <input maxlength="100" floatingPlaceholder="false" md-input type="text"
                            name="description" id="description" placeholder="Описание дня грядущего" #description>
                 </md-input-container>
             </div>

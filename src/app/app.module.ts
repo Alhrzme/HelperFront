@@ -17,7 +17,6 @@ import { TimerComponent } from './components/shared/timer/timer.component';
   declarations: [
     AppComponent,
     MenuComponent,
-    WindowComponent,
     TimerComponent,
   ],
   imports: [

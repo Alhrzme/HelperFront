@@ -20,7 +20,7 @@ export class ScheduleService {
 
     getSchedule(date : string) : Observable<Schedule> {
         return this.http.get(this.apiUrl + '/' + date)
-            .map(this.extractData)
+            .map(ScheduleService.extractData)
             .catch(this.handleError);
     }
 
@@ -30,7 +30,7 @@ export class ScheduleService {
         let options = new RequestOptions({ headers });
 
         return this.http.post(this.apiUrl, body, options)
-            .map(this.extractData)
+            .map(ScheduleService.extractData)
             .catch(this.handleError)
     }
 
@@ -45,9 +45,12 @@ export class ScheduleService {
             .catch(this.handleError);
     }
 
-    private extractData(res:Response) {
-        console.log(res.json());
-        return res.json();
+    private static extractData(res:Response) {
+        if (res.json().success) {
+            return res.json().data.schedule;
+        }
+
+        return null;
     }
 
 

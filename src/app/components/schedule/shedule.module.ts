@@ -13,6 +13,7 @@ import { PeriodListComponent } from './day-schedule/period-list/period-list.comp
 import { ScheduleService } from "./schedule.service";
 import { PeriodFormComponent } from './day-schedule/period-form/period-form.component';
 import {PeriodService} from "./period.service";
+import {WindowComponent} from "../shared/window/window.component";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {PeriodService} from "./period.service";
         MaterialModule.forRoot(),
     ],
     declarations: [
+        WindowComponent,
         DayScheduleComponent,
         CalendarComponent,
         ScheduleComponent,

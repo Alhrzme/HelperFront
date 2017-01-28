@@ -3,7 +3,8 @@ export class Period {
     duration: number;
     real_duration: number;
     description:string;
-    internal_number: number;
+    start:string;
+    end:string;
 
     constructor(duration:number, description:string) {
         this.duration = duration;

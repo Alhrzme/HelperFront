@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Period} from "../../../shared/schedule/period.model";
+import {Period} from "../../period.model";
 
 @Component({
   selector: 'period',

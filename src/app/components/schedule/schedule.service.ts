@@ -46,6 +46,7 @@ export class ScheduleService {
     }
 
     private extractData(res:Response) {
+        console.log(res.json());
         return res.json();
     }
 

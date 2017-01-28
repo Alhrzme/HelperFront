@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Task } from "../../../shared/tasks/task.model";
-import { TaskService } from "../../../shared/tasks/tasks.service";
+import { Task } from "../../task.model";
+import { TaskService } from "../../tasks.service";
 
 @Component({
     selector: 'tasks-home',

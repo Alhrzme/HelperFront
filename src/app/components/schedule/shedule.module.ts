@@ -10,9 +10,9 @@ import {ScheduleComponent} from "./schedule.component";
 import { PeriodComponent } from './day-schedule/period/period.component';
 import { ScheduleFormComponent } from './day-schedule/schedule-form/schedule-form.component';
 import { PeriodListComponent } from './day-schedule/period-list/period-list.component';
-import { ScheduleService } from "../shared/schedule/schedule.service";
+import { ScheduleService } from "./schedule.service";
 import { PeriodFormComponent } from './day-schedule/period-form/period-form.component';
-import {PeriodService} from "../shared/schedule/period.service";
+import {PeriodService} from "./period.service";
 
 
 @NgModule({

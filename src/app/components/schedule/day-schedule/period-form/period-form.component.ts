@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {Period} from "../../../shared/schedule/period.model";
+import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({

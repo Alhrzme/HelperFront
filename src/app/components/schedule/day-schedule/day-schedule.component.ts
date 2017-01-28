@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Schedule} from "../../shared/schedule/schedule.model";
-import {ScheduleService} from "../../shared/schedule/schedule.service";
+import {Schedule} from "../schedule.model";
+import {ScheduleService} from "../schedule.service";
 import {ActivatedRoute, Params} from "@angular/router";
-import {Period} from "../../shared/schedule/period.model";
-import {PeriodService} from "../../shared/schedule/period.service";
+import {Period} from "../period.model";
+import {PeriodService} from "../period.service";
 
 @Component({
     selector: 'day-schedule',

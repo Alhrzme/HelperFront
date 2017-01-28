@@ -10,11 +10,15 @@ import { AppRoutingModule} from "./app-routing.module";
 import {TasksModule} from "./components/tasks/tasks.module";
 import {ScheduleModule} from "./components/schedule/shedule.module";
 import { MenuComponent } from './components/menu/menu.component';
+import { WindowComponent } from './components/shared/window/window.component';
+import { TimerComponent } from './components/shared/timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    WindowComponent,
+    TimerComponent,
   ],
   imports: [
       BrowserModule,

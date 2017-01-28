@@ -41,6 +41,11 @@
             '@angular/material': {
                 format: 'cjs',
                 main: 'material.umd.js'
+            },
+            moment: {
+                map: 'node_modules/moment/moment.js',
+                type: 'cjs',
+                defaultExtension: 'js'
             }
         }
     });

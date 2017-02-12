@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-2">
+        <md-input-container class="example-full-width">
+          <input md-input type="time" name="duration" class="validate" id="begin" #begin>
+          <label for="begin"></label>
+        </md-input-container>
+      </div>
+      <div class="col-md-2">
+        <md-input-container class="example-full-width">
+          <input md-input type="time" name="duration" class="validate" id="end" #end>
+          <label for="end"></label>
+        </md-input-container>
+      </div>
+      <div class="col-md-5 text-input-block">
+        <md-input-container class="example-full-width">
+          <label for="description"></label>
+          <input maxlength="50" floatingPlaceholder="false" md-input type="text"
+                 name="description" id="description" placeholder="Что будем делать?" #description>
+        </md-input-container>
+      </div>
+      <div class="col-md-2" style="padding-top: 1.5em">
+        <button md-raised-button (click)="create(begin.value, end.value, description.value); description.value = '';">
+          <md-icon class="material-icons">check</md-icon>Добавить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

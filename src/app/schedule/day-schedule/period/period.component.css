@@ -1,0 +1,12 @@
+button.remove {
+    float: right;
+    border: none;
+    font-size: 1.4em;
+    background-color: Transparent;
+}
+.period {
+    border: 1px solid rgba(0,0,0,.05);
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    position: relative;
+}

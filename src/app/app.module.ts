@@ -5,13 +5,13 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import 'hammerjs';
 
-import { AppComponent } from './components/app.component';
+import { AppComponent } from './app.component';
 import { AppRoutingModule} from "./app-routing.module";
-import {TasksModule} from "./components/tasks/tasks.module";
-import {ScheduleModule} from "./components/schedule/shedule.module";
-import { MenuComponent } from './components/menu/menu.component';
-import { WindowComponent } from './components/shared/window/window.component';
-import { TimerComponent } from './components/shared/timer/timer.component';
+import {TasksModule} from "./tasks/tasks.module";
+import {ScheduleModule} from "./schedule/shedule.module";
+import { MenuComponent } from './menu/menu.component';
+import { WindowComponent } from './shared/window/window.component';
+import { TimerComponent } from './shared/timer/timer.component';
 
 @NgModule({
   declarations: [

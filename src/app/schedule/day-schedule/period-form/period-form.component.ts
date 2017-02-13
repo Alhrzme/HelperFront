@@ -1,6 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
+import * as moment from 'moment';
+
 
 @Component({
     selector: 'period-form',
@@ -23,8 +25,12 @@ export class PeriodFormComponent implements OnInit {
         }
     }
 
-    public onHideButtonClick() {
-
+    inputChange(beginInput: HTMLInputElement, endInput:HTMLInputElement) {
+        let end = moment(endInput.value, "LT");
+        let begin = moment(beginInput.value, "LT");
+        if (end.isSameOrBefore(begin) || endInput.value == '') {
+            endInput.value = begin.add(1, "minutes").format("HH:mm");
+        }
     }
 
     ngOnInit() {

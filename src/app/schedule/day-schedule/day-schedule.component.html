@@ -1,4 +1,4 @@
-<div class="row" *ngIf="schedule">
+<div class="row">
     <div class="col-md-8 col-md-offset-2">
         <period-form (created)="onPeriodCreated($event)"></period-form>
         <period-list [periods]="periods"></period-list>

@@ -9,7 +9,7 @@ import {Period} from "./period.model";
 @Injectable()
 export class PeriodService {
 
-    apiUrl: string = 'http://localhost:8886/app_dev.php/api/v1';
+    apiUrl: string = 'http://localhost:8886/app.php/api/v1';
 
     constructor(private http: Http) {
 
@@ -21,12 +21,13 @@ export class PeriodService {
             .catch(this.handleError);
     }
 
-    postPeriod(period: Period, date: string): Observable<Period> {
+    postPeriod(period, date: string): Observable<Period> {
+        period.date = date;
         let body = JSON.stringify(period);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 
-        return this.http.post(this.apiUrl + '/periods/' + date, body, options)
+        return this.http.post(this.apiUrl + '/periods', body, options)
             .map(this.extractData)
             .catch(this.handleError)
     }
@@ -41,11 +42,11 @@ export class PeriodService {
             .catch(this.handleError)
     }
 
-    deletePeriod(dateString, period: Period): Observable<Period> {
+    deletePeriod(period: Period): Observable<Period> {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 
-        let url = `${this.apiUrl}/schedules/${dateString}/periods/${period.id}`;
+        let url = `${this.apiUrl}/periods/${period.id}`;
 
         return this.http.delete(url, options)
             .map(this.extractData)
@@ -53,7 +54,6 @@ export class PeriodService {
     }
 
     private extractData(res: Response) {
-        console.log(res.json().data);
         return res.json().data;
     }
 

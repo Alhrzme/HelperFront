@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-2">
         <md-input-container class="example-full-width">
-          <input md-input type="time" name="duration" class="validate" id="begin" #begin>
+          <input md-input type="time" (change)="inputChange(begin, end)" name="duration" class="validate" id="begin" #begin>
           <label for="begin"></label>
         </md-input-container>
       </div>

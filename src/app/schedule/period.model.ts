@@ -1,3 +1,4 @@
+
 export class Period {
     id: number;
     description: string;
@@ -9,4 +10,5 @@ export class Period {
         this.end = end;
         this.description = description;
     }
+
 }

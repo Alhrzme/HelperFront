@@ -28,6 +28,10 @@ export class DayScheduleComponent implements OnInit {
             );
     }
 
+    public getEmptyPeriods() {
+
+    }
+
     ngOnInit() {
         this.route.params.forEach((params:Params) => {
             this.date = params['date'];

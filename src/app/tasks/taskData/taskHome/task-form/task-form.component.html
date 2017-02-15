@@ -6,7 +6,7 @@
             </span>
             <md-input-container class="example-full-width">
             <input md-input type="text" name="title" placeholder="Что нужно сделать?" class="form-control"
-                   (keyup.enter)="create(taskTitle.value); taskTitle.value=''"
+                   (keyup.enter)="create(taskTitle.value, taskTitle)"
                    #taskTitle>
             </md-input-container>
         </div>

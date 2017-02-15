@@ -1,6 +1,6 @@
 <div class="period-list-wrapper row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="row" *ngFor="let period of sortedPeriods">
+    <div class="col-md-9 col-md-offset-1">
+        <div class="row" *ngFor="let period of periods">
             <period [period]="period" (removed)="onPeriodRemoved($event)"></period>
         </div>
     </div>

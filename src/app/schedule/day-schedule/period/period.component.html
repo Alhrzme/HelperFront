@@ -1,5 +1,8 @@
 <div class="period">
-    <button class="right-angle-button" type="button" (click)="removeButton(period)">&times;</button>
+    <div class="right-angle-buttons">
+        <button class="angle-button remove" type="button" (click)="removeButton(period)">&times;</button>
+        <button class="angle-button edit" type="button" (click)="editButton(period)"><i class="material-icons">mode_edit</i></button>
+    </div>
     <div class="card-content">
         <span>{{ period.begin }}</span>-<span>{{ period.end}}</span>
             {{ period.description }}

@@ -4,6 +4,9 @@ button.remove {
     font-size: 1.4em;
     background-color: Transparent;
 }
+button.edit i {
+    font-size: 15px;
+}
 .period {
     border: 1px solid rgba(0,0,0,.05);
     margin-bottom: 0.5em;

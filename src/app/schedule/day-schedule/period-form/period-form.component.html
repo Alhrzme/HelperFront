@@ -17,11 +17,12 @@
         <md-input-container class="example-full-width">
           <label for="description"></label>
           <input maxlength="50" floatingPlaceholder="false" md-input type="text"
+                 (keyup.enter)="create(begin, end, description)"
                  name="description" id="description" placeholder="Что будем делать?" #description>
         </md-input-container>
       </div>
       <div class="col-md-2" style="padding-top: 1.5em">
-        <button md-raised-button (click)="create(begin.value, end.value, description.value); description.value = '';">
+        <button md-raised-button (click)="create(begin, end, description);">
           <md-icon class="material-icons">check</md-icon>Добавить
         </button>
       </div>

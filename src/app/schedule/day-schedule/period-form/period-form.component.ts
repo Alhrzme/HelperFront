@@ -18,10 +18,15 @@ export class PeriodFormComponent implements OnInit {
         this.created = new EventEmitter<Period>();
     }
 
-    create(begin: string, end: string, description: string) {
-        if (begin && end && description) {
-            let schedule = new Period(begin, end, description);
+    create(begin: HTMLInputElement, end: HTMLInputElement, description: HTMLInputElement) {
+        let beginValue = begin.value;
+        let endValue = end.value;
+        let descriptionValue = description.value;
+        if (beginValue && endValue && descriptionValue) {
+            let schedule = new Period(beginValue, endValue, descriptionValue);
             this.created.emit(schedule);
+            description.value = description.defaultValue;
+            begin.value = endValue;
         }
     }
 

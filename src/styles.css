@@ -4,10 +4,12 @@ also import other style files */
 .text-input-block {
     margin-top: 6px;
 }
-.right-angle-button {
+.right-angle-buttons {
     position: absolute;
     top: 0;
     right: 0;
+}
+.angle-button {
     border: none;
     font-size: 1.4em;
     background-color: Transparent;

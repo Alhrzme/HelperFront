@@ -16,9 +16,10 @@ export class TaskFormComponent implements OnInit {
 		this.created = new EventEmitter<Task>()
 	}
 
-	create(title:string) {
+	create(title:string, taskTitle : HTMLInputElement) {
 		if (title) {
 			let task = new Task(title, title);
+			taskTitle.value = '';
 			this.created.emit(task);
 		}
 	}

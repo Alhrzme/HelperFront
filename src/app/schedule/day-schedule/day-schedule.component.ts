@@ -40,9 +40,10 @@ export class DayScheduleComponent implements OnInit {
     }
 
     private sortPeriods(periods) {
+        console.log(periods);
         if (periods) {
             return periods.sort(function (p1, p2) {
-                return moment(p1.begin, "LT").isAfter(moment(p2, "LT")) ? 1 : -1;
+                return moment(p1.begin, "LT").isAfter(moment(p2.begin, "LT")) ? 1 : -1;
             })
         } else {
             return [];

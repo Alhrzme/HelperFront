@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Period} from "../period.model";
 import {PeriodService} from "../period.service";
-import * as moment from 'moment';
+import {TimeHelperService} from "../../shared/services/time-helper.service";
+import {TimePeriod} from "../../shared/models/timePeriod";
 
 @Component({
     selector: 'day-schedule',
@@ -11,52 +12,56 @@ import * as moment from 'moment';
 })
 export class DayScheduleComponent implements OnInit {
 
-    periods: Period[];
-    errorMessage:string = '';
+    periods: Period[] = [];
+    errorMessage: string = '';
     estimatedBegin = '07:00';
     estimatedEnd = '23:00';
-    date:string;
+    date: string;
+    emptyPeriods: TimePeriod[] = [];
 
-    constructor(
-        private route:ActivatedRoute,
-        private periodService:PeriodService
-    ) {
+    constructor(private route: ActivatedRoute,
+                private periodService: PeriodService) {
     }
 
-    onPeriodCreated(period : Period) : void {
+    onPeriodCreated(period: Period): void {
         this.periodService.postPeriod(period, this.date)
             .subscribe(
                 period => {
                     this.periods.push(period);
-                    this.periods = this.sortPeriods(this.periods)
+                    this.periods = TimeHelperService.sortPeriods(this.periods)
                 },
                 error => this.errorMessage = <any>error
             );
     }
 
-    public getEmptyPeriods() {
-        let emptyPeriods = [];
-
+    private getEmptyPeriods() {
+        return TimeHelperService.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);
     }
 
-    private sortPeriods(periods) {
-        console.log(periods);
-        if (periods) {
-            return periods.sort(function (p1, p2) {
-                return moment(p1.begin, "LT").isAfter(moment(p2.begin, "LT")) ? 1 : -1;
-            })
-        } else {
-            return [];
+    getFormBeginTime() {
+        if (this.emptyPeriods.length > 0) {
+            return this.emptyPeriods[0].begin.format("HH:mm");
         }
+        return this.estimatedBegin;
+    }
+
+    getFormEndTime() {
+        if (this.emptyPeriods.length > 0) {
+            return this.emptyPeriods[0].end.format("HH:mm");
+        }
+        return this.estimatedEnd;
     }
 
     ngOnInit() {
-        this.route.params.forEach((params:Params) => {
+        this.route.params.forEach((params: Params) => {
             this.date = params['date'];
         });
         this.periodService.getPeriods(this.date)
             .subscribe(
-                periods => this.periods = this.sortPeriods(periods),
+                periods => {
+                    this.periods = TimeHelperService.sortPeriods(periods);
+                    this.emptyPeriods = this.getEmptyPeriods();
+                },
                 error => this.errorMessage = <any>error
             );
     }

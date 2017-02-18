@@ -1,7 +1,8 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
 import * as moment from 'moment';
+import {TimePeriod} from "../../../shared/models/timePeriod";
 
 
 @Component({
@@ -12,6 +13,8 @@ import * as moment from 'moment';
 export class PeriodFormComponent implements OnInit {
 
     @Output() created: EventEmitter<Period>;
+    @Input() begin: string;
+    @Input() end: string;
     date: string;
 
     constructor(private route: ActivatedRoute) {

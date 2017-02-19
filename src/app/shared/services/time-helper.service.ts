@@ -28,7 +28,6 @@ export class TimeHelperService {
                 if (newEnd && periodBegin.isAfter(newEnd)) {
                     let newEmptyPeriod = new TimePeriod(newEnd, periodBegin);
                     emptyPeriods.push(newEmptyPeriod);
-                    console.log(newEmptyPeriod);
                 }
                 newEnd = TimeHelperService.getMomentTime(period.end);
             });
@@ -36,7 +35,7 @@ export class TimeHelperService {
                 emptyPeriods.push(new TimePeriod(newEnd, estimatedEnd));
             }
         }
-
+        console.log(emptyPeriods);
         return emptyPeriods;
     }
 

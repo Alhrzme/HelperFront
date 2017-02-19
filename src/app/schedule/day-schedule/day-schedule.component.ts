@@ -39,6 +39,7 @@ export class DayScheduleComponent implements OnInit {
     }
 
     getFormBeginTime() {
+        console.log('Начальное время');
         if (this.emptyPeriods.length > 0) {
             return this.emptyPeriods[0].begin.format("HH:mm");
         }

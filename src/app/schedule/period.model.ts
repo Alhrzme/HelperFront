@@ -5,7 +5,7 @@ export class Period {
     begin: string;
     end: string;
 
-    constructor(begin: string, end:string, description: string) {
+    constructor(begin: string = null, end:string = null, description: string = null) {
         this.begin = begin;
         this.end = end;
         this.description = description;

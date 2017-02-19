@@ -13,8 +13,10 @@ import {TimePeriod} from "../../../shared/models/timePeriod";
 export class PeriodFormComponent implements OnInit {
 
     @Output() created: EventEmitter<Period>;
-    @Input() begin: string;
-    @Input() end: string;
+    @Input() period: Period = new Period();
+    @Input() beginTime: string = '22:08';
+    // begin = '22:08';
+    @Input() endTime: string;
     date: string;
 
     constructor(private route: ActivatedRoute) {

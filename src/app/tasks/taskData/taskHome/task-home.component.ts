@@ -33,12 +33,13 @@ export class TaskHomeComponent implements OnInit {
 
 
     onTaskCreated(task:Task) :void {
-        document.getElementById('addButton').textContent = 'Добавляется';
         this.taskService.addTask(task)
             .subscribe(
                 (task) => {
+                    if (!this.tasks) {
+                        this.tasks = [];
+                    }
                     this.tasks.push(task);
-                    document.getElementById('addButton').textContent = 'Добавить';
                 },
                 error => this.errorMessage = <any>error
             );

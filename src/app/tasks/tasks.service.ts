@@ -13,7 +13,7 @@ import 'rxjs/add/operator/switchMap';
 export class TaskService {
 
     tasks : Task[] = [];
-    apiUrl:string = 'http://localhost:8886/app_dev.php/api/v1/tasks';
+    apiUrl:string = 'http://localhost:8886/app.php/api/v1/tasks';
 
     constructor(private http: Http) {
     }
@@ -31,7 +31,6 @@ export class TaskService {
     }
 
     private extractData(res:Response) {
-        console.log(res.json());
         return res.json().data;
     }
 

@@ -12,7 +12,6 @@ export class PeriodService {
     apiUrl: string = 'http://localhost:8886/app.php/api/v1';
 
     constructor(private http: Http) {
-
     }
 
     getPeriods(date: string): Observable<Period[]> {

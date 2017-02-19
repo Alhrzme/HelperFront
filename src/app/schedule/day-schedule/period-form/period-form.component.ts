@@ -3,6 +3,8 @@ import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
 import * as moment from 'moment';
 import {TimePeriod} from "../../../shared/models/timePeriod";
+import {TimeHelperService} from "../../../shared/services/time-helper.service";
+import {NgForm} from "@angular/forms";
 
 
 @Component({
@@ -13,26 +15,24 @@ import {TimePeriod} from "../../../shared/models/timePeriod";
 export class PeriodFormComponent implements OnInit {
 
     @Output() created: EventEmitter<Period>;
-    @Input() period: Period = new Period();
-    @Input() beginTime: string = '22:08';
-    // begin = '22:08';
-    @Input() endTime: string;
+    @Input() period:Period = new Period('07:00', '09:00');
+    @Input() periods: Period[];
     date: string;
+    beginTime:string = '07:00';
+    endTime:string = '23:00';
+    emptyIntervals : TimePeriod[];
 
     constructor(private route: ActivatedRoute) {
         this.created = new EventEmitter<Period>();
     }
 
-    create(begin: HTMLInputElement, end: HTMLInputElement, description: HTMLInputElement) {
-        let beginValue = begin.value;
-        let endValue = end.value;
-        let descriptionValue = description.value;
-        if (beginValue && endValue && descriptionValue) {
-            let schedule = new Period(beginValue, endValue, descriptionValue);
-            this.created.emit(schedule);
-            description.value = description.defaultValue;
-            begin.value = endValue;
-        }
+    onSubmit() {
+        this.created.emit(this.period);
+        this.period.description = null;
+        this.emptyIntervals = this.getEmptyIntervals();
+        let lastEmptyInterval = this.emptyIntervals[this.emptyIntervals.length - 1];
+        this.period.begin = lastEmptyInterval.begin.format('HH:mm');
+        this.period.end = lastEmptyInterval.end.format('HH:mm');
     }
 
     inputChange(beginInput: HTMLInputElement, endInput:HTMLInputElement) {
@@ -41,6 +41,10 @@ export class PeriodFormComponent implements OnInit {
         if (end.isSameOrBefore(begin) || endInput.value == '') {
             endInput.value = begin.add(1, "minutes").format("HH:mm");
         }
+    }
+
+    getEmptyIntervals() {
+        return TimeHelperService.getEmptyPeriods(this.periods, this.beginTime, this.endTime);
     }
 
     ngOnInit() {

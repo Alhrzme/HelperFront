@@ -10,7 +10,7 @@ export class TimeHelperService {
     
   }
 
-    public static getEmptyPeriods(periods:Period[], beginString, endString) {
+    public static getEmptyPeriods(periods:Period[], beginString:string, endString:string) {
         let emptyPeriods: TimePeriod[] = [];
         let estimatedBegin = TimeHelperService.getMomentTime(beginString);
         let estimatedEnd = TimeHelperService.getMomentTime(endString);
@@ -35,7 +35,7 @@ export class TimeHelperService {
                 emptyPeriods.push(new TimePeriod(newEnd, estimatedEnd));
             }
         }
-        console.log(emptyPeriods);
+
         return emptyPeriods;
     }
 

@@ -25,9 +25,10 @@ export class PeriodListComponent implements OnInit {
 
 
   onPeriodRemoved(period : Period) : void {
+    let periodIndex = this.periods.indexOf(period);
     this.periodService.deletePeriod(period)
         .subscribe(
-            period => this.periods.splice(this.periods.indexOf(period), 1),
+            periodId => this.periods.splice(periodIndex, 1),
             error => this.errorMessage = <any>error
         )
   }

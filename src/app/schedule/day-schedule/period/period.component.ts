@@ -9,11 +9,7 @@ import {Period} from "../../period.model";
 export class PeriodComponent implements OnInit {
 
     @Input() period: Period;
-    @Output() removed: EventEmitter<Period>;
-
-    constructor() {
-        this.removed = new EventEmitter<Period>();
-    }
+    @Output() removed: EventEmitter<Period> = new EventEmitter<Period>();
 
     ngOnInit() {
     }

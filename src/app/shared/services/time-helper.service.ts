@@ -17,11 +17,11 @@ export class TimeHelperService {
         if (!periods || periods.length == 0) {
             emptyPeriods.push(new TimePeriod(estimatedBegin, estimatedEnd));
         } else {
-            let firstPeriodBegin = TimeHelperService.getMomentTime(periods[0].begin);
-            if (estimatedBegin.isBefore(firstPeriodBegin)) {
-                emptyPeriods.push(new TimePeriod(estimatedBegin,
-                    TimeHelperService.getMomentTime(periods[0].begin)));
-            }
+            // let firstPeriodBegin = TimeHelperService.getMomentTime(periods[0].begin);
+            // if (estimatedBegin.isBefore(firstPeriodBegin)) {
+            //     emptyPeriods.push(new TimePeriod(estimatedBegin,
+            //         TimeHelperService.getMomentTime(periods[0].begin)));
+            // }
             let newEnd;
             periods.forEach(function (period: Period) {
                 let periodBegin = TimeHelperService.getMomentTime(period.begin);

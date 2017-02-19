@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Period} from "../../period.model";
 import {PeriodService} from "../../period.service";
 import {ActivatedRoute, Params} from "@angular/router";
@@ -11,6 +11,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 export class PeriodListComponent implements OnInit {
 
   @Input() periods : Period[] = [];
+  @Output() removed: EventEmitter<Period> = new EventEmitter<Period>();
   errorMessage : string = '';
   date : string;
 
@@ -23,13 +24,7 @@ export class PeriodListComponent implements OnInit {
     });
   }
 
-
-  onPeriodRemoved(period : Period) : void {
-    let periodIndex = this.periods.indexOf(period);
-    this.periodService.deletePeriod(period)
-        .subscribe(
-            periodId => this.periods.splice(periodIndex, 1),
-            error => this.errorMessage = <any>error
-        )
+  onPeriodRemoved(period:Period) {
+      this.removed.emit(period);
   }
 }

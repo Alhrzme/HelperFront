@@ -38,13 +38,13 @@ export class PeriodFormComponent implements OnInit, OnChanges {
         this.period.end = lastEmptyInterval.end.format('HH:mm');
     }
 
-    inputChange(beginInput: HTMLInputElement, endInput:HTMLInputElement) {
-        let end = moment(endInput.value, "LT");
-        let begin = moment(beginInput.value, "LT");
-        if (end.isSameOrBefore(begin) || endInput.value == '') {
-            endInput.value = begin.add(1, "minutes").format("HH:mm");
-        }
-    }
+    // inputChange(beginInput: HTMLInputElement, endInput:HTMLInputElement) {
+    //     let end = moment(endInput.value, "LT");
+    //     let begin = moment(beginInput.value, "LT");
+    //     if (end.isSameOrBefore(begin) || endInput.value == '') {
+    //         endInput.value = begin.add(1, "minutes").format("HH:mm");
+    //     }
+    // }
 
     getEmptyIntervals() {
         return TimeHelperService.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);

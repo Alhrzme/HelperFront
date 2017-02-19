@@ -11,8 +11,8 @@ md-input-container {
     background-color: #cdcdcd;
     margin: 0 0.5em;
     padding: 0.5em;
-    -webkit-border-radius:;
-    -moz-border-radius:;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
     border-radius: 15px;
 }
 .empty-interval:hover {

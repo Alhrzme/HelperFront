@@ -23,7 +23,7 @@ export class DayScheduleComponent implements OnInit {
         this.periodService.postPeriod(period, this.date)
             .subscribe(
                 period => {
-                    this.periods.push(period);
+                    this.periods = this.periods.concat([period]);
                     this.periods = TimeHelperService.sortPeriods(this.periods)
                 },
                 error => this.errorMessage = <any>error
@@ -43,4 +43,16 @@ export class DayScheduleComponent implements OnInit {
             );
     }
 
+    onPeriodRemoved(period: Period): void {
+        let periodIndex = this.periods.indexOf(period);
+        this.periodService.deletePeriod(period)
+            .subscribe(
+                periodId => {
+                    let periods = [].concat(this.periods);
+                    periods.splice(periodIndex, 1);
+                    this.periods = periods;
+                },
+                error => this.errorMessage = <any>error
+            )
+    }
 }

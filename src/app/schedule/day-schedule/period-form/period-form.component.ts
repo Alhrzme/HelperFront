@@ -1,10 +1,9 @@
-import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges} from '@angular/core';
 import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
 import * as moment from 'moment';
 import {TimePeriod} from "../../../shared/models/timePeriod";
 import {TimeHelperService} from "../../../shared/services/time-helper.service";
-import {NgForm} from "@angular/forms";
 
 
 @Component({
@@ -12,14 +11,14 @@ import {NgForm} from "@angular/forms";
     templateUrl: 'period-form.component.html',
     styleUrls: ['period-form.component.css']
 })
-export class PeriodFormComponent implements OnInit {
+export class PeriodFormComponent implements OnInit, OnChanges {
 
     @Output() created: EventEmitter<Period>;
-    @Input() period:Period = new Period('07:00', '09:00');
+    @Input() period:Period = new Period();
     @Input() periods: Period[];
     date: string;
-    beginTime:string = '07:00';
-    endTime:string = '23:00';
+    estimatedBegin:string = '07:00';
+    estimatedEnd:string = '23:00';
     emptyIntervals : TimePeriod[];
 
     constructor(private route: ActivatedRoute) {
@@ -30,6 +29,10 @@ export class PeriodFormComponent implements OnInit {
         this.created.emit(this.period);
         this.period.description = null;
         this.emptyIntervals = this.getEmptyIntervals();
+        this.setTimeInputValues();
+    }
+
+    setTimeInputValues() {
         let lastEmptyInterval = this.emptyIntervals[this.emptyIntervals.length - 1];
         this.period.begin = lastEmptyInterval.begin.format('HH:mm');
         this.period.end = lastEmptyInterval.end.format('HH:mm');
@@ -44,7 +47,19 @@ export class PeriodFormComponent implements OnInit {
     }
 
     getEmptyIntervals() {
-        return TimeHelperService.getEmptyPeriods(this.periods, this.beginTime, this.endTime);
+        return TimeHelperService.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);
+    }
+
+    ngOnChanges(changes:SimpleChanges) {
+        if (changes['periods']) {
+            this.emptyIntervals = this.getEmptyIntervals();
+            this.setTimeInputValues();
+        }
+    }
+
+    onEmptyIntervalClick(emptyInterval : TimePeriod) {
+        this.period.begin = emptyInterval.begin.format("HH:mm");
+        this.period.end = emptyInterval.end.format("HH:mm");
     }
 
     ngOnInit() {

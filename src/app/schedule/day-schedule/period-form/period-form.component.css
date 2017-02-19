@@ -4,3 +4,18 @@ md-input-container {
 .hide-button-container {
     float: right;
 }
+.empty-intervals {
+    margin-top: 0.5em;
+}
+.empty-interval {
+    background-color: #cdcdcd;
+    margin: 0 0.5em;
+    padding: 0.5em;
+    -webkit-border-radius:;
+    -moz-border-radius:;
+    border-radius: 15px;
+}
+.empty-interval:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}

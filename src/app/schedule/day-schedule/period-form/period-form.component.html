@@ -34,3 +34,9 @@
         </form>
     </div>
 </div>
+<div class="row empty-intervals">
+    <div class="col-md-10 col-md-offset-1">
+        <span (click)="onEmptyIntervalClick(emptyInterval)" *ngFor="let emptyInterval of emptyIntervals" class="empty-interval">
+            {{ emptyInterval.begin | date:'HH:mm'}} - {{ emptyInterval.end | date:'HH:mm'}}</span>
+    </div>
+</div>

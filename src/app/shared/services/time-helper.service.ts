@@ -14,7 +14,7 @@ export class TimeHelperService {
         let emptyPeriods: TimePeriod[] = [];
         let estimatedBegin = TimeHelperService.getMomentTime(beginString);
         let estimatedEnd = TimeHelperService.getMomentTime(endString);
-        if (periods.length == 0) {
+        if (!periods || periods.length == 0) {
             emptyPeriods.push(new TimePeriod(estimatedBegin, estimatedEnd));
         } else {
             let firstPeriodBegin = TimeHelperService.getMomentTime(periods[0].begin);

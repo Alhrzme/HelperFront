@@ -11,7 +11,7 @@ import {TimeHelperService} from "../../shared/services/time-helper.service";
 })
 export class DayScheduleComponent implements OnInit {
 
-    periods: Period[] = [];
+    periods: Period[];
     errorMessage: string = '';
     date: string;
 

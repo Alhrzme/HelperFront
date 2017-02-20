@@ -12,6 +12,7 @@ export class PeriodListComponent implements OnInit {
 
   @Input() periods : Period[] = [];
   @Output() removed: EventEmitter<Period> = new EventEmitter<Period>();
+  @Output() changed:EventEmitter<Period> = new EventEmitter<Period>();
   errorMessage : string = '';
   date : string;
 
@@ -27,4 +28,7 @@ export class PeriodListComponent implements OnInit {
   onPeriodRemoved(period:Period) {
       this.removed.emit(period);
   }
+    onPeriodChanged(period:Period) {
+      this.changed.emit(period);
+    }
 }

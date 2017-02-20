@@ -27,24 +27,19 @@ export class PeriodFormComponent implements OnInit, OnChanges {
 
     onSubmit() {
         this.created.emit(this.period);
-        this.period.description = null;
+        // this.period.description = null;
         this.emptyIntervals = this.getEmptyIntervals();
-        this.setTimeInputValues();
     }
 
     setTimeInputValues() {
         let lastEmptyInterval = this.emptyIntervals[this.emptyIntervals.length - 1];
         this.period.begin = lastEmptyInterval.begin.format('HH:mm');
-        this.period.end = lastEmptyInterval.end.format('HH:mm');
+        if (lastEmptyInterval.end.diff(lastEmptyInterval.begin, 'minutes') > 30) {
+            this.period.end = moment(this.period.begin, "LT").add(30, 'minutes').format('HH:mm');
+        } else {
+            this.period.end = lastEmptyInterval.end.format('HH:mm');
+        }
     }
-
-    // inputChange(beginInput: HTMLInputElement, endInput:HTMLInputElement) {
-    //     let end = moment(endInput.value, "LT");
-    //     let begin = moment(beginInput.value, "LT");
-    //     if (end.isSameOrBefore(begin) || endInput.value == '') {
-    //         endInput.value = begin.add(1, "minutes").format("HH:mm");
-    //     }
-    // }
 
     getEmptyIntervals() {
         return TimeHelperService.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);

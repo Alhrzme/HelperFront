@@ -1,11 +1,10 @@
-<div class="period" *ngIf="!isEdited">
+<div class="period">
     <div class="right-angle-buttons">
-        <button class="angle-button remove" type="button" (click)="removeButton(period)">&times;</button>
-        <button class="angle-button edit" type="button" (click)="editButton(period)"><i class="material-icons">mode_edit</i></button>
+        <button class="angle-button remove" type="button" (click)="removeButton()">&times;</button>
+        <button class="angle-button edit" type="button" (click)="editPeriod()"><i class="material-icons">mode_edit</i></button>
     </div>
     <div class="card-content">
         <span>{{ period.begin }}</span>-<span>{{ period.end}}</span>
             {{ period.description }}
     </div>
 </div>
-<period-form *ngIf="isEdited" [period]="period" (created)="onPeriodChanged()"></period-form>

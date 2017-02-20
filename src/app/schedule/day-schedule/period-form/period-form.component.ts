@@ -16,6 +16,7 @@ export class PeriodFormComponent implements OnInit, OnChanges {
     @Output() created: EventEmitter<Period>;
     @Input() period:Period = new Period();
     @Input() periods: Period[];
+    @Input() isEdit: boolean = false;
     date: string;
     estimatedBegin:string = '07:00';
     estimatedEnd:string = '23:00';
@@ -27,7 +28,9 @@ export class PeriodFormComponent implements OnInit, OnChanges {
 
     onSubmit() {
         this.created.emit(this.period);
-        // this.period.description = null;
+        if (!this.isEdit) {
+            this.period.description = null;
+        }
         this.emptyIntervals = this.getEmptyIntervals();
     }
 

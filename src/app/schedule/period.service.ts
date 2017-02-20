@@ -9,7 +9,7 @@ import {Period} from "./period.model";
 @Injectable()
 export class PeriodService {
 
-    apiUrl: string = 'http://localhost:8886/app.php/api/v1';
+    apiUrl: string = 'http://localhost:8886/app_dev.php/api/v1';
 
     constructor(private http: Http) {
     }
@@ -20,7 +20,7 @@ export class PeriodService {
             .catch(this.handleError);
     }
 
-    postPeriod(period, date: string): Observable<Period> {
+    postPeriod(period:Period, date: string): Observable<Period> {
         period.date = date;
         let body = JSON.stringify(period);
         let headers = new Headers({'Content-Type': 'application/json'});
@@ -36,7 +36,7 @@ export class PeriodService {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 
-        return this.http.put(this.apiUrl + '/periods', body, options)
+        return this.http.put(this.apiUrl + '/periods/' + period.id, body, options)
             .map(this.extractData)
             .catch(this.handleError)
     }

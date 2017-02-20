@@ -55,8 +55,8 @@ export class DayScheduleComponent implements OnInit {
                 error => this.errorMessage = <any>error
             )
     }
+
     onPeriodChanged(period: Period) : void {
-        console.log(period);
         this.periodService.putPeriod(period)
             .subscribe(
                 period => {

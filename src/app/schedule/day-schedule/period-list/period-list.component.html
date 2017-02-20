@@ -1,7 +1,6 @@
-<div class="period-list-wrapper row">
-    <div class="col-md-9 col-md-offset-1">
-        <div class="row" *ngFor="let period of periods">
-            <period [period]="period" (changed)="onPeriodChanged(period)" (removed)="onPeriodRemoved(period)"></period>
-        </div>
+<div class="period-list-wrapper">
+    <div class="row" *ngFor="let period of periods">
+        <period *ngIf="editablePeriodId != period.id" (editable)="editablePeriodId = period.id" [period]="period" (changed)="onPeriodChanged(period)" (removed)="onPeriodRemoved(period)"></period>
+        <period-form *ngIf="editablePeriodId == period.id" [period]="period" (created)="onPeriodChanged(period)" [isEdit]="true"></period-form>
     </div>
 </div>

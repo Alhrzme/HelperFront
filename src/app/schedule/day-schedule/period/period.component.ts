@@ -11,21 +11,17 @@ export class PeriodComponent implements OnInit {
     @Input() period: Period;
     @Output() removed: EventEmitter<Period> = new EventEmitter<Period>();
     @Output() changed: EventEmitter<Period> =  new EventEmitter<Period>();
+    @Output() editable: EventEmitter<Period> =  new EventEmitter<Period>();
     isEdited:boolean = false;
 
     ngOnInit() {
     }
 
-    public editButton(period: Period) {
-        this.isEdited = true;
+    public editPeriod() {
+        this.editable.emit(this.period);
     }
 
-    public removeButton(period: Period) {
-        this.removed.emit(period);
-    }
-
-    public onPeriodChanged() {
-        this.isEdited = false;
-        this.changed.emit(this.period);
+    public removeButton() {
+        this.removed.emit(this.period);
     }
 }

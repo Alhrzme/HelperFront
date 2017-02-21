@@ -46,18 +46,27 @@ export class TaskHomeComponent implements OnInit {
     }
 
     onTaskDeleted(task:Task) :void {
+        let taskIndex = this.tasks.indexOf(task);
         this.taskService.deleteTask(task)
             .subscribe(
-                task => this.deleteTask(task),
+                task => this.deleteTask(taskIndex),
                 error => this.errorMessage = <any>error
             );
     }
 
-    private deleteTask(task: Task): void {
-        let index = this.tasks.indexOf(task);
+    onTaskEdited(task:Task) : void {
+        this.taskService.editTask(task)
+            .subscribe(
+                task => task,
+                error => this.errorMessage = <any>error
+            )
 
-        if (index > -1) {
-            this.tasks.splice(index, 1);
+    }
+
+    private deleteTask(taskIndex : number): void {
+
+        if (taskIndex > -1) {
+            this.tasks.splice(taskIndex, 1);
         }
     }
 

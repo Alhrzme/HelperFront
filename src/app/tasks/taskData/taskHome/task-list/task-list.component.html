@@ -1,5 +1,5 @@
 <div class="task_list text-left" *ngIf="tasks && tasks.length > 0">
     <ul class="list-group" >
-        <task-list-item *ngFor="let task of sortedTasks" (deleted)="onTaskDeleted($event)" [task]="task"></task-list-item>
+        <task-list-item *ngFor="let task of sortedTasks" (edited)="onTaskEdited(task)" (deleted)="onTaskDeleted($event)" [task]="task"></task-list-item>
     </ul>
 </div>

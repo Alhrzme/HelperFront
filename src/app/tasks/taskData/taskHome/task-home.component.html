@@ -1,15 +1,13 @@
-<div class="">
-    <h1 class="">
-        <h1 class="text-center">
-            {{ title }}
-        </h1>
-    </h1>
-    <div class="text-center task-list">
+<h1 class="text-center">
+    {{ title }}
+</h1>
+<div class="row">
+    <div class="col-md-9 col-md-offset-3">
         <div id="form">
             <task-form (created)="onTaskCreated($event)"></task-form>
         </div>
         <div id="list">
-            <task-list [tasks] = "tasks" (deleted)="onTaskDeleted($event)"></task-list>
+            <task-list [tasks]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)"></task-list>
         </div>
     </div>
 </div>

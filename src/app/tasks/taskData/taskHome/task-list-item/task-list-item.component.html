@@ -1,10 +1,9 @@
-<a class="list-group-item" >
-    <div class="row">
-        <a class="col s11">{{ task.title }} </a>
-        <span class="col s1">
-            <button type="button" class="btn " (click)="deleteTask()">
-                <i class="material-icons">delete_forever</i>
-            </button>
-        </span>
-    </div>
-</a>
+<div class="row">
+    <span [class.task-completed]="task.isCompleted">{{ task.title }} </span>
+    <button md-icon-button type="button" (click)="deleteTask()">
+        <i class="material-icons">delete_forever</i>
+    </button>
+    <button md-icon-button type="button" (click)="confirm()">
+        <i class="material-icons">check</i>
+    </button>
+</div>

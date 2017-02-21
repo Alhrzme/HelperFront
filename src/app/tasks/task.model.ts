@@ -1,12 +1,11 @@
 export class Task {
-	id: number;
-	body: string;
-	title: string;
-	children: Task[];
-	parent: Task;
+    id: number;
+    title: string;
+    children: Task[];
+    parent: Task;
+    isCompleted: boolean;
 
-	constructor( body: string, title: string) {
-		this.body = body;
-		this.title = title;
-	}
+    constructor(title: string = null) {
+        this.title = title;
+    }
 }

@@ -31,11 +31,17 @@ export class TaskService {
     }
 
     private extractData(res:Response) {
+        console.log(res.json());
         return res.json().data;
     }
 
     addTask (task : Task): Observable<Task> {
         return this.post(task);
+    }
+
+    editTask(task: Task): Observable<Task> {
+        console.log(JSON.stringify(task));
+        return this.put(task);
     }
 
     deleteTask (task : Task): Observable<Task> {
@@ -52,6 +58,18 @@ export class TaskService {
             .catch(this.handleError)
     }
 
+    private put(task:Task) : Observable<Task> {
+        let body = JSON.stringify(task);
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers });
+
+        let url = `${this.apiUrl}/${task.id}`;
+
+        return this.http.put(url, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
     private delete(task: Task): Observable<Task> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers });
@@ -59,7 +77,7 @@ export class TaskService {
         let url = `${this.apiUrl}/${task.id}`;
 
         return this.http.delete(url, options)
-            .map(res => task)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 

@@ -10,17 +10,11 @@ import { TaskService } from "../../../tasks.service";
     providers: [TaskService]
 })
 
-export class TaskListComponent implements OnInit {
-
-    ngOnInit():void {
-    }
+export class TaskListComponent {
 
     @Input() tasks:Task[];
-    @Output() deleted : EventEmitter<Task>;
-
-    constructor() {
-        this.deleted = new EventEmitter<Task>();
-    }
+    @Output() deleted : EventEmitter<Task> = new EventEmitter<Task>();
+    @Output() edited : EventEmitter<Task> = new EventEmitter<Task>();
 
     get sortedTasks(): Task[] {
         return this.tasks
@@ -30,6 +24,10 @@ export class TaskListComponent implements OnInit {
                 else if (a.title < b.title) return -1;
                 else return 0;
             });
+    }
+
+    onTaskEdited(task:Task) {
+        this.edited.emit(task);
     }
 
     onTaskDeleted(task: Task): void {

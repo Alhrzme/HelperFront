@@ -1,6 +1,6 @@
-.task-item {
-
-}
 .item {
     min-height: 3em !important;
+}
+.task-completed {
+    text-decoration: line-through;
 }

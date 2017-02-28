@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Task } from "../../task.model";
 import { TaskService } from "../../tasks.service";
+import {RepetitiveTask} from "../../repetitive-task.model";
 
 @Component({
     selector: 'tasks-home',
@@ -43,6 +44,10 @@ export class TaskHomeComponent implements OnInit {
                 },
                 error => this.errorMessage = <any>error
             );
+    }
+
+    onRepetitiveTaskCreated(task:RepetitiveTask):void {
+        this.taskService
     }
 
     onTaskDeleted(task:Task) :void {

@@ -1,9 +1,11 @@
 <div class="row">
     <span [class.task-completed]="task.isCompleted">{{ task.title }} </span>
-    <button md-icon-button type="button" (click)="deleteTask()">
-        <i class="material-icons">delete_forever</i>
-    </button>
-    <button md-icon-button type="button" (click)="confirm()">
-        <i class="material-icons">check</i>
-    </button>
+    <div class="buttons">
+        <button *ngIf="!task.isCompleted" md-icon-button type="button" (click)="confirm()">
+            <i class="material-icons">check</i>
+        </button>
+        <button md-icon-button type="button" (click)="deleteTask()">
+            <i class="material-icons">delete_forever</i>
+        </button>
+    </div>
 </div>

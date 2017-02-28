@@ -11,6 +11,7 @@ import { TasksRoutingModule } from './tasks-routing.module';
 import {TasksComponent} from "./tasks.component";
 import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
 import {MaterialModule} from "@angular/material";
+import {RepetitiveTaskFormComponent} from "./taskData/taskHome/repetitive-task-form/repetitive-task-form.component";
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import {MaterialModule} from "@angular/material";
         TaskListItemComponent,
         TasksComponent,
         TaskHomeComponent,
+        RepetitiveTaskFormComponent
     ],
     providers: [
         TaskService

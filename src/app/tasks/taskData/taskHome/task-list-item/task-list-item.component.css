@@ -4,3 +4,7 @@
 .task-completed {
     text-decoration: line-through;
 }
+.buttons {
+    display: inline-block;
+    float: right;
+}

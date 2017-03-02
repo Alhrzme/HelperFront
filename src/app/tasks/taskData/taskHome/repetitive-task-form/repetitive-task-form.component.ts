@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {RepetitiveTask} from "../../../repetitive-task.model";
+import {RepetitiveTask} from "../../shared/models/repetitive-task.model";
 
 @Component({
     selector: 'repetitive-task-form',

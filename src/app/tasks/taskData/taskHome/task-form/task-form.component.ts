@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
-import {Task} from "../../../task.model";
+import {Task} from "../../shared/models/task.model";
 
 @Component({
     selector: 'task-form',
@@ -18,6 +18,7 @@ export class TaskFormComponent implements OnInit {
     }
 
     onSubmit() {
+        this.task.description = this.task.title;
         this.created.emit(this.task);
         this.task = new Task();
     }

@@ -15,6 +15,7 @@ export class RepetitiveTaskFormComponent implements OnInit {
     }
 
     onSubmit() {
+        this.task.description = this.task.title;
         this.created.emit(this.task);
         this.task = new RepetitiveTask();
     }

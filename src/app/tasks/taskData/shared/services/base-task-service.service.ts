@@ -7,7 +7,8 @@ import {AbstractTask} from "../models/abstract-task.model";
 @Injectable()
 export class BaseTaskService {
 
-    apiUrl:string = 'http://localhost:8886/app.php/api/v1/tasks';
+    protected baseApiUrl:string = 'http://localhost:8886/app.php/api/v1/';
+    protected urlEnd:string;
     protected http:Http;
 
     protected handleError(error: any): Observable<any> {
@@ -20,13 +21,25 @@ export class BaseTaskService {
         return res.json().data;
     }
 
+    protected gets(): Observable<AbstractTask[]> {
+        return this.http.get(this.baseApiUrl + this.urlEnd)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    protected get(id : number) : Observable<AbstractTask> {
+        return this.http.get(this.baseApiUrl + this.urlEnd + '/' + id)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
 
     protected post(task: AbstractTask): Observable<AbstractTask> {
         let body = JSON.stringify(task);
+        console.log(body);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers });
 
-        return this.http.post(this.apiUrl, body, options)
+        return this.http.post(this.baseApiUrl + this.urlEnd, body, options)
             .map(this.extractData)
             .catch(this.handleError)
     }
@@ -36,7 +49,7 @@ export class BaseTaskService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers });
 
-        let url = `${this.apiUrl}/${task.id}`;
+        let url = `${this.baseApiUrl + this.urlEnd}/${task.id}`;
 
         return this.http.put(url, body, options)
             .map(this.extractData)
@@ -47,7 +60,7 @@ export class BaseTaskService {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers });
 
-        let url = `${this.apiUrl}/${task.id}`;
+        let url = `${this.baseApiUrl + this.urlEnd}/${task.id}`;
 
         return this.http.delete(url, options)
             .map(this.extractData)

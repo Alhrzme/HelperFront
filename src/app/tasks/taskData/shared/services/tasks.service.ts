@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http } from '@angular/http';
 
 import {Task} from "../models/task.model";
 import {Observable} from 'rxjs/Observable';
@@ -16,22 +16,18 @@ export class TaskService extends BaseTaskService {
         super();
     }
     tasks : Task[] = [];
-    apiUrl:string = 'http://localhost:8886/app_dev.php/api/v1/tasks';
-
-    getTasks(): Observable<Task[]> {
-        return this.http.get(this.apiUrl)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
-
-    getTask(id : number) : Observable<Task> {
-        return this.http.get(this.apiUrl + '/' + id)
-            .map(this.extractData)
-            .catch(this.handleError);
-    }
+    urlEnd:string = 'tasks';
 
     addTask (task : Task): Observable<Task> {
         return this.post(task);
+    }
+
+    getTasks() {
+        return this.gets()
+    }
+
+    getTask(id:number) {
+        return this.get(id);
     }
 
     editTask(task: Task): Observable<Task> {

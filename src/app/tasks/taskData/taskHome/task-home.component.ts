@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from "../shared/models/task.model";
 import { TaskService } from "../shared/services/tasks.service";
 import {RepetitiveTask} from "../shared/models/repetitive-task.model";
+import {AbstractTask} from "../shared/models/abstract-task.model";
+import {RepetitiveTasksService} from "../shared/services/repetitive-tasks.service";
 
 @Component({
     selector: 'tasks-home',
@@ -14,11 +16,13 @@ import {RepetitiveTask} from "../shared/models/repetitive-task.model";
 export class TaskHomeComponent implements OnInit {
 
     title : string = 'Задачи';
-    tasks : Task[] = [];
+    tasks : AbstractTask[] = [];
+    repetitiveTasks:RepetitiveTask[] = [];
     errorMessage : string;
 
     constructor(
         private taskService : TaskService,
+        private repetitiveTaskService: RepetitiveTasksService
     ) {
     }
 
@@ -47,7 +51,16 @@ export class TaskHomeComponent implements OnInit {
     }
 
     onRepetitiveTaskCreated(task:RepetitiveTask):void {
-        this.taskService
+        this.repetitiveTaskService.addTask(task)
+            .subscribe(
+                (task) => {
+                    if (!this.repetitiveTasks) {
+                        this.repetitiveTasks = [];
+                    }
+                    this.repetitiveTasks.push(task);
+                },
+                error => this.errorMessage = <any>error
+            );
     }
 
     onTaskDeleted(task:Task) :void {

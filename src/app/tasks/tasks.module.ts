@@ -12,8 +12,7 @@ import {TasksComponent} from "./tasks.component";
 import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
 import {MaterialModule} from "@angular/material";
 import {RepetitiveTaskFormComponent} from "./taskData/taskHome/repetitive-task-form/repetitive-task-form.component";
-import {BaseTaskService} from "./taskData/shared/services/base-task-service.service";
-import {RepetitiveTasksService} from "./taskData/shared/services/repetitive-tasks.service";
+import {BaseService} from "./taskData/shared/services/base-service.service";
 
 @NgModule({
     imports: [
@@ -29,12 +28,11 @@ import {RepetitiveTasksService} from "./taskData/shared/services/repetitive-task
         TaskListItemComponent,
         TasksComponent,
         TaskHomeComponent,
-        RepetitiveTaskFormComponent
+        RepetitiveTaskFormComponent,
     ],
     providers: [
         TaskService,
-        BaseTaskService,
-        RepetitiveTasksService
+        BaseService,
     ]
 })
 export class TasksModule {}

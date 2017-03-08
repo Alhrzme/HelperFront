@@ -8,10 +8,10 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import {BaseTaskService} from "./base-task-service.service";
+import {BaseService} from "./base-service.service";
 
 @Injectable()
-export class TaskService extends BaseTaskService {
+export class TaskService extends BaseService {
     constructor(protected http: Http) {
         super();
     }
@@ -35,7 +35,7 @@ export class TaskService extends BaseTaskService {
     }
 
     deleteTask (task : Task): Observable<Task> {
-        return this.delete(task);
+        return this.httpDelete(task);
     }
 
 

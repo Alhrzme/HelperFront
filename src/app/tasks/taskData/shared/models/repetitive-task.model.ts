@@ -1,11 +1,17 @@
 import {AbstractTask} from "./abstract-task.model";
 
 export class RepetitiveTask extends AbstractTask {
-    frequency:number;
+    daysOfWeek: string[];
 
-    constructor(title?:string, frequency?:number) {
+    constructor(title?:string, daysOfWeek : string[] = []) {
         super();
         this.title = title;
-        this.frequency = frequency;
+        this.daysOfWeek = daysOfWeek;
+    }
+
+    public addDayOfWeek(dayOfWeek : string) {
+        if (!this.daysOfWeek.includes(dayOfWeek)) {
+            this.daysOfWeek.push(dayOfWeek);
+        }
     }
 }

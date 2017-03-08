@@ -17,3 +17,9 @@ also import other style files */
 md-input-container {
     width: 100%;
 }
+body {
+    margin: 0;
+}
+div md-select {
+    margin-top: 21px;
+}

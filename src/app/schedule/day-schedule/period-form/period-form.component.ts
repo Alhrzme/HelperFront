@@ -14,13 +14,13 @@ import {TimeHelperService} from "../../../shared/services/time-helper.service";
 export class PeriodFormComponent implements OnInit, OnChanges {
 
     @Output() created: EventEmitter<Period>;
-    @Input() period:Period = new Period();
+    @Input() period: Period = new Period();
     @Input() periods: Period[];
     @Input() isEdit: boolean = false;
     date: string;
-    estimatedBegin:string = '07:00';
-    estimatedEnd:string = '23:00';
-    emptyIntervals : TimePeriod[];
+    estimatedBegin: string = '07:00';
+    estimatedEnd: string = '23:00';
+    emptyIntervals: TimePeriod[];
 
     constructor(private route: ActivatedRoute) {
         this.created = new EventEmitter<Period>();
@@ -48,14 +48,14 @@ export class PeriodFormComponent implements OnInit, OnChanges {
         return TimeHelperService.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);
     }
 
-    ngOnChanges(changes:SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges) {
         if (changes['periods']) {
             this.emptyIntervals = this.getEmptyIntervals();
             this.setTimeInputValues();
         }
     }
 
-    onEmptyIntervalClick(emptyInterval : TimePeriod) {
+    onEmptyIntervalClick(emptyInterval: TimePeriod) {
         this.period.begin = emptyInterval.begin.format("HH:mm");
         this.period.end = emptyInterval.end.format("HH:mm");
     }

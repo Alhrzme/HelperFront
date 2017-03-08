@@ -9,6 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import {BaseService} from "./base-service.service";
+import {RepetitiveTask} from "../models/repetitive-task.model";
 
 @Injectable()
 export class TaskService extends BaseService {
@@ -20,6 +21,10 @@ export class TaskService extends BaseService {
 
     addTask (task : Task): Observable<Task> {
         return this.post(task);
+    }
+
+    generateTasks(task:RepetitiveTask) : Observable<Task> {
+        return this.post(task, this.baseApiUrl + 'rtasks');
     }
 
     getTasks() {

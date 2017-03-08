@@ -4,7 +4,7 @@
             <md-input-container class="example-full-width">
                 <label for="title"></label>
                 <input id="title" mdInput type="text" name="title" placeholder="Что нужно сделать?"
-                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title">
+                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title" required>
             </md-input-container>
         </div>
         <div class="col-md-3">
@@ -19,4 +19,23 @@
             </button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <md-input-container class="example-fill-space">
+                <label for="beginDate"></label>
+                <input type="date" mdInput name="beginDate" [(ngModel)]="task.beginDate" id="beginDate" required>
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container class="example-fill-space">
+                <label for="endDate"></label>
+                <input type="date" mdInput name="endDate" [(ngModel)]="task.endDate" id="endDate" required>
+            </md-input-container>
+        </div>
+    </div>
 </form>
+<div id="chosenDaysOfWeek">
+    <span *ngFor="let dayOfWeek of task.daysOfWeek">
+        {{ dayOfWeek }}
+    </span>
+</div>

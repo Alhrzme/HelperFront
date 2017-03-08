@@ -13,7 +13,9 @@ import { PeriodFormComponent } from './day-schedule/period-form/period-form.comp
 import {PeriodService} from "./period.service";
 import {WindowComponent} from "../shared/window/window.component";
 import {MomentModule} from "angular2-moment";
-
+import {DayTasksListComponent} from "../tasks/taskData/day-tasks/day-tasks-list/day-tasks-list.component";
+import {DayTasksComponent} from "../tasks/taskData/day-tasks/day-tasks.component";
+import {DayTasksListItemComponent} from "../tasks/taskData/day-tasks/day-tasks-list-item/day-tasks-list-item.component";
 
 @NgModule({
     imports: [
@@ -31,6 +33,9 @@ import {MomentModule} from "angular2-moment";
         PeriodComponent,
         PeriodListComponent,
         PeriodFormComponent,
+        DayTasksListComponent,
+        DayTasksComponent,
+        DayTasksListItemComponent
     ],
     providers: [
         PeriodService

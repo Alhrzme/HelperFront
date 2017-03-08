@@ -13,10 +13,6 @@ import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
 import {MaterialModule} from "@angular/material";
 import {RepetitiveTaskFormComponent} from "./taskData/taskHome/repetitive-task-form/repetitive-task-form.component";
 import {BaseService} from "./taskData/shared/services/base-service.service";
-import { DayTaskListComponent } from './taskData/day-task-list/day-task-list.component';
-import { DayTasksComponent } from './taskData/day-tasks/day-tasks.component';
-import { DayTasksListComponent } from './taskData/dayTasks/day-tasks-list/day-tasks-list.component';
-import { DayTasksListItemComponent } from './taskData/dayTasks/day-tasks-list-item/day-tasks-list-item.component';
 
 @NgModule({
     imports: [
@@ -33,10 +29,6 @@ import { DayTasksListItemComponent } from './taskData/dayTasks/day-tasks-list-it
         TasksComponent,
         TaskHomeComponent,
         RepetitiveTaskFormComponent,
-        DayTaskListComponent,
-        DayTasksComponent,
-        DayTasksListComponent,
-        DayTasksListItemComponent,
     ],
     providers: [
         TaskService,

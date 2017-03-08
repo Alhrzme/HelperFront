@@ -13,6 +13,7 @@ import { PeriodFormComponent } from './day-schedule/period-form/period-form.comp
 import {PeriodService} from "./period.service";
 import {WindowComponent} from "../shared/window/window.component";
 import {MomentModule} from "angular2-moment";
+import {TaskListModule} from "../tasks/taskData/taskHome/task-list/task-list.module";
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import {MomentModule} from "angular2-moment";
         FormsModule,
         ScheduleRoutingModule,
         MaterialModule.forRoot(),
-        MomentModule
+        MomentModule,
+        TaskListModule
     ],
     declarations: [
         WindowComponent,

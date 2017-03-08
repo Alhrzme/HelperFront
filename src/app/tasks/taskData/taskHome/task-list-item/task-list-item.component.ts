@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-
 import {Task} from "../../shared/models/task.model";
+
 
 @Component({
     selector: 'task-list-item',

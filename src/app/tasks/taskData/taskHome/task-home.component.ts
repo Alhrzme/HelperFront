@@ -16,7 +16,6 @@ export class TaskHomeComponent implements OnInit {
 
     title : string = 'Задачи';
     tasks : AbstractTask[] = [];
-    repetitiveTasks:AbstractTask[] = [];
     errorMessage : string;
 
     constructor(

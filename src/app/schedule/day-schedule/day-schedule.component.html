@@ -2,6 +2,9 @@
     <div class="col-md-6 col-md-offset-3">
         <period-form [periods]="periods" (created)="onPeriodCreated($event)"></period-form>
         <period-list [periods]="periods" (removed)="onPeriodRemoved($event)" (changed)="onPeriodChanged($event)"></period-list>
-        <!--<task-list></task-list>-->
+        <div *ngIf="tasks.length > 0">
+            <task-list [tasks]="tasks"></task-list>
+        </div>
+
     </div>
 </div>

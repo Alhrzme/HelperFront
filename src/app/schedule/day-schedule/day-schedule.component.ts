@@ -3,6 +3,8 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Period} from "../period.model";
 import {PeriodService} from "../period.service";
 import {TimeHelperService} from "../../shared/services/time-helper.service";
+import {TaskService} from "../../tasks/taskData/shared/services/tasks.service";
+import {AbstractTask} from "../../tasks/taskData/shared/models/abstract-task.model";
 
 @Component({
     selector: 'day-schedule',
@@ -12,11 +14,13 @@ import {TimeHelperService} from "../../shared/services/time-helper.service";
 export class DayScheduleComponent implements OnInit {
 
     periods: Period[];
+    tasks: AbstractTask[] = [];
     errorMessage: string = '';
     date: string;
 
     constructor(private route: ActivatedRoute,
-                private periodService: PeriodService) {
+                private periodService: PeriodService,
+                private taskService: TaskService) {
     }
 
     onPeriodCreated(period: Period): void {
@@ -34,6 +38,11 @@ export class DayScheduleComponent implements OnInit {
         this.route.params.forEach((params: Params) => {
             this.date = params['date'];
         });
+        this.taskService.getTasks(this.date)
+            .subscribe(
+                tasks => this.tasks = tasks,
+                error => console.log(error)
+            );
         this.periodService.getPeriods(this.date)
             .subscribe(
                 periods => {
@@ -41,6 +50,7 @@ export class DayScheduleComponent implements OnInit {
                 },
                 error => this.errorMessage = <any>error
             );
+
     }
 
     onPeriodRemoved(period: Period): void {
@@ -56,7 +66,7 @@ export class DayScheduleComponent implements OnInit {
             )
     }
 
-    onPeriodChanged(period: Period) : void {
+    onPeriodChanged(period: Period): void {
         this.periodService.putPeriod(period)
             .subscribe(
                 period => {

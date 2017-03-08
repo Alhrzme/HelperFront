@@ -27,8 +27,8 @@ export class TaskService extends BaseService {
         return this.post(task, this.baseApiUrl + 'rtasks');
     }
 
-    getTasks() {
-        return this.gets()
+    getTasks(date?:string) {
+        return this.gets(date)
     }
 
     getTask(id:number) {

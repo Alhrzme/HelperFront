@@ -20,8 +20,12 @@ export class BaseService {
         return res.json().data;
     }
 
-    protected gets(): Observable<AbstractTask[]> {
-        return this.http.get(this.baseApiUrl + this.urlEnd)
+    protected gets(date?:string): Observable<AbstractTask[]> {
+        let url = this.baseApiUrl + this.urlEnd;
+        if (date) {
+            url += '?date=' + date;
+        }
+        return this.http.get(url)
             .map(BaseService.extractData)
             .catch(BaseService.handleError);
     }

@@ -1,3 +1,3 @@
-<p>
-  day-tasks-list works!
-</p>
+<div id="tasks" *ngIf="tasks.length > 0">
+    <app-day-tasks-list-item *ngFor="let task of tasks" [task]="task"></app-day-tasks-list-item>
+</div>

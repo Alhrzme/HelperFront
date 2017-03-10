@@ -35,7 +35,7 @@
     </div>
 </form>
 <div id="chosenDaysOfWeek">
-    <span *ngFor="let dayOfWeek of task.daysOfWeek">
-        {{ dayOfWeek }}
+    <span class="day-of-week-abr" *ngFor="let dayOfWeek of task.daysOfWeek">
+        {{ getAbbreviation(dayOfWeek) }}
     </span>
 </div>

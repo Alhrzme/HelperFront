@@ -5,10 +5,12 @@ export class RepetitiveTask extends AbstractTask {
     beginDate: string;
     endDate: string;
 
-    constructor(title?: string, daysOfWeek: string[] = []) {
+    constructor(beginDate?: string, endDate?: string, title?: string, daysOfWeek: string[] = []) {
         super();
         this.title = title;
         this.daysOfWeek = daysOfWeek;
+        this.beginDate = beginDate;
+        this.endDate = endDate;
     }
 
     public addDayOfWeek(dayOfWeek: string) {

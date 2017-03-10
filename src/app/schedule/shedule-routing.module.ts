@@ -19,6 +19,10 @@ import {CalendarComponent} from "./calendar/calendar.component";
                     {
                         path: 'calendar',
                         component: CalendarComponent
+                    },
+                    {
+                        path: '',
+                        component: DayScheduleComponent
                     }
                 ]
             }

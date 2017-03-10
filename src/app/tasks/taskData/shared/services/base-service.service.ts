@@ -6,7 +6,7 @@ import {AbstractTask} from "../models/abstract-task.model";
 @Injectable()
 export class BaseService {
 
-    protected baseApiUrl: string = 'http://localhost:8886/app_dev.php/api/v1/';
+    protected baseApiUrl: string = 'http://localhost:8886/app.php/api/v1/';
     protected urlEnd: string;
     protected http: Http;
 

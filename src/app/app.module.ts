@@ -26,10 +26,11 @@ import {TimerComponent} from './shared/timer/timer.component';
         AppRoutingModule,
         TasksModule,
         ScheduleModule,
-        MaterialModule.forRoot()
+        MaterialModule
     ],
     providers: [],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: []
 })
 export class AppModule {
 }

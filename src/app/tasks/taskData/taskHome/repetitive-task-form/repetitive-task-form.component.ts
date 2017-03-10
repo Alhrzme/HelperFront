@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges} from '@angular/core';
 import {RepetitiveTask} from "../../shared/models/repetitive-task.model";
-import {MdSelect} from "@angular/material";
-import {NgForm} from "@angular/forms";
+import {ActivatedRoute, Params} from "@angular/router";
+import * as moment from 'moment';
 
 @Component({
     selector: 'repetitive-task-form',
@@ -11,6 +11,7 @@ import {NgForm} from "@angular/forms";
 export class RepetitiveTaskFormComponent implements OnInit {
 
     @Input() task: RepetitiveTask = new RepetitiveTask();
+    date: string;
     @Output() created: EventEmitter<RepetitiveTask> = new EventEmitter<RepetitiveTask>();
     daysOfWeek = [
         {value: 'mon', name: 'Понедельник', abr: 'пон'},
@@ -24,11 +25,21 @@ export class RepetitiveTaskFormComponent implements OnInit {
 
     chosenDayOfWeek: string;
 
-    constructor() {
+    constructor(private route:ActivatedRoute) {
     }
 
     onDayOfWeekInputChange() {
         this.task.addDayOfWeek(this.chosenDayOfWeek);
+    }
+
+    getAbbreviation(dayOfWeekId) {
+        for (let dayOfWeek of this.daysOfWeek) {
+            if (dayOfWeek.value == dayOfWeekId) {
+                return dayOfWeek.abr;
+            }
+        }
+
+        return dayOfWeekId;
     }
 
     onSubmit() {
@@ -36,9 +47,15 @@ export class RepetitiveTaskFormComponent implements OnInit {
         console.log(this.chosenDayOfWeek);
         this.created.emit(this.task);
         this.task = new RepetitiveTask();
+        this.setInitDates();
     }
 
     ngOnInit() {
+        this.setInitDates();
     }
 
+    setInitDates() {
+        this.task.beginDate = moment().format("YYYY-MM-DD");
+        this.task.endDate = moment().add(1, 'months').format("YYYY-MM-DD");
+    }
 }

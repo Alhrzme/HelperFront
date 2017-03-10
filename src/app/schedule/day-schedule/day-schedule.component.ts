@@ -5,6 +5,8 @@ import {PeriodService} from "../period.service";
 import {TimeHelperService} from "../../shared/services/time-helper.service";
 import {TaskService} from "../../tasks/taskData/shared/services/tasks.service";
 import {AbstractTask} from "../../tasks/taskData/shared/models/abstract-task.model";
+import {Task} from "../../tasks/taskData/shared/models/task.model";
+import * as moment from 'moment';
 
 @Component({
     selector: 'day-schedule',
@@ -36,7 +38,7 @@ export class DayScheduleComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
-            this.date = params['date'];
+            this.date = params['date'] ? params['date'] : moment().format('DDMMYYYY');
         });
         this.taskService.getTasks(this.date)
             .subscribe(
@@ -72,6 +74,27 @@ export class DayScheduleComponent implements OnInit {
                 period => {
                     this.periods = this.periods = TimeHelperService.sortPeriods(this.periods);
                 },
+                error => this.errorMessage = <any>error
+            )
+    }
+
+    onTaskDeleted(task: Task): void {
+        let taskIndex = this.tasks.indexOf(task);
+        this.taskService.deleteTask(task)
+            .subscribe(
+                task => {
+                    if (taskIndex > -1) {
+                        this.tasks.splice(taskIndex, 1);
+                    }
+                },
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    onTaskEdited(task: Task): void {
+        this.taskService.editTask(task)
+            .subscribe(
+                task => task,
                 error => this.errorMessage = <any>error
             )
     }

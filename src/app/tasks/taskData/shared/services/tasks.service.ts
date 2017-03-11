@@ -28,7 +28,11 @@ export class TaskService extends BaseService {
     }
 
     getTasks(date?:string) {
-        return this.gets(date)
+        if (date) {
+            return this.gets('date=' + date);
+        }
+
+        return this.gets()
     }
 
     getTask(id:number) {

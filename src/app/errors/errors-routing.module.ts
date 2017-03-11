@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
 import {ErrorsComponent} from "./errors.component";
 import {ErrorsHomeComponent} from "./errors-home/errors-home.component";
+import {ErrorDetailsComponent} from "./error-details/error-details.component";
 
 @NgModule({
     imports: [
@@ -13,6 +14,10 @@ import {ErrorsHomeComponent} from "./errors-home/errors-home.component";
                     {
                         path: '',
                         component: ErrorsHomeComponent
+                    },
+                    {
+                        path: ':id',
+                        component: ErrorDetailsComponent
                     }
                 ]
             }

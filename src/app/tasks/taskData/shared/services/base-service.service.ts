@@ -20,24 +20,25 @@ export class BaseService {
         return res.json().data;
     }
 
-    protected gets(date?:string): Observable<AbstractTask[]> {
+    protected gets(params?: string) {
         let url = this.baseApiUrl + this.urlEnd;
-        if (date) {
-            url += '?date=' + date;
+        if (params) {
+            url += '?' + params;
         }
+
         return this.http.get(url)
             .map(BaseService.extractData)
             .catch(BaseService.handleError);
     }
 
-    protected get(id: number): Observable<AbstractTask> {
+    protected get(id: number) {
         return this.http.get(this.baseApiUrl + this.urlEnd + '/' + id)
             .map(BaseService.extractData)
             .catch(BaseService.handleError);
     }
 
-    protected post(task: AbstractTask, url: string = this.baseApiUrl + this.urlEnd): Observable<AbstractTask> {
-        let body = JSON.stringify(task);
+    protected post(entity, url: string = this.baseApiUrl + this.urlEnd) {
+        let body = JSON.stringify(entity);
         console.log(body);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
@@ -47,7 +48,7 @@ export class BaseService {
             .catch(BaseService.handleError)
     }
 
-    protected put(task: AbstractTask): Observable<AbstractTask> {
+    protected put(task) {
         let body = JSON.stringify(task);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
@@ -59,7 +60,7 @@ export class BaseService {
             .catch(BaseService.handleError);
     }
 
-    protected httpDelete(task: AbstractTask): Observable<AbstractTask> {
+    protected httpDelete(task) {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 

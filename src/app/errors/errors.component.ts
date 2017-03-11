@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ErrorsComponent implements OnInit {
 
-    title: 'Ошибки';
+    title: string = 'Ошибки';
 
     constructor() {
     }

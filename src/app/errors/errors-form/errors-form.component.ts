@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Error} from "../shared/error.model";
 
 @Component({
-  selector: 'app-errors-form',
-  templateUrl: './errors-form.component.html',
-  styleUrls: ['./errors-form.component.css']
+    selector: 'app-errors-form',
+    templateUrl: './errors-form.component.html',
+    styleUrls: ['./errors-form.component.css']
 })
 export class ErrorsFormComponent implements OnInit {
 
-  constructor() { }
+    error: Error = new Error();
+    @Output() created: EventEmitter<Error> = new EventEmitter<Error>();
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    onSubmit() {
+        this.error.body = this.error.title;
+        this.created.emit(this.error);
+    }
+
+    ngOnInit() {
+    }
 
 }

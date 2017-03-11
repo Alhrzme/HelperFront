@@ -1,0 +1,23 @@
+import {Injectable} from '@angular/core';
+import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
+import {Error} from "./error.model";
+import {Http} from "@angular/http";
+
+@Injectable()
+export class ErrorsService extends BaseService {
+
+    urlEnd:string = 'errors';
+
+    constructor(protected http: Http) {
+        super();
+    }
+
+    public getErrors() {
+        return this.gets();
+    }
+
+    public createError(error: Error) {
+        return this.post(error);
+    }
+
+}

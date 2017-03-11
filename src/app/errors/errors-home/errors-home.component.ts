@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Error} from "../shared/error.model";
+import {ErrorsService} from "../shared/errors.service";
 
 @Component({
-  selector: 'app-errors-home',
-  templateUrl: './errors-home.component.html',
-  styleUrls: ['./errors-home.component.css']
+    selector: 'app-errors-home',
+    templateUrl: './errors-home.component.html',
+    styleUrls: ['./errors-home.component.css']
 })
 export class ErrorsHomeComponent implements OnInit {
 
-  constructor() { }
+    errors: Error[] = [];
+    constructor(private errorService: ErrorsService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.errorService.getErrors()
+            .subscribe(
+                errorData => this.errors = errorData,
+                error => console.log(error)
+            )
+    }
+
+    onErrorCreate(error: Error) {
+        console.log(error);
+        this.errorService.createError(error)
+            .subscribe(
+                errorData => this.errors.push(errorData),
+                error => console.log(error)
+            )
+    }
 
 }

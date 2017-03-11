@@ -1,7 +1,7 @@
 <md-toolbar color="primary">
   <md-menu #appMenu="mdMenu">
-    <button md-menu-item>Расписание</button>
-    <button md-menu-item>Задачи</button>
+    <button md-menu-item><a routerLink="/schedule">Расписание</a></button>
+    <button md-menu-item><a routerLink="/tasks">Задачи</a></button>
   </md-menu>
   <button md-icon-button [mdMenuTriggerFor]="appMenu">
     <md-icon>more_vert</md-icon>

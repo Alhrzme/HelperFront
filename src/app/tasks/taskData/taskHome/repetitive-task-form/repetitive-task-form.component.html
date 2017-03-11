@@ -8,7 +8,7 @@
             </md-input-container>
         </div>
         <div class="col-md-3">
-            <md-select placeholder="" #select (change)="onDayOfWeekInputChange(form)" name="dayOfWeek" [(ngModel)]="chosenDayOfWeek">
+            <md-select placeholder="" #select (change)="onDayOfWeekInputChange($event)" name="dayOfWeek">
                 <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">{{ dayOfWeek.name }}</md-option>
             </md-select>
         </div>
@@ -30,6 +30,19 @@
             <md-input-container class="example-fill-space">
                 <label for="endDate"></label>
                 <input type="date" mdInput name="endDate" [(ngModel)]="task.endDate" id="endDate" required>
+            </md-input-container>
+        </div>
+        <div class="col-md-2">
+            <md-input-container class="example-full-width">
+                <input mdInput type="time" [(ngModel)]="task.beginTime"
+                       name="begin" class="validate" id="beginTime" required>
+                <label for="beginTime"></label>
+            </md-input-container>
+        </div>
+        <div class="col-md-2">
+            <md-input-container class="example-full-width">
+                <input mdInput type="time" name="endTime" [(ngModel)]="task.endTime" class="validate" id="endTime" required>
+                <label for="end"></label>
             </md-input-container>
         </div>
     </div>

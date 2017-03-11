@@ -1,5 +1,5 @@
 <div class="row">
-    <span [class.task-completed]="task.isCompleted">{{ task.title }} </span>
+    <span [class.task-completed]="task.isCompleted">{{ task.title }} <span class="time" *ngIf="task.beginTime">{{'(' + task.beginTime + '-' + task.endTime + ')'}}</span></span>
     <div class="buttons">
         <button *ngIf="!task.isCompleted" md-icon-button type="button" (click)="confirm()">
             <md-icon>check</md-icon>

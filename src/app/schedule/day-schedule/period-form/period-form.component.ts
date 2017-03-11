@@ -35,12 +35,14 @@ export class PeriodFormComponent implements OnInit, OnChanges {
     }
 
     setTimeInputValues() {
-        let lastEmptyInterval = this.emptyIntervals[this.emptyIntervals.length - 1];
-        this.period.begin = lastEmptyInterval.begin.format('HH:mm');
-        if (lastEmptyInterval.end.diff(lastEmptyInterval.begin, 'minutes') > 30) {
-            this.period.end = moment(this.period.begin, "LT").add(30, 'minutes').format('HH:mm');
-        } else {
-            this.period.end = lastEmptyInterval.end.format('HH:mm');
+        if (this.emptyIntervals.length > 0) {
+            let lastEmptyInterval = this.emptyIntervals[this.emptyIntervals.length - 1];
+            this.period.begin = lastEmptyInterval.begin.format('HH:mm');
+            if (lastEmptyInterval.end.diff(lastEmptyInterval.begin, 'minutes') > 30) {
+                this.period.end = moment(this.period.begin, "LT").add(30, 'minutes').format('HH:mm');
+            } else {
+                this.period.end = lastEmptyInterval.end.format('HH:mm');
+            }
         }
     }
 

@@ -9,14 +9,15 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {TasksModule} from "./tasks/tasks.module";
 import {ScheduleModule} from "./schedule/shedule.module";
-import {MenuComponent} from './menu/menu.component';
 import {TimerComponent} from './shared/timer/timer.component';
+import { ErrorsComponent } from './errors/errors.component';
+import {ErrorsModule} from "./errors/errors.module";
 
 @NgModule({
     declarations: [
         AppComponent,
-        MenuComponent,
         TimerComponent,
+        ErrorsComponent,
     ],
     imports: [
         BrowserModule,
@@ -26,6 +27,7 @@ import {TimerComponent} from './shared/timer/timer.component';
         AppRoutingModule,
         TasksModule,
         ScheduleModule,
+        ErrorsModule,
         MaterialModule
     ],
     providers: [],

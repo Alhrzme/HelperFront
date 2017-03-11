@@ -21,7 +21,7 @@ import { RepetitivePeriodFormComponent } from './day-schedule/repetitive-period-
         CommonModule,
         FormsModule,
         ScheduleRoutingModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
         MomentModule,
         TaskListModule
     ],

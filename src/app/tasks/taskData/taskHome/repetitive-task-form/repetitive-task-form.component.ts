@@ -54,6 +54,10 @@ export class RepetitiveTaskFormComponent implements OnInit {
         this.setInitDates();
     }
 
+    removeDayOfWeek(dayOfWeek) {
+        this.task.removeDayOfWeek(dayOfWeek);
+    }
+
     setInitDates() {
         this.task.beginDate = moment().format("YYYY-MM-DD");
         this.task.endDate = moment().add(1, 'months').format("YYYY-MM-DD");

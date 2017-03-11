@@ -35,20 +35,20 @@
         <div class="col-md-2">
             <md-input-container class="example-full-width">
                 <input mdInput type="time" [(ngModel)]="task.beginTime"
-                       name="begin" class="validate" id="beginTime" required>
+                       name="begin" class="validate" id="beginTime">
                 <label for="beginTime"></label>
             </md-input-container>
         </div>
         <div class="col-md-2">
             <md-input-container class="example-full-width">
-                <input mdInput type="time" name="endTime" [(ngModel)]="task.endTime" class="validate" id="endTime" required>
-                <label for="end"></label>
+                <input mdInput type="time" name="endTime" [(ngModel)]="task.endTime" class="validate" id="endTime">
+                <label for="endTime"></label>
             </md-input-container>
         </div>
     </div>
 </form>
 <div id="chosenDaysOfWeek">
-    <span class="day-of-week-abr" *ngFor="let dayOfWeek of task.daysOfWeek">
+    <span class="day-of-week-abr" *ngFor="let dayOfWeek of task.daysOfWeek" (click)="removeDayOfWeek(dayOfWeek)" title="Удалить">
         {{ getAbbreviation(dayOfWeek) }}
     </span>
 </div>

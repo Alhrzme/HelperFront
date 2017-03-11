@@ -35,7 +35,7 @@
     </div>
 </form>
 <div class="empty-intervals" *ngIf="periods != undefined">
-        <span (click)="onEmptyIntervalClick(emptyInterval)" *ngFor="let emptyInterval of emptyIntervals"
+        <span *ngFor="let emptyInterval of emptyIntervals" (click)="onEmptyIntervalClick(emptyInterval)"
               class="empty-interval">
             {{ emptyInterval.begin | date:'HH:mm'}} - {{ emptyInterval.end | date:'HH:mm'}}
         </span>

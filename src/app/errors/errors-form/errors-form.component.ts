@@ -15,7 +15,6 @@ export class ErrorsFormComponent implements OnInit {
     }
 
     onSubmit() {
-        this.error.body = this.error.title;
         this.created.emit(this.error);
         this.error = new Error();
     }

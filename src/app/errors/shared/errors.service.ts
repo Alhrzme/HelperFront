@@ -12,6 +12,10 @@ export class ErrorsService extends BaseService {
         super();
     }
 
+    public editError(error:Error) {
+        return this.put(error);
+    }
+
     public getErrorData(errorId) {
         return this.get(errorId);
     }

@@ -3,6 +3,8 @@ export class Error {
     title:string;
     body: string;
     reason:string;
+    prevention:string;
     solution: string;
     type: string;
+    isFixed:boolean;
 }

@@ -26,6 +26,21 @@ export class RepetitiveTaskFormComponent implements OnInit {
         {value: 'weekdays', name: 'Будни', abr: 'будни'}
     ];
 
+    weekFrequencyData = [
+        {value: 1, name : 'Каждую неделю'},
+        {value: 2, name : 'Каждую вторую'},
+        {value: 3, name : 'Каждую третью'},
+        {value: 4, name : 'Каждую четвертую'},
+        {value: 5, name : 'Каждую пятую'},
+        {value: 6, name : 'Каждую шестую'},
+        {value: 7, name : 'Каждую седьмую'},
+        {value: 8, name : 'Каждую восьмую'},
+        {value: 9, name : 'Каждую девятую'},
+        {value: 10, name : 'Каждую десятую'},
+        {value: 11, name : 'Каждую одинадцатую'},
+        {value: 12, name : 'Каждую двенадцатую'},
+    ];
+
     constructor() {
     }
 

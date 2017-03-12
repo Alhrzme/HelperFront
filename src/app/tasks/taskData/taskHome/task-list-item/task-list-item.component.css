@@ -1,5 +1,9 @@
-.item {
-    min-height: 3em !important;
+.task-item-row {
+
+}
+.task-desc {
+    padding: 0.5em 0;
+    border-bottom: 1px dotted #cccccc;
 }
 .task-completed {
     text-decoration: line-through;

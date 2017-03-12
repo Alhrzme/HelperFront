@@ -2,21 +2,24 @@
     <div class="row">
         <div class="col-md-6">
             <md-input-container class="example-full-width">
-                <label for="title"></label>
-                <input id="title" mdInput type="text" name="title" placeholder="Что нужно сделать?"
+                <label for="title">Что нужно сделать?</label>
+                <input id="title" mdInput type="text" name="title"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title" required>
             </md-input-container>
         </div>
         <div class="col-md-3">
-            <md-select placeholder="" #select (change)="onDayOfWeekInputChange($event)" name="dayOfWeek">
-                <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">{{ dayOfWeek.name }}</md-option>
+            <label for="dayOfweek">День недели</label>
+            <md-select id="dayOfweek" placeholder="" #select (change)="onDayOfWeekInputChange($event)" name="dayOfWeek">
+                <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">{{ dayOfWeek.name }}
+                </md-option>
             </md-select>
         </div>
-        <div class="col-md-3" style="padding-top: 1.5em">
-            <button type="submit" md-raised-button id="addButton">
-                <md-icon class="material-icons">check</md-icon>
-                Добавить
-            </button>
+        <div class="col-md-3">
+            <label for="frequency">Частота</label>
+            <md-select id="frequency" #weekFrequency [(ngModel)]="task.weekFrequency" name="weekFrequency">
+                <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">{{ frequency.name }}
+                </md-option>
+            </md-select>
         </div>
     </div>
     <div class="row">
@@ -46,9 +49,16 @@
             </md-input-container>
         </div>
     </div>
+    <div class="col-md-3 col-md-offset-9" style="padding-top: 1.5em">
+        <button type="submit" md-raised-button id="addButton">
+            <md-icon class="material-icons">check</md-icon>
+            Добавить
+        </button>
+    </div>
 </form>
 <div id="chosenDaysOfWeek">
-    <span class="day-of-week-abr" *ngFor="let dayOfWeek of task.daysOfWeek" (click)="removeDayOfWeek(dayOfWeek)" title="Удалить">
+    <span class="day-of-week-abr" *ngFor="let dayOfWeek of task.daysOfWeek" (click)="removeDayOfWeek(dayOfWeek)"
+          title="Удалить">
         {{ getAbbreviation(dayOfWeek) }}
     </span>
 </div>

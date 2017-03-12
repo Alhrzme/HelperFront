@@ -18,9 +18,6 @@ export class ErrorsExtendedFormComponent implements OnInit {
     }
 
     onSubmit() {
-        if (!this.error.body) {
-            this.error.body = this.error.title;
-        }
         this.created.emit(this.error);
     }
 

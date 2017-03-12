@@ -29,9 +29,9 @@ export class ErrorDetailsComponent implements OnInit {
     }
 
     public onErrorEdited(error: Error) {
-        this.errorService.createError(error)
+        this.errorService.editError(error)
             .subscribe(
-                errorData => this.error = errorData,
+                errorData => { if(errorData) { this.error = errorData} },
                 error => console.log(error)
             )
     }

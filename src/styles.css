@@ -20,6 +20,6 @@ md-input-container {
 body {
     margin: 0;
 }
-div md-select {
+div md-select.without-label {
     margin-top: 21px;
 }

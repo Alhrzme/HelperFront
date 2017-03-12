@@ -1,3 +1,3 @@
-<p>
-  error-details works!
-</p>
+<div class="extended-form" *ngIf="error">
+    <app-errors-extended-form [error]="error" (created)="onErrorEdited($event)"></app-errors-extended-form>
+</div>

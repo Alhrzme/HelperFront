@@ -16,7 +16,7 @@ import {ErrorDetailsComponent} from "./error-details/error-details.component";
                         component: ErrorsHomeComponent
                     },
                     {
-                        path: ':id',
+                        path: ':errorId',
                         component: ErrorDetailsComponent
                     }
                 ]

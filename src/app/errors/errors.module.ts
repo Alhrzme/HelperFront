@@ -8,6 +8,7 @@ import {FormsModule} from "@angular/forms";
 import {MaterialModule} from "@angular/material";
 import {ErrorsService} from "./shared/errors.service";
 import { ErrorDetailsComponent } from './error-details/error-details.component';
+import { ErrorsExtendedFormComponent } from './errors-extended-form/errors-extended-form.component';
 
 @NgModule({
     imports: [
@@ -21,6 +22,7 @@ import { ErrorDetailsComponent } from './error-details/error-details.component';
         ErrorsHomeComponent,
         ErrorsFormComponent,
         ErrorDetailsComponent,
+        ErrorsExtendedFormComponent,
     ],
     providers: [
         ErrorsService

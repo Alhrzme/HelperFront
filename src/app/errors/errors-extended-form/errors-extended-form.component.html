@@ -1,0 +1,42 @@
+<form (submit)="onSubmit()" #errorForm="ngForm">
+    <div class="fields">
+        <div class="text-input-block">
+            <md-input-container class="example-full-width">
+                <label for="title">Название ошибки</label>
+                <input id="title" #title mdInput type="text" name="title"
+                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="error.title">
+                <md-hint align="end">{{title.value.length}} / 100</md-hint>
+            </md-input-container>
+        </div>
+        <md-input-container class="example-full-width">
+            <label for="body">Описание ошибки</label>
+            <textarea id="body" #body mdInput type="text" name="body" placeholder="Описание ошибки"
+                      floatingPlaceholder="false" maxlength="1000" [(ngModel)]="error.body"></textarea>
+            <md-hint align="end">{{body.value.length}} / 1000</md-hint>
+        </md-input-container>
+        <md-input-container class="example-full-width">
+            <label for="reason">Причина ошибки</label>
+            <input id="reason" #reason mdInput type="text" name="reason"
+                   floatingPlaceholder="false" maxlength="100" [(ngModel)]="error.reason">
+            <md-hint align="end">{{reason.value.length}} / 100</md-hint>
+        </md-input-container>
+        <md-input-container class="example-full-width">
+            <label for="solution">Решение</label>
+            <input id="solution" #solution mdInput type="text" name="solution"
+                   floatingPlaceholder="false" maxlength="100" [(ngModel)]="error.solution">
+            <md-hint align="end">{{solution.value.length}} / 100</md-hint>
+        </md-input-container>
+        <md-input-container class="example-full-width">
+            <label for="type">Тип ошибки</label>
+            <input id="type" #type mdInput type="text" name="type"
+                   floatingPlaceholder="false" maxlength="100" [(ngModel)]="error.type">
+            <md-hint align="end">{{type.value.length}} / 100</md-hint>
+        </md-input-container>
+    </div>
+    <div class="form-buttons">
+        <button type="submit" md-raised-button id="addButton">
+            <md-icon class="material-icons">check</md-icon>
+            Добавить
+        </button>
+    </div>
+</form>

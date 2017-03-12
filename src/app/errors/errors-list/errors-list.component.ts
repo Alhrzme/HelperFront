@@ -15,5 +15,4 @@ export class ErrorsListComponent implements OnInit {
 
     ngOnInit() {
     }
-
 }

@@ -9,6 +9,7 @@ import {MaterialModule} from "@angular/material";
 import {ErrorsService} from "./shared/errors.service";
 import { ErrorDetailsComponent } from './error-details/error-details.component';
 import { ErrorsExtendedFormComponent } from './errors-extended-form/errors-extended-form.component';
+import {ErrorsComponent} from "./errors.component";
 
 @NgModule({
     imports: [
@@ -19,6 +20,7 @@ import { ErrorsExtendedFormComponent } from './errors-extended-form/errors-exten
         MaterialModule
     ],
     declarations: [
+        ErrorsComponent,
         ErrorsHomeComponent,
         ErrorsFormComponent,
         ErrorDetailsComponent,
@@ -26,6 +28,9 @@ import { ErrorsExtendedFormComponent } from './errors-extended-form/errors-exten
     ],
     providers: [
         ErrorsService
+    ],
+    exports: [
+        ErrorsComponent
     ]
 })
 export class ErrorsModule {

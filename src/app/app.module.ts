@@ -10,16 +10,16 @@ import {AppRoutingModule} from "./app-routing.module";
 import {TasksModule} from "./tasks/tasks.module";
 import {ScheduleModule} from "./schedule/shedule.module";
 import {TimerComponent} from './shared/timer/timer.component';
-import { ErrorsComponent } from './errors/errors.component';
 import {ErrorsModule} from "./errors/errors.module";
+import {ListenersModule} from "./listeners/listeners.module";
 
 @NgModule({
     declarations: [
         AppComponent,
         TimerComponent,
-        ErrorsComponent,
     ],
     imports: [
+        ListenersModule,
         BrowserModule,
         FormsModule,
         HttpModule,

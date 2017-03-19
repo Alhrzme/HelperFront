@@ -67,6 +67,7 @@ export class RepetitiveTaskFormComponent implements OnInit {
 
     ngOnInit() {
         this.setInitDates();
+        this.task.weekFrequency = 1;
     }
 
     removeDayOfWeek(dayOfWeek) {

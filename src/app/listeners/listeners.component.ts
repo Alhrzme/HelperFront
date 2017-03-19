@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {ListenersService} from "../shared/listeners.service";
+import {Listener} from "./shared/listener.model";
 
 @Component({
     selector: 'app-listeners',
@@ -8,11 +10,29 @@ import {Component, OnInit} from '@angular/core';
 export class ListenersComponent implements OnInit {
 
     title: string = 'Слушатели';
+    listeners: Listener[];
 
-    constructor() {
+    constructor(private listenersService: ListenersService) {
     }
 
     ngOnInit() {
+        this.listenersService.getListeners()
+            .subscribe(
+                listeners => this.listeners = listeners,
+                error => console.log(error)
+            )
     }
 
+    onListenerCreated(listener: Listener) {
+        this.listenersService.addListener(listener)
+            .subscribe(
+                listener => {
+                    if (!this.listeners) {
+                        this.listeners = [];
+                    }
+                    this.listeners.push(listener)
+                },
+                error => console.log(error)
+            )
+    }
 }

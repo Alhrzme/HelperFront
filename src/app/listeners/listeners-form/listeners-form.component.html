@@ -1,3 +1,32 @@
-<p>
-  listeners-form works!
-</p>
+<form (submit)="onSubmit()" #listenerForm="ngForm">
+    <div class="row">
+        <div class="col-md-9 text-input-block">
+            <md-input-container class="example-full-width">
+                <label for="eventTitle"></label>
+                <input id="eventTitle" mdInput type="text" name="eventTitle" placeholder="Событие"
+                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="listener.event">
+            </md-input-container>
+        </div>
+        <div class="col-md-3" style="padding-top: 1.5em">
+            <button type="submit" md-raised-button id="addButton">
+                <md-icon class="material-icons">check</md-icon>
+                Добавить
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 text-input-block">
+            <md-input-container class="example-full-width">
+                <label for="action"></label>
+                <input id="action" mdInput type="text" name="action" placeholder="Действие"
+                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="currentAction">
+            </md-input-container>
+        </div>
+        <div class="col-md-3" style="padding-top: 1.5em">
+            <button type="button" md-raised-button (click)="addAction()">
+                <md-icon class="material-icons">check</md-icon>
+                Добавить
+            </button>
+        </div>
+    </div>
+</form>

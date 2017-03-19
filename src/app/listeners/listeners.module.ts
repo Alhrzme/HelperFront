@@ -6,6 +6,8 @@ import { ListenersFormComponent } from './listeners-form/listeners-form.componen
 import { ListenersListComponent } from './listeners-list/listeners-list.component';
 import {CommonModule} from "@angular/common";
 import {ListenersComponent} from "./listeners.component";
+import { ListenersListItemComponent } from './listeners-list-item/listeners-list-item.component';
+import {ListenersService} from "../shared/listeners.service";
 
 @NgModule({
     imports: [
@@ -17,10 +19,14 @@ import {ListenersComponent} from "./listeners.component";
     declarations: [
         ListenersComponent,
         ListenersFormComponent,
-        ListenersListComponent
+        ListenersListComponent,
+        ListenersListItemComponent
     ],
     exports: [
         ListenersComponent
+    ],
+    providers: [
+        ListenersService
     ]
 })
 export class ListenersModule {

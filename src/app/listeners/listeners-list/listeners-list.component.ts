@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Listener} from "../shared/listener.model";
 
 @Component({
@@ -9,11 +9,16 @@ import {Listener} from "../shared/listener.model";
 export class ListenersListComponent implements OnInit {
 
     @Input() listeners: Listener[];
+    @Output() deleted : EventEmitter<Listener> = new EventEmitter<Listener>();
 
     constructor() {
     }
 
     ngOnInit() {
+    }
+
+    onListenerDeleted(listener:Listener) {
+        this.deleted.emit(listener);
     }
 
 }

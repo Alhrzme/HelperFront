@@ -20,4 +20,8 @@ export class ListenersService extends BaseService {
     public getListeners() {
         return this.gets()
     }
+
+    public removeListener(listener:Listener) {
+        return this.httpDelete(listener)
+    }
 }

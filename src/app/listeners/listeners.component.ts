@@ -35,4 +35,17 @@ export class ListenersComponent implements OnInit {
                 error => console.log(error)
             )
     }
+
+    onListenerDeleted(listener: Listener) {
+        let listenerIndex = this.listeners.indexOf(listener);
+        this.listenersService.removeListener(listener)
+            .subscribe(
+                listener => {
+                    if (listenerIndex > -1) {
+                        this.listeners.splice(listenerIndex, 1);
+                    }
+                },
+                error => console.log(error)
+            )
+    }
 }

@@ -1,1 +1,1 @@
-<app-listeners-list-item *ngFor="let listener of listeners" [listener]="listener"></app-listeners-list-item>
+<app-listeners-list-item *ngFor="let listener of listeners" [listener]="listener" (deleted)="onListenerDeleted(listener)"></app-listeners-list-item>

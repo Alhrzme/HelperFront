@@ -91,9 +91,14 @@ export class DayScheduleComponent implements OnInit {
     }
 
     onTaskEdited(task: Task): void {
+        let taskIndex = this.tasks.indexOf(task);
         this.taskService.editTask(task)
             .subscribe(
-                task => task,
+                task => {
+                    if ((this.date != task.date || task.isCompleted) && taskIndex > -1) {
+                        this.tasks.splice(taskIndex, 1);
+                    }
+                },
                 error => this.errorMessage = <any>error
             )
     }

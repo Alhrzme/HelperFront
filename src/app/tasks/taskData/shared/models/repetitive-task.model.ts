@@ -6,6 +6,7 @@ export class RepetitiveTask extends AbstractTask {
     endDate: string;
     weekFrequency:number;
     newTasksCreate:boolean = false;
+    daysBeforeDeadline: string;
     static weekendDays = ['sat', 'sun'];
     static weekDays = ['mon', 'tue', 'wed', 'thu', 'fri'];
 

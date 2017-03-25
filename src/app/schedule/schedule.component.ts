@@ -10,12 +10,13 @@ import * as moment from 'moment';
 export class ScheduleComponent implements OnInit {
 
     title: string = 'Расписание';
+    date:string;
 
     constructor(private router: Router) {
     }
 
-    onChange(date) {
-        let dateMoment = moment(date, 'YYYY-MM-DD');
+    onChange() {
+        let dateMoment = moment(this.date, 'YYYY-MM-DD');
         if (dateMoment.isSame(moment().startOf('day'))) {
             this.router.navigate(['/schedule']);
         } else {
@@ -24,6 +25,8 @@ export class ScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (!this.date) {
+            this.date = moment().format('YYYY-MM-DD');
+        }
     }
-
 }

@@ -1,23 +1,34 @@
 <form (submit)="onSubmit()" #form="ngForm">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <md-input-container class="example-full-width">
                 <label for="title">Что нужно сделать?</label>
                 <input id="title" mdInput type="text" name="title"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title" required>
             </md-input-container>
         </div>
-        <div class="col-md-3">
-            <label for="dayOfweek">День недели</label>
-            <md-select id="dayOfweek" placeholder="" #select (change)="onDayOfWeekInputChange($event)" name="dayOfWeek">
-                <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">{{ dayOfWeek.name }}
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <md-select id="dayOfweek" placeholder="День недели" #select (change)="onDayOfWeekInputChange($event)"
+                       name="dayOfWeek">
+                <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
+                    {{ dayOfWeek.name }}
                 </md-option>
             </md-select>
         </div>
-        <div class="col-md-3">
-            <label for="frequency">Частота</label>
-            <md-select id="frequency" #weekFrequency [(ngModel)]="task.weekFrequency" name="weekFrequency">
-                <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">{{ frequency.name }}
+        <div class="col-md-4">
+            <md-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="task.weekFrequency"
+                       name="weekFrequency">
+                <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">
+                    {{ frequency.name}}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4">
+            <md-select id="deadline" placeholder="Частота" [(ngModel)]="task.daysBeforeDeadline" name="deadline">
+                <md-option *ngFor="let deadlineString of deadlineStringList" [value]="deadlineString.value">
+                    {{ deadlineString.title}}
                 </md-option>
             </md-select>
         </div>
@@ -49,7 +60,8 @@
             </md-input-container>
         </div>
     </div>
-    <md-checkbox name="isFixed" [(ngModel)]="task.newTasksCreate">Создать задачу создания новых повторяющихся задач?</md-checkbox>
+    <md-checkbox name="isFixed" [(ngModel)]="task.newTasksCreate">Создать задачу создания новых повторяющихся задач?
+    </md-checkbox>
     <div class="col-md-3 col-md-offset-9" style="padding-top: 1.5em">
         <button type="submit" md-raised-button id="addButton">
             <md-icon class="material-icons">check</md-icon>

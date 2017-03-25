@@ -17,6 +17,11 @@ export class TaskHomeComponent implements OnInit {
     title : string = 'Задачи';
     tasks : AbstractTask[] = [];
     errorMessage : string;
+    formsList = [
+        {value: 'single', title: 'Одиночная'},
+        {value: 'repetitive', title : 'Повторяющаяся'}
+    ];
+    selectedForm : string = 'single';
 
     constructor(
         private taskService : TaskService,

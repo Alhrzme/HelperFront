@@ -1,9 +1,13 @@
 <h2 class="center text-center">
     {{ title }}
-    <md-input-container>
-        <label for="date"></label>
-        <input type="date" mdInput name="date" #date (change)="onChange(date.value)" id="date" required>
-    </md-input-container>
 </h2>
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
+        <md-input-container>
+            <label for="date"></label>
+            <input type="date" mdInput name="date" [(ngModel)]="date" (change)="onChange()" id="date" required>
+        </md-input-container>
+    </div>
+</div>
 
 <router-outlet></router-outlet>

@@ -37,7 +37,6 @@ export class DayScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('init');
         this.route.params.forEach((params: Params) => {
             this.date = params['date'] ? params['date'] : moment().format('DDMMYYYY');
             this.taskService.getTasks(this.date)

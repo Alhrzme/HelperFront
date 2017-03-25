@@ -41,6 +41,15 @@ export class RepetitiveTaskFormComponent implements OnInit {
         {value: 12, name : 'Каждую двенадцатую'},
     ];
 
+    deadlineStringList = [
+        {value: 0, title: 'В тот же день'},
+        {value: 1, title: 'Через 1 день'},
+        {value: 2, title: 'Через 2 дня'},
+        {value: 3, title: 'Через 3 дня'},
+        {value: 4, title: 'Через 4 дня'},
+        {value: 5, title: 'Через 5 дней'},
+    ];
+
     constructor() {
     }
 

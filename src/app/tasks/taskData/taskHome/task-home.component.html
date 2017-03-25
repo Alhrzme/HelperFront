@@ -4,13 +4,16 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div id="form">
-            <task-form (created)="onTaskCreated($event)"></task-form>
+            <md-select placeholder="Selected form" [(ngModel)]="selectedForm" name="selectedForm">
+                <md-option *ngFor="let form of formsList"  [value]="form.value">
+                    {{ form.title }}
+                </md-option>
+            </md-select>
+            <task-form *ngIf="selectedForm == 'single'" (created)="onTaskCreated($event)"></task-form>
+            <repetitive-task-form *ngIf="selectedForm == 'repetitive'" (created)="onRepetitiveTaskCreated($event)"></repetitive-task-form>
         </div>
         <div id="list">
             <task-list [tasks]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)"></task-list>
-        </div>
-        <div id="repetitive-form">
-            <repetitive-task-form (created)="onRepetitiveTaskCreated($event)"></repetitive-task-form>
         </div>
     </div>
 </div>

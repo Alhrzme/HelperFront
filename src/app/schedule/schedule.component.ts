@@ -1,17 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import * as moment from 'moment';
 
 @Component({
-  selector: 'app-schedule',
-  templateUrl: 'schedule.component.html',
-  styleUrls: ['schedule.component.css']
+    selector: 'app-schedule',
+    templateUrl: 'schedule.component.html',
+    styleUrls: ['schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
 
-  title: string = 'Расписание';
+    title: string = 'Расписание';
 
-  constructor() { }
+    constructor(private router: Router) {
+    }
 
-  ngOnInit() {
-  }
+    onChange(date) {
+        let dateMoment = moment(date, 'YYYY-MM-DD');
+        if (dateMoment.isSame(moment().startOf('day'))) {
+            this.router.navigate(['/schedule']);
+        } else {
+            this.router.navigate(['/schedule', dateMoment.format('DDMMYYYY')]);
+        }
+    }
+
+    ngOnInit() {
+    }
 
 }

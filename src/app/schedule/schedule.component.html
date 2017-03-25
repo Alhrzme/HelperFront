@@ -1,4 +1,9 @@
 <h2 class="center text-center">
     {{ title }}
+    <md-input-container>
+        <label for="date"></label>
+        <input type="date" mdInput name="date" #date (change)="onChange(date.value)" id="date" required>
+    </md-input-container>
 </h2>
+
 <router-outlet></router-outlet>

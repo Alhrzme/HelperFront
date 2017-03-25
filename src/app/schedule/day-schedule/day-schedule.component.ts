@@ -37,22 +37,22 @@ export class DayScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log('init');
         this.route.params.forEach((params: Params) => {
             this.date = params['date'] ? params['date'] : moment().format('DDMMYYYY');
+            this.taskService.getTasks(this.date)
+                .subscribe(
+                    tasks => this.tasks = tasks,
+                    error => console.log(error)
+                );
+            this.periodService.getPeriods(this.date)
+                .subscribe(
+                    periods => {
+                        this.periods = TimeHelperService.sortPeriods(periods);
+                    },
+                    error => this.errorMessage = <any>error
+                );
         });
-        this.taskService.getTasks(this.date)
-            .subscribe(
-                tasks => this.tasks = tasks,
-                error => console.log(error)
-            );
-        this.periodService.getPeriods(this.date)
-            .subscribe(
-                periods => {
-                    this.periods = TimeHelperService.sortPeriods(periods);
-                },
-                error => this.errorMessage = <any>error
-            );
-
     }
 
     onPeriodRemoved(period: Period): void {

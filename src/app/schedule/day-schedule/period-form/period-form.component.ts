@@ -3,7 +3,7 @@ import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
 import * as moment from 'moment';
 import {TimePeriod} from "../../../shared/models/timePeriod";
-import {TimeHelperService} from "../../../shared/services/time-helper.service";
+import {TimeHelper} from "../../../shared/services/time-helper.service";
 
 
 @Component({
@@ -47,7 +47,7 @@ export class PeriodFormComponent implements OnInit, OnChanges {
     }
 
     getEmptyIntervals() {
-        return TimeHelperService.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);
+        return TimeHelper.getEmptyPeriods(this.periods, this.estimatedBegin, this.estimatedEnd);
     }
 
     ngOnChanges(changes: SimpleChanges) {

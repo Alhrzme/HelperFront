@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {Period} from "../period.model";
 import {PeriodService} from "../period.service";
-import {TimeHelperService} from "../../shared/services/time-helper.service";
+import {TimeHelper} from "../../shared/services/time-helper.service";
 import {TaskService} from "../../tasks/taskData/shared/services/tasks.service";
 import {AbstractTask} from "../../tasks/taskData/shared/models/abstract-task.model";
 import {Task} from "../../tasks/taskData/shared/models/task.model";
@@ -30,7 +30,7 @@ export class DayScheduleComponent implements OnInit {
             .subscribe(
                 period => {
                     this.periods = this.periods.concat([period]);
-                    this.periods = TimeHelperService.sortPeriods(this.periods)
+                    this.periods = TimeHelper.sortPeriods(this.periods)
                 },
                 error => this.errorMessage = <any>error
             );
@@ -47,7 +47,7 @@ export class DayScheduleComponent implements OnInit {
             this.periodService.getPeriods(this.date)
                 .subscribe(
                     periods => {
-                        this.periods = TimeHelperService.sortPeriods(periods);
+                        this.periods = TimeHelper.sortPeriods(periods);
                     },
                     error => this.errorMessage = <any>error
                 );
@@ -71,7 +71,7 @@ export class DayScheduleComponent implements OnInit {
         this.periodService.putPeriod(period)
             .subscribe(
                 period => {
-                    this.periods = this.periods = TimeHelperService.sortPeriods(this.periods);
+                    this.periods = this.periods = TimeHelper.sortPeriods(this.periods);
                 },
                 error => this.errorMessage = <any>error
             )

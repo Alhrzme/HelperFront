@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { TimeHelperService } from './time-helper.service';
+import { TimeHelper } from './time-helper.service';
 
-describe('TimeHelperService', () => {
+describe('TimeHelper', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TimeHelperService]
+      providers: [TimeHelper]
     });
   });
 
-  it('should ...', inject([TimeHelperService], (service: TimeHelperService) => {
+  it('should ...', inject([TimeHelper], (service: TimeHelper) => {
     expect(service).toBeTruthy();
   }));
 });

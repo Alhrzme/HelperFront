@@ -2,9 +2,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Task} from "../../shared/models/task.model";
 import {MdDialog} from "@angular/material";
 import {TaskMoveModalComponent} from "./task-move-modal/task-move-modal.component";
-import {ActivatedRoute} from "@angular/router";
-import * as moment from 'moment';
-
+import {TimeHelper} from "../../../../shared/services/time-helper.service";
 
 @Component({
     selector: 'task-list-item',
@@ -27,7 +25,7 @@ export class TaskListItemComponent implements OnInit {
     isDisplayMoveButton() {
         return this.task.date
             && this.task.deadline
-            && moment(this.task.deadline, "DDMMYYYY").isAfter(moment(this.task.date, "DDMMYYYY"));
+            && TimeHelper.getDate(this.task.deadline).isAfter(TimeHelper.getDate(this.task.date));
     }
 
     confirm() {
@@ -37,13 +35,17 @@ export class TaskListItemComponent implements OnInit {
 
     moveTask() {
         let dialogRef = this.dialog.open(TaskMoveModalComponent, {
-            width: '300px',
+            width: '300px'
         });
+        dialogRef.componentInstance.data = TimeHelper.getDateDiff(this.task.deadline, this.task.date);
         dialogRef.afterClosed().subscribe(
             result => {
-                this.task.date = moment(this.task.date, 'DDMMYYYY').add(result, 'days').format('DDMMYYYY');
-                this.edited.emit(this.task);
-                console.log(this.task);
+                if (result) {
+                    this.task.date = TimeHelper.getDate(this.task.date)
+                        .add(result, 'days')
+                        .format(TimeHelper.DATE_FORMAT);
+                    this.edited.emit(this.task);
+                }
             }
         );
     }

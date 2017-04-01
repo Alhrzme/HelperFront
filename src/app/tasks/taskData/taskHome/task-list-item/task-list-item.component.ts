@@ -3,6 +3,7 @@ import {Task} from "../../shared/models/task.model";
 import {MdDialog} from "@angular/material";
 import {TaskMoveModalComponent} from "./task-move-modal/task-move-modal.component";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
+import {CookieService} from "angular2-cookie/core";
 
 @Component({
     selector: 'task-list-item',
@@ -16,7 +17,7 @@ export class TaskListItemComponent implements OnInit {
     @Output() deleted: EventEmitter<Task> = new EventEmitter<Task>();
     @Output() edited: EventEmitter<Task> = new EventEmitter<Task>();
 
-    constructor(private dialog: MdDialog) {
+    constructor(private dialog: MdDialog, private cookieService:CookieService) {
     }
 
     ngOnInit() {
@@ -37,7 +38,7 @@ export class TaskListItemComponent implements OnInit {
         let dialogRef = this.dialog.open(TaskMoveModalComponent, {
             width: '300px'
         });
-        dialogRef.componentInstance.data = TimeHelper.getDateDiff(this.task.deadline, this.task.date);
+        dialogRef.componentInstance.data = TimeHelper.getDateDiff(this.task.deadline, this.task.date, 'days');
         dialogRef.afterClosed().subscribe(
             result => {
                 if (result) {

@@ -10,14 +10,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import {BaseService} from "./base-service.service";
 import {RepetitiveTask} from "../models/repetitive-task.model";
+import {CookieService} from "angular2-cookie/core";
 
 @Injectable()
 export class TaskService extends BaseService {
-    constructor(protected http: Http) {
+    constructor(protected http: Http, protected cookieService: CookieService) {
         super();
     }
     tasks : Task[] = [];
     urlEnd:string = 'tasks';
+    entityName = 'task';
 
     addTask (task : Task): Observable<Task> {
         return this.post(task);

@@ -5,14 +5,17 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {Period} from "./period.model";
+import {CookieService} from "angular2-cookie/core";
+import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
 
 @Injectable()
-export class PeriodService {
+export class PeriodService extends BaseService {
 
     apiUrl: string = 'http://localhost:8886/app.php/api/v1';
+    entityName = 'error';
 
-    constructor(private http: Http) {
-
+    constructor(protected http: Http, protected cookieService: CookieService) {
+        super();
     }
 
     getPeriods(date: string): Observable<Period[]> {
@@ -23,34 +26,16 @@ export class PeriodService {
 
     postPeriod(period:Period, date: string): Observable<Period> {
         period.date = date;
-        let body = JSON.stringify(period);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
 
-        return this.http.post(this.apiUrl + '/periods', body, options)
-            .map(this.extractData)
-            .catch(this.handleError)
+        return this.post(period);
     }
 
     putPeriod(period: Period): Observable<Period> {
-        let body = JSON.stringify(period);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
-
-        return this.http.put(this.apiUrl + '/periods/' + period.id, body, options)
-            .map(this.extractData)
-            .catch(this.handleError)
+        return this.put(period);
     }
 
     deletePeriod(period: Period): Observable<Period> {
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
-
-        let url = `${this.apiUrl}/periods/${period.id}`;
-
-        return this.http.delete(url, options)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return this.httpDelete(period);
     }
 
     private extractData(res: Response) {

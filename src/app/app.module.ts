@@ -12,6 +12,8 @@ import {ScheduleModule} from "./schedule/shedule.module";
 import {TimerComponent} from './shared/timer/timer.component';
 import {ErrorsModule} from "./errors/errors.module";
 import {ListenersModule} from "./listeners/listeners.module";
+import {CookieService} from "angular2-cookie/core";
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
     declarations: [
@@ -19,6 +21,7 @@ import {ListenersModule} from "./listeners/listeners.module";
         TimerComponent,
     ],
     imports: [
+        LoginModule,
         ListenersModule,
         BrowserModule,
         FormsModule,
@@ -30,7 +33,9 @@ import {ListenersModule} from "./listeners/listeners.module";
         ErrorsModule,
         MaterialModule
     ],
-    providers: [],
+    providers: [
+        CookieService
+    ],
     bootstrap: [AppComponent],
     exports: []
 })

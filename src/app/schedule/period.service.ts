@@ -12,7 +12,8 @@ import {BaseService} from "../tasks/taskData/shared/services/base-service.servic
 export class PeriodService extends BaseService {
 
     apiUrl: string = 'http://localhost:8886/app.php/api/v1';
-    entityName = 'error';
+    entityName = 'period';
+    urlEnd:string = 'periods';
 
     constructor(protected http: Http, protected cookieService: CookieService) {
         super();

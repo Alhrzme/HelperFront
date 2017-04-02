@@ -95,7 +95,7 @@ export class BaseService {
         let options = new RequestOptions({headers});
 
         let url = `${this.baseApiUrl + this.urlEnd}/${task.id}`;
-        url = this.addTokenToRequest(url, true);
+        url = this.addTokenToRequest(url, false);
 
         return this.http.delete(url, options)
             .map(BaseService.extractData)

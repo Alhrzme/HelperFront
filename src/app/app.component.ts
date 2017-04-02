@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import * as moment from 'moment';
+import {CookieService} from "angular2-cookie/core";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -15,6 +16,15 @@ export class AppComponent {
         { 'text' : 'Ну, и еще одно', 'url' : '/tasks/' }
         ];
 
-    constructor() {
+    constructor(private cookieService: CookieService, private router: Router) {
+    }
+
+    isAuthorized() {
+        return !!this.cookieService.get('login-token');
+    }
+
+    onEscape() {
+        this.cookieService.remove('login-token');
+        this.router.navigate(['/']);
     }
 }

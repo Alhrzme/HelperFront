@@ -11,7 +11,6 @@ import {BaseService} from "../tasks/taskData/shared/services/base-service.servic
 @Injectable()
 export class PeriodService extends BaseService {
 
-    apiUrl: string = 'http://localhost:8886/app.php/api/v1';
     entityName = 'period';
     urlEnd:string = 'periods';
 
@@ -20,9 +19,7 @@ export class PeriodService extends BaseService {
     }
 
     getPeriods(date: string): Observable<Period[]> {
-        return this.http.get(this.apiUrl + '/periods?date=' + date)
-            .map(this.extractData)
-            .catch(this.handleError);
+        return this.gets('date=' + date);
     }
 
     postPeriod(period:Period, date: string): Observable<Period> {
@@ -37,15 +34,5 @@ export class PeriodService extends BaseService {
 
     deletePeriod(period: Period): Observable<Period> {
         return this.httpDelete(period);
-    }
-
-    private extractData(res: Response) {
-        return res.json().data;
-    }
-
-
-    private handleError(error: any): Observable<any> {
-        console.log('Произошла ошибка', error);
-        return Observable.throw(error.message || error);
     }
 }

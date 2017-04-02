@@ -13,7 +13,6 @@ export class LoginService {
     login(user: User) {
         let body = JSON.stringify(user);
         let url = this.url + 'authorize';
-        console.log(url);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 

@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 
 import {Task} from "../../shared/models/task.model";
+import {TimeHelper} from "../../../../shared/services/time-helper.service";
 
 @Component({
     selector: 'task-form',
@@ -19,6 +20,13 @@ export class TaskFormComponent implements OnInit {
 
     onSubmit() {
         this.task.description = this.task.title;
+        if (this.task.date) {
+            this.task.date = TimeHelper.getFormattedDateString(this.task.date);
+        }
+        if (this.task.deadline) {
+            this.task.deadline = TimeHelper.getFormattedDateString(this.task.deadline);
+        }
+
         this.created.emit(this.task);
         this.task = new Task();
     }

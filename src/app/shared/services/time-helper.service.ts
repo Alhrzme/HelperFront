@@ -58,6 +58,10 @@ export class TimeHelper {
         return moment(dateString, this.DATE_FORMAT);
     }
 
+    public static getFormattedDateString(dateString) {
+        return moment(dateString, "YYYY-MM-DD").format('DDMMYYYY');
+    }
+
     public static sortPeriods(periods) {
         if (periods) {
             return periods.sort(function (p1, p2) {

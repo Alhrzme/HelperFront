@@ -46,7 +46,9 @@ export class TaskHomeComponent implements OnInit {
                     if (!this.tasks) {
                         this.tasks = [];
                     }
-                    this.tasks.push(task);
+                    if (!task.date) {
+                        this.tasks.push(task);
+                    }
                 },
                 error => this.errorMessage = <any>error
             );

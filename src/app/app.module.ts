@@ -14,6 +14,7 @@ import {ErrorsModule} from "./errors/errors.module";
 import {ListenersModule} from "./listeners/listeners.module";
 import {CookieService} from "angular2-cookie/core";
 import {LoginModule} from "./login/login.module";
+import {NotesModule} from "./notes/notes.module";
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import {LoginModule} from "./login/login.module";
         TimerComponent,
     ],
     imports: [
+        NotesModule,
         LoginModule,
         ListenersModule,
         BrowserModule,

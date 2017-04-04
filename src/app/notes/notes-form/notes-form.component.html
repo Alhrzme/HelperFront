@@ -1,0 +1,29 @@
+<form (submit)="onSubmit()" #noteForm="ngForm">
+    <div class="row">
+        <div class="col-md-12 text-input-block">
+            <md-input-container class="example-full-width">
+                <label for="title"></label>
+                <input id="title" mdInput type="text" name="title" placeholder="Заголовок"
+                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="note.title">
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <md-input-container class="example-fill-space">
+                <label for="body">Содержание</label>
+                <textarea id="body" #body mdInput type="text" name="body"
+                          floatingPlaceholder="false" maxlength="500" [(ngModel)]="note.body"></textarea>
+                <md-hint align="end">{{body.value.length}} / 500</md-hint>
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-offset-9 col-md-3" style="padding-top: 1.5em">
+            <button type="submit" md-raised-button id="addButton">
+                <md-icon class="material-icons">check</md-icon>
+                Добавить
+            </button>
+        </div>
+    </div>
+</form>

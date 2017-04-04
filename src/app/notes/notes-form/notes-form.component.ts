@@ -17,6 +17,7 @@ export class NotesFormComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(this.note);
+        this.created.emit(this.note);
+        this.note = new Note();
     }
 }

@@ -1,0 +1,49 @@
+<form (submit)="onSubmit()" #scheduleForm="ngForm">
+  <div class="row">
+    <div class="col-md-12 text-input-block">
+      <md-input-container class="example-full-width">
+        <label for="title"></label>
+        <input id="title" mdInput type="text" name="name" placeholder="Что за еда?"
+               floatingPlaceholder="false" maxlength="100" [(ngModel)]="schedule.foodName">
+      </md-input-container>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <md-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="schedule.weekFrequency"
+                 name="weekFrequency">
+        <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">
+          {{ frequency.name}}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="col-md-4">
+      <md-select id="dayOfweek" placeholder="День недели" #select (change)="onDayOfWeekInputChange($event)"
+                 name="dayOfWeek">
+        <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
+          {{ dayOfWeek.name }}
+        </md-option>
+      </md-select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <md-input-container class="example-fill-space">
+        <label for="begin"></label>
+        <input type="date" mdInput name="begin" [(ngModel)]="schedule.begin" id="begin">
+      </md-input-container>
+    </div>
+    <div class="col-md-4">
+      <md-input-container class="example-fill-space">
+        <label for="end"></label>
+        <input type="date" mdInput name="end" [(ngModel)]="schedule.end" id="end">
+      </md-input-container>
+    </div>
+    <div class="col-md-3"  style="padding-top: 1.5em">
+      <button type="submit" md-raised-button id="addButton">
+        <md-icon class="material-icons">check</md-icon>
+        Добавить
+      </button>
+    </div>
+  </div>
+</form>

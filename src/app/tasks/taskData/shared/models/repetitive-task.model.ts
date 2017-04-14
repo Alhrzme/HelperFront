@@ -1,14 +1,13 @@
 import {AbstractTask} from "./abstract-task.model";
+import {DaysOfWeek} from "../../../../shared/common/DaysOfWeek";
 
 export class RepetitiveTask extends AbstractTask {
     daysOfWeek: string[];
     beginDate: string;
     endDate: string;
-    weekFrequency:number;
-    newTasksCreate:boolean = false;
+    weekFrequency: number;
+    newTasksCreate: boolean = false;
     daysBeforeDeadline: string;
-    static weekendDays = ['sat', 'sun'];
-    static weekDays = ['mon', 'tue', 'wed', 'thu', 'fri'];
 
     constructor(beginDate?: string, endDate?: string, title?: string, daysOfWeek: string[] = []) {
         super();
@@ -20,16 +19,14 @@ export class RepetitiveTask extends AbstractTask {
 
     public addDayOfWeek(dayOfWeek: string) {
         let days = [];
-        if (dayOfWeek == 'every' || 'weekend' || 'weekdays') {
-            if (dayOfWeek == 'every') {
-                days = [].concat(RepetitiveTask.weekendDays).concat(RepetitiveTask.weekDays);
-            } else if (dayOfWeek == 'weekend') {
-                days = [].concat(RepetitiveTask.weekendDays);
-            } else if (dayOfWeek == 'weekdays') {
-                days = [].concat(RepetitiveTask.weekDays);
-            } else {
-                days = [dayOfWeek];
-            }
+        if (dayOfWeek == 'every') {
+            days = DaysOfWeek.getDaysOfWeekValues();
+        } else if (dayOfWeek == 'weekend') {
+            days = DaysOfWeek.getWeekendDays();
+        } else if (dayOfWeek == 'weekdays') {
+            days = DaysOfWeek.getWeekDays();
+        } else {
+            days = [dayOfWeek];
         }
 
         for (let day of days) {

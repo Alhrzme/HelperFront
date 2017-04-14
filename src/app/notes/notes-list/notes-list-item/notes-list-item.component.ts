@@ -9,11 +9,18 @@ import {Note} from "../../note.model";
 export class NotesListItemComponent implements OnInit {
 
     @Input() note: Note;
-
+    isContentShow : boolean = false;
     constructor() {
     }
 
     ngOnInit() {
     }
 
+    showContent() {
+        this.isContentShow = true;
+    }
+
+    hideContent() {
+        this.isContentShow = false;
+    }
 }

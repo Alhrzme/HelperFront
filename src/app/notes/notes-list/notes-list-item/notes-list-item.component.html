@@ -1,3 +1,11 @@
 <div class="note">
-    {{note.title}}
+    <span (click)="showContent()" class="note-title">
+        {{note.title}}
+    </span>
+    <span class="note-body-hide" *ngIf="isContentShow" (click)="hideContent()">
+        свернуть
+    </span>
+    <div class="note-content" *ngIf="isContentShow">
+        {{ note.body }}
+    </div>
 </div>

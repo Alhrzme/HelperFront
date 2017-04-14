@@ -15,6 +15,7 @@ import {ListenersModule} from "./listeners/listeners.module";
 import {CookieService} from "angular2-cookie/core";
 import {LoginModule} from "./login/login.module";
 import {NotesModule} from "./notes/notes.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [
@@ -33,7 +34,7 @@ import {NotesModule} from "./notes/notes.module";
         TasksModule,
         ScheduleModule,
         ErrorsModule,
-        MaterialModule
+        BrowserAnimationsModule
     ],
     providers: [
         CookieService

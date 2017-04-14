@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import * as moment from 'moment';
 
 @Component({
@@ -10,9 +10,9 @@ import * as moment from 'moment';
 export class ScheduleComponent implements OnInit {
 
     title: string = 'Расписание';
-    date:string;
+    date: string;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private route: ActivatedRoute) {
     }
 
     onChange() {
@@ -25,8 +25,14 @@ export class ScheduleComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (!this.date) {
-            this.date = moment().format('YYYY-MM-DD');
-        }
+        this.route.params.forEach((params: Params) => {
+            if (!this.date) {
+                if (params['date']) {
+                    this.date = params['date'];
+                } else {
+                    this.date = moment().format('YYYY-MM-DD');
+                }
+            }
+        });
     }
 }

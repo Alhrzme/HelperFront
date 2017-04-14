@@ -14,11 +14,18 @@ export class NotesHomeComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.notesService.getNotes().subscribe(
+            notes => this.notes = notes,
+            error => console.log(error)
+        )
     }
 
     onCreated(note: Note) {
         this.notesService.addNote(note).subscribe(
             note => {
+                if (!this.notes) {
+                    this.notes = [];
+                }
                 this.notes = this.notes.concat([note]);
             },
             error => console.log(error)

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Note} from "../../note.model";
 
 @Component({
-  selector: 'app-notes-list-item',
-  templateUrl: './notes-list-item.component.html',
-  styleUrls: ['./notes-list-item.component.css']
+    selector: 'app-notes-list-item',
+    templateUrl: './notes-list-item.component.html',
+    styleUrls: ['./notes-list-item.component.css']
 })
 export class NotesListItemComponent implements OnInit {
 
-  constructor() { }
+    @Input() note: Note;
 
-  ngOnInit() {
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+    }
 
 }

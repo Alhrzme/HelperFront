@@ -9,9 +9,6 @@ export class DaysOfWeek {
         {value: 'fri', name: 'Пятница', abr: 'пт'},
         {value: 'sat', name: 'Суббота', abr: 'сб'},
         {value: 'sun', name: 'Воскресенье', abr: 'вс'},
-        {value: 'every', name: 'Каждый день', abr: 'все'},
-        {value: 'weekend', name: 'Выходные', abr: 'вых'},
-        {value: 'weekdays', name: 'Будни', abr: 'будни'}
     ];
 
     private static weekFrequencyData = [

@@ -1,8 +1,8 @@
 <div class="note">
-    <span (click)="showContent()" class="note-title">
+    <span (click)="switchContentVisibility()" class="note-title">
         {{note.title}}
     </span>
-    <span class="note-body-hide" *ngIf="isContentShow" (click)="hideContent()">
+    <span class="note-body-hide" *ngIf="isContentShow" (click)="switchContentVisibility()">
         свернуть
     </span>
     <div class="note-content" *ngIf="isContentShow">

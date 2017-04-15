@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <md-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="schedule.weekFrequency"
                  name="weekFrequency">
         <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">
@@ -17,8 +17,8 @@
         </md-option>
       </md-select>
     </div>
-    <div class="col-md-4">
-      <md-select id="dayOfweek" placeholder="День недели" #select (change)="onDayOfWeekInputChange($event)"
+    <div class="col-md-6">
+      <md-select id="dayOfweek" placeholder="День недели" #select [(ngModel)]="schedule.daysOfWeek" [multiple]="true"
                  name="dayOfWeek">
         <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
           {{ dayOfWeek.name }}

@@ -4,6 +4,11 @@ import { RouterModule }   from '@angular/router';
 @NgModule({
     imports: [
         RouterModule.forRoot([
+            {
+                path: '',
+                redirectTo: '/schedule',
+                pathMatch: 'full'
+            }
         ]),
     ],
     exports: [

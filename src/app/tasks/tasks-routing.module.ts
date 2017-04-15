@@ -23,11 +23,6 @@ import {TaskHomeComponent} from "./taskData/taskHome/task-home.component";
                         ]
                     }
                 ]
-            },
-            {
-                path: '',
-                redirectTo: '/tasks',
-                pathMatch: 'full'
             }
         ])
     ],

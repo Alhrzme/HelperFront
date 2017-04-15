@@ -1,6 +1,15 @@
 .note {
     margin: 0.8em 0;
+    border-bottom: 1px dotted #707977;
+    padding: 0.5em 0;
 }
 .note-body-hide {
     float: right;
+    background-color: #aeb9b7;
+    padding: 0.3em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.note-title {
+    font-size: 1.2em;
 }

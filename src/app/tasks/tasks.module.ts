@@ -31,7 +31,6 @@ import {TaskListModule} from "./taskData/taskHome/task-list/task-list.module";
     providers: [
         TaskService,
         BaseService,
-    ],
-    exports: [MaterialModule]
+    ]
 })
 export class TasksModule {}

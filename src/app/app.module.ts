@@ -39,7 +39,8 @@ import {FoodModule} from "./food/food.module";
         TasksModule,
         ScheduleModule,
         ErrorsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MaterialModule
     ],
     providers: [
         CookieService

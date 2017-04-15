@@ -16,11 +16,7 @@ export class NotesListItemComponent implements OnInit {
     ngOnInit() {
     }
 
-    showContent() {
-        this.isContentShow = true;
-    }
-
-    hideContent() {
-        this.isContentShow = false;
+    switchContentVisibility() {
+        this.isContentShow = !this.isContentShow;
     }
 }

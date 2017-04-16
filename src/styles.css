@@ -1,28 +1,37 @@
 /* You can add global styles to this file, and
 also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 .text-input-block {
     margin-top: 6px;
 }
+
 .right-angle-buttons {
     position: absolute;
     top: 0;
     right: 0;
 }
+
 .angle-button {
     border: none;
     font-size: 1.4em;
     background-color: Transparent;
 }
+
 md-input-container {
     width: 100%;
 }
+
 body {
     margin: 0;
+    min-height: 100%;
+    height: auto;
 }
+
 div md-select.without-label {
     margin-top: 21px;
 }
+
 .main-title {
     font-family: "Comic Sans MS", serif;
 }

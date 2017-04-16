@@ -7,3 +7,11 @@
 .example-spacer {
     flex: 1 1 auto;
 }
+.left-strip {
+    position: fixed;
+    height: 100%;
+    width: 10px;
+    z-index: 1000;
+    background: linear-gradient(to right,  #c3d3d0, #fff);
+    opacity: 0.5;
+}

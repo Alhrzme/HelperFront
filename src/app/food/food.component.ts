@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-food',
@@ -8,8 +9,15 @@ import {Component, OnInit} from '@angular/core';
 export class FoodComponent implements OnInit {
 
     title: string = 'Питание';
+    sections = [
+        {'title' : 'Ингредиенты', link: '/food/ingredients'}
+    ];
+    constructor(protected router: Router) {
+    }
 
-    constructor() {
+    goTo(link) {
+        console.log(link);
+        this.router.navigate([link]);
     }
 
     ngOnInit() {

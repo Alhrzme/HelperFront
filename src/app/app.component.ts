@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CookieService} from "angular2-cookie/core";
 import {Router} from "@angular/router";
 
@@ -9,12 +9,15 @@ import {Router} from "@angular/router";
     styleUrls: ['app.component.css'],
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+    ngOnInit(): void {
+        // document.getElementsByTagName('body').style.
+    }
     menuItems = [
-        {'text' : 'Задачи', 'url' : '/tasks' },
-        {'text' : 'Расписание', 'url' : '/schedule' },
-        { 'text' : 'Ну, и еще одно', 'url' : '/tasks/' }
-        ];
+        {'text': 'Задачи', 'url': '/tasks'},
+        {'text': 'Расписание', 'url': '/schedule'},
+        {'text': 'Ну, и еще одно', 'url': '/tasks/'}
+    ];
 
     constructor(private cookieService: CookieService, private router: Router) {
     }

@@ -16,9 +16,6 @@ import {CookieService} from "angular2-cookie/core";
 import {LoginModule} from "./login/login.module";
 import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { FoodComponent } from './food/food.component';
-import { FoodHomeComponent } from './food/food-home/food-home.component';
-import { FoodScheduleComponent } from './food/food-schedule/food-schedule.component';
 import {FoodModule} from "./food/food.module";
 
 @NgModule({

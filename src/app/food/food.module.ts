@@ -2,17 +2,18 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {FoodRoutingModule} from "./food-routing.module";
-import {FoodScheduleService} from "./shared/food-schedule.service";
 import {FoodHomeComponent} from "./food-home/food-home.component";
-import {FoodScheduleComponent} from "./food-schedule/food-schedule.component";
 import {FoodComponent} from "./food.component";
-import { FoodScheduleFormComponent } from './food-schedule/food-schedule-form/food-schedule-form.component';
 import {MaterialModule} from "@angular/material";
 import { IngredientsHomeComponent } from './ingredients/ingredients-home/ingredients-home.component';
 import { IngredientFormComponent } from './ingredients/ingredient-form/ingredient-form.component';
 import { IngredientsListComponent } from './ingredients/ingredients-list/ingredients-list.component';
 import { IngredientsListItemComponent } from './ingredients/ingredients-list-item/ingredients-list-item.component';
 import {IngredientsService} from "./shared/ingredients.service";
+import { RecipesHomeComponent } from './recipes/recipes-home/recipes-home.component';
+import { RecipesFormComponent } from './recipes/recipes-form/recipes-form.component';
+import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
+import { RecipesListItemComponent } from './recipes/recipes-list-item/recipes-list-item.component';
 
 @NgModule({
     imports: [
@@ -23,16 +24,17 @@ import {IngredientsService} from "./shared/ingredients.service";
     ],
     declarations: [
         FoodHomeComponent,
-        FoodScheduleComponent,
         FoodComponent,
-        FoodScheduleFormComponent,
         IngredientsHomeComponent,
         IngredientFormComponent,
         IngredientsListComponent,
-        IngredientsListItemComponent
+        IngredientsListItemComponent,
+        RecipesHomeComponent,
+        RecipesFormComponent,
+        RecipesListComponent,
+        RecipesListItemComponent
     ],
     providers: [
-        FoodScheduleService,
         IngredientsService
     ]
 })

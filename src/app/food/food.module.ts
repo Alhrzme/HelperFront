@@ -12,6 +12,7 @@ import { IngredientsHomeComponent } from './ingredients/ingredients-home/ingredi
 import { IngredientFormComponent } from './ingredients/ingredient-form/ingredient-form.component';
 import { IngredientsListComponent } from './ingredients/ingredients-list/ingredients-list.component';
 import { IngredientsListItemComponent } from './ingredients/ingredients-list-item/ingredients-list-item.component';
+import {IngredientsService} from "./shared/ingredients.service";
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { IngredientsListItemComponent } from './ingredients/ingredients-list-ite
         IngredientsListItemComponent
     ],
     providers: [
-        FoodScheduleService
+        FoodScheduleService,
+        IngredientsService
     ]
 })
 export class FoodModule {

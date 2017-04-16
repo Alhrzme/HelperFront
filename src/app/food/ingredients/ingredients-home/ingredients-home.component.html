@@ -1,3 +1,4 @@
-<p>
-  ingredients-home works!
-</p>
+<app-ingredient-form (created)="onIngredientCreated($event)"></app-ingredient-form>
+<div id="ingredients-list" *ngIf="ingredients && ingredients.length > 0">
+    <app-ingredients-list [ingredients]="ingredients"></app-ingredients-list>
+</div>

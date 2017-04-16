@@ -10,8 +10,8 @@ import {Router} from "@angular/router";
 })
 
 export class AppComponent implements OnInit {
+    height: number;
     ngOnInit(): void {
-        // document.getElementsByTagName('body').style.
     }
     menuItems = [
         {'text': 'Задачи', 'url': '/tasks'},
@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     ];
 
     constructor(private cookieService: CookieService, private router: Router) {
+        //todo: я хз откуда эти 145 берутся %)
+        this.height = window.screen.height - 145;
     }
 
     isAuthorized() {

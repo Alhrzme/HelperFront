@@ -9,9 +9,12 @@ import {Router} from "@angular/router";
 export class FoodComponent implements OnInit {
 
     title: string = 'Питание';
+
     sections = [
+        {'title' : 'Главная', link: '/food'},
         {'title' : 'Ингредиенты', link: '/food/ingredients'}
     ];
+
     constructor(protected router: Router) {
     }
 

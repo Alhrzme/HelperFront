@@ -5,5 +5,5 @@ export class Recipe {
     title:string;
     description: string;
     dish: Dish;
-    ingredientsData: IngredientData[];
+    ingredientsData: IngredientData[] = [];
 }

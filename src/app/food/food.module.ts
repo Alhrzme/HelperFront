@@ -14,6 +14,10 @@ import { RecipesHomeComponent } from './recipes/recipes-home/recipes-home.compon
 import { RecipesFormComponent } from './recipes/recipes-form/recipes-form.component';
 import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
 import { RecipesListItemComponent } from './recipes/recipes-list-item/recipes-list-item.component';
+import { IngredientDataFormComponent } from './recipes/ingredient-data-form/ingredient-data-form.component';
+import { IngredientDataListComponent } from './recipes/ingredient-data-list/ingredient-data-list.component';
+import { IngredientDataListItemComponent } from './recipes/ingredient-data-list-item/ingredient-data-list-item.component';
+import {RecipesService} from "./shared/recipes.service";
 
 @NgModule({
     imports: [
@@ -32,10 +36,14 @@ import { RecipesListItemComponent } from './recipes/recipes-list-item/recipes-li
         RecipesHomeComponent,
         RecipesFormComponent,
         RecipesListComponent,
-        RecipesListItemComponent
+        RecipesListItemComponent,
+        IngredientDataFormComponent,
+        IngredientDataListComponent,
+        IngredientDataListItemComponent
     ],
     providers: [
-        IngredientsService
+        IngredientsService,
+        RecipesService
     ]
 })
 export class FoodModule {

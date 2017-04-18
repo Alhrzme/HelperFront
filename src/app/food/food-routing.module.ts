@@ -4,6 +4,7 @@ import {FoodComponent} from "./food.component";
 import {FoodHomeComponent} from "./food-home/food-home.component";
 import {IngredientsHomeComponent} from "./ingredients/ingredients-home/ingredients-home.component";
 import {RecipesHomeComponent} from "./recipes/recipes-home/recipes-home.component";
+import {RecipeDetailsComponent} from "./recipes/recipe-details/recipe-details.component";
 
 @NgModule({
     imports: [
@@ -22,7 +23,16 @@ import {RecipesHomeComponent} from "./recipes/recipes-home/recipes-home.componen
                     },
                     {
                         path: 'recipes',
-                        component: RecipesHomeComponent
+                        children: [
+                            {
+                                path: '',
+                                component: RecipesHomeComponent
+                            },
+                            {
+                                path: ':recipeId',
+                                component: RecipeDetailsComponent
+                            }
+                        ]
                     }
                 ]
             }

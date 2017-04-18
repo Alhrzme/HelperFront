@@ -11,6 +11,7 @@ import {IngredientData} from "../../shared/IngredientData.model";
 export class RecipesHomeComponent implements OnInit {
 
     recipes: Recipe[];
+    isDisplayedForm:boolean = false;
 
     constructor(private recipesService: RecipesService) {
     }
@@ -32,5 +33,13 @@ export class RecipesHomeComponent implements OnInit {
             },
             error => console.log(error)
         );
+    }
+
+    get formStateButtonText() {
+        return this.isDisplayedForm ? 'Скрыть форму' : 'Показать форму';
+    }
+
+    changeFormState(button) {
+        this.isDisplayedForm = !this.isDisplayedForm;
     }
 }

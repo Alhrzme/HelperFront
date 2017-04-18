@@ -1,2 +1,3 @@
-<app-recipes-form (created)="onRecipeCreated($event)"></app-recipes-form>
+<button class="show-form-button" #showFormButton type="button" md-raised-button (click)="changeFormState(showFormButton)">{{formStateButtonText}}</button>
+<app-recipes-form *ngIf="isDisplayedForm" (created)="onRecipeCreated($event)"></app-recipes-form>
 <app-recipes-list [recipes]="recipes"></app-recipes-list>

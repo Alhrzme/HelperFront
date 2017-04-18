@@ -18,6 +18,7 @@ import { IngredientDataFormComponent } from './recipes/ingredient-data-form/ingr
 import { IngredientDataListComponent } from './recipes/ingredient-data-list/ingredient-data-list.component';
 import { IngredientDataListItemComponent } from './recipes/ingredient-data-list-item/ingredient-data-list-item.component';
 import {RecipesService} from "./shared/recipes.service";
+import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import {RecipesService} from "./shared/recipes.service";
         RecipesListItemComponent,
         IngredientDataFormComponent,
         IngredientDataListComponent,
-        IngredientDataListItemComponent
+        IngredientDataListItemComponent,
+        RecipeDetailsComponent
     ],
     providers: [
         IngredientsService,

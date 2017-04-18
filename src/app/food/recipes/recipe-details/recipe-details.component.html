@@ -1,0 +1,10 @@
+<div class="recipe-details" *ngIf="recipe">
+    <h4 class="text-center">
+        {{recipe.title}}<br>
+        <span class="recipe-clarification">Рецепт для блюда "{{recipe.dish.title}}"</span>
+    </h4>
+    <app-ingredient-data-list [ingredientsData]="recipe.ingredientsData"></app-ingredient-data-list>
+    <div class="recipe-description">
+        {{recipe.description}}
+    </div>
+</div>

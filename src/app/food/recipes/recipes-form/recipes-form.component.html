@@ -24,14 +24,14 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <md-select id="dish" placeholder="" name="dayOfWeek" [(ngModel)]="recipe.dish">
         <md-option *ngFor="let dish of dishesList" [value]="dish">
           {{ dish.title }}
         </md-option>
       </md-select>
     </div>
-    <div class="col-md-3"  style="padding-top: 1.5em">
+    <div class="col-md-3 col-md-offset-3"  style="padding-top: 1.5em">
       <button type="submit" md-raised-button id="addButton">
         <md-icon class="material-icons">check</md-icon>
         Добавить

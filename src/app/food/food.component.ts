@@ -11,9 +11,10 @@ export class FoodComponent implements OnInit {
     title: string = 'Питание';
 
     sections = [
-        {'title' : 'Главная', link: '/food'},
-        {'title' : 'Ингредиенты', link: '/food/ingredients'},
-        {'title' : 'Рецепты', link: '/food/recipes'}
+        {'title': 'Главная', link: '/food'},
+        {'title': 'Ингредиенты', link: '/food/ingredients'},
+        {'title': 'Рецепты', link: '/food/recipes'},
+        {'title': 'Блюда', link: '/food/dishes'}
     ];
 
     constructor(protected router: Router) {

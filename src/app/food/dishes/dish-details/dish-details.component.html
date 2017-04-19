@@ -1,0 +1,9 @@
+<div class="dish-details" *ngIf="dish">
+    {{dish.title}}
+    <div class="dish-description">
+        {{dish.description}}
+    </div>
+    <div class="dish-recipes">
+        <app-recipes-list [recipes]="dish.recipes"></app-recipes-list>
+    </div>
+</div>

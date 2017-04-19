@@ -6,6 +6,8 @@ import {IngredientsHomeComponent} from "./ingredients/ingredients-home/ingredien
 import {RecipesHomeComponent} from "./recipes/recipes-home/recipes-home.component";
 import {RecipeDetailsComponent} from "./recipes/recipe-details/recipe-details.component";
 import {RecipesFormHomeComponent} from "./recipes/recipes-form-home/recipes-form-home.component";
+import {DishesHomeComponent} from "./dishes/dishes-home/dishes-home.component";
+import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component";
 
 @NgModule({
     imports: [
@@ -36,6 +38,19 @@ import {RecipesFormHomeComponent} from "./recipes/recipes-form-home/recipes-form
                             {
                                 path: ':recipeId',
                                 component: RecipeDetailsComponent
+                            }
+                        ]
+                    },
+                    {
+                        path: 'dishes',
+                        children: [
+                            {
+                                path: '',
+                                component: DishesHomeComponent
+                            },
+                            {
+                                path: ':dishId',
+                                component: DishDetailsComponent
                             }
                         ]
                     }

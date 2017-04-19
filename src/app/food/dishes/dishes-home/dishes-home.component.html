@@ -1,3 +1,4 @@
-<p>
-  dishes-home works!
-</p>
+<div class="dishes" *ngIf="dishes && dishes.length > 0">
+    <app-dishes-list [dishes]="dishes"></app-dishes-list>
+</div>
+<app-dishes-form (created)="onDishCreated($event)"></app-dishes-form>

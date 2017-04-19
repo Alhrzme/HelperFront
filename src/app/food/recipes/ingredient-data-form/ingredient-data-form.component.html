@@ -9,10 +9,15 @@
         </div>
         <div class="col-md-3">
             <md-input-container>
-                <input type="number" name="ingredientsCount" [(ngModel)]="ingredientData.count">
+                <input mdInput type="number" name="ingredientsCount" [(ngModel)]="ingredientData.count">
             </md-input-container>
         </div>
-        <div class="col-md-3" style="padding-top: 1.5em">
+        <div class="dimension col-md-1">
+            <span *ngIf="ingredientData.ingredient">
+                {{ingredientData.ingredient.dimension}}
+            </span>
+        </div>
+        <div class="col-md-2">
             <button type="submit" md-icon-button id="addButton">
                 <md-icon class="material-icons">add</md-icon>
             </button>

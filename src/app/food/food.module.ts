@@ -19,6 +19,9 @@ import { IngredientDataListComponent } from './recipes/ingredient-data-list/ingr
 import { IngredientDataListItemComponent } from './recipes/ingredient-data-list-item/ingredient-data-list-item.component';
 import {RecipesService} from "./shared/recipes.service";
 import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.component';
+import { RecipesFormHomeComponent } from './recipes/recipes-form-home/recipes-form-home.component';
+import { DishesHomeComponent } from './dishes/dishes-home/dishes-home.component';
+import {DishesService} from "./shared/dishes.service";
 
 @NgModule({
     imports: [
@@ -41,11 +44,14 @@ import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.
         IngredientDataFormComponent,
         IngredientDataListComponent,
         IngredientDataListItemComponent,
-        RecipeDetailsComponent
+        RecipeDetailsComponent,
+        RecipesFormHomeComponent,
+        DishesHomeComponent
     ],
     providers: [
         IngredientsService,
-        RecipesService
+        RecipesService,
+        DishesService
     ]
 })
 export class FoodModule {

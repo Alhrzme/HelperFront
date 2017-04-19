@@ -47,7 +47,7 @@ export class BaseService {
 
     protected post(entity, url: string = this.baseApiUrl + this.urlEnd) {
         let result = this.addTokenToObject(entity);
-        let body = JSON.stringify(result);
+        let body = this.convertToString(result);
         console.log(body);
 
         let headers = new Headers({'Content-Type': 'application/json'});
@@ -77,7 +77,7 @@ export class BaseService {
 
     protected put(entity) {
         let result = this.addTokenToObject(entity);
-        let body = JSON.stringify(result);
+        let body = this.convertToString(result);
 
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
@@ -100,5 +100,9 @@ export class BaseService {
         return this.http.delete(url, options)
             .map(BaseService.extractData)
             .catch(BaseService.handleError);
+    }
+
+    protected convertToString(entity) {
+        return JSON.stringify(entity);
     }
 }

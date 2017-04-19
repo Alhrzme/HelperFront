@@ -11,7 +11,6 @@ import {IngredientData} from "../../shared/IngredientData.model";
 export class RecipesHomeComponent implements OnInit {
 
     recipes: Recipe[];
-    isDisplayedForm:boolean = false;
 
     constructor(private recipesService: RecipesService) {
     }
@@ -21,25 +20,5 @@ export class RecipesHomeComponent implements OnInit {
             recipes => this.recipes = recipes,
             error => console.log(error)
         );
-    }
-
-    onRecipeCreated(recipe: Recipe) {
-        this.recipesService.addRecipe(recipe).subscribe(
-            recipe => {
-                if (!this.recipes) {
-                    this.recipes = [];
-                }
-                this.recipes.push(recipe);
-            },
-            error => console.log(error)
-        );
-    }
-
-    get formStateButtonText() {
-        return this.isDisplayedForm ? 'Скрыть форму' : 'Показать форму';
-    }
-
-    changeFormState(button) {
-        this.isDisplayedForm = !this.isDisplayedForm;
     }
 }

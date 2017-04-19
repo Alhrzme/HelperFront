@@ -24,5 +24,6 @@ export class IngredientDataFormComponent implements OnInit {
 
     onSubmit() {
         this.created.emit(this.ingredientData);
+        this.ingredientData = new IngredientData();
     }
 }

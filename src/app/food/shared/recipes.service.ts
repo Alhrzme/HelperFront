@@ -33,4 +33,17 @@ export class RecipesService extends BaseService {
     deleteTask (recipe: Recipe): Observable<Recipe> {
         return this.httpDelete(recipe);
     }
+
+    protected convertToString(request) {
+        let cloneRequestObj = JSON.parse(JSON.stringify(request));
+        for (let ingredientDataIndex in cloneRequestObj.recipe.ingredientsData) {
+            cloneRequestObj.recipe.ingredientsData[ingredientDataIndex].ingredient
+                = cloneRequestObj.recipe.ingredientsData[ingredientDataIndex].ingredient.id;
+        }
+
+        cloneRequestObj.recipe.dish = cloneRequestObj.recipe.dish.id;
+        console.log(cloneRequestObj);
+
+        return JSON.stringify(cloneRequestObj);
+    }
 }

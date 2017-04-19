@@ -1,3 +1,2 @@
-<button class="show-form-button" #showFormButton type="button" md-raised-button (click)="changeFormState(showFormButton)">{{formStateButtonText}}</button>
-<app-recipes-form *ngIf="isDisplayedForm" (created)="onRecipeCreated($event)"></app-recipes-form>
+<a routerLink="/food/recipes/new" class="show-form-button" md-raised-button>Добавить рецепт</a>
 <app-recipes-list [recipes]="recipes"></app-recipes-list>

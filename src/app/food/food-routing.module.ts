@@ -21,6 +21,10 @@ import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component
                         component: FoodHomeComponent
                     },
                     {
+                        path: ':date',
+                        component: FoodHomeComponent
+                    },
+                    {
                         path: 'ingredients',
                         component: IngredientsHomeComponent
                     },

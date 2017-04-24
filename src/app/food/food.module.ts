@@ -22,18 +22,20 @@ import { RecipeDetailsComponent } from './recipes/recipe-details/recipe-details.
 import { RecipesFormHomeComponent } from './recipes/recipes-form-home/recipes-form-home.component';
 import { DishesHomeComponent } from './dishes/dishes-home/dishes-home.component';
 import {DishesService} from "./shared/dishes.service";
-import { DisheslistComponent } from './dishes/disheslist/disheslist.component';
 import { DishesListComponent } from './dishes/dishes-list/dishes-list.component';
 import { DishesListItemComponent } from './dishes/dishes-list-item/dishes-list-item.component';
 import { DishesFormComponent } from './dishes/dishes-form/dishes-form.component';
 import { DishDetailsComponent } from './dishes/dish-details/dish-details.component';
+import {DayMealListModule} from "./day-meal-list/day-meal-list.module";
+import {MealsService} from "./shared/meals.service";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         FoodRoutingModule,
-        MaterialModule
+        MaterialModule,
+        DayMealListModule
     ],
     declarations: [
         FoodHomeComponent,
@@ -52,16 +54,16 @@ import { DishDetailsComponent } from './dishes/dish-details/dish-details.compone
         RecipeDetailsComponent,
         RecipesFormHomeComponent,
         DishesHomeComponent,
-        DisheslistComponent,
         DishesListComponent,
         DishesListItemComponent,
         DishesFormComponent,
-        DishDetailsComponent
+        DishDetailsComponent,
     ],
     providers: [
         IngredientsService,
         RecipesService,
-        DishesService
+        DishesService,
+        MealsService
     ]
 })
 export class FoodModule {

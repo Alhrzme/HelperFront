@@ -30,10 +30,6 @@ export class RepetitiveTaskFormComponent implements OnInit {
     constructor() {
     }
 
-    onDayOfWeekInputChange(chosenDayOfWeek : MdSelectChange) {
-        this.task.addDayOfWeek(chosenDayOfWeek.value);
-    }
-
     getAbbreviation(dayOfWeekId) {
         for (let dayOfWeek of this.daysOfWeek) {
             if (dayOfWeek.value == dayOfWeekId) {

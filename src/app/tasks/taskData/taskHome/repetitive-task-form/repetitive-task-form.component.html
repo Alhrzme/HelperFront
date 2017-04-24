@@ -10,8 +10,8 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <md-select id="dayOfweek" placeholder="День недели" #select (change)="onDayOfWeekInputChange($event)"
-                       name="dayOfWeek">
+            <md-select id="dayOfweek" placeholder="День недели" #select [(ngModel)]="task.daysOfWeek"
+                       name="dayOfWeek" [multiple]="true">
                 <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
                     {{ dayOfWeek.name }}
                 </md-option>

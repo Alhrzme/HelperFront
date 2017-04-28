@@ -1,0 +1,9 @@
+<div class="meal-list-item">
+    <h4 class="mealType text-center">{{meal.meal.mealType.title}}</h4>
+    {{meal.meal.title}}
+    <ul class="dishes">
+        <li class="dish" *ngFor="let dish of meal.meal.dishes">
+            {{dish.title}}
+        </li>
+    </ul>
+</div>

@@ -26,8 +26,10 @@ import { DishesListComponent } from './dishes/dishes-list/dishes-list.component'
 import { DishesListItemComponent } from './dishes/dishes-list-item/dishes-list-item.component';
 import { DishesFormComponent } from './dishes/dishes-form/dishes-form.component';
 import { DishDetailsComponent } from './dishes/dish-details/dish-details.component';
-import {DayMealListModule} from "./day-meal-list/day-meal-list.module";
+import {DayMealListModule} from "./meals/day-meal-list/day-meal-list.module";
 import {MealsService} from "./shared/meals.service";
+import { MealsComponent } from './meals/meals.component';
+import { MealsFormComponent } from './meals/meals-form/meals-form.component';
 
 @NgModule({
     imports: [
@@ -58,6 +60,8 @@ import {MealsService} from "./shared/meals.service";
         DishesListItemComponent,
         DishesFormComponent,
         DishDetailsComponent,
+        MealsComponent,
+        MealsFormComponent,
     ],
     providers: [
         IngredientsService,

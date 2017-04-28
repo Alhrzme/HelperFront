@@ -4,6 +4,7 @@ import {MealsService} from "../shared/meals.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import * as moment from "moment";
 import {TimeHelper} from "../../shared/services/time-helper.service";
+import {Dish} from "../shared/dish.model";
 
 @Component({
     selector: 'app-food-home',
@@ -14,6 +15,7 @@ export class FoodHomeComponent implements OnInit {
 
     dayMealList: Meal[];
     day: string;
+    dishes: Dish[];
 
     constructor(private mealsService: MealsService, private route: ActivatedRoute) {
 

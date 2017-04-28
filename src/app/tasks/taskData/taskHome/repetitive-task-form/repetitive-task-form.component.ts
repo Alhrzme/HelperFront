@@ -30,16 +30,6 @@ export class RepetitiveTaskFormComponent implements OnInit {
     constructor() {
     }
 
-    getAbbreviation(dayOfWeekId) {
-        for (let dayOfWeek of this.daysOfWeek) {
-            if (dayOfWeek.value == dayOfWeekId) {
-                return dayOfWeek.abr;
-            }
-        }
-
-        return dayOfWeekId;
-    }
-
     onSubmit() {
         this.task.description = this.task.title;
         this.created.emit(this.task);
@@ -50,10 +40,6 @@ export class RepetitiveTaskFormComponent implements OnInit {
     ngOnInit() {
         this.setInitDates();
         this.task.weekFrequency = 1;
-    }
-
-    removeDayOfWeek(dayOfWeek) {
-        this.task.removeDayOfWeek(dayOfWeek);
     }
 
     setInitDates() {

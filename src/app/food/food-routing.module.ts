@@ -17,14 +17,6 @@ import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component
                 component: FoodComponent,
                 children: [
                     {
-                        path: '',
-                        component: FoodHomeComponent
-                    },
-                    {
-                        path: ':date',
-                        component: FoodHomeComponent
-                    },
-                    {
                         path: 'ingredients',
                         component: IngredientsHomeComponent
                     },
@@ -57,7 +49,15 @@ import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component
                                 component: DishDetailsComponent
                             }
                         ]
-                    }
+                    },
+                    {
+                        path: ':date',
+                        component: FoodHomeComponent
+                    },
+                    {
+                        path: '',
+                        component: FoodHomeComponent
+                    },
                 ]
             }
         ])

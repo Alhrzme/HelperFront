@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Meal} from "../shared/meal.model";
+import {Meal} from "../../shared/meal.model";
 
 @Component({
     selector: 'app-day-meal-list',

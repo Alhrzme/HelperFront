@@ -39,4 +39,16 @@ export class MealsService extends BaseService {
         return this.httpDelete(meal);
     }
 
+    protected convertToString(request) {
+        let cloneRequestObj = JSON.parse(JSON.stringify(request));
+        for (let dishIndex in cloneRequestObj.meal.dishes) {
+            cloneRequestObj.meal.dishes[dishIndex] =
+                cloneRequestObj.meal.dishes[dishIndex].id;
+        }
+
+        cloneRequestObj.meal.mealType = cloneRequestObj.meal.mealType.id;
+        console.log(cloneRequestObj);
+
+        return JSON.stringify(cloneRequestObj);
+    }
 }

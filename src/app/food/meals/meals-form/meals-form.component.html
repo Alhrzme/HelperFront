@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-md-12">
             <md-input-container class="example-full-width">
-                <label for="title">Название</label>
-                <input id="title" mdInput type="text" name="title"
+                <label for="title"></label>
+                <input id="title" mdInput type="text" name="title" placeholder="Название приема пищи"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="rMeal.title" required>
             </md-input-container>
         </div>
@@ -34,8 +34,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <md-select id="dishes" placeholder="Блюда" [(ngModel)]="rMeal.dishes" name="dishes">
+        <div class="col-md-4 dishes-select">
+            <md-select id="dishes" placeholder="Блюда" [multiple]="true" [(ngModel)]="rMeal.dishes" name="dishes">
                 <md-option *ngFor="let dish of dishes" [value]="dish">
                     {{ dish.title }}
                 </md-option>

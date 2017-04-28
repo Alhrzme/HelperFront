@@ -48,8 +48,4 @@ export class TaskService extends BaseService {
     deleteTask (task : Task): Observable<Task> {
         return this.httpDelete(task);
     }
-
-
-
-
 }

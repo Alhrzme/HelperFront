@@ -9,6 +9,7 @@ import Base = moment.unitOfTime.Base;
 export class TimeHelper {
 
     static DATE_FORMAT = 'DDMMYYYY';
+    static INPUT_DATE_FORMAT = "YYYY-MM-DD";
     constructor() {
 
     }

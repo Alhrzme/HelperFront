@@ -8,6 +8,7 @@ import {Dish} from "../shared/dish.model";
 import {DishesService} from "../shared/dishes.service";
 import {MealTypesService} from "../shared/meal-types.service";
 import {MealType} from "../shared/mealType.model";
+import {RepetitiveMeal} from "../shared/rMeal.model";
 
 @Component({
     selector: 'app-food-home',
@@ -25,6 +26,13 @@ export class FoodHomeComponent implements OnInit {
                 private route: ActivatedRoute,
                 private dishesService: DishesService,
                 private mealTypesService: MealTypesService) {
+    }
+
+    onMealsCreated(rMeal: RepetitiveMeal) {
+        this.mealsService.addMeals(rMeal).subscribe(
+            meals => {},
+            error => console.log(error)
+        );
     }
 
     ngOnInit() {

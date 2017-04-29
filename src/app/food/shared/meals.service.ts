@@ -4,6 +4,7 @@ import {Meal} from "./meal.model";
 import {Observable} from "rxjs/Observable";
 import {Http} from "@angular/http";
 import {CookieService} from "angular2-cookie/core";
+import {RepetitiveMeal} from "./rMeal.model";
 
 @Injectable()
 export class MealsService extends BaseService {
@@ -17,6 +18,10 @@ export class MealsService extends BaseService {
 
     addMeal (meal : Meal): Observable<Meal> {
         return this.post(meal);
+    }
+
+    addMeals(rMeal: RepetitiveMeal): Observable<Meal> {
+        return this.post(rMeal, this.baseApiUrl + 'rmeals');
     }
 
     getMeals(date?:string) {

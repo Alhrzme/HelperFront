@@ -1,4 +1,4 @@
 <div class="day-meal-list" *ngIf="dayMealList && dayMealList.length > 0">
     <app-day-meal-list [mealList]="dayMealList"></app-day-meal-list>
 </div>
-<app-meals-form [dishes]="dishes" [mealTypes]="mealTypes"></app-meals-form>
+<app-meals-form (created)="onMealsCreated($event)" [dishes]="dishes" [mealTypes]="mealTypes"></app-meals-form>

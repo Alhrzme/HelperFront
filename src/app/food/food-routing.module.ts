@@ -8,6 +8,7 @@ import {RecipeDetailsComponent} from "./recipes/recipe-details/recipe-details.co
 import {RecipesFormHomeComponent} from "./recipes/recipes-form-home/recipes-form-home.component";
 import {DishesHomeComponent} from "./dishes/dishes-home/dishes-home.component";
 import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component";
+import {MealsFormHomeComponent} from "./meals/meals-form-home/meals-form-home.component";
 
 @NgModule({
     imports: [
@@ -49,6 +50,10 @@ import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component
                                 component: DishDetailsComponent
                             }
                         ]
+                    },
+                    {
+                        path: 'generator',
+                        component: MealsFormHomeComponent
                     },
                     {
                         path: ':date',

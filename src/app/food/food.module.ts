@@ -31,6 +31,7 @@ import {MealsService} from "./shared/meals.service";
 import { MealsComponent } from './meals/meals.component';
 import { MealsFormComponent } from './meals/meals-form/meals-form.component';
 import {MealTypesService} from "./shared/meal-types.service";
+import { MealsFormHomeComponent } from './meals/meals-form-home/meals-form-home.component';
 
 @NgModule({
     imports: [
@@ -63,6 +64,7 @@ import {MealTypesService} from "./shared/meal-types.service";
         DishDetailsComponent,
         MealsComponent,
         MealsFormComponent,
+        MealsFormHomeComponent,
     ],
     providers: [
         IngredientsService,

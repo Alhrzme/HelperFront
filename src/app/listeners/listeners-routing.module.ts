@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
 import {ListenersComponent} from "./listeners.component";
+import {AuthGuardService} from "../shared/guards/auth-guard.service";
 
 @NgModule({
     imports: [
@@ -8,6 +9,7 @@ import {ListenersComponent} from "./listeners.component";
             {
                 path: 'listeners',
                 component: ListenersComponent,
+                canActivate: [AuthGuardService],
             }
         ])
     ],

@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "./user.model";
 import {LoginService} from "./login.service";
-import {CookieService} from "angular2-cookie/core";
-import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-login',
@@ -11,21 +9,13 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private loginService: LoginService,
-                private cookieService: CookieService,
-                private router: Router) {
+    constructor(private loginService: LoginService) {
     }
 
     ngOnInit() {
     }
 
     onEnter(user: User) {
-        this.loginService.login(user).subscribe(
-            token => {
-                this.cookieService.put('login-token', token);
-                this.router.navigate(['/']);
-            },
-            error => console.log(error)
-        )
+        return this.loginService.login(user);
     }
 }

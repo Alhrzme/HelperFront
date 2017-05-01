@@ -15,6 +15,7 @@ import {WindowComponent} from "../shared/window/window.component";
 import {MomentModule} from "angular2-moment";
 import {TaskListModule} from "../tasks/taskData/taskHome/task-list/task-list.module";
 import {RepetitivePeriodFormComponent} from './day-schedule/repetitive-period-form/repetitive-period-form.component';
+import {AuthGuardService} from "../shared/guards/auth-guard.service";
 
 @NgModule({
     imports: [
@@ -36,7 +37,8 @@ import {RepetitivePeriodFormComponent} from './day-schedule/repetitive-period-fo
         RepetitivePeriodFormComponent,
     ],
     providers: [
-        PeriodService
+        PeriodService,
+        AuthGuardService
     ]
 })
 export class ScheduleModule {

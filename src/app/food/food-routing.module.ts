@@ -9,6 +9,7 @@ import {RecipesFormHomeComponent} from "./recipes/recipes-form-home/recipes-form
 import {DishesHomeComponent} from "./dishes/dishes-home/dishes-home.component";
 import {DishDetailsComponent} from "./dishes/dish-details/dish-details.component";
 import {MealsFormHomeComponent} from "./meals/meals-form-home/meals-form-home.component";
+import {AuthGuardService} from "../shared/guards/auth-guard.service";
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {MealsFormHomeComponent} from "./meals/meals-form-home/meals-form-home.co
             {
                 path: 'food',
                 component: FoodComponent,
+                canActivate: [AuthGuardService],
                 children: [
                     {
                         path: 'ingredients',

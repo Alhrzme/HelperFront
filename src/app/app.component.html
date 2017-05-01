@@ -1,12 +1,12 @@
 <md-sidenav-container class="example-container" fullscreen>
     <md-toolbar color="primary">
         <md-menu></md-menu>
-        <button md-icon-button (click)="sidenav.open()">
+        <button md-icon-button (click)="sidenav.open()" *ngIf="isAuthorized()">
             <md-icon>more_vert</md-icon>
         </button>
         <span>Превозмогание</span>
         <span class="example-spacer"></span>
-        <span *ngIf="isAuthorized()" (click)="onEscape()">Выход</span>
+        <span class="escape-button" *ngIf="isAuthorized()" (click)="onEscape()">Выход</span>
 
         <!-- This fills the remaining space of the current row -->
         <span class="example-fill-remaining-space"></span>

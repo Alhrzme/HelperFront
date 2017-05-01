@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {NotesComponent} from "./notes.component";
 import {NotesHomeComponent} from "./notes-home/notes-home.component";
+import {AuthGuardService} from "../shared/guards/auth-guard.service";
 
 @NgModule({
     imports: [
@@ -11,6 +12,7 @@ import {NotesHomeComponent} from "./notes-home/notes-home.component";
             {
                 path: 'notes',
                 component: NotesComponent,
+                canActivate: [AuthGuardService],
                 children: [
                     {
                         path: '',

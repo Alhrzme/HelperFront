@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CookieService} from "angular2-cookie/core";
 import {Router} from "@angular/router";
+import {LoginService} from "./login/login.service";
 
 
 @Component({
@@ -10,7 +11,6 @@ import {Router} from "@angular/router";
 })
 
 export class AppComponent implements OnInit {
-    height: number;
     ngOnInit(): void {
     }
     menuItems = [
@@ -19,17 +19,15 @@ export class AppComponent implements OnInit {
         {'text': 'Ну, и еще одно', 'url': '/tasks/'}
     ];
 
-    constructor(private cookieService: CookieService, private router: Router) {
-        //todo: я хз откуда эти 145 берутся %)
-        this.height = window.screen.height - 145;
+    constructor(private loginService: LoginService, private router: Router) {
     }
 
     isAuthorized() {
-        return !!this.cookieService.get('login-token');
+        return this.loginService.isAuthorized();
     }
 
     onEscape() {
-        this.cookieService.remove('login-token');
-        this.router.navigate(['/']);
+        this.loginService.logout();
+        this.router.navigate(['']);
     }
 }

@@ -3,7 +3,7 @@
         <div class="col-md-2">
             <md-input-container class="example-full-width">
                 <input mdInput type="time" [(ngModel)]="period.begin"
-                       name="begin" class="validate" id="begin" required>
+                       name="begin" class="validate" id="begin" (change)="onBeginChange()" required>
                 <label for="begin"></label>
             </md-input-container>
         </div>

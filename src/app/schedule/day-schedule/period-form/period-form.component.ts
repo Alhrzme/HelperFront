@@ -1,10 +1,8 @@
 import {Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges} from '@angular/core';
 import {Period} from "../../period.model";
 import {ActivatedRoute, Params} from "@angular/router";
-import * as moment from 'moment';
 import {TimePeriod} from "../../../shared/models/timePeriod";
 import {TimeHelper} from "../../../shared/services/time-helper.service";
-
 
 @Component({
     selector: 'period-form',
@@ -37,12 +35,20 @@ export class PeriodFormComponent implements OnInit, OnChanges {
     setTimeInputValues() {
         if (this.emptyIntervals.length > 0) {
             let lastEmptyInterval = this.emptyIntervals[this.emptyIntervals.length - 1];
-            this.period.begin = lastEmptyInterval.begin.format('HH:mm');
+            this.period.begin = lastEmptyInterval.begin.format(TimeHelper.TIME_FORMAT);
             if (lastEmptyInterval.end.diff(lastEmptyInterval.begin, 'minutes') > 30) {
-                this.period.end = moment(this.period.begin, "LT").add(30, 'minutes').format('HH:mm');
+                this.period.end = TimeHelper.addTimeToStringValue(this.period.begin, 30, 'minutes');
             } else {
-                this.period.end = lastEmptyInterval.end.format('HH:mm');
+                this.period.end = lastEmptyInterval.end.format(TimeHelper.TIME_FORMAT);
             }
+        }
+    }
+
+    onBeginChange() {
+        let begin = TimeHelper.getMomentTime(this.period.begin);
+        let end = TimeHelper.getMomentTime(this.period.end);
+        if (begin.isAfter(end)) {
+            this.period.end = TimeHelper.addTimeToStringValue(this.period.begin, 10, 'minutes');
         }
     }
 
@@ -58,8 +64,8 @@ export class PeriodFormComponent implements OnInit, OnChanges {
     }
 
     onEmptyIntervalClick(emptyInterval: TimePeriod) {
-        this.period.begin = emptyInterval.begin.format("HH:mm");
-        this.period.end = emptyInterval.end.format("HH:mm");
+        this.period.begin = emptyInterval.begin.format(TimeHelper.TIME_FORMAT);
+        this.period.end = emptyInterval.end.format(TimeHelper.TIME_FORMAT);
     }
 
     ngOnInit() {

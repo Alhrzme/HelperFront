@@ -10,6 +10,8 @@ export class TimeHelper {
 
     static DATE_FORMAT = 'DDMMYYYY';
     static INPUT_DATE_FORMAT = "YYYY-MM-DD";
+    static TIME_FORMAT = 'HH:mm';
+
     constructor() {
 
     }
@@ -44,11 +46,11 @@ export class TimeHelper {
     }
 
     public static getMomentTime(time: string) {
-        return moment(time, "LT");
+        return moment(time, this.TIME_FORMAT);
     }
 
     public static getDateDiff(firstDateString, secondDateString, dimension) {
-        if (dimension) {
+        if (!dimension) {
             dimension = 'days';
         }
 
@@ -60,17 +62,24 @@ export class TimeHelper {
     }
 
     public static getFormattedDateString(dateString) {
-        return moment(dateString, "YYYY-MM-DD").format('DDMMYYYY');
+        return moment(dateString, this.INPUT_DATE_FORMAT).format(this.DATE_FORMAT);
     }
 
     public static sortPeriods(periods) {
         if (periods) {
             return periods.sort(function (p1, p2) {
-                return moment(p1.begin, "LT").isAfter(moment(p2.begin, "LT")) ? 1 : -1;
+                let firstPeriodBegin = TimeHelper.getMomentTime(p1.begin);
+                let secondPeriodBegin = TimeHelper.getMomentTime(p2.begin);
+                return firstPeriodBegin.isAfter(secondPeriodBegin) ? 1 : -1;
             })
         } else {
             return [];
         }
     }
 
+    public static addTimeToStringValue(value, quantity, dimension, format = TimeHelper.TIME_FORMAT) {
+        return TimeHelper.getMomentTime(value)
+            .add(quantity, dimension)
+            .format(format);
+    }
 }

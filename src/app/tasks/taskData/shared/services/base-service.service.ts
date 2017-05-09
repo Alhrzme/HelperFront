@@ -14,6 +14,7 @@ export class BaseService {
 
     public static handleError(error: any): Observable<any> {
         console.log('Произошла ошибка', error);
+        alert('Обшибка');
         return Observable.throw(error.message || error);
     }
 

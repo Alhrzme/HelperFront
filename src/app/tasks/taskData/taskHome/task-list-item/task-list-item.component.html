@@ -1,11 +1,11 @@
 <div class="row task-item-row">
-    <div class="col-md-8 task-desc" [class.task-completed]="task.isCompleted">{{ task.title }}
-        <span class="time"
-              *ngIf="task.beginTime">{{'(' + task.beginTime + '-' + task.endTime + ')'}}
+    <div class="col-md-8 task-desc" [class.task-completed]="taskEntry.isCompleted">{{ taskEntry.task.title }}
+        <span class="time" *ngIf="taskEntry.task.beginTime">
+            {{'(' + taskEntry.task.beginTime + '-' + taskEntry.endTime + ')'}}
         </span>
     </div>
     <div class="buttons col-md-4">
-        <button *ngIf="!task.isCompleted" md-icon-button type="button" (click)="confirm()">
+        <button *ngIf="!taskEntry.isCompleted" md-icon-button type="button" (click)="confirm()">
             <md-icon>check</md-icon>
         </button>
         <button md-icon-button type="button" (click)="deleteTask()">

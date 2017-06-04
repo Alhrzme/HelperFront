@@ -1,14 +1,15 @@
-import {AbstractTask} from "./abstract-task.model";
+import {DateCondition} from "../../../../shared/models/date-condition.model";
 
-export class Task extends AbstractTask {
-    children: Task[];
-    parent: Task;
+export class Task {
+    id:number;
+    title:string;
+    description:string;
+    beginTime: string;
+    endTime: string;
     isCompleted: boolean;
-    date: string;
-    deadline: string;
+    condition: DateCondition;
 
     constructor(title: string = null) {
-        super();
         this.title = title;
     }
 }

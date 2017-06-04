@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import {Task} from "../../shared/models/task.model";
 import { TaskService } from "../../shared/services/tasks.service";
+import {TaskEntry} from "../../shared/models/task-entry.model";
 
 @Component({
 	selector: 'task-list',
@@ -12,25 +12,25 @@ import { TaskService } from "../../shared/services/tasks.service";
 
 export class TaskListComponent {
 
-    @Input() tasks:Task[];
-    @Output() deleted : EventEmitter<Task> = new EventEmitter<Task>();
-    @Output() edited : EventEmitter<Task> = new EventEmitter<Task>();
+    @Input() taskEntries:TaskEntry[];
+    @Output() deleted : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    @Output() edited : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
 
-    get sortedTasks(): Task[] {
-        return this.tasks
+    get sortedTasks(): TaskEntry[] {
+        return this.taskEntries
             .map(task => task)
             .sort((a, b) => {
-                if (a.title > b.title) return 1;
-                else if (a.title < b.title) return -1;
+                if (a.task.title > b.task.title) return 1;
+                else if (a.task.title < b.task.title) return -1;
                 else return 0;
             });
     }
 
-    onTaskEdited(task:Task) {
+    onTaskEdited(task:TaskEntry) {
         this.edited.emit(task);
     }
 
-    onTaskDeleted(task: Task): void {
+    onTaskDeleted(task: TaskEntry): void {
         this.deleted.emit(task);
     }
 

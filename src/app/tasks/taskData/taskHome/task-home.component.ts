@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Task } from "../shared/models/task.model";
 import { TaskService } from "../shared/services/tasks.service";
-import {AbstractTask} from "../shared/models/abstract-task.model";
 import {RepetitiveTask} from "../shared/models/repetitive-task.model";
+import {TaskEntriesService} from "../shared/services/task-entries.service";
+import {TaskEntry} from "../shared/models/task-entry.model";
 
 @Component({
     selector: 'tasks-home',
@@ -15,7 +16,7 @@ import {RepetitiveTask} from "../shared/models/repetitive-task.model";
 export class TaskHomeComponent implements OnInit {
 
     title : string = 'Задачи';
-    tasks : AbstractTask[] = [];
+    tasks : TaskEntry[] = [];
     errorMessage : string;
     formsList = [
         {value: 'single', title: 'Одиночная'},
@@ -24,12 +25,12 @@ export class TaskHomeComponent implements OnInit {
     selectedForm : string = 'single';
 
     constructor(
-        private taskService : TaskService,
+        private taskService : TaskService, private taskEntriesService: TaskEntriesService
     ) {
     }
 
     ngOnInit():void {
-        this.taskService.getTasks()
+        this.taskEntriesService.getTaskEntries()
             .subscribe(
                 tasks => {
                     this.tasks = tasks;
@@ -42,30 +43,30 @@ export class TaskHomeComponent implements OnInit {
     onTaskCreated(task:Task) :void {
         this.taskService.addTask(task)
             .subscribe(
-                (task) => {
+                (taskEntry: TaskEntry) => {
                     if (!this.tasks) {
                         this.tasks = [];
                     }
-                    if (!task.date) {
-                        this.tasks.push(task);
+                    if (!taskEntry.date) {
+                        this.tasks.push(taskEntry);
                     }
                 },
                 error => this.errorMessage = <any>error
             );
     }
 
-    onTaskDeleted(task:Task) :void {
+    onTaskDeleted(task:TaskEntry) :void {
         let taskIndex = this.tasks.indexOf(task);
-        this.taskService.deleteTask(task)
+        this.taskEntriesService.deleteTaskEntry(task)
             .subscribe(
                 task => this.deleteTask(taskIndex),
                 error => this.errorMessage = <any>error
             );
     }
 
-    onTaskEdited(task:Task) : void {
+    onTaskEdited(task:TaskEntry) : void {
         let taskIndex = this.tasks.indexOf(task);
-        this.taskService.editTask(task)
+        this.taskEntriesService.editEntry(task)
             .subscribe(
                 task => {
                     if (task.isCompleted && taskIndex > -1) {

@@ -6,7 +6,7 @@ import {CookieService} from "angular2-cookie/core";
 @Injectable()
 export class BaseService {
 
-    protected baseApiUrl: string = 'http://localhost:8886/app.php/api/v1/';
+    protected baseApiUrl: string = 'http://localhost:8080/app.php/api/v1/';
     protected urlEnd: string;
     protected entityName: string;
     protected http: Http;
@@ -68,7 +68,7 @@ export class BaseService {
         return result;
     }
 
-    private addTokenToRequest(body, hasParams = false) {
+    protected addTokenToRequest(body, hasParams = false) {
         let token = this.cookieService.get('login-token');
         let paramsStart = hasParams ? '&' : '?';
         body += paramsStart + 'token=' + token;

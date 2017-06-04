@@ -10,9 +10,9 @@ import {Observable} from "rxjs/Observable";
 export class LoginService {
 
     private isLoggedIn: boolean = false;
-    redirectUrl: string = '/tasks';
+    redirectUrl: string = '/taskEntries';
 
-    url: string = 'http://localhost:8886/app_dev.php/api/v1/';
+    url: string = 'http://localhost:8080/app_dev.php/api/v1/';
 
     constructor(private http: Http, private cookieService: CookieService, private router: Router) {
     }

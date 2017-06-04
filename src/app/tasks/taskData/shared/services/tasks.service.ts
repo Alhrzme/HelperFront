@@ -11,6 +11,7 @@ import 'rxjs/add/operator/switchMap';
 import {BaseService} from "./base-service.service";
 import {RepetitiveTask} from "../models/repetitive-task.model";
 import {CookieService} from "angular2-cookie/core";
+import {TaskEntry} from "../models/task-entry.model";
 
 @Injectable()
 export class TaskService extends BaseService {
@@ -21,24 +22,12 @@ export class TaskService extends BaseService {
     urlEnd:string = 'tasks';
     entityName = 'task';
 
-    addTask (task : Task): Observable<Task> {
+    addTask (task : Task): Observable<TaskEntry> {
         return this.post(task);
     }
 
     generateTasks(task:RepetitiveTask) : Observable<Task> {
         return this.post(task, this.baseApiUrl + 'rtasks');
-    }
-
-    getTasks(date?:string) {
-        if (date) {
-            return this.gets('date=' + date);
-        }
-
-        return this.gets()
-    }
-
-    getTask(id:number) {
-        return this.get(id);
     }
 
     editTask(task: Task): Observable<Task> {

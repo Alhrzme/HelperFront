@@ -3,7 +3,7 @@
         <period-form [periods]="periods" (created)="onPeriodCreated($event)"></period-form>
         <period-list [periods]="periods" (removed)="onPeriodRemoved($event)" (changed)="onPeriodChanged($event)"></period-list>
         <div *ngIf="tasks.length > 0">
-            <task-list [tasks]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)"></task-list>
+            <task-list [taskEntries]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)"></task-list>
         </div>
     </div>
 </div>

@@ -3,10 +3,9 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Period} from "../period.model";
 import {PeriodService} from "../period.service";
 import {TimeHelper} from "../../shared/services/time-helper.service";
-import {TaskService} from "../../tasks/taskData/shared/services/tasks.service";
-import {AbstractTask} from "../../tasks/taskData/shared/models/abstract-task.model";
-import {Task} from "../../tasks/taskData/shared/models/task.model";
 import * as moment from 'moment';
+import {TaskEntriesService} from "../../tasks/taskData/shared/services/task-entries.service";
+import {TaskEntry} from "../../tasks/taskData/shared/models/task-entry.model";
 
 @Component({
     selector: 'day-schedule',
@@ -16,13 +15,13 @@ import * as moment from 'moment';
 export class DayScheduleComponent implements OnInit {
 
     periods: Period[];
-    tasks: AbstractTask[] = [];
+    tasks: TaskEntry[] = [];
     errorMessage: string = '';
     date: string;
 
     constructor(private route: ActivatedRoute,
                 private periodService: PeriodService,
-                private taskService: TaskService) {
+                private taskEntriesService : TaskEntriesService) {
     }
 
     onPeriodCreated(period: Period): void {
@@ -38,8 +37,8 @@ export class DayScheduleComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
-            this.date = params['date'] ? params['date'] : moment().format('DDMMYYYY');
-            this.taskService.getTasks(this.date)
+            this.date = params['date'] ? params['date'] : moment().format(TimeHelper.DATE_FORMAT);
+            this.taskEntriesService.getTaskEntries(this.date)
                 .subscribe(
                     tasks => this.tasks = tasks,
                     error => console.log(error)
@@ -58,7 +57,7 @@ export class DayScheduleComponent implements OnInit {
         let periodIndex = this.periods.indexOf(period);
         this.periodService.deletePeriod(period)
             .subscribe(
-                periodId => {
+                () => {
                     let periods = [].concat(this.periods);
                     periods.splice(periodIndex, 1);
                     this.periods = periods;
@@ -70,18 +69,18 @@ export class DayScheduleComponent implements OnInit {
     onPeriodChanged(period: Period): void {
         this.periodService.putPeriod(period)
             .subscribe(
-                period => {
+                () => {
                     this.periods = this.periods = TimeHelper.sortPeriods(this.periods);
                 },
                 error => this.errorMessage = <any>error
             )
     }
 
-    onTaskDeleted(task: Task): void {
+    onTaskDeleted(task: TaskEntry): void {
         let taskIndex = this.tasks.indexOf(task);
-        this.taskService.deleteTask(task)
+        this.taskEntriesService.deleteTaskEntry(task)
             .subscribe(
-                task => {
+                () => {
                     if (taskIndex > -1) {
                         this.tasks.splice(taskIndex, 1);
                     }
@@ -90,9 +89,9 @@ export class DayScheduleComponent implements OnInit {
             );
     }
 
-    onTaskEdited(task: Task): void {
+    onTaskEdited(task: TaskEntry): void {
         let taskIndex = this.tasks.indexOf(task);
-        this.taskService.editTask(task)
+        this.taskEntriesService.editEntry(task)
             .subscribe(
                 task => {
                     if ((this.date != task.date || task.isCompleted) && taskIndex > -1) {

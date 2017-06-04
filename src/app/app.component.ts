@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
     }
     menuItems = [
-        {'text': 'Задачи', 'url': '/tasks'},
+        {'text': 'Задачи', 'url': '/taskEntries'},
         {'text': 'Расписание', 'url': '/schedule'},
-        {'text': 'Ну, и еще одно', 'url': '/tasks/'}
+        {'text': 'Ну, и еще одно', 'url': '/taskEntries/'}
     ];
 
     constructor(private loginService: LoginService, private router: Router) {

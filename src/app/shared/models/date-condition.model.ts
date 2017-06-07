@@ -7,8 +7,8 @@ export class DateCondition {
     endDate: string;
     weekFrequency: number;
     newTasksCreate: boolean = false;
-    daysBeforeDeadline: string;
-    dates: string[];
+    daysBeforeDeadline: number;
+    dates: string[] = [];
 
     public addDate(momentDate: Moment) {
         this.dates.push(momentDate.format(TimeHelper.DATE_FORMAT));

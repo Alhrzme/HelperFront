@@ -8,11 +8,11 @@ import {TimeHelper} from "../../../../shared/services/time-helper.service";
     templateUrl: 'task-form.component.html',
     styleUrls: ['task-form.component.css']
 })
-
 export class TaskFormComponent implements OnInit {
-
     @Output() created: EventEmitter<Task>;
     @Input() task : Task = new Task();
+    deadline: string;
+    date: string;
 
     constructor() {
         this.created = new EventEmitter<Task>()
@@ -20,13 +20,13 @@ export class TaskFormComponent implements OnInit {
 
     onSubmit() {
         this.task.description = this.task.title;
-        if (this.task.date) {
-            this.task.date = TimeHelper.getFormattedDateString(this.task.date);
+        if (this.date) {
+            this.task.condition.dates[0] = TimeHelper.getFormattedDateString(this.date);
         }
-        if (this.task.deadline) {
-            this.task.deadline = TimeHelper.getFormattedDateString(this.task.deadline);
+        if (this.deadline) {
+            this.task.condition.daysBeforeDeadline = TimeHelper.getDate(this.deadline, TimeHelper.INPUT_DATE_FORMAT)
+                .diff(TimeHelper.getDate(this.date, TimeHelper.INPUT_DATE_FORMAT), 'days');
         }
-
         this.created.emit(this.task);
         this.task = new Task();
     }

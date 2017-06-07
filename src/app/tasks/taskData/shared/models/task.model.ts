@@ -11,5 +11,6 @@ export class Task {
 
     constructor(title: string = null) {
         this.title = title;
+        this.condition = new DateCondition();
     }
 }

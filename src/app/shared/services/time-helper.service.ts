@@ -57,8 +57,8 @@ export class TimeHelper {
         return TimeHelper.getDate(firstDateString).diff(TimeHelper.getDate(secondDateString), dimension);
     }
 
-    public static getDate(dateString) {
-        return moment(dateString, this.DATE_FORMAT);
+    public static getDate(dateString, dateFormat = this.DATE_FORMAT) {
+        return moment(dateString, dateFormat);
     }
 
     public static getFormattedDateString(dateString) {

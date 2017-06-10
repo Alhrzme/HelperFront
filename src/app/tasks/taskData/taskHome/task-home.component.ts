@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Task } from "../shared/models/task.model";
 import { TaskService } from "../shared/services/tasks.service";
-import {RepetitiveTask} from "../shared/models/repetitive-task.model";
 import {TaskEntriesService} from "../shared/services/task-entries.service";
 import {TaskEntry} from "../shared/models/task-entry.model";
 
@@ -77,8 +76,8 @@ export class TaskHomeComponent implements OnInit {
             )
     }
 
-    onRepetitiveTaskCreated(task : RepetitiveTask) : void {
-        this.taskService.generateTasks(task)
+    onRepetitiveTaskCreated(task : Task) : void {
+        this.taskService.addTask(task)
             .subscribe(
                 tasks => tasks,
                 error => this.errorMessage = <any>error
@@ -86,7 +85,6 @@ export class TaskHomeComponent implements OnInit {
     }
 
     private deleteTask(taskIndex : number): void {
-
         if (taskIndex > -1) {
             this.tasks.splice(taskIndex, 1);
         }

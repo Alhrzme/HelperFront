@@ -2,8 +2,6 @@ import {Injectable} from '@angular/core';
 import * as moment from 'moment';
 import {TimePeriod} from "../models/timePeriod";
 import {Period} from "../../schedule/period.model";
-import {unitOfTime} from "moment";
-import Base = moment.unitOfTime.Base;
 
 @Injectable()
 export class TimeHelper {

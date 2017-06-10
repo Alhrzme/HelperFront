@@ -10,7 +10,7 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <md-select id="dayOfweek" placeholder="День недели" #select [(ngModel)]="task.daysOfWeek"
+            <md-select id="dayOfweek" placeholder="День недели" #select [(ngModel)]="task.condition.daysOfWeek"
                        name="dayOfWeek" [multiple]="true">
                 <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
                     {{ dayOfWeek.name }}
@@ -18,7 +18,7 @@
             </md-select>
         </div>
         <div class="col-md-4">
-            <md-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="task.weekFrequency"
+            <md-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="task.condition.weekFrequency"
                        name="weekFrequency">
                 <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">
                     {{ frequency.name}}
@@ -26,7 +26,7 @@
             </md-select>
         </div>
         <div class="col-md-4">
-            <md-select id="deadline" placeholder="Дедлайн" [(ngModel)]="task.daysBeforeDeadline" name="deadline">
+            <md-select id="deadline" placeholder="Дедлайн" [(ngModel)]="task.condition.daysBeforeDeadline" name="deadline">
                 <md-option *ngFor="let deadlineString of deadlineStringList" [value]="deadlineString.value">
                     {{ deadlineString.title}}
                 </md-option>
@@ -37,13 +37,13 @@
         <div class="col-md-4">
             <md-input-container class="example-fill-space">
                 <label for="beginDate"></label>
-                <input type="date" mdInput name="beginDate" [(ngModel)]="task.beginDate" id="beginDate" required>
+                <input type="date" mdInput name="beginDate" [(ngModel)]="task.condition.beginDate" id="beginDate" required>
             </md-input-container>
         </div>
         <div class="col-md-4">
             <md-input-container class="example-fill-space">
                 <label for="endDate"></label>
-                <input type="date" mdInput name="endDate" [(ngModel)]="task.endDate" id="endDate" required>
+                <input type="date" mdInput name="endDate" [(ngModel)]="task.condition.endDate" id="endDate" required>
             </md-input-container>
         </div>
         <div class="col-md-2">
@@ -60,7 +60,7 @@
             </md-input-container>
         </div>
     </div>
-    <md-checkbox name="isFixed" [(ngModel)]="task.newTasksCreate">Создать задачу создания новых повторяющихся задач?
+    <md-checkbox name="isFixed" [(ngModel)]="task.condition.newTasksCreate">Создать задачу создания новых повторяющихся задач?
     </md-checkbox>
     <div class="col-md-3 col-md-offset-9" style="padding-top: 1.5em">
         <button type="submit" md-raised-button id="addButton">

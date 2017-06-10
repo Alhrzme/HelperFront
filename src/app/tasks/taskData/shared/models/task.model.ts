@@ -1,6 +1,7 @@
 import {DateCondition} from "../../../../shared/models/date-condition.model";
+import {IDateCondition} from "../../../../shared/common/IDateCondition";
 
-export class Task {
+export class Task implements IDateCondition{
     id:number;
     title:string;
     description:string;

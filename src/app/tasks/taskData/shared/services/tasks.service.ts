@@ -23,11 +23,11 @@ export class TaskService extends BaseService {
     entityName = 'task';
 
     addTask (task : Task): Observable<TaskEntry> {
-        return this.post(task);
+        return this.post(task, this.baseApiUrl + this.urlEnd, true);
     }
 
     generateTasks(task:RepetitiveTask) : Observable<Task> {
-        return this.post(task, this.baseApiUrl + 'rtasks');
+        return this.post(task, this.baseApiUrl + 'rtasks', true);
     }
 
     editTask(task: Task): Observable<Task> {

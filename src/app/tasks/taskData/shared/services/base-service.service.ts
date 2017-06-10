@@ -2,11 +2,13 @@ import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {CookieService} from "angular2-cookie/core";
+import {DateCondition} from "../../../../shared/models/date-condition.model";
+import {IDateCondition} from "../../../../shared/common/IDateCondition";
 
 @Injectable()
 export class BaseService {
 
-    protected baseApiUrl: string = 'http://localhost:8080/app.php/api/v1/';
+    protected baseApiUrl: string = 'http://localhost:8080/app_dev.php/api/v1/';
     protected urlEnd: string;
     protected entityName: string;
     protected http: Http;
@@ -46,9 +48,10 @@ export class BaseService {
             .catch(BaseService.handleError);
     }
 
-    protected post(entity, url: string = this.baseApiUrl + this.urlEnd) {
+    protected post(entity, url: string = this.baseApiUrl + this.urlEnd, isWithCondition = false) {
         let result = this.addTokenToObject(entity);
-        let body = this.convertToString(result);
+
+        let body = isWithCondition ? this.convertWithCondition(result) : this.convertToString(result);
         console.log(body);
 
         let headers = new Headers({'Content-Type': 'application/json'});
@@ -105,5 +108,16 @@ export class BaseService {
 
     protected convertToString(entity) {
         return JSON.stringify(entity);
+    }
+
+    protected convertWithCondition(result) {
+        let entityData = result[this.entityName];
+        let conditionData = entityData.condition;
+        delete entityData.condition;
+        result[this.entityName] = {
+            entity: entityData, condition: conditionData
+        };
+
+        return JSON.stringify(result);
     }
 }

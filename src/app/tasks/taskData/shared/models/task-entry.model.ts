@@ -1,8 +1,9 @@
 import {Task} from "./task.model";
 
 export class TaskEntry {
+    id: number;
     isCompleted: boolean;
     date: string;
-    deadline: string;
+    deadLine: string;
     task: Task;
 }

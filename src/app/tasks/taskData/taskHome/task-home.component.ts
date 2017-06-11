@@ -63,6 +63,21 @@ export class TaskHomeComponent implements OnInit {
             );
     }
 
+    onEntryConfirmed(task: TaskEntry) {
+        console.log(task);
+        console.log('in home');
+        let taskIndex = this.tasks.indexOf(task);
+        this.taskEntriesService.confirmEntry(task)
+            .subscribe(
+                task => {
+                    if (task.isCompleted && taskIndex > -1) {
+                        this.tasks.splice(taskIndex, 1);
+                    }
+                },
+                error => console.log(error)
+            )
+    }
+
     onTaskEdited(task:TaskEntry) : void {
         let taskIndex = this.tasks.indexOf(task);
         this.taskEntriesService.editEntry(task)

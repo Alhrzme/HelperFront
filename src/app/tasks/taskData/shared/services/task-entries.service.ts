@@ -12,7 +12,7 @@ export class TaskEntriesService extends BaseService {
     }
 
     urlEnd: string = 'taskentries';
-    entityName = 'taskEntry';
+    entityName = 'taskentry';
 
     getTaskEntries(date?: string) {
             if (date) {
@@ -23,7 +23,13 @@ export class TaskEntriesService extends BaseService {
     }
 
     editEntry(taskEntry: TaskEntry) {
-        return this.put(taskEntry);
+        let clonedEntry = JSON.parse(JSON.stringify(taskEntry));
+        delete clonedEntry.task;
+        return this.put(clonedEntry);
+    }
+
+    confirmEntry(taskEntry: TaskEntry ) {
+        return this.put(taskEntry, `${this.baseApiUrl + this.urlEnd}/confirm/${taskEntry.id}`)
     }
 
     deleteTaskEntry(taskEntry: TaskEntry) {

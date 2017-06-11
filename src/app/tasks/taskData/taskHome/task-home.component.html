@@ -13,7 +13,7 @@
             <repetitive-task-form *ngIf="selectedForm == 'repetitive'" (created)="onRepetitiveTaskCreated($event)"></repetitive-task-form>
         </div>
         <div id="list">
-            <task-list [taskEntries]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)"></task-list>
+            <task-list [taskEntries]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)" (confirmed)="onTaskEdited($event)"></task-list>
         </div>
     </div>
 </div>

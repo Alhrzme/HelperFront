@@ -79,15 +79,12 @@ export class BaseService {
         return body;
     }
 
-    protected put(entity) {
+    protected put(entity, url: string = `${this.baseApiUrl + this.urlEnd}/${entity.id}`) {
         let result = this.addTokenToObject(entity);
         let body = this.convertToString(result);
 
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
-
-        let url = `${this.baseApiUrl + this.urlEnd}/${entity.id}`;
-
 
         return this.http.put(url, body, options)
             .map(BaseService.extractData)

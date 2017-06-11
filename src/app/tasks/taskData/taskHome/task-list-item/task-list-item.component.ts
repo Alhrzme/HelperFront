@@ -1,9 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {Task} from "../../shared/models/task.model";
 import {MdDialog} from "@angular/material";
 import {TaskMoveModalComponent} from "./task-move-modal/task-move-modal.component";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
-import {CookieService} from "angular2-cookie/core";
 import {TaskEntry} from "../../shared/models/task-entry.model";
 
 @Component({
@@ -17,6 +15,7 @@ export class TaskListItemComponent implements OnInit {
     @Input() taskEntry: TaskEntry;
     @Output() deleted: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
     @Output() edited: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    @Output() confirmed: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
 
     constructor(private dialog: MdDialog) {
     }
@@ -26,20 +25,20 @@ export class TaskListItemComponent implements OnInit {
 
     isDisplayMoveButton() {
         return this.taskEntry.date
-            && this.taskEntry.deadline
-            && TimeHelper.getDate(this.taskEntry.deadline).isAfter(TimeHelper.getDate(this.taskEntry.date));
+            && this.taskEntry.deadLine
+            && TimeHelper.getDate(this.taskEntry.deadLine).isAfter(TimeHelper.getDate(this.taskEntry.date));
     }
 
     confirm() {
         this.taskEntry.isCompleted = true;
-        this.edited.emit(this.taskEntry);
+        this.confirmed.emit(this.taskEntry);
     }
 
     moveTask() {
         let dialogRef = this.dialog.open(TaskMoveModalComponent, {
             width: '300px'
         });
-        dialogRef.componentInstance.data = TimeHelper.getDateDiff(this.taskEntry.deadline, this.taskEntry.date, 'days');
+        dialogRef.componentInstance.data = TimeHelper.getDateDiff(this.taskEntry.deadLine, this.taskEntry.date, 'days');
         dialogRef.afterClosed().subscribe(
             result => {
                 if (result) {

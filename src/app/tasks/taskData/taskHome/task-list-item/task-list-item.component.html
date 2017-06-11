@@ -1,7 +1,7 @@
 <div class="row task-item-row">
     <div class="col-md-8 task-desc" [class.task-completed]="taskEntry.isCompleted">{{ taskEntry.task.title }}
         <span class="time" *ngIf="taskEntry.task.beginTime">
-            {{'(' + taskEntry.task.beginTime + '-' + taskEntry.endTime + ')'}}
+            {{'(' + taskEntry.task.beginTime + '-' + taskEntry.task.endTime + ')'}}
         </span>
     </div>
     <div class="buttons col-md-4">

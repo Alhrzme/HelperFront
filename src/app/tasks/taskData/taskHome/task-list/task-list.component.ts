@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 import { TaskService } from "../../shared/services/tasks.service";
 import {TaskEntry} from "../../shared/models/task-entry.model";
@@ -15,6 +15,7 @@ export class TaskListComponent {
     @Input() taskEntries:TaskEntry[];
     @Output() deleted : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
     @Output() edited : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    @Output() confirmed : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
 
     get sortedTasks(): TaskEntry[] {
         return this.taskEntries
@@ -28,6 +29,10 @@ export class TaskListComponent {
 
     onTaskEdited(task:TaskEntry) {
         this.edited.emit(task);
+    }
+
+    onTaskEntryConfirmed(entry: TaskEntry): void {
+        this.edited.emit(entry);
     }
 
     onTaskDeleted(task: TaskEntry): void {

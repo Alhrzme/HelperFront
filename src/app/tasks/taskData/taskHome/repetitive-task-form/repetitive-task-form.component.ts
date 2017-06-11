@@ -1,8 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as moment from 'moment';
-import {MdSelectChange} from "@angular/material";
 import {Task} from "../../shared/models/task.model";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
+import {DaysOfWeek} from "../../../../shared/common/DaysOfWeek";
 
 @Component({
     selector: 'repetitive-task-form',

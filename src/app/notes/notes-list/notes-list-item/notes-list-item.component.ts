@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Note} from "../../note.model";
 
 @Component({
@@ -9,6 +9,7 @@ import {Note} from "../../note.model";
 export class NotesListItemComponent implements OnInit {
 
     @Input() note: Note;
+    @Output() removed: EventEmitter<Note> = new EventEmitter<Note>();
     isContentShow : boolean = false;
     constructor() {
     }
@@ -18,5 +19,9 @@ export class NotesListItemComponent implements OnInit {
 
     switchContentVisibility() {
         this.isContentShow = !this.isContentShow;
+    }
+
+    remove() {
+        this.removed.emit(this.note);
     }
 }

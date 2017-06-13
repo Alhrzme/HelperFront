@@ -1,1 +1,1 @@
-<app-notes-list-item *ngFor="let note of notes" [note]="note"></app-notes-list-item>
+<app-notes-list-item *ngFor="let note of notes" [note]="note" (removed)="onNoteRemoved(note)"></app-notes-list-item>

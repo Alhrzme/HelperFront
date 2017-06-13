@@ -2,8 +2,8 @@
     <span (click)="switchContentVisibility()" class="note-title">
         {{note.title}}
     </span>
-    <span class="note-body-hide" *ngIf="isContentShow" (click)="switchContentVisibility()">
-        свернуть
+    <span class="note-body-hide" *ngIf="isContentShow" (click)="remove()">
+        удалить
     </span>
     <div class="note-content" *ngIf="isContentShow">
         {{ note.body }}

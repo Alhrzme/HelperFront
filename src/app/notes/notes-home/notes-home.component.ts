@@ -31,4 +31,17 @@ export class NotesHomeComponent implements OnInit {
             error => console.log(error)
         );
     }
+
+    onRemoved(note: Note) {
+        let noteIndex = this.notes.indexOf(note);
+        this.notesService.deleteNote(note)
+            .subscribe(
+                note => {
+                    if (noteIndex > -1) {
+                        this.notes.splice(noteIndex, 1);
+                    }
+                },
+                error => console.log(error)
+            );
+    }
 }

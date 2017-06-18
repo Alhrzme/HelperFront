@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Period} from "../../period.model";
-import {PeriodService} from "../../period.service";
 import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
@@ -16,8 +15,7 @@ export class PeriodListComponent implements OnInit {
     date: string;
     editablePeriodId: number;
 
-    constructor(private periodService: PeriodService,
-                private route: ActivatedRoute,) {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {

@@ -10,7 +10,9 @@ export class NotesListItemComponent implements OnInit {
 
     @Input() note: Note;
     @Output() removed: EventEmitter<Note> = new EventEmitter<Note>();
+    @Output() editable: EventEmitter<Note> = new EventEmitter<Note>();
     isContentShow : boolean = false;
+
     constructor() {
     }
 
@@ -23,5 +25,9 @@ export class NotesListItemComponent implements OnInit {
 
     remove() {
         this.removed.emit(this.note);
+    }
+
+    change() {
+        this.editable.emit(this.note);
     }
 }

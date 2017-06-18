@@ -10,6 +10,9 @@ export class NotesListComponent implements OnInit {
 
     @Input() notes: Note[];
     @Output() removed: EventEmitter<Note> = new EventEmitter<Note>();
+    @Output() edited: EventEmitter<Note> = new EventEmitter<Note>();
+
+    editableNoteId:number;
 
     constructor() {
     }
@@ -21,4 +24,16 @@ export class NotesListComponent implements OnInit {
         this.removed.emit(note);
     }
 
+    changeListItemState(note: Note) {
+        this.editableNoteId = note.id;
+    }
+
+    onNoteChanged(note: Note) {
+        this.editableNoteId = null;
+        this.edited.emit(note);
+    }
+
+    isNoteEdited(note: Note) {
+        return note.id === this.editableNoteId;
+    }
 }

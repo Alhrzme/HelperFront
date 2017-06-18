@@ -5,6 +5,9 @@
     <span class="note-body-hide" *ngIf="isContentShow" (click)="remove()">
         удалить
     </span>
+    <span class="note-body-hide" *ngIf="isContentShow" (click)="change()">
+        изменить
+    </span>
     <div class="note-content" *ngIf="isContentShow">
         {{ note.body }}
     </div>

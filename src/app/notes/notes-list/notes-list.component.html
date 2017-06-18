@@ -1,1 +1,6 @@
-<app-notes-list-item *ngFor="let note of notes" [note]="note" (removed)="onNoteRemoved(note)"></app-notes-list-item>
+<div id="notes-list-wrapper">
+    <div class="row" *ngFor="let note of notes">
+        <app-notes-list-item *ngIf="!isNoteEdited(note)" (editable)="changeListItemState(note)" [note]="note" (removed)="onNoteRemoved(note)"></app-notes-list-item>
+        <app-notes-form *ngIf="isNoteEdited(note)" [note]="note" (created)="onNoteChanged(note)"></app-notes-form>
+    </div>
+</div>

@@ -6,6 +6,7 @@ import {MaterialModule} from "@angular/material";
 import { ChallengesComponent } from './challenges.component';
 import {ChallengesListModule} from "./challenges-list/challenges-list.module";
 import {ChallengesRoutingModule} from "./challenges-routing.module";
+import { ChallengesFormComponent } from './challenges-form/challenges-form.component';
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import {ChallengesRoutingModule} from "./challenges-routing.module";
     ],
     declarations: [
         ChallengesComponent,
+        ChallengesFormComponent,
     ],
     providers: [
         ChallengesService

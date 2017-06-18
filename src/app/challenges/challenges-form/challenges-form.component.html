@@ -1,0 +1,38 @@
+<form (submit)="onSubmit()" #challengeForm="ngForm">
+    <div class="row">
+        <div class="col-md-4 text-input-block" style="padding-top: 1.5em">
+            <md-select id="dayOfweek" placeholder="Задачи" #select [(ngModel)]="challenge.tasks"
+                       name="tasks" [multiple]="true">
+                <md-option *ngFor="let task of tasks" [value]="task.id">
+                    {{ task.title }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4">
+            <md-input-container class="example-fill-space">
+                <label for="begin">Начало</label>
+                <input type="date" mdInput name="begin" [(ngModel)]="challenge.begin" id="begin">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container class="example-fill-space">
+                <label for="end">Окончание</label>
+                <input type="date" mdInput name="end" [(ngModel)]="challenge.end" id="end">
+            </md-input-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <md-input-container class="example-fill-space">
+                <label for="award">Награда</label>
+                <input type="text" mdInput name="award" [(ngModel)]="challenge.award" id="award">
+            </md-input-container>
+        </div>
+        <div class="col-md-3" style="padding-top: 1.5em">
+            <button type="submit" md-raised-button id="addButton">
+                <md-icon class="material-icons">check</md-icon>
+                Добавить
+            </button>
+        </div>
+    </div>
+</form>

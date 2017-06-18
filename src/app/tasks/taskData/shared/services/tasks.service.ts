@@ -21,6 +21,10 @@ export class TaskService extends BaseService {
     urlEnd:string = 'tasks';
     entityName = 'task';
 
+    getTasks() {
+        return this.gets();
+    }
+
     addTask (task : Task): Observable<TaskEntry> {
         return this.post(task, this.baseApiUrl + this.urlEnd, true);
     }

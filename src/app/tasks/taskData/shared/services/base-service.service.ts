@@ -91,11 +91,11 @@ export class BaseService {
             .catch(BaseService.handleError);
     }
 
-    protected httpDelete(task) {
+    protected httpDelete(entity) {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 
-        let url = `${this.baseApiUrl + this.urlEnd}/${task.id}`;
+        let url = `${this.baseApiUrl + this.urlEnd}/${entity.id}`;
         url = this.addTokenToRequest(url, false);
 
         return this.http.delete(url, options)

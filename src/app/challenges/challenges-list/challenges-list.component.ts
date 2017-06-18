@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Challenge} from "../challenge.model";
 import {ChallengesService} from "../challenges.service";
 
@@ -8,20 +8,30 @@ import {ChallengesService} from "../challenges.service";
     styleUrls: ['./challenges-list.component.css']
 })
 export class ChallengesListComponent implements OnInit {
-    title: string = 'Испытания';
-    challenges: Challenge[] = [];
-
-    constructor(private challengesService: ChallengesService) {
+    @Input() challenges: Challenge[] = [];
+    @Output() deleted:EventEmitter<Challenge> = new EventEmitter<Challenge>();
+    @Output() edited:EventEmitter<Challenge> = new EventEmitter<Challenge>();
+    editedChallengeId: number;
+    constructor() {
 
     }
 
     ngOnInit() {
-        this.challengesService.getChallenges().subscribe(
-            challenges => {
-                this.challenges = challenges;
-            },
-            error => console.log(error)
-        );
     }
 
+    onChallengeDeleted(challenge: Challenge) {
+        this.deleted.emit(challenge);
+    }
+
+    onChallengeEdited(challenge: Challenge) {
+        this.edited.emit(challenge);
+    }
+
+    showForm(challenge: Challenge) {
+        this.editedChallengeId = challenge.id;
+    }
+
+    isChallengeEdit(challenge: Challenge) {
+        return challenge.id == this.editedChallengeId;
+    }
 }

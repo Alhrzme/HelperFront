@@ -11,7 +11,6 @@ import * as moment from "moment";
     styleUrls: ['./challenges-form.component.css']
 })
 export class ChallengesFormComponent implements OnInit {
-
     @Input() challenge: Challenge;
     @Output() created: EventEmitter<Challenge> = new EventEmitter<Challenge>();
     tasks: Task[];

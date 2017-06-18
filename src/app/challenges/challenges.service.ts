@@ -21,4 +21,11 @@ export class ChallengesService extends BaseService {
         return this.post(challenge);
     }
 
+    removeChallenge(challenge: Challenge) {
+        return this.httpDelete(challenge);
+    }
+
+    editChallenge(challenge: Challenge) {
+        return this.put(challenge);
+    }
 }

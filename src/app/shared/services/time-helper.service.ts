@@ -59,8 +59,8 @@ export class TimeHelper {
         return moment(dateString, dateFormat);
     }
 
-    public static getFormattedDateString(dateString) {
-        return moment(dateString, this.INPUT_DATE_FORMAT).format(this.DATE_FORMAT);
+    public static getFormattedDateString(dateString, fromFormat: string = this.INPUT_DATE_FORMAT, inFormat:string = this.DATE_FORMAT) {
+        return moment(dateString, fromFormat).format(inFormat);
     }
 
     public static sortPeriods(periods) {

@@ -1,3 +1,17 @@
-<p>
-  challenges-list-item works!
-</p>
+<div class="challenge">
+    <div class="right-angle-buttons">
+        <button class="angle-button edit" type="button" (click)="editChallenge()"><i
+                class="material-icons">mode_edit</i></button>
+        <button class="angle-button remove" type="button" (click)="removeChallenge()">&times;</button>
+    </div>
+    <div class="card-content">
+        <span>С {{ showFormattedDate(challenge.begin) }}</span> по <span>{{ showFormattedDate(challenge.end) }}</span>
+        <span>(Награда: {{challenge.award}})</span>
+        <div class="challenge-tasks">
+            Задачи:
+            <ul>
+                <li class="challenge-task" *ngFor="let task of challenge.tasks">{{task.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

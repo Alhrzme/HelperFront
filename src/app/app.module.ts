@@ -17,6 +17,7 @@ import {LoginModule} from "./login/login.module";
 import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FoodModule} from "./food/food.module";
+import {ChallengesModule} from "./challenges/challenges.module";
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import {FoodModule} from "./food/food.module";
         ScheduleModule,
         ErrorsModule,
         BrowserAnimationsModule,
-        MaterialModule
+        MaterialModule,
+        ChallengesModule
     ],
     providers: [
         CookieService

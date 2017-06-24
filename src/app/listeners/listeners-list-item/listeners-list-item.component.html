@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
         {{listener.event}}
         <ul>
             <li *ngFor="let action of listener.actions">
@@ -7,7 +7,10 @@
             </li>
         </ul>
     </div>
-    <div class="col-md-2 buttons">
+    <div class="col-md-4 buttons">
+        <button md-icon-button type="button" (click)="editListener()">
+            <md-icon>mode_edit</md-icon>
+        </button>
         <button md-icon-button type="button" (click)="deleteListener()">
             <md-icon>delete_forever</md-icon>
         </button>

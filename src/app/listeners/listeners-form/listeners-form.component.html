@@ -29,4 +29,14 @@
             </button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8">
+            <ul>
+                <li class="action-list-item" *ngFor="let action of listener.actions">
+                    {{action}}
+                    <button class="angle-button remove" type="button" (click)="deleteAction()">&times;</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 </form>

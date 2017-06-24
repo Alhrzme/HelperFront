@@ -1,5 +1,9 @@
 <div class="challenges-list">
-    <div class="challenge-item" *ngFor="let challenge of challenges" ></div>
-    <app-challenges-list-item *ngIf="!isChallengeEdit(challenge)" [challenge]="challenge" (deleted)="onChallengeDeleted(challenge)" (edited)="showForm($event)"></app-challenges-list-item>
-    <!--<app-challenges-form *ngIf="isChallengeEdit(challenge)" [challenge]="challenge" (created)="onChallengeEdited(challenge)"></app-challenges-form>-->
+    <div class="challenge-item" *ngFor="let challenge of challenges">
+        <app-challenges-list-item *ngIf="!isChallengeEdit(challenge)" [challenge]="challenge"
+                                  (deleted)="onChallengeDeleted(challenge)"
+                                  (edited)="showForm($event)"></app-challenges-list-item>
+
+        <app-challenges-form *ngIf="isChallengeEdit(challenge)" [challenge]="challenge" (created)="onChallengeEdited(challenge)"></app-challenges-form>
+    </div>
 </div>

@@ -18,7 +18,7 @@ import { ChallengesFormComponent } from './challenges-form/challenges-form.compo
     ],
     declarations: [
         ChallengesComponent,
-        ChallengesFormComponent,
+        // ChallengesFormComponent,
     ],
     providers: [
         ChallengesService

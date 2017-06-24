@@ -31,4 +31,9 @@ export class ListenersFormComponent implements OnInit {
 
     }
 
+    deleteAction(action: string) {
+        let indexOfAction = this.listener.actions.indexOf(action);
+        this.listener.actions.splice(indexOfAction, 1);
+    }
+
 }

@@ -10,6 +10,7 @@ export class ListenersListItemComponent implements OnInit {
 
     @Input() listener: Listener;
     @Output() deleted:EventEmitter<Listener> = new EventEmitter<Listener>();
+    @Output() editable: EventEmitter<Listener> = new EventEmitter<Listener>();
 
     constructor() {
     }
@@ -19,5 +20,9 @@ export class ListenersListItemComponent implements OnInit {
 
     public deleteListener() {
         this.deleted.emit(this.listener);
+    }
+
+    editListener() {
+        this.editable.emit(this.listener);
     }
 }

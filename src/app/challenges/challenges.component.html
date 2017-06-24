@@ -3,7 +3,7 @@
 </h1>
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <app-challenges-form *ngIf="challenges && challenges.length > 0" (created)="onChallengeCreated($event)"></app-challenges-form>
-        <app-challenges-list [challenges]="challenges" (deleted)="onChallengeDeleted($event)" (edited)="onChallengeEdited($event)"></app-challenges-list>
+        <app-challenges-form (created)="onChallengeCreated($event)"></app-challenges-form>
+        <app-challenges-list *ngIf="challenges && challenges.length > 0" [challenges]="challenges" (deleted)="onChallengeDeleted($event)" (edited)="onChallengeEdited($event)"></app-challenges-list>
     </div>
 </div>

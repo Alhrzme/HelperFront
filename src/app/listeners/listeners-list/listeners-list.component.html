@@ -1,1 +1,6 @@
-<app-listeners-list-item *ngFor="let listener of listeners" [listener]="listener" (deleted)="onListenerDeleted(listener)"></app-listeners-list-item>
+<div class="listeners-list">
+    <div class="listener-list-item" *ngFor="let listener of listeners">
+        <app-listeners-list-item *ngIf="!isListenerEdited(listener)" (editable)="onListenerEditable(listener)" [listener]="listener" (deleted)="onListenerDeleted(listener)"></app-listeners-list-item>
+        <app-listeners-form *ngIf="isListenerEdited(listener)" (created)="onListenerEdited(listener)" [listener]="listener"></app-listeners-form>
+    </div>
+</div>

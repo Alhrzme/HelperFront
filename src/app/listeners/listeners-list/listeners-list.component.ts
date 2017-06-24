@@ -10,6 +10,8 @@ export class ListenersListComponent implements OnInit {
 
     @Input() listeners: Listener[];
     @Output() deleted : EventEmitter<Listener> = new EventEmitter<Listener>();
+    @Output() edited: EventEmitter<Listener> = new EventEmitter<Listener>();
+    editListenerId: number;
 
     constructor() {
     }
@@ -21,4 +23,16 @@ export class ListenersListComponent implements OnInit {
         this.deleted.emit(listener);
     }
 
+    onListenerEditable(listener: Listener) {
+        this.editListenerId = listener.id;
+    }
+
+    isListenerEdited(listener: Listener) {
+        return this.editListenerId == listener.id;
+    }
+
+    onListenerEdited(listener: Listener) {
+        this.edited.emit(listener);
+        this.editListenerId = null;
+    }
 }

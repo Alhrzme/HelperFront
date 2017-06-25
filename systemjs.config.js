@@ -22,9 +22,10 @@
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             // other libraries
-            'rxjs':                      'npm:rxjs',
+            'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-            'angular2-cookie':            'npm:angular2-cookie'
+            'angular2-cookie': 'npm:angular2-cookie',
+            'angular2-notifications': 'node_modules/angular2-notifications'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -50,6 +51,10 @@
             moment: {
                 map: 'node_modules/moment/moment.js',
                 type: 'cjs',
+                defaultExtension: 'js'
+            },
+            'angular2-notifications': {
+                main: './dist/index.js',
                 defaultExtension: 'js'
             }
         }

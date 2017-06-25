@@ -18,6 +18,9 @@ import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FoodModule} from "./food/food.module";
 import {ChallengesModule} from "./challenges/challenges.module";
+import {PushNotificationComponent} from "ng2-notifications/ng2-notifications";
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import {PushNotificationsModule, PushNotificationsService} from "angular2-notifications/dist";
 
 @NgModule({
     declarations: [
@@ -39,7 +42,9 @@ import {ChallengesModule} from "./challenges/challenges.module";
         ErrorsModule,
         BrowserAnimationsModule,
         MaterialModule,
-        ChallengesModule
+        ChallengesModule,
+        SimpleNotificationsModule.forRoot(),
+        PushNotificationsModule
     ],
     providers: [
         CookieService

@@ -48,4 +48,11 @@ export class ListenersComponent implements OnInit {
                 error => console.log(error)
             )
     }
+
+    onListenerEdited(listener: Listener) {
+        this.listenersService.editListener(listener).subscribe(
+            listener => {},
+            error => console.log(error)
+        );
+    }
 }

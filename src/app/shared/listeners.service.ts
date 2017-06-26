@@ -26,4 +26,8 @@ export class ListenersService extends BaseService {
     public removeListener(listener:Listener) {
         return this.httpDelete(listener)
     }
+
+    public editListener(listener: Listener) {
+        return this.put(listener);
+    }
 }

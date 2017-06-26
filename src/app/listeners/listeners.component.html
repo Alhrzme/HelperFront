@@ -5,7 +5,7 @@
     <div class="col-md-8 col-md-offset-2">
         <app-listeners-form (created)="onListenerCreated($event)"></app-listeners-form>
         <div class="listeners-list" *ngIf="listeners">
-            <app-listeners-list [listeners]="listeners" (deleted)="onListenerDeleted($event)"></app-listeners-list>
+            <app-listeners-list (edited)="onListenerEdited($event)" [listeners]="listeners" (deleted)="onListenerDeleted($event)"></app-listeners-list>
         </div>
 
     </div>

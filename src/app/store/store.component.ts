@@ -8,19 +8,15 @@ import {Router} from "@angular/router";
 })
 export class StoreComponent implements OnInit {
 
-    constructor(private router: Router) {
+    constructor() {
     }
 
     sections = [
         {'title': 'Главная', link: '/store'},
-        {'title': 'Итемы', link: '/store/items'}
+        {'title': 'Итемы', link: '/store/items'},
+        {'title': 'Покупки', link: '/store/purchases'}
     ];
 
     ngOnInit() {
-    }
-
-    goTo(link) {
-        console.log(link);
-        this.router.navigate([link]);
     }
 }

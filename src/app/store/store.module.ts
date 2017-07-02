@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {MaterialModule} from "@angular/material";
 import { BuyItemsComponent } from './buy-items/buy-items.component';
 import { ItemsComponent } from './items/items.component';
+import { BuyItemFormComponent } from './buy-items/buy-item-form/buy-item-form.component';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { ItemsComponent } from './items/items.component';
         ItemFormComponent,
         BuyItemsComponent,
         ItemsComponent,
+        BuyItemFormComponent,
     ],
     providers: [
         BuyItemService,

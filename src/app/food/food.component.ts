@@ -17,12 +17,7 @@ export class FoodComponent implements OnInit {
         {'title': 'Блюда', link: '/food/dishes'}
     ];
 
-    constructor(protected router: Router) {
-    }
-
-    goTo(link) {
-        console.log(link);
-        this.router.navigate([link]);
+    constructor() {
     }
 
     ngOnInit() {

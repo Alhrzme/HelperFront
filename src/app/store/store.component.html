@@ -1,10 +1,14 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <div class="sections">
-            <div class="section" md-ripple *ngFor="let section of sections">
-                <a (click)="goTo(section.link)">{{ section.title }}</a>
-            </div>
-        </div>
+        <nav md-tab-nav-bar>
+            <a md-tab-link
+               *ngFor="let section of sections"
+               [routerLink]="section.link"
+               routerLinkActive #rla="routerLinkActive"
+               [active]="rla.isActive">
+                {{section.title}}
+            </a>
+        </nav>
         <router-outlet></router-outlet>
     </div>
 </div>

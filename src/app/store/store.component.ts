@@ -12,7 +12,7 @@ export class StoreComponent implements OnInit {
     }
 
     sections = [
-        {'title': 'Главная', link: '/food'},
+        {'title': 'Главная', link: '/store'},
         {'title': 'Итемы', link: '/store/items'}
     ];
 

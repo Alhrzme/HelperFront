@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Item} from "../../shared/item.model";
 import {DimensionsData} from "../../../shared/common/DimensionsData";
+import {ItemtypesData} from "../../../shared/common/ItemtypesData";
 
 @Component({
     selector: 'app-item-form',
@@ -15,6 +16,7 @@ export class ItemFormComponent implements OnInit {
     }
 
     dimensions = DimensionsData.getDimensions();
+    itemTypes = ItemtypesData.getItemTypes();
 
     ngOnInit() {
         if (!this.item) {

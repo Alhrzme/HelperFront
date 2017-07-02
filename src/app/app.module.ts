@@ -18,14 +18,16 @@ import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FoodModule} from "./food/food.module";
 import {ChallengesModule} from "./challenges/challenges.module";
-import {PushNotificationComponent} from "ng2-notifications/ng2-notifications";
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import {PushNotificationsModule, PushNotificationsService} from "angular2-notifications/dist";
+import {PushNotificationsModule} from "angular2-notifications/dist";
+import {StoreModule} from "./store/store.module";
+import { StoreHomeComponent } from './store-home/store-home.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         TimerComponent,
+        StoreHomeComponent,
     ],
     imports: [
         FoodModule,
@@ -40,6 +42,7 @@ import {PushNotificationsModule, PushNotificationsService} from "angular2-notifi
         TasksModule,
         ScheduleModule,
         ErrorsModule,
+        StoreModule,
         BrowserAnimationsModule,
         MaterialModule,
         ChallengesModule,

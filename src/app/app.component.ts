@@ -11,11 +11,11 @@ import {NotificationsService, PushNotificationsService} from "angular2-notificat
 
 export class AppComponent implements OnInit {
     ngOnInit(): void {
-        this._push.requestPermission();
-        this._push.create('Test', {body: 'something'}).subscribe(
-            res => console.log(res),
-            err => console.log(err)
-        )
+        // this._push.requestPermission();
+        // this._push.create('Test', {body: 'something'}).subscribe(
+        //     res => console.log(res),
+        //     err => console.log(err)
+        // )
     }
 
     options = {

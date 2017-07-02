@@ -1,0 +1,25 @@
+<form (submit)="onSubmit()" #itemForm="ngForm">
+  <div class="row">
+    <div class="col-md-6 text-input-block">
+      <md-input-container class="example-full-width">
+        <label for="title"></label>
+        <input id="title" mdInput type="text" name="title" placeholder="Название"
+               floatingPlaceholder="false" maxlength="100" [(ngModel)]="item.title">
+      </md-input-container>
+    </div>
+    <div class="col-md-3" style="padding-top: 1.9em">
+      <md-select id="dimension" placeholder="Размерность" #dimension [(ngModel)]="item.dimension"
+                 name="dimension">
+        <md-option *ngFor="let dimension of dimensions" [value]="dimension.value">
+          {{ dimension.title }}
+        </md-option>
+      </md-select>
+    </div>
+    <div class="col-md-3" style="padding-top: 1.5em">
+      <button type="submit" md-raised-button id="addButton">
+        <md-icon class="material-icons">check</md-icon>
+        Добавить
+      </button>
+    </div>
+  </div>
+</form>

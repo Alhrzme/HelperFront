@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.css']
+    selector: 'app-store',
+    templateUrl: './store.component.html',
+    styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+    constructor(private router: Router) {
+    }
 
-  ngOnInit() {
-  }
+    sections = [
+        {'title': 'Главная', link: '/food'},
+        {'title': 'Итемы', link: '/store/items'}
+    ];
 
+    ngOnInit() {
+    }
+
+    goTo(link) {
+        console.log(link);
+        this.router.navigate([link]);
+    }
 }

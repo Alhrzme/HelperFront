@@ -5,20 +5,28 @@ import {BuyItemService} from "./shared/buy-item.service";
 import {ItemService} from "./shared/item.service";
 import {ItemEntryService} from "./shared/item-entry.service";
 import {StoreRoutingModule} from "./store-routing.module";
-import { StoreFormComponent } from './store-form/store-form.component';
-import {ItemListModule} from "./item-list/item-list.module";
-import {BuyItemListModule} from "./buy-item-list/buy-item-list.module";
+import {ItemListModule} from "./items/item-list/item-list.module";
+import {BuyItemListModule} from "./buy-items/buy-item-list/buy-item-list.module";
+import { ItemFormComponent } from './items/item-form/item-form.component';
+import {FormsModule} from "@angular/forms";
+import {MaterialModule} from "@angular/material";
+import { BuyItemsComponent } from './buy-items/buy-items.component';
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
     imports: [
         CommonModule,
         StoreRoutingModule,
         ItemListModule,
-        BuyItemListModule
+        BuyItemListModule,
+        FormsModule,
+        MaterialModule
     ],
     declarations: [
         StoreComponent,
-        StoreFormComponent,
+        ItemFormComponent,
+        BuyItemsComponent,
+        ItemsComponent,
     ],
     providers: [
         BuyItemService,

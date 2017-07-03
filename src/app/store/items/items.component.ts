@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Item} from "../shared/item.model";
 import {ItemService} from "../shared/item.service";
+import {ItemCategory} from "../shared/item-category";
+import {ItemCategoryService} from "../shared/item-category.service";
 
 @Component({
     selector: 'app-items',
@@ -10,12 +12,14 @@ import {ItemService} from "../shared/item.service";
 export class ItemsComponent implements OnInit {
     title: string = 'Итемы';
     items: Item[];
+    itemCategories: ItemCategory[];
 
-    constructor(private itemService: ItemService) {
+    constructor(private itemService: ItemService, private itemCategoryService: ItemCategoryService) {
     }
 
     ngOnInit() {
         this.getItems();
+        this.getItemCategories();
     }
 
     onItemCreated(item: Item) {
@@ -26,6 +30,14 @@ export class ItemsComponent implements OnInit {
                 }
                 this.items.push(item);
             },
+            error => console.log(error)
+        );
+    }
+
+    //TODO: Перенести в ассетики
+    getItemCategories() {
+        this.itemCategoryService.getCategories().subscribe(
+            categories => this.itemCategories = categories,
             error => console.log(error)
         );
     }

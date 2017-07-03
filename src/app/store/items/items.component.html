@@ -1,4 +1,5 @@
 <h1 class="text-center main-title">
     {{ title }}
 </h1>
-<app-item-form (created)="onItemCreated($event)"></app-item-form>
+<app-item-form (created)="onItemCreated($event)" [itemCategories]="itemCategories"></app-item-form>
+<app-item-list [items]="items"></app-item-list>

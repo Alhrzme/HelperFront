@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Http} from "@angular/http";
 import {CookieService} from "angular2-cookie/core";
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
@@ -6,26 +6,27 @@ import {Item} from "./item.model";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class ItemService extends BaseService{
-  constructor(protected http: Http, protected cookieService: CookieService) {
-    super();
-  }
-  urlEnd:string = 'items';
-  entityName = 'item';
+export class ItemService extends BaseService {
+    constructor(protected http: Http, protected cookieService: CookieService) {
+        super();
+    }
 
-  getItems() {
-    return this.gets();
-  }
+    urlEnd: string = 'items';
+    entityName = 'item';
 
-  addItem (item : Item): Observable<Item> {
-    return this.post(item);
-  }
+    getItems() {
+        return this.gets();
+    }
 
-  editItem(item: Item): Observable<Item> {
-    return this.put(item);
-  }
+    addItem(item: Item): Observable<Item> {
+        return this.post(item);
+    }
 
-  deleteItem(item: Item): Observable<Item> {
-    return this.httpDelete(item);
-  }
+    editItem(item: Item): Observable<Item> {
+        return this.put(item);
+    }
+
+    deleteItem(item: Item): Observable<Item> {
+        return this.httpDelete(item);
+    }
 }

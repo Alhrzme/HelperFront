@@ -16,9 +16,9 @@
             </md-select>
         </div>
         <div class="col-md-3" style="padding-top: 1.9em">
-            <md-select id="type" placeholder="Тип итема" #type [(ngModel)]="item.type" name="type">
-                <md-option *ngFor="let type of itemTypes" [value]="type.value">
-                    {{ type.title }}
+            <md-select id="type" placeholder="Категория" #type [(ngModel)]="item.category" name="type">
+                <md-option *ngFor="let category of itemCategories" [value]="category.id">
+                    {{ category.title }}
                 </md-option>
             </md-select>
         </div>

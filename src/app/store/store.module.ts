@@ -13,6 +13,7 @@ import {MaterialModule} from "@angular/material";
 import { BuyItemsComponent } from './buy-items/buy-items.component';
 import { ItemsComponent } from './items/items.component';
 import { BuyItemFormComponent } from './buy-items/buy-item-form/buy-item-form.component';
+import {ItemCategoryService} from "./shared/item-category.service";
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { BuyItemFormComponent } from './buy-items/buy-item-form/buy-item-form.co
     providers: [
         BuyItemService,
         ItemService,
-        ItemEntryService
+        ItemEntryService,
+        ItemCategoryService
     ]
 })
 export class StoreModule {

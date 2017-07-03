@@ -8,4 +8,5 @@ export class BuyItem {
     id: number;
     item: Item;
     quantity: number;
+    icon: string;
 }

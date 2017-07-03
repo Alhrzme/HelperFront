@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Item} from "../../shared/item.model";
 import {DimensionsData} from "../../../shared/common/DimensionsData";
-import {ItemtypesData} from "../../../shared/common/ItemtypesData";
+import {ItemCategory} from "../../shared/item-category";
 
 @Component({
     selector: 'app-item-form',
@@ -10,13 +10,13 @@ import {ItemtypesData} from "../../../shared/common/ItemtypesData";
 })
 export class ItemFormComponent implements OnInit {
     @Input() item: Item;
+    @Input() itemCategories: ItemCategory[];
     @Output() created: EventEmitter<Item> = new EventEmitter<Item>();
 
     constructor() {
     }
 
     dimensions = DimensionsData.getDimensions();
-    itemTypes = ItemtypesData.getItemTypes();
 
     ngOnInit() {
         if (!this.item) {

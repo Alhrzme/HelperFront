@@ -1,1 +1,2 @@
 <app-buy-item-form (created)="onBuyItemCreated($event)" [items]="items"></app-buy-item-form>
+<app-buy-item-list *ngIf="buyItems && buyItems.length > 0" [buyItems]="buyItems"></app-buy-item-list>

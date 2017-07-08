@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "./login/login.service";
-import {NotificationsService, PushNotificationsService} from "angular2-notifications/dist";
+import {PushNotificationsService} from "angular2-notifications/dist";
+import {TimeHelper} from "./shared/services/time-helper.service";
+import {TaskEntriesService} from "./tasks/taskData/shared/services/task-entries.service";
 
 @Component({
     selector: 'app',
@@ -11,25 +13,48 @@ import {NotificationsService, PushNotificationsService} from "angular2-notificat
 
 export class AppComponent implements OnInit {
     ngOnInit(): void {
-        // this._push.requestPermission();
-        // this._push.create('Test', {body: 'something'}).subscribe(
-        //     res => console.log(res),
-        //     err => console.log(err)
-        // )
+        this._push.requestPermission();
+
+        this.checkTasks();
     }
 
-    options = {
-        position: ["bottom", "right"]
-    };
+    constructor(private loginService: LoginService, private router: Router, private _push: PushNotificationsService, private tasksService: TaskEntriesService) {
 
-    menuItems = [
-        {'text': 'Задачи', 'url': '/taskEntries'},
-        {'text': 'Расписание', 'url': '/schedule'},
-        {'text': 'Ну, и еще одно', 'url': '/taskEntries/'}
-    ];
+    }
 
-    constructor(private loginService: LoginService, private router: Router, private notificationsService: NotificationsService, private _push: PushNotificationsService) {
-
+    private checkTasks() {
+        setTimeout(() => {
+            this.checkTasks()
+        }, 60000);
+        this.tasksService.getSavedEntities('date=' + TimeHelper.getCurrentDateString()).subscribe(
+            tasks => {
+                let currentTime = TimeHelper.getCurrentTime();
+                if (currentTime.isSameOrAfter(TimeHelper.getDate('23:00', TimeHelper.TIME_FORMAT))) {
+                    this._push.create('СПАТЬ ИДИ!!!', {body: 'ПОРА СПАТЬ!'}).subscribe(
+                        res => {
+                            // event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                            // window.open('http://localhost:4200');
+                        },
+                        err => console.log(err)
+                    )
+                }
+                for (let task of tasks) {
+                    let endTimeString = task.task.endTime === '' ? '23:00' : task.task.endTime;
+                    let taskEndTime = TimeHelper.getDate(endTimeString, TimeHelper.TIME_FORMAT);
+                    let difference = taskEndTime.diff(currentTime, 'minutes');
+                    if (difference < 30) {
+                        this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).subscribe(
+                            res => {
+                                // event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                                // window.open('http://localhost:4200');
+                            },
+                            err => console.log(err)
+                        )
+                    }
+                }
+            },
+            error => console.log(error)
+        );
     }
 
     isAuthorized() {

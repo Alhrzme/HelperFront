@@ -1,15 +1,15 @@
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
 import {CookieService} from "angular2-cookie/core";
-import {DateCondition} from "../../../../shared/models/date-condition.model";
-import {IDateCondition} from "../../../../shared/common/IDateCondition";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class BaseService {
 
     protected baseApiUrl: string = 'http://localhost:8080/app_dev.php/api/v1/';
     protected urlEnd: string;
+    protected entities;
     protected entityName: string;
     protected http: Http;
     protected cookieService: CookieService;
@@ -25,6 +25,14 @@ export class BaseService {
         return res.json().data;
     }
 
+    public getSavedEntities(params?: string) {
+        let identifier = params ? params : 'withoutParams';
+        if (!this.entities || !this.entities[identifier]) {
+            return this.gets(params);
+        }
+        return Observable.of(this.entities[identifier]);
+    }
+
     protected gets(params?: string) {
         let url = this.baseApiUrl + this.urlEnd;
         if (params) {
@@ -35,7 +43,16 @@ export class BaseService {
         }
 
         return this.http.get(url)
-            .map(BaseService.extractData)
+            .map((res: Response) => {
+                let responseData = res.json().data;
+                console.log(responseData);
+                let identifier = params ? params : 'withoutParams';
+                if (!this.entities) {
+                    this.entities = [];
+                }
+                this.entities[identifier] = responseData;
+                return responseData;
+            })
             .catch(BaseService.handleError);
     }
 

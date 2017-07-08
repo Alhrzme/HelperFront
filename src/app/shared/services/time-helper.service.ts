@@ -14,6 +14,14 @@ export class TimeHelper {
 
     }
 
+    public static getCurrentDateString() {
+        return moment().format(this.DATE_FORMAT);
+    }
+
+    public static getCurrentTime() {
+        return moment();
+    }
+
     public static getEmptyPeriods(periods: Period[], beginString: string, endString: string) {
         let emptyPeriods: TimePeriod[] = [];
         let estimatedBegin = TimeHelper.getMomentTime(beginString);

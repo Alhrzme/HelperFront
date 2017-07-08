@@ -7,6 +7,7 @@ import {TaskEntry} from "../models/task-entry.model";
 @Injectable()
 export class TaskEntriesService extends BaseService {
 
+    tasks: TaskEntry[];
     constructor(protected http: Http, protected cookieService: CookieService) {
         super();
     }
@@ -15,11 +16,11 @@ export class TaskEntriesService extends BaseService {
     entityName = 'taskentry';
 
     getTaskEntries(date?: string) {
-            if (date) {
-                return this.gets('date=' + date);
-            }
+        if (date) {
+            return this.gets('date=' + date);
+        }
 
-            return this.gets()
+        return this.gets()
     }
 
     editEntry(taskEntry: TaskEntry) {

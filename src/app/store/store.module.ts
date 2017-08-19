@@ -14,6 +14,7 @@ import { BuyItemsComponent } from './buy-items/buy-items.component';
 import { ItemsComponent } from './items/items.component';
 import { BuyItemFormComponent } from './buy-items/buy-item-form/buy-item-form.component';
 import {ItemCategoryService} from "./shared/item-category.service";
+import { StoreItemsComponent } from './store-items/store-items.component';
 
 @NgModule({
     imports: [
@@ -30,6 +31,7 @@ import {ItemCategoryService} from "./shared/item-category.service";
         BuyItemsComponent,
         ItemsComponent,
         BuyItemFormComponent,
+        StoreItemsComponent,
     ],
     providers: [
         BuyItemService,

@@ -8,6 +8,7 @@ export class DimensionsData {
         {title: 'ст.л.', value: 'ст.л.'},
         {title: 'ч.л.', value: 'ч.л.'},
         {title: 'уп.', value: 'уп.'},
+        {title: 'бут.', value: 'бут.'},
     ];
 
     public static getDimensions() {

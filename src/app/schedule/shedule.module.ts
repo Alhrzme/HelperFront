@@ -1,7 +1,7 @@
 import {NgModule}       from '@angular/core';
 import {CommonModule}   from '@angular/common';
 import {FormsModule}    from '@angular/forms';
-import {MaterialModule} from "@angular/material";
+import {MaterialModule, MdDatepickerModule, MdNativeDateModule} from "@angular/material";
 
 import {ScheduleRoutingModule} from "./shedule-routing.module";
 import {DayScheduleComponent} from "./day-schedule/day-schedule.component";
@@ -24,7 +24,9 @@ import {AuthGuardService} from "../shared/guards/auth-guard.service";
         ScheduleRoutingModule,
         MaterialModule,
         MomentModule,
-        TaskListModule
+        TaskListModule,
+        MdDatepickerModule,
+        MdNativeDateModule
     ],
     declarations: [
         WindowComponent,

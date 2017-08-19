@@ -5,8 +5,10 @@
     <div class="col-md-2 col-md-offset-5">
         <md-input-container>
             <label for="date"></label>
-            <input type="date" mdInput name="date" [(ngModel)]="date" (change)="onChange()" id="date" required>
+            <input [mdDatepicker]="datePicker" mdInput name="date" [(ngModel)]="date" (change)="onChange()" id="date" required>
+            <button mdSuffix [mdDatepickerToggle]="datePicker"></button>
         </md-input-container>
+        <md-datepicker #datePicker></md-datepicker>
     </div>
 </div>
 

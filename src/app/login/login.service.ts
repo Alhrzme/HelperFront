@@ -10,9 +10,10 @@ import {Observable} from "rxjs/Observable";
 export class LoginService {
 
     private isLoggedIn: boolean = false;
-    redirectUrl: string = '/taskEntries';
+    redirectUrl: string = '/tasks';
 
-    url: string = 'http://localhost:8080/app_dev.php/api/v1/';
+    url: string = 'http://kenedias.bget.ru/web/api/v1/';
+    // url: string = 'http://localhost:8080/app_dev.php/api/v1/';
 
     constructor(private http: Http, private cookieService: CookieService, private router: Router) {
     }
@@ -30,7 +31,7 @@ export class LoginService {
 
     getIsAuthorized() {
         let loginToken = this.cookieService.get('login-token');
-        let url = this.url + 'is_authorized/' + loginToken;
+        let url = this.url + 'is_authorized/' + loginToken + '/';
 
         return this.http.get(url)
             .map(res => res.json())
@@ -47,6 +48,11 @@ export class LoginService {
 
                 this.router.navigate(['/login']);
                 return false;
+            }
+        ).catch(
+            error => {
+                this.router.navigate(['/login']);
+                return Observable.of(false);
             }
         );
     }

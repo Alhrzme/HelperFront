@@ -12,6 +12,8 @@ import {TaskEntriesService} from "./tasks/taskData/shared/services/task-entries.
 })
 
 export class AppComponent implements OnInit {
+    pendingTasks = [];
+
     ngOnInit(): void {
         this._push.requestPermission();
 
@@ -32,8 +34,8 @@ export class AppComponent implements OnInit {
                 if (currentTime.isSameOrAfter(TimeHelper.getDate('23:00', TimeHelper.TIME_FORMAT))) {
                     this._push.create('СПАТЬ ИДИ!!!', {body: 'ПОРА СПАТЬ!'}).subscribe(
                         res => {
-                            // event.preventDefault(); // prevent the browser from focusing the Notification's tab
-                            // window.open('http://localhost:4200');
+                            event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                            console.log(res);
                         },
                         err => console.log(err)
                     )
@@ -42,11 +44,16 @@ export class AppComponent implements OnInit {
                     let endTimeString = task.task.endTime === '' ? '23:00' : task.task.endTime;
                     let taskEndTime = TimeHelper.getDate(endTimeString, TimeHelper.TIME_FORMAT);
                     let difference = taskEndTime.diff(currentTime, 'minutes');
+                    if (this.pendingTasks[task.id] || currentTime.isBefore(this.pendingTasks[task.id])) {
+                        continue;
+                    }
+
                     if (difference < 30) {
                         this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).subscribe(
                             res => {
-                                // event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                                event.preventDefault(); // prevent the browser from focusing the Notification's tab
                                 // window.open('http://localhost:4200');
+                                this.pendingTasks[task.id] = currentTime.add(5, 'minutes');
                             },
                             err => console.log(err)
                         )

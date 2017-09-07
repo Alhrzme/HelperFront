@@ -22,6 +22,7 @@ export class ChallengesFormComponent implements OnInit {
         if (!this.challenge) {
             this.setInitData();
         }
+
         this.tasksService.getTasks().subscribe(
             tasks => this.tasks = tasks,
             error => console.log(error)

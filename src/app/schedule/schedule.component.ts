@@ -17,6 +17,7 @@ export class ScheduleComponent implements OnInit {
 
     onChange() {
         let dateMoment = moment(this.date, 'YYYY-MM-DD');
+        console.log(dateMoment.format('YYYY-MM-DD'));
         if (dateMoment.isSame(moment().startOf('day'))) {
             this.router.navigate(['/schedule']);
         } else {

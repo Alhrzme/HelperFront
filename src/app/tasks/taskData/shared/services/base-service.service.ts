@@ -31,6 +31,7 @@ export class BaseService {
         if (!this.entities || !this.entities[identifier]) {
             return this.gets(params);
         }
+
         return Observable.of(this.entities[identifier]);
     }
 

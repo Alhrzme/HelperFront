@@ -15,9 +15,11 @@ export class AppComponent implements OnInit {
     pendingTasks = [];
 
     ngOnInit(): void {
-        this._push.requestPermission();
+        if (this.isAuthorized()) {
+            this._push.requestPermission();
 
-        this.checkTasks();
+            this.checkTasks();
+        }
     }
 
     constructor(private loginService: LoginService, private router: Router, private _push: PushNotificationsService, private tasksService: TaskEntriesService) {
@@ -70,6 +72,6 @@ export class AppComponent implements OnInit {
 
     onEscape() {
         this.loginService.logout();
-        this.router.navigate(['']);
+        this.router.navigate(['/login']);
     }
 }

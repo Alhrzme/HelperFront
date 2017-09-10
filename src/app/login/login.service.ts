@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {User} from "./user.model";
 import {Http, RequestOptions, Headers} from "@angular/http";
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
-import {CookieService} from "angular2-cookie/core";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 
@@ -13,9 +12,8 @@ export class LoginService {
     redirectUrl: string = '/tasks';
 
     url: string = 'http://kenedias.bget.ru/web/api/v1/';
-    // url: string = 'http://localhost:8080/app_dev.php/api/v1/';
 
-    constructor(private http: Http, private cookieService: CookieService, private router: Router) {
+    constructor(private http: Http, private router: Router) {
     }
 
     authenticate(user: User) {
@@ -30,7 +28,7 @@ export class LoginService {
     }
 
     getIsAuthorized() {
-        let loginToken = this.cookieService.get('login-token');
+        let loginToken = localStorage.getItem('login-token');
         let url = this.url + 'is_authorized/' + loginToken + '/';
 
         return this.http.get(url)
@@ -63,7 +61,7 @@ export class LoginService {
                 console.log(response);
                 if (response.data) {
                     this.isLoggedIn = true;
-                    this.cookieService.put('login-token', response.data);
+                    localStorage.setItem('login-token', response.data);
                     this.router.navigate([this.redirectUrl]);
                 } else {
                     console.log(response.Errors);
@@ -75,11 +73,11 @@ export class LoginService {
 
     logout() {
         this.isLoggedIn = false;
-        this.cookieService.remove('login-token');
+        localStorage.removeItem('login-token');
     }
 
     isLoginTokenSet() {
-        return !!this.cookieService.get('login-token');
+        return !!localStorage.getItem('login-token');
     }
 
     public isAuthorized() {

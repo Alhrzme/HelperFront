@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "./base-service.service";
-import {CookieService} from "angular2-cookie/core";
 import {Http} from "@angular/http";
 import {TaskEntry} from "../models/task-entry.model";
 
@@ -8,7 +7,7 @@ import {TaskEntry} from "../models/task-entry.model";
 export class TaskEntriesService extends BaseService {
 
     tasks: TaskEntry[];
-    constructor(protected http: Http, protected cookieService: CookieService) {
+    constructor(protected http: Http) {
         super();
     }
 

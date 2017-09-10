@@ -12,16 +12,15 @@ import {ScheduleModule} from "./schedule/shedule.module";
 import {TimerComponent} from './shared/timer/timer.component';
 import {ErrorsModule} from "./errors/errors.module";
 import {ListenersModule} from "./listeners/listeners.module";
-import {CookieService} from "angular2-cookie/core";
 import {LoginModule} from "./login/login.module";
 import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FoodModule} from "./food/food.module";
 import {ChallengesModule} from "./challenges/challenges.module";
 import { SimpleNotificationsModule } from 'angular2-notifications';
-import {PushNotificationsModule} from "angular2-notifications/dist";
 import {StoreModule} from "./store/store.module";
 import { StoreHomeComponent } from './store-home/store-home.component';
+import {PushNotificationsModule} from "angular2-notifications/dist";
 
 @NgModule({
     declarations: [
@@ -47,10 +46,8 @@ import { StoreHomeComponent } from './store-home/store-home.component';
         MaterialModule,
         ChallengesModule,
         SimpleNotificationsModule.forRoot(),
-        PushNotificationsModule
     ],
     providers: [
-        CookieService
     ],
     bootstrap: [AppComponent],
     exports: []

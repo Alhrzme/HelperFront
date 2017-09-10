@@ -5,7 +5,6 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import {Period} from "./period.model";
-import {CookieService} from "angular2-cookie/core";
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
 
 @Injectable()
@@ -14,7 +13,7 @@ export class PeriodService extends BaseService {
     entityName = 'period';
     urlEnd:string = 'periods';
 
-    constructor(protected http: Http, protected cookieService: CookieService) {
+    constructor(protected http: Http) {
         super();
     }
 

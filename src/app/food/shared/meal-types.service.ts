@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
 import {MealType} from "./mealType.model";
 import {Observable} from "rxjs/Observable";
-import {CookieService} from "angular2-cookie/core";
 import {Http} from "@angular/http";
 
 @Injectable()
@@ -10,7 +9,7 @@ export class MealTypesService extends BaseService {
     urlEnd:string = 'mealtypes';
     entityName = 'mealType';
 
-    constructor(protected cookieService: CookieService, protected http: Http) {
+    constructor( protected http: Http) {
         super();
     }
 

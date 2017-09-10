@@ -1,13 +1,12 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
 import {Http} from "@angular/http";
-import {CookieService} from "angular2-cookie/core";
 import {ItemCategory} from "./item-category";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ItemCategoryService extends BaseService {
-    constructor(protected http: Http, protected cookieService: CookieService) {
+    constructor(protected http: Http) {
         super();
     }
 

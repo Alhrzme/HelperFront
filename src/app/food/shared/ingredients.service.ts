@@ -11,7 +11,7 @@ export class IngredientsService extends BaseService {
     protected urlEnd: string = 'ingredients';
     protected entityName: string = 'ingredient';
 
-    constructor(protected http: Http, protected cookieService: CookieService) {
+    constructor(protected http: Http) {
         super();
     }
 

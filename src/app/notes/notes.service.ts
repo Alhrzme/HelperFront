@@ -3,14 +3,13 @@ import {BaseService} from "../tasks/taskData/shared/services/base-service.servic
 import {Observable} from "rxjs";
 import {Note} from "./note.model";
 import {Http} from "@angular/http";
-import {CookieService} from "angular2-cookie/core";
 
 @Injectable()
 export class NotesService extends BaseService {
     urlEnd:string = 'notes';
     entityName = 'note';
 
-    constructor(protected http: Http, protected cookieService: CookieService) {
+    constructor(protected http: Http) {
         super();
     }
 

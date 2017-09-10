@@ -3,7 +3,6 @@ import {BaseService} from "../tasks/taskData/shared/services/base-service.servic
 import {Http} from "@angular/http";
 import {Listener} from "../listeners/shared/listener.model";
 import {Observable} from "rxjs";
-import {CookieService} from "angular2-cookie/core";
 
 @Injectable()
 export class ListenersService extends BaseService {
@@ -11,7 +10,7 @@ export class ListenersService extends BaseService {
     protected urlEnd: string = 'listeners';
     entityName = 'listener';
 
-    constructor(protected http:Http, protected cookieService: CookieService) {
+    constructor(protected http:Http) {
         super();
     }
 

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
 import {Http} from "@angular/http";
-import {CookieService} from "angular2-cookie/core";
 import {Dish} from "./dish.model";
 import {Observable} from "rxjs/Observable";
 
@@ -11,7 +10,7 @@ export class DishesService extends BaseService {
     protected urlEnd: string = 'dishes';
     protected entityName: string = 'dish';
 
-    constructor(protected http:Http, protected cookieService: CookieService) {
+    constructor(protected http:Http) {
         super();
     }
 

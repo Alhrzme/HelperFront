@@ -13,7 +13,6 @@ export class BaseService {
     protected entities;
     protected entityName: string;
     protected http: Http;
-    protected cookieService: CookieService;
 
     public static handleError(error: any): Observable<any> {
         console.log('Произошла ошибка', error);
@@ -83,7 +82,7 @@ export class BaseService {
 
     addTokenToObject(entity) {
         let result = {};
-        let token = this.cookieService.get('login-token');
+        let token = localStorage.getItem('login-token');
         result[this.entityName] = entity;
         result['token'] = token;
 
@@ -91,7 +90,7 @@ export class BaseService {
     }
 
     protected addTokenToRequest(body, hasParams = false) {
-        let token = this.cookieService.get('login-token');
+        let token = localStorage.getItem('login-token');
         let paramsStart = hasParams ? '&' : '?';
         body += paramsStart + 'token=' + token;
 

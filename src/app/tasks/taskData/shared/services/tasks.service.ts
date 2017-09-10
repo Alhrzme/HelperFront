@@ -14,7 +14,7 @@ import {TaskEntry} from "../models/task-entry.model";
 
 @Injectable()
 export class TaskService extends BaseService {
-    constructor(protected http: Http, protected cookieService: CookieService) {
+    constructor(protected http: Http) {
         super();
     }
     tasks : Task[] = [];

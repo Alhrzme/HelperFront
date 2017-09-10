@@ -8,7 +8,7 @@
             <input [mdDatepicker]="datePicker" mdInput name="date" (click)="datePicker.open()" id="date" required>
             <button mdSuffix [mdDatepickerToggle]="datePicker"></button>
         </md-input-container>
-        <md-datepicker #datePicker (selectedChanged)="onChange()"></md-datepicker>
+        <md-datepicker #datePicker (selectedChanged)="onChange($event)"></md-datepicker>
     </div>
 </div>
 

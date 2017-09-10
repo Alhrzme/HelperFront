@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
         setTimeout(() => {
             this.checkTasks()
-        }, 10000);
+        }, 60000);
         if (this.isAuthorized()) {
             this.tasksService.getSavedEntities('date=' + TimeHelper.getCurrentDateString()).subscribe(
                 tasks => {
@@ -44,16 +44,18 @@ export class AppComponent implements OnInit {
                         let endTimeString = task.task.endTime === '' ? '23:00' : task.task.endTime;
                         let taskEndTime = TimeHelper.getDate(endTimeString, TimeHelper.TIME_FORMAT);
                         let difference = taskEndTime.diff(currentTime, 'minutes');
-                        if (this.pendingTasks[task.id] || currentTime.isBefore(this.pendingTasks[task.id])) {
+                        if (this.pendingTasks[task.id] && currentTime.isBefore(this.pendingTasks[task.id])) {
                             continue;
                         }
 
                         if (difference < 30) {
                             this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).subscribe(
-                                res => {
+                                notification => {
                                     event.preventDefault(); // prevent the browser from focusing the Notification's tab
                                     // window.open('http://localhost:4200');
-                                    // this.pendingTasks[task.id] = currentTime.add(5, 'minutes');
+                                    if (notification.event.type === 'click') {
+                                        this.pendingTasks[task.id] = TimeHelper.getCurrentTime().add(4, 'minutes');
+                                    }
                                 },
                                 err => console.log(err)
                             )

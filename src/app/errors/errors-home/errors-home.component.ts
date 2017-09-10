@@ -8,7 +8,8 @@ import {ErrorsService} from "../shared/errors.service";
     styleUrls: ['./errors-home.component.css']
 })
 export class ErrorsHomeComponent implements OnInit {
-
+    isFormShown = false;
+    newError: Error = new Error();
     errors: Error[] = [];
     constructor(private errorService: ErrorsService) {
     }
@@ -30,4 +31,7 @@ export class ErrorsHomeComponent implements OnInit {
             )
     }
 
+    onSwitchErrorFormStateButtonClick() {
+        this.isFormShown = !this.isFormShown;
+    }
 }

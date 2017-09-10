@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {User} from "./user.model";
 import {Http, RequestOptions, Headers} from "@angular/http";
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
+import {CookieService} from "angular2-cookie/core";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 
@@ -11,7 +12,8 @@ export class LoginService {
     private isLoggedIn: boolean = false;
     redirectUrl: string = '/tasks';
 
-    url: string = 'http://kenedias.bget.ru/web/api/v1/';
+    // url: string = 'http://kenedias.bget.ru/web/api/v1/';
+    url: string = 'http://localhost:8082/app_dev.php/api/v1/';
 
     constructor(private http: Http, private router: Router) {
     }
@@ -29,9 +31,13 @@ export class LoginService {
 
     getIsAuthorized() {
         let loginToken = localStorage.getItem('login-token');
-        let url = this.url + 'is_authorized/' + loginToken + '/';
+        const body = JSON.stringify({token: loginToken});
+        let url = this.url + 'is_authorized';
 
-        return this.http.get(url)
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers});
+
+        return this.http.post(url, body, options)
             .map(res => res.json())
             .catch(BaseService.handleError);
     }

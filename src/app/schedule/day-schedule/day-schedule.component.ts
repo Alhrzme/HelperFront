@@ -6,6 +6,7 @@ import {TimeHelper} from "../../shared/services/time-helper.service";
 import * as moment from 'moment';
 import {TaskEntriesService} from "../../tasks/taskData/shared/services/task-entries.service";
 import {TaskEntry} from "../../tasks/taskData/shared/models/task-entry.model";
+import {NotificationsService} from "angular2-notifications/dist";
 
 @Component({
     selector: 'day-schedule',
@@ -21,6 +22,7 @@ export class DayScheduleComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private periodService: PeriodService,
+                private notification: NotificationsService,
                 private taskEntriesService : TaskEntriesService) {
     }
 
@@ -95,6 +97,7 @@ export class DayScheduleComponent implements OnInit {
             .subscribe(
                 task => {
                     if ((this.date != task.date || task.isCompleted) && taskIndex > -1) {
+                        this.notification.success('Вы молодец!', 'Еще 1 задача выполнена! Вы великолепны!');
                         this.tasks.splice(taskIndex, 1);
                     }
                 },

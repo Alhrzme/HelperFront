@@ -1,6 +1,5 @@
 import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Injectable} from "@angular/core";
-import {CookieService} from "angular2-cookie/core";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 
@@ -14,9 +13,9 @@ export class BaseService {
     protected entityName: string;
     protected http: Http;
 
+
     public static handleError(error: any): Observable<any> {
         console.log('Произошла ошибка', error);
-        alert('Обшибка');
         return Observable.throw(error.message || error);
     }
 

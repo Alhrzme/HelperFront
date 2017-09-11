@@ -37,3 +37,6 @@ div md-select.without-label {
 .main-title {
     font-family: "Comic Sans MS", serif;
 }
+.simple-notification-wrapper {
+    width: 400px !important;
+}

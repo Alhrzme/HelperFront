@@ -4,6 +4,7 @@ import { Task } from "../shared/models/task.model";
 import { TaskService } from "../shared/services/tasks.service";
 import {TaskEntriesService} from "../shared/services/task-entries.service";
 import {TaskEntry} from "../shared/models/task-entry.model";
+import {NotificationsService} from "angular2-notifications/dist";
 
 @Component({
     selector: 'tasks-home',
@@ -24,7 +25,7 @@ export class TaskHomeComponent implements OnInit {
     selectedForm : string = 'single';
 
     constructor(
-        private taskService : TaskService, private taskEntriesService: TaskEntriesService
+        private taskService : TaskService, private taskEntriesService: TaskEntriesService, private notification: NotificationsService
     ) {
     }
 
@@ -64,8 +65,6 @@ export class TaskHomeComponent implements OnInit {
     }
 
     onEntryConfirmed(task: TaskEntry) {
-        console.log(task);
-        console.log('in home');
         let taskIndex = this.tasks.indexOf(task);
         this.taskEntriesService.confirmEntry(task)
             .subscribe(
@@ -84,6 +83,7 @@ export class TaskHomeComponent implements OnInit {
             .subscribe(
                 task => {
                     if (task.isCompleted && taskIndex > -1) {
+                        this.notification.success('Вы молодец!', 'Еще 1 задача выполнена! Вы великолепны!');
                         this.tasks.splice(taskIndex, 1);
                     }
                 },

@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {User} from "./user.model";
 import {Http, RequestOptions, Headers} from "@angular/http";
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
-import {CookieService} from "angular2-cookie/core";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 

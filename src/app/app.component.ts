@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "./login/login.service";
-import {PushNotificationsService} from "angular2-notifications/dist";
+import {NotificationsService, PushNotificationsService} from "angular2-notifications/dist";
 import {TimeHelper} from "./shared/services/time-helper.service";
 import {TaskEntriesService} from "./tasks/taskData/shared/services/task-entries.service";
 
@@ -19,11 +19,18 @@ export class AppComponent implements OnInit {
         this.checkTasks();
     }
 
-    constructor(private loginService: LoginService, private router: Router, private tasksService: TaskEntriesService, private _push: PushNotificationsService) {
+    options = {
+        pauseOnHover: true,
+        timeOut: 10000
+    };
+
+    constructor(private loginService: LoginService,
+                private router: Router,
+                private tasksService: TaskEntriesService,
+                private _push: PushNotificationsService) {
     }
 
     private checkTasks() {
-
         setTimeout(() => {
             this.checkTasks()
         }, 60000);

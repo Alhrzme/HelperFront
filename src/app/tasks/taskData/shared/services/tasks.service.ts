@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Http, RequestOptions, Headers} from '@angular/http';
 
 import {Task} from "../models/task.model";
 import {Observable} from 'rxjs/Observable';
@@ -9,7 +9,6 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import {BaseService} from "./base-service.service";
-import {CookieService} from "angular2-cookie/core";
 import {TaskEntry} from "../models/task-entry.model";
 
 @Injectable()
@@ -35,5 +34,18 @@ export class TaskService extends BaseService {
 
     deleteTask (task : Task): Observable<Task> {
         return this.httpDelete(task);
+    }
+
+    getTaskLinesLengths(tasksIds) {
+        let url = this.baseApiUrl + 'tasks_line_lengths';
+        url = this.addTokenToRequest(url);
+
+        let headers = new Headers({'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers});
+        const body = JSON.stringify({tasksIds: tasksIds});
+
+        return this.http.post(url, body, options)
+            .map(BaseService.extractData)
+            .catch(BaseService.handleError);
     }
 }

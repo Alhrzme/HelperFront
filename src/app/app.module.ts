@@ -20,7 +20,7 @@ import {ChallengesModule} from "./challenges/challenges.module";
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import {StoreModule} from "./store/store.module";
 import { StoreHomeComponent } from './store-home/store-home.component';
-import {PushNotificationsService} from "angular2-notifications/dist";
+import {PushNotificationsService} from "angular2-notifications";
 
 @NgModule({
     declarations: [

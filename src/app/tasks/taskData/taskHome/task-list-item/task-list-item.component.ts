@@ -11,7 +11,7 @@ import {TaskEntry} from "../../shared/models/task-entry.model";
 })
 
 export class TaskListItemComponent implements OnInit {
-
+    @Input() lineLength;
     @Input() taskEntry: TaskEntry;
     @Output() deleted: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
     @Output() edited: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();

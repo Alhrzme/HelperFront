@@ -4,7 +4,7 @@ import { Task } from "../shared/models/task.model";
 import { TaskService } from "../shared/services/tasks.service";
 import {TaskEntriesService} from "../shared/services/task-entries.service";
 import {TaskEntry} from "../shared/models/task-entry.model";
-import {NotificationsService} from "angular2-notifications/dist";
+import {NotificationsService} from "angular2-notifications";
 
 @Component({
     selector: 'tasks-home',
@@ -25,7 +25,9 @@ export class TaskHomeComponent implements OnInit {
     selectedForm : string = 'single';
 
     constructor(
-        private taskService : TaskService, private taskEntriesService: TaskEntriesService, private notification: NotificationsService
+        private taskService : TaskService,
+        private taskEntriesService: TaskEntriesService,
+        private notification: NotificationsService
     ) {
     }
 

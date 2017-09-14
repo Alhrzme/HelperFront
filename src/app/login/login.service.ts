@@ -12,7 +12,7 @@ export class LoginService {
     redirectUrl: string = '/tasks';
 
     // url: string = 'http://kenedias.bget.ru/web/api/v1/';
-    url: string = 'http://localhost:8082/app_dev.php/api/v1/';
+    url: string = 'http://localhost:8080/app_dev.php/api/v1/';
 
     constructor(private http: Http, private router: Router) {
     }

@@ -1,33 +1,43 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
-import { TaskService } from "../../shared/services/tasks.service";
+import {TaskService} from "../../shared/services/tasks.service";
 import {TaskEntry} from "../../shared/models/task-entry.model";
+import {TimeHelper} from "../../../../shared/services/time-helper.service";
 
 @Component({
-	selector: 'task-list',
-	templateUrl: 'task-list.component.html',
+    selector: 'task-list',
+    templateUrl: 'task-list.component.html',
     styleUrls: ['task-list.component.css'],
     providers: [TaskService]
 })
 
 export class TaskListComponent {
+    @Input() lineLengths;
+    @Input() taskEntries: TaskEntry[];
+    @Output() deleted: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    @Output() edited: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    @Output() confirmed: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    showAllTasks = true;
 
-    @Input() taskEntries:TaskEntry[];
-    @Output() deleted : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
-    @Output() edited : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
-    @Output() confirmed : EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
+    getShownTasks() {
+        return !this.showAllTasks ? this.taskEntries : this.taskEntries.filter((taskEntry: TaskEntry) => {
+            const currentTime = TimeHelper.getCurrentTime();
+            const taskBeginTime = taskEntry.task.beginTime;
 
-    get sortedTasks(): TaskEntry[] {
-        return this.taskEntries
-            .map(task => task)
-            .sort((a, b) => {
-                if (a.task.title > b.task.title) return 1;
-                else if (a.task.title < b.task.title) return -1;
-                else return 0;
-            });
+            return !taskBeginTime || currentTime.isSameOrAfter(TimeHelper.getMomentTime(taskBeginTime));
+        });
     }
 
-    onTaskEdited(task:TaskEntry) {
+    toggleTaskVisibility(val) {
+        console.log(val);
+        this.showAllTasks = !this.showAllTasks;
+    }
+
+    getLineLengthById(taskId) {
+        return this.lineLengths[taskId] ? this.lineLengths[taskId] : 0;
+    }
+
+    onTaskEdited(task: TaskEntry) {
         this.edited.emit(task);
     }
 

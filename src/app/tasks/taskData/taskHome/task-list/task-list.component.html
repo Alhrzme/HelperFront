@@ -1,4 +1,4 @@
-<md-button-toggle (change)="toggleTaskVisibility($event)">Все задачи</md-button-toggle>
+<md-button-toggle *ngIf="showToggleVisibilityButton()" (change)="toggleTaskVisibility()">Все задачи</md-button-toggle>
 <div class="task_list text-left" *ngIf="taskEntries && taskEntries.length > 0">
     <task-list-item *ngFor="let task of getShownTasks()" (edited)="onTaskEdited(task)"
                     (confirmed)="onTaskEntryConfirmed(task)" (deleted)="onTaskDeleted($event)"

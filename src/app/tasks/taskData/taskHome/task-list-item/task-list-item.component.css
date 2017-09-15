@@ -12,3 +12,10 @@
     display: inline-block;
     float: right;
 }
+.line-length-block {
+    width: 20px;
+    background-color: #d1fdc2;
+    text-align: center;
+    border-radius: 9px;
+    float: right;
+}

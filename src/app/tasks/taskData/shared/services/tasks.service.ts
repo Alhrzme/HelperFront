@@ -36,13 +36,13 @@ export class TaskService extends BaseService {
         return this.httpDelete(task);
     }
 
-    getTaskLinesLengths(tasksIds) {
+    getTaskLinesLengths(tasksIds, date) {
         let url = this.baseApiUrl + 'tasks_line_lengths';
         url = this.addTokenToRequest(url);
 
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
-        const body = JSON.stringify({tasksIds: tasksIds});
+        const body = JSON.stringify({tasksIds: tasksIds, date: date});
 
         return this.http.post(url, body, options)
             .map(BaseService.extractData)

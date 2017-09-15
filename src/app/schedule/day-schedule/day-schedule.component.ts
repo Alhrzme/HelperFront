@@ -65,7 +65,7 @@ export class DayScheduleComponent implements OnInit {
         taskEntries.forEach((taskEntry: TaskEntry) => {
             taskIds.push(taskEntry.task.id);
         });
-        this.tasksService.getTaskLinesLengths(taskIds).subscribe(
+        this.tasksService.getTaskLinesLengths(taskIds, this.date).subscribe(
             lines => this.tasksLinesLengths = lines,
             error => console.log(error)
         );

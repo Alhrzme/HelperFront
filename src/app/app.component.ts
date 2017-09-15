@@ -4,6 +4,7 @@ import {LoginService} from "./login/login.service";
 import {NotificationsService, PushNotificationsService} from "angular2-notifications/dist";
 import {TimeHelper} from "./shared/services/time-helper.service";
 import {TaskEntriesService} from "./tasks/taskData/shared/services/task-entries.service";
+import { isDevMode } from '@angular/core';
 
 @Component({
     selector: 'app',
@@ -15,8 +16,10 @@ export class AppComponent implements OnInit {
     pendingTasks = [];
 
     ngOnInit(): void {
-        this._push.requestPermission();
-        this.checkTasks();
+        if (!isDevMode()) {
+            this._push.requestPermission();
+            this.checkTasks();
+        }
     }
 
     options = {

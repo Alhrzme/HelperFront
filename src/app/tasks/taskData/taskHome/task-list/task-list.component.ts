@@ -24,12 +24,17 @@ export class TaskListComponent {
             const currentTime = TimeHelper.getCurrentTime();
             const taskBeginTime = taskEntry.task.beginTime;
 
-            return !taskBeginTime || currentTime.isSameOrAfter(TimeHelper.getMomentTime(taskBeginTime));
+            return !taskBeginTime
+                || currentTime.isSameOrAfter(TimeHelper.getMomentTime(taskBeginTime))
+                || currentTime.format(TimeHelper.DATE_FORMAT) !== taskEntry.date;
         });
     }
 
-    toggleTaskVisibility(val) {
-        console.log(val);
+    showToggleVisibilityButton() {
+        return this.getShownTasks().length !== this.taskEntries.length;
+    }
+
+    toggleTaskVisibility() {
         this.showAllTasks = !this.showAllTasks;
     }
 
@@ -48,5 +53,4 @@ export class TaskListComponent {
     onTaskDeleted(task: TaskEntry): void {
         this.deleted.emit(task);
     }
-
 }

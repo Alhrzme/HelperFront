@@ -16,6 +16,8 @@ import {MomentModule} from "angular2-moment";
 import {TaskListModule} from "../tasks/taskData/taskHome/task-list/task-list.module";
 import {RepetitivePeriodFormComponent} from './day-schedule/repetitive-period-form/repetitive-period-form.component';
 import {AuthGuardService} from "../shared/guards/auth-guard.service";
+import {TaskService} from "../tasks/taskData/shared/services/tasks.service";
+import {TaskEntriesService} from "../tasks/taskData/shared/services/task-entries.service";
 
 @NgModule({
     imports: [
@@ -40,7 +42,9 @@ import {AuthGuardService} from "../shared/guards/auth-guard.service";
     ],
     providers: [
         PeriodService,
-        AuthGuardService
+        AuthGuardService,
+        TaskService,
+        TaskEntriesService
     ]
 })
 export class ScheduleModule {

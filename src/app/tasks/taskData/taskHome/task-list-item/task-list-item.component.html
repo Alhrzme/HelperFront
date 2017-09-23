@@ -3,7 +3,7 @@
         <span class="time" *ngIf="taskEntry.task.beginTime">
             {{'(' + taskEntry.task.beginTime + '-' + taskEntry.task.endTime + ')'}}
         </span>
-        <span class="line-length-block" *ngIf="lineLength && lineLength > 0" mdTooltip="{{'Задача выполнена ' + lineLength + ' раза подряд'}}">
+        <span class="line-length-block" *ngIf="lineLength && lineLength > 0" mdTooltip="{{getTooltipText(lineLength)}}">
             {{lineLength}}
         </span>
     </div>

@@ -3,6 +3,7 @@ import * as moment from 'moment';
 import {Task} from "../../shared/models/task.model";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
 import {DaysOfWeek} from "../../../../shared/common/DaysOfWeek";
+import {TaskService} from "../../shared/services/tasks.service";
 
 @Component({
     selector: 'repetitive-task-form',
@@ -13,6 +14,8 @@ export class RepetitiveTaskFormComponent implements OnInit {
 
     @Input() task: Task = new Task();
     date: string;
+    tasksOptions = [];
+    filteredOptions = [];
     @Output() created: EventEmitter<Task> = new EventEmitter<Task>();
     daysOfWeek = DaysOfWeek.getDaysOfWeek();
 
@@ -27,7 +30,7 @@ export class RepetitiveTaskFormComponent implements OnInit {
         {value: 5, title: 'Через 5 дней'},
     ];
 
-    constructor() {
+    constructor(private tasksService: TaskService) {
     }
 
     onSubmit() {
@@ -43,13 +46,32 @@ export class RepetitiveTaskFormComponent implements OnInit {
         this.setInitDates();
     }
 
+    onTaskTitleChanged() {
+        this.filteredOptions = this.tasksOptions.filter((task) => {
+            const taskName = task.title;
+            return (this.tasksOptions.length < 100
+                ? taskName.indexOf(this.task.title) > -1
+                : taskName.startsWith(this.task.title));
+        });
+    }
+
     ngOnInit() {
         this.setInitDates();
+        this.loadAvailableTasks();
         this.task.condition.weekFrequency = 1;
     }
 
     setInitDates() {
         this.task.condition.beginDate = moment().format(TimeHelper.INPUT_DATE_FORMAT);
         this.task.condition.endDate = moment().add(1, 'months').format(TimeHelper.INPUT_DATE_FORMAT);
+    }
+
+    private loadAvailableTasks() {
+        this.tasksService.getTasks().subscribe(
+            tasks => {
+                this.tasksOptions = tasks
+            },
+            error => console.log(error)
+        );
     }
 }

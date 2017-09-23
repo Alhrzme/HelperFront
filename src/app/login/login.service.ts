@@ -4,6 +4,7 @@ import {Http, RequestOptions, Headers} from "@angular/http";
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
+import {NotificationsService} from "angular2-notifications/dist";
 
 @Injectable()
 export class LoginService {
@@ -14,7 +15,7 @@ export class LoginService {
     // url: string = 'http://kenedias.bget.ru/web/api/v1/';
     url: string = 'http://localhost:8080/app_dev.php/api/v1/';
 
-    constructor(private http: Http, private router: Router) {
+    constructor(private http: Http, private router: Router, private notifications: NotificationsService) {
     }
 
     authenticate(user: User) {
@@ -69,7 +70,9 @@ export class LoginService {
                     localStorage.setItem('login-token', response.data);
                     this.router.navigate([this.redirectUrl]);
                 } else {
-                    console.log(response.Errors);
+                    response.errors.forEach((error) => {
+                        this.notifications.error('Ошибка авторизации!', error);
+                    })
                 }
             },
             error => console.log(error)

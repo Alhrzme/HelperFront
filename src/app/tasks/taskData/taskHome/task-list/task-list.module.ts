@@ -6,6 +6,7 @@ import {TaskService} from "../../shared/services/tasks.service";
 import {FormsModule} from "@angular/forms";
 import {MaterialModule} from "@angular/material";
 import {TaskMoveModalComponent} from "../task-list-item/task-move-modal/task-move-modal.component";
+import {AlertModalComponent} from "../../../../shared/components/alert-modal/alert-modal.component";
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import {TaskMoveModalComponent} from "../task-list-item/task-move-modal/task-mov
     declarations: [
         TaskListComponent,
         TaskListItemComponent,
-        TaskMoveModalComponent
+        TaskMoveModalComponent,
+        AlertModalComponent
     ],
     providers: [
         TaskService
@@ -25,7 +27,8 @@ import {TaskMoveModalComponent} from "../task-list-item/task-move-modal/task-mov
         TaskListComponent
     ],
     entryComponents: [
-        TaskMoveModalComponent
+        TaskMoveModalComponent,
+        AlertModalComponent
     ]
 })
 export class TaskListModule {

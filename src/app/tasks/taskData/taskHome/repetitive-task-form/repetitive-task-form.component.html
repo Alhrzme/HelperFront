@@ -3,9 +3,14 @@
         <div class="col-md-12">
             <md-input-container class="example-full-width">
                 <label for="title">Что нужно сделать?</label>
-                <input id="title" mdInput type="text" name="title"
+                <input id="title" mdInput type="text" name="title" [mdAutocomplete]="taskNameAuto" (keyup)="onTaskTitleChanged()"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title" required>
             </md-input-container>
+            <md-autocomplete #taskNameAuto="mdAutocomplete">
+                <md-option *ngFor="let option of filteredOptions" [value]="option.id">
+                    {{ option.title }}
+                </md-option>
+            </md-autocomplete>
         </div>
     </div>
     <div class="row">

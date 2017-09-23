@@ -40,3 +40,6 @@ div md-select.without-label {
 .simple-notification-wrapper {
     width: 400px !important;
 }
+md-dialog-container {
+    background-color: #f55050;
+}

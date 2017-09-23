@@ -31,7 +31,7 @@ export class TaskListComponent {
     }
 
     showToggleVisibilityButton() {
-        return this.getShownTasks().length !== this.taskEntries.length;
+        return this.getShownTasks().length !== this.taskEntries.length && !this.showAllTasks;
     }
 
     toggleTaskVisibility() {
@@ -39,7 +39,7 @@ export class TaskListComponent {
     }
 
     getLineLengthById(taskId) {
-        return this.lineLengths[taskId] ? this.lineLengths[taskId] : 0;
+        return this.lineLengths && this.lineLengths[taskId] ? this.lineLengths[taskId] : 0;
     }
 
     onTaskEdited(task: TaskEntry) {

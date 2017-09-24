@@ -2,7 +2,6 @@ import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
-import {MaterialModule} from '@angular/material';
 import 'hammerjs';
 
 import {AppComponent} from './app.component';
@@ -17,11 +16,11 @@ import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FoodModule} from "./food/food.module";
 import {ChallengesModule} from "./challenges/challenges.module";
-import { SimpleNotificationsModule } from 'angular2-notifications';
+import {SimpleNotificationsModule} from 'angular2-notifications';
 import {StoreModule} from "./store/store.module";
-import { StoreHomeComponent } from './store-home/store-home.component';
+import {StoreHomeComponent} from './store-home/store-home.component';
 import {PushNotificationsService} from "angular2-notifications";
-import { KeysPipe } from './shared/pipes/keys.pipe';
+import {MdMenuModule, MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule} from "@angular/material";
 
 @NgModule({
     declarations: [
@@ -44,9 +43,13 @@ import { KeysPipe } from './shared/pipes/keys.pipe';
         ErrorsModule,
         StoreModule,
         BrowserAnimationsModule,
-        MaterialModule,
         ChallengesModule,
         SimpleNotificationsModule.forRoot(),
+        MdMenuModule,
+        MdSidenavModule,
+        MdToolbarModule,
+        MdButtonModule,
+        MdIconModule
     ],
     providers: [
         PushNotificationsService

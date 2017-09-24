@@ -13,8 +13,8 @@ import {TaskService} from "../../shared/services/tasks.service";
 export class RepetitiveTaskFormComponent implements OnInit {
 
     @Input() task: Task = new Task();
+    @Input() tasksOptions;
     date: string;
-    tasksOptions = [];
     filteredOptions = [];
     @Output() created: EventEmitter<Task> = new EventEmitter<Task>();
     daysOfWeek = DaysOfWeek.getDaysOfWeek();
@@ -30,7 +30,7 @@ export class RepetitiveTaskFormComponent implements OnInit {
         {value: 5, title: 'Через 5 дней'},
     ];
 
-    constructor(private tasksService: TaskService) {
+    constructor() {
     }
 
     onSubmit() {
@@ -57,21 +57,11 @@ export class RepetitiveTaskFormComponent implements OnInit {
 
     ngOnInit() {
         this.setInitDates();
-        this.loadAvailableTasks();
         this.task.condition.weekFrequency = 1;
     }
 
     setInitDates() {
         this.task.condition.beginDate = moment().format(TimeHelper.INPUT_DATE_FORMAT);
         this.task.condition.endDate = moment().add(1, 'months').format(TimeHelper.INPUT_DATE_FORMAT);
-    }
-
-    private loadAvailableTasks() {
-        this.tasksService.getTasks().subscribe(
-            tasks => {
-                this.tasksOptions = tasks
-            },
-            error => console.log(error)
-        );
     }
 }

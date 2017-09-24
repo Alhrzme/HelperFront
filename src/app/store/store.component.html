@@ -4,8 +4,7 @@
             <a md-tab-link
                *ngFor="let section of sections"
                [routerLink]="section.link"
-               routerLinkActive #rla="routerLinkActive"
-               [active]="rla.isActive">
+               routerLinkActive="active">
                 {{section.title}}
             </a>
         </nav>

@@ -2,14 +2,17 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BuyItemListComponent} from './buy-item-list.component';
 import {BuyItemListItemComponent} from './buy-item-list-item/buy-item-list-item.component';
-import {MaterialModule} from "@angular/material";
 import {KeysPipe} from "../../../shared/pipes/keys.pipe";
+import {MdInputModule, MdButtonModule, MdIconModule, MdTooltipModule, MdListModule} from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
-        MaterialModule,
-
+        MdButtonModule,
+        MdInputModule,
+        MdIconModule,
+        MdTooltipModule,
+        MdListModule
     ],
     declarations: [
         BuyItemListComponent,

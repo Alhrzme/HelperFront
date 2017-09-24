@@ -20,8 +20,8 @@ also import other style files */
     background-color: Transparent;
 }
 
-md-input-container {
-    width: 100%;
+md-form-field {
+    width: 100% !important;
 }
 
 body {

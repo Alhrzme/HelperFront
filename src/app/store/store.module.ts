@@ -9,11 +9,11 @@ import {ItemListModule} from "./items/item-list/item-list.module";
 import {BuyItemListModule} from "./buy-items/buy-item-list/buy-item-list.module";
 import { ItemFormComponent } from './items/item-form/item-form.component';
 import {FormsModule} from "@angular/forms";
-import {MaterialModule} from "@angular/material";
 import { BuyItemsComponent } from './buy-items/buy-items.component';
 import { ItemsComponent } from './items/items.component';
 import { BuyItemFormComponent } from './buy-items/buy-item-form/buy-item-form.component';
 import {ItemCategoryService} from "./shared/item-category.service";
+import {MdInputModule, MdButtonModule, MdIconModule, MdTooltipModule, MdSelectModule, MdTabsModule} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -22,7 +22,12 @@ import {ItemCategoryService} from "./shared/item-category.service";
         ItemListModule,
         BuyItemListModule,
         FormsModule,
-        MaterialModule
+        MdInputModule,
+        MdButtonModule,
+        MdIconModule,
+        MdTooltipModule,
+        MdSelectModule,
+        MdTabsModule,
     ],
     declarations: [
         StoreComponent,

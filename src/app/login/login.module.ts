@@ -4,11 +4,14 @@ import {LoginComponent} from "./login.component";
 import {RouterModule} from "@angular/router";
 import { LoginFormComponent } from './login-form/login-form.component';
 import {FormsModule} from "@angular/forms";
-import {MaterialModule} from "@angular/material";
 import {LoginService} from "./login.service";
+import {MdButtonModule} from '@angular/material';
+import {MdInputModule} from '@angular/material';
 
 @NgModule({
     imports: [
+        MdButtonModule,
+        MdInputModule,
         CommonModule,
         RouterModule.forRoot([
             {
@@ -17,7 +20,6 @@ import {LoginService} from "./login.service";
             }
         ]),
         FormsModule,
-        MaterialModule
     ],
     declarations: [
         LoginComponent,

@@ -9,24 +9,24 @@
             </md-select>
         </div>
         <div class="col-md-4">
-            <md-input-container class="example-fill-space">
+            <md-form-field class="example-fill-space">
                 <label for="begin">Начало</label>
                 <input type="date" mdInput name="begin" [(ngModel)]="challenge.begin" id="begin">
-            </md-input-container>
+            </md-form-field>
         </div>
         <div class="col-md-4">
-            <md-input-container class="example-fill-space">
+            <md-form-field class="example-fill-space">
                 <label for="end">Окончание</label>
                 <input type="date" mdInput name="end" [(ngModel)]="challenge.end" id="end">
-            </md-input-container>
+            </md-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-9">
-            <md-input-container class="example-fill-space">
+            <md-form-field class="example-fill-space">
                 <label for="award">Награда</label>
                 <input type="text" mdInput name="award" [(ngModel)]="challenge.award" id="award">
-            </md-input-container>
+            </md-form-field>
         </div>
         <div class="col-md-3" style="padding-top: 1.5em">
             <button type="submit" md-raised-button id="addButton">

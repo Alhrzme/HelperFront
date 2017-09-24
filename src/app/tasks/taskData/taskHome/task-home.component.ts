@@ -14,7 +14,7 @@ import {NotificationsService} from "angular2-notifications";
 })
 
 export class TaskHomeComponent implements OnInit {
-
+    tasksOptions;
     title : string = 'Задачи';
     tasks : TaskEntry[] = [];
     errorMessage : string;
@@ -39,6 +39,7 @@ export class TaskHomeComponent implements OnInit {
                 },
                 error => this.errorMessage = <any>error
             );
+        this.loadAvailableTasks();
     }
 
 
@@ -64,6 +65,15 @@ export class TaskHomeComponent implements OnInit {
                 task => this.deleteTask(taskIndex),
                 error => this.errorMessage = <any>error
             );
+    }
+
+    private loadAvailableTasks() {
+        this.taskService.getTasks().subscribe(
+            tasks => {
+                this.tasksOptions = tasks
+            },
+            error => console.log(error)
+        );
     }
 
     onEntryConfirmed(task: TaskEntry) {
@@ -93,7 +103,17 @@ export class TaskHomeComponent implements OnInit {
             )
     }
 
+    private getTaskOptionByName(taskName) {
+        return this.tasksOptions.find(task => {
+            return task.title == taskName;
+        });
+    }
+
     onRepetitiveTaskCreated(task : Task) : void {
+        const chosenTask = this.getTaskOptionByName(task);
+        if (chosenTask) {
+            task.id
+        }
         this.taskService.addTask(task)
             .subscribe(
                 tasks => tasks,

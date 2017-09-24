@@ -4,7 +4,6 @@ import {FormsModule} from "@angular/forms";
 import {FoodRoutingModule} from "./food-routing.module";
 import {FoodHomeComponent} from "./food-home/food-home.component";
 import {FoodComponent} from "./food.component";
-import {MaterialModule} from "@angular/material";
 import { IngredientsHomeComponent } from './ingredients/ingredients-home/ingredients-home.component';
 import { IngredientFormComponent } from './ingredients/ingredient-form/ingredient-form.component';
 import { IngredientsListComponent } from './ingredients/ingredients-list/ingredients-list.component';
@@ -32,14 +31,17 @@ import { MealsComponent } from './meals/meals.component';
 import { MealsFormComponent } from './meals/meals-form/meals-form.component';
 import {MealTypesService} from "./shared/meal-types.service";
 import { MealsFormHomeComponent } from './meals/meals-form-home/meals-form-home.component';
+import {MdInputModule} from '@angular/material';
+import {MdSelectModule} from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         FoodRoutingModule,
-        MaterialModule,
-        DayMealListModule
+        DayMealListModule,
+        MdInputModule,
+        MdSelectModule
     ],
     declarations: [
         FoodHomeComponent,

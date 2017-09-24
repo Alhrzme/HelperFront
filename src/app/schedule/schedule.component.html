@@ -3,11 +3,11 @@
 </h2>
 <div class="row">
     <div class="col-md-2 col-md-offset-5">
-        <md-input-container>
+        <md-form-field>
             <label for="date"></label>
             <input [mdDatepicker]="datePicker" mdInput name="date" (click)="datePicker.open()" id="date" required>
-            <button mdSuffix [mdDatepickerToggle]="datePicker"></button>
-        </md-input-container>
+            <md-datepicker-toggle mdSuffix [for]="datePicker"></md-datepicker-toggle>
+        </md-form-field>
         <md-datepicker #datePicker (selectedChanged)="onChange($event)"></md-datepicker>
     </div>
 </div>

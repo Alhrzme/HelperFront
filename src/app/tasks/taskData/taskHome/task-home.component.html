@@ -10,7 +10,7 @@
                 </md-option>
             </md-select>
             <task-form *ngIf="selectedForm == 'single'" (created)="onTaskCreated($event)"></task-form>
-            <repetitive-task-form *ngIf="selectedForm == 'repetitive'" (created)="onRepetitiveTaskCreated($event)"></repetitive-task-form>
+            <repetitive-task-form *ngIf="selectedForm == 'repetitive'" (created)="onRepetitiveTaskCreated($event)" [tasksOptions]="tasksOptions"></repetitive-task-form>
         </div>
         <div id="list">
             <task-list [taskEntries]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)" (confirmed)="onTaskEdited($event)"></task-list>

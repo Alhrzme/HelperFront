@@ -1,21 +1,21 @@
 <form (submit)="onSubmit()" #recipeForm="ngForm">
     <div class="row">
         <div class="col-md-12 text-input-block">
-            <md-input-container class="example-full-width">
+            <md-form-field class="example-full-width">
                 <label for="title"></label>
                 <input id="title" mdInput type="text" name="title" placeholder="Название рецепта"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="recipe.title">
-            </md-input-container>
+            </md-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <md-input-container class="example-full-width">
+            <md-form-field class="example-full-width">
                 <label for="description">Текст рецепта</label>
                 <textarea id="description" #description mdInput type="text" name="description"
                           floatingPlaceholder="false" maxlength="1000" [(ngModel)]="recipe.description"></textarea>
                 <md-hint align="end">{{description.value.length}} / 1000</md-hint>
-            </md-input-container>
+            </md-form-field>
         </div>
     </div>
     <div class="row">

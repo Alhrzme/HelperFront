@@ -1,11 +1,11 @@
 <form (submit)="onSubmit()" #itemForm="ngForm">
     <div class="row">
         <div class="col-md-6 text-input-block">
-            <md-input-container class="example-full-width">
+            <md-form-field class="example-full-width">
                 <label for="title"></label>
                 <input id="title" mdInput type="text" name="title" placeholder="Название"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="item.title">
-            </md-input-container>
+            </md-form-field>
         </div>
         <div class="col-md-3" style="padding-top: 1.9em">
             <md-select id="dimension" placeholder="Размерность" #dimension [(ngModel)]="item.dimension"

@@ -1,13 +1,14 @@
 <form (submit)="onSubmit()" #form="ngForm">
     <div class="row">
         <div class="col-md-12">
-            <md-input-container class="example-full-width">
+            <md-form-field class="example-full-width">
                 <label for="title">Что нужно сделать?</label>
-                <input id="title" mdInput type="text" name="title" [mdAutocomplete]="taskNameAuto" (keyup)="onTaskTitleChanged()"
+                <input id="title" mdInput type="text" name="title" (keyup)="onTaskTitleChanged()"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title" required>
-            </md-input-container>
-            <md-autocomplete #taskNameAuto="mdAutocomplete">
-                <md-option *ngFor="let option of filteredOptions" [value]="option.id">
+            </md-form-field>
+
+            <md-autocomplete>
+                <md-option *ngFor="let option of filteredOptions"  [value]="option.title">
                     {{ option.title }}
                 </md-option>
             </md-autocomplete>
@@ -40,32 +41,32 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <md-input-container class="example-fill-space">
+            <md-form-field class="example-fill-space">
                 <label for="beginDate"></label>
                 <input type="date" mdInput name="beginDate" [(ngModel)]="task.condition.beginDate" id="beginDate" required>
-            </md-input-container>
+            </md-form-field>
         </div>
         <div class="col-md-4">
-            <md-input-container class="example-fill-space">
+            <md-form-field class="example-fill-space">
                 <label for="endDate"></label>
                 <input type="date" mdInput name="endDate" [(ngModel)]="task.condition.endDate" id="endDate" required>
-            </md-input-container>
+            </md-form-field>
         </div>
         <div class="col-md-2">
-            <md-input-container class="example-full-width">
+            <md-form-field class="example-full-width">
                 <input mdInput type="time" [(ngModel)]="task.beginTime"
                        name="begin" class="validate" id="beginTime">
                 <label for="beginTime"></label>
-            </md-input-container>
+            </md-form-field>
         </div>
         <div class="col-md-2">
-            <md-input-container class="example-full-width">
+            <md-form-field class="example-full-width">
                 <input mdInput type="time" name="endTime" [(ngModel)]="task.endTime" class="validate" id="endTime">
                 <label for="endTime"></label>
-            </md-input-container>
+            </md-form-field>
         </div>
     </div>
-    <md-checkbox name="isFixed" [(ngModel)]="task.condition.newTasksCreate">Создать задачу создания новых повторяющихся задач?
+    <md-checkbox name="newTasksCreate" [(ngModel)]="task.condition.newTasksCreate">Создать задачу создания новых повторяющихся задач?
     </md-checkbox>
     <div class="col-md-3 col-md-offset-9" style="padding-top: 1.5em">
         <button type="submit" md-raised-button id="addButton">

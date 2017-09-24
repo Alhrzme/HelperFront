@@ -2,15 +2,17 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ChallengesListComponent} from "./challenges-list.component";
 import {ChallengesListItemComponent} from "./challenges-list-item/challenges-list-item.component";
-import {MaterialModule} from "@angular/material";
 import {ChallengesFormComponent} from "../challenges-form/challenges-form.component";
 import {FormsModule} from "@angular/forms";
+import {MdInputModule, MdButtonModule, MdSelectModule} from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
-        MaterialModule,
-        FormsModule
+        FormsModule,
+        MdInputModule,
+        MdButtonModule,
+        MdSelectModule
     ],
     declarations: [
         ChallengesListComponent,

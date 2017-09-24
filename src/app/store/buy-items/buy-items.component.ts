@@ -10,7 +10,6 @@ import {ItemService} from "../shared/item.service";
     styleUrls: ['./buy-items.component.css']
 })
 export class BuyItemsComponent implements OnInit {
-
     buyItems: BuyItem[];
     items: Item[];
     constructor(private buyItemsService: BuyItemService, private itemsService: ItemService) {
@@ -38,9 +37,8 @@ export class BuyItemsComponent implements OnInit {
     onBuyItemEdited(buyItem: BuyItem) {
         let buyItemIndex;
         this.buyItems.forEach((item, index) => {
-            if (item.id = buyItem.id) {
+            if (item.id == buyItem.id) {
                 buyItemIndex = index;
-                console.log(index);
             }
         });
         this.buyItemsService.editBuyItem(buyItem).subscribe(

@@ -21,12 +21,13 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
 import {StoreModule} from "./store/store.module";
 import { StoreHomeComponent } from './store-home/store-home.component';
 import {PushNotificationsService} from "angular2-notifications";
+import { KeysPipe } from './shared/pipes/keys.pipe';
 
 @NgModule({
     declarations: [
         AppComponent,
         TimerComponent,
-        StoreHomeComponent,
+        StoreHomeComponent
     ],
     imports: [
         FoodModule,

@@ -1,6 +1,6 @@
-<md-list>
-    <h3 md-subheader>Итемы</h3>
-    <md-list-item *ngFor="let buyItem of sortedBuyItems">
+<md-list *ngFor="let category of (buyItemsByCategories|keys)">
+    <h3 md-subheader>{{category}}</h3>
+    <md-list-item *ngFor="let buyItem of buyItemsByCategories[category]">
         <md-icon md-list-icon mdTooltip="{{buyItem.item.category.title}}" mdTooltipPosition="above">{{buyItem.item.category.icon}}</md-icon>
         <h4 md-line>{{buyItem.item.title}}</h4>
         <p md-line> {{buyItem.quantity}}{{buyItem.item.dimension}}</p>

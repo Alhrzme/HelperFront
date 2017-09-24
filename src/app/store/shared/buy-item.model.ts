@@ -9,4 +9,5 @@ export class BuyItem {
     item: Item;
     quantity: number;
     icon: string;
+    isBought: boolean;
 }

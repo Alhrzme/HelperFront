@@ -39,7 +39,8 @@ export class TaskService extends BaseService {
     getTaskLinesLengths(tasksIds, date) {
         let url = this.baseApiUrl + 'tasks_line_lengths';
         url = this.addTokenToRequest(url);
-
+console.log(tasksIds);
+console.log(date);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
         const body = JSON.stringify({tasksIds: tasksIds, date: date});

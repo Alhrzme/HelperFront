@@ -23,11 +23,15 @@ export class BuyItemService extends BaseService {
     }
 
     editBuyItem(item: BuyItem): Observable<BuyItem> {
-        return this.put(item);
+        const editedBuyItem = JSON.parse(JSON.stringify(item));
+        editedBuyItem.item = editedBuyItem.item.id;
+
+        return this.put(editedBuyItem);
     }
 
     deleteBuyItem(item: BuyItem): Observable<BuyItem> {
         return this.httpDelete(item);
     }
+
 
 }

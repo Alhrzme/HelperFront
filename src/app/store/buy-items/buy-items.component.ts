@@ -35,6 +35,24 @@ export class BuyItemsComponent implements OnInit {
         );
     }
 
+    onBuyItemEdited(buyItem: BuyItem) {
+        let buyItemIndex;
+        this.buyItems.forEach((item, index) => {
+            if (item.id = buyItem.id) {
+                buyItemIndex = index;
+                console.log(index);
+            }
+        });
+        this.buyItemsService.editBuyItem(buyItem).subscribe(
+            (buyItem) => {
+                if (buyItem.isBought) {
+                    this.buyItems.splice(buyItemIndex, 1);
+                }
+            },
+            error => console.log(error)
+        );
+    }
+
     onBuyItemCreated(item: BuyItem) {
         this.buyItemsService.addItem(item).subscribe(
             item => {

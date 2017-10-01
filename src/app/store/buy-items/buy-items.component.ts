@@ -45,6 +45,7 @@ export class BuyItemsComponent implements OnInit {
             (buyItem) => {
                 if (buyItem.isBought) {
                     this.buyItems.splice(buyItemIndex, 1);
+                    this.buyItems = this.buyItems.slice(0);
                 }
             },
             error => console.log(error)

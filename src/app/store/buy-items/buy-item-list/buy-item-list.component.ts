@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {BuyItem} from "../../shared/buy-item.model";
 
 @Component({
@@ -6,13 +6,14 @@ import {BuyItem} from "../../shared/buy-item.model";
     templateUrl: './buy-item-list.component.html',
     styleUrls: ['./buy-item-list.component.css']
 })
-export class BuyItemListComponent implements OnInit {
+export class BuyItemListComponent implements OnInit, OnChanges {
 
     @Input() buyItems: BuyItem[];
-    buyItemsByCategories = [];
+    buyItemsByCategories;
     @Output() bought = new EventEmitter<BuyItem>();
 
     sortBuyItemsByCategories() {
+        this.buyItemsByCategories = [];
         this.buyItems.forEach(buyItem => {
             const category = buyItem.item.category.title;
             this.buyItemsByCategories[category]
@@ -26,6 +27,12 @@ export class BuyItemListComponent implements OnInit {
 
     ngOnInit() {
         this.sortBuyItemsByCategories();
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['buyItems']) {
+            this.sortBuyItemsByCategories();
+        }
     }
 
     onBoughtButtonClick(buyItem: BuyItem) {

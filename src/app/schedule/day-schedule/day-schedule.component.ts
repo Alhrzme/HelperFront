@@ -57,6 +57,7 @@ export class DayScheduleComponent implements OnInit {
                     },
                     error => this.errorMessage = <any>error
                 );
+            this.getCompletedDays();
         });
     }
 
@@ -68,6 +69,12 @@ export class DayScheduleComponent implements OnInit {
         this.tasksService.getTaskLinesLengths(taskIds, this.date).subscribe(
             lines => this.tasksLinesLengths = lines,
             error => console.log(error)
+        );
+    }
+
+    private getCompletedDays() {
+        this.tasksService.getNumberOfDaysWithCompletedTasks(this.date).subscribe(
+            res => console.log(res)
         );
     }
 

@@ -6,7 +6,7 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class BaseService {
 
-    // protected baseApiUrl: string = 'http://kenedias.bget.ru/web/api/v1/';
+    // protected baseApiUrl: string = 'http://twto.ru/web/api/v1/';
     protected baseApiUrl: string = 'http://localhost:8080/app_dev.php/api/v1/';
     protected urlEnd: string;
     protected entities;

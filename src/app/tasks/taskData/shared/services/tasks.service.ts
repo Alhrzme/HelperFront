@@ -39,13 +39,21 @@ export class TaskService extends BaseService {
     getTaskLinesLengths(tasksIds, date) {
         let url = this.baseApiUrl + 'tasks_line_lengths';
         url = this.addTokenToRequest(url);
-console.log(tasksIds);
-console.log(date);
+
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
         const body = JSON.stringify({tasksIds: tasksIds, date: date});
 
         return this.http.post(url, body, options)
+            .map(BaseService.extractData)
+            .catch(BaseService.handleError);
+    }
+
+    getNumberOfDaysWithCompletedTasks(date) {
+        let url = this.baseApiUrl + 'length_of_completed_tasks?date=' + date;
+        url = this.addTokenToRequest(url, true);
+
+        return this.http.get(url)
             .map(BaseService.extractData)
             .catch(BaseService.handleError);
     }

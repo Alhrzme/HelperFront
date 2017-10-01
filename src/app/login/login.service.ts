@@ -12,7 +12,7 @@ export class LoginService {
     private isLoggedIn: boolean = false;
     redirectUrl: string = '/tasks';
 
-    // url: string = 'http://kenedias.bget.ru/web/api/v1/';
+    // url: string = 'http://twto.ru/web/api/v1/';
     url: string = 'http://localhost:8080/app_dev.php/api/v1/';
 
     constructor(private http: Http, private router: Router, private notifications: NotificationsService) {

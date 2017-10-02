@@ -1,9 +1,15 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <period-form [periods]="periods" (created)="onPeriodCreated($event)"></period-form>
-        <period-list [periods]="periods" (removed)="onPeriodRemoved($event)" (changed)="onPeriodChanged($event)"></period-list>
+        <period-list [periods]="periods" (removed)="onPeriodRemoved($event)"
+                     (changed)="onPeriodChanged($event)"></period-list>
+        <div class="completed-task-days-block">
+            <span class="completed-task-days-number">{{completedDayNumber}}</span>
+            дней подряд выполнены все задачи.
+        </div>
         <div *ngIf="tasks.length > 0 && tasksLinesLengths">
-            <task-list [lineLengths]="tasksLinesLengths" [taskEntries]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)"></task-list>
+            <task-list [lineLengths]="tasksLinesLengths" [taskEntries]="tasks" (deleted)="onTaskDeleted($event)"
+                       (edited)="onTaskEdited($event)"></task-list>
         </div>
     </div>
 </div>

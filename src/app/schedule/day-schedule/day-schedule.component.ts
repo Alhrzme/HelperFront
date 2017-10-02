@@ -20,6 +20,7 @@ export class DayScheduleComponent implements OnInit {
     tasks: TaskEntry[] = [];
     errorMessage: string = '';
     date: string;
+    completedDayNumber: number;
 
     constructor(private route: ActivatedRoute,
                 private periodService: PeriodService,
@@ -74,7 +75,8 @@ export class DayScheduleComponent implements OnInit {
 
     private getCompletedDays() {
         this.tasksService.getNumberOfDaysWithCompletedTasks(this.date).subscribe(
-            res => console.log(res)
+            number => this.completedDayNumber = number,
+            error => console.log(error)
         );
     }
 

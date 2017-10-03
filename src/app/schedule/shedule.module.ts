@@ -1,7 +1,10 @@
 import {NgModule}       from '@angular/core';
 import {CommonModule}   from '@angular/common';
 import {FormsModule}    from '@angular/forms';
-import {MdDatepickerModule, MdNativeDateModule, MdInputModule, MdButtonModule, MdIconModule} from "@angular/material";
+import {
+    MdDatepickerModule, MdNativeDateModule, MdInputModule, MdButtonModule, MdIconModule,
+    MdTabsModule
+} from "@angular/material";
 
 import {ScheduleRoutingModule} from "./shedule-routing.module";
 import {DayScheduleComponent} from "./day-schedule/day-schedule.component";
@@ -31,6 +34,7 @@ import {TaskEntriesService} from "../tasks/taskData/shared/services/task-entries
         TaskListModule,
         MdDatepickerModule,
         MdNativeDateModule,
+        MdTabsModule
     ],
     declarations: [
         WindowComponent,

@@ -18,6 +18,9 @@ export class TimeHelper {
         return moment().format(this.DATE_FORMAT);
     }
 
+    /**
+     * @returns {moment.Moment}
+     */
     public static getCurrentTime() {
         return moment();
     }
@@ -63,6 +66,11 @@ export class TimeHelper {
         return TimeHelper.getDate(firstDateString).diff(TimeHelper.getDate(secondDateString), dimension);
     }
 
+    /**
+     * @param dateString
+     * @param dateFormat
+     * @returns {moment.Moment}
+     */
     public static getDate(dateString, dateFormat = this.DATE_FORMAT) {
         return moment(dateString, dateFormat);
     }

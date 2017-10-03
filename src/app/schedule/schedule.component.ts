@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import * as moment from 'moment';
+import {TimeHelper} from "../shared/services/time-helper.service";
 
 @Component({
     selector: 'app-schedule',
@@ -35,5 +36,12 @@ export class ScheduleComponent implements OnInit {
                 }
             }
         });
+    }
+
+    getTitle() {
+        const currentDate = TimeHelper.getDate(this.date, TimeHelper.INPUT_DATE_FORMAT);
+        const format = currentDate.year() === moment().year() ? "DD MMMM" : "DD MMMM YYYY года";
+
+        return currentDate.format(format);
     }
 }

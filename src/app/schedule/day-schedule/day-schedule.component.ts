@@ -133,4 +133,14 @@ export class DayScheduleComponent implements OnInit {
                 error => this.errorMessage = <any>error
             )
     }
+
+    getDaysString() {
+        if (this.completedDayNumber !== 11 && this.completedDayNumber % 10 === 1) {
+            return 'день';
+        } else if ([2, 3, 4,].includes(this.completedDayNumber % 10) && ![12,13,14].includes(this.completedDayNumber)) {
+            return 'дня';
+        }
+
+        return 'дней';
+    }
 }

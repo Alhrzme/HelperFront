@@ -5,6 +5,7 @@ import {NotificationsService, PushNotificationsService} from "angular2-notificat
 import {TimeHelper} from "./shared/services/time-helper.service";
 import {TaskEntriesService} from "./tasks/taskData/shared/services/task-entries.service";
 import { isDevMode } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
             this._push.requestPermission();
             this.checkTasks();
         }
+        moment.locale('ru');
     }
 
     options = {

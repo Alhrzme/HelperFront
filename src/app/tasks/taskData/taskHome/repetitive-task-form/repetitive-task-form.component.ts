@@ -4,6 +4,7 @@ import {Task} from "../../shared/models/task.model";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
 import {DaysOfWeek} from "../../../../shared/common/DaysOfWeek";
 import {TaskService} from "../../shared/services/tasks.service";
+import {FormControl} from "@angular/forms";
 
 @Component({
     selector: 'repetitive-task-form',
@@ -18,6 +19,7 @@ export class RepetitiveTaskFormComponent implements OnInit {
     filteredOptions = [];
     @Output() created: EventEmitter<Task> = new EventEmitter<Task>();
     daysOfWeek = DaysOfWeek.getDaysOfWeek();
+    myControl: FormControl = new FormControl();
 
     weekFrequencyData = DaysOfWeek.getWeekFrequencyData();
 

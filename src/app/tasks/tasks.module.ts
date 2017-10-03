@@ -1,6 +1,6 @@
 import {NgModule}       from '@angular/core';
 import {CommonModule}   from '@angular/common';
-import {FormsModule}    from '@angular/forms';
+import {FormsModule, ReactiveFormsModule}    from '@angular/forms';
 
 import {TaskDataComponent}    from './taskData/task-data.component';
 import {TaskFormComponent}  from './taskData/taskHome/task-form/task-form.component';
@@ -24,7 +24,7 @@ import {MdAutocompleteModule, MdSelectModule, MdButtonModule, MdInputModule, MdC
         MdInputModule,
         MdSelectModule,
         MdAutocompleteModule,
-        MdCheckboxModule
+        MdCheckboxModule,
     ],
     declarations: [
         TaskDataComponent,

@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {MdDialog} from "@angular/material";
+import {DialogPosition, MdDialog} from "@angular/material";
 import {TaskMoveModalComponent} from "./task-move-modal/task-move-modal.component";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
 import {TaskEntry} from "../../shared/models/task-entry.model";
@@ -38,7 +38,6 @@ export class TaskListItemComponent implements OnInit {
     moveTask() {
         let dialogRef = this.dialog.open(TaskMoveModalComponent, {
             width: '300px',
-            position: 'top'
         });
         dialogRef.componentInstance.data = TimeHelper.getDateDiff(this.taskEntry.deadLine, this.taskEntry.date, 'days');
         dialogRef.afterClosed().subscribe(

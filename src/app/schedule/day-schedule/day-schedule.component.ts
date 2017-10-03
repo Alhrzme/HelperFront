@@ -121,13 +121,17 @@ export class DayScheduleComponent implements OnInit {
         this.taskEntriesService.editEntry(task)
             .subscribe(
                 task => {
-                    if ((this.date != task.date || task.isCompleted) && taskIndex > -1) {
+                    const isTaskRescheduled = this.date != task.date;
+                    const isTaskCompleted = task.isCompleted;
+                    const isAllTasksCompleted = this.tasks.length == 0;
+                    if ((isTaskRescheduled || isTaskCompleted) && taskIndex > -1) {
                         this.tasks.splice(taskIndex, 1);
-                        const successMessage = this.tasks.length > 0
-                            ? 'Еще 1 задача выполнена! Вы великолепны!'
+                        const successMessage = !isAllTasksCompleted
+                            ? (isTaskCompleted ? 'Еще 1 задача выполнена! Вы великолепны!' : 'Задача успешно перенесена!')
                             : 'Все задачи на сегодня выполнены!';
 
-                        this.notification.success('Вы молодец!', successMessage);
+                        const headerText = isAllTasksCompleted || isTaskCompleted ? 'Вы молодец!' : 'Задача пересена';
+                        this.notification.success(headerText, successMessage);
                     }
                 },
                 error => this.errorMessage = <any>error
@@ -137,7 +141,7 @@ export class DayScheduleComponent implements OnInit {
     getDaysString() {
         if (this.completedDayNumber !== 11 && this.completedDayNumber % 10 === 1) {
             return 'день';
-        } else if ([2, 3, 4,].includes(this.completedDayNumber % 10) && ![12,13,14].includes(this.completedDayNumber)) {
+        } else if ([2, 3, 4,].includes(this.completedDayNumber % 10) && ![12, 13, 14].includes(this.completedDayNumber)) {
             return 'дня';
         }
 

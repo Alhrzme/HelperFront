@@ -4,11 +4,11 @@
             <md-form-field class="example-full-width">
                 <label for="title">Что нужно сделать?</label>
                 <input id="title" mdInput type="text" name="title" (keyup)="onTaskTitleChanged()"
-                       floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title" required>
+                       floatingPlaceholder="false" maxlength="100" [mdAutocomplete]="auto" [(ngModel)]="task.title" required>
             </md-form-field>
 
-            <md-autocomplete>
-                <md-option *ngFor="let option of filteredOptions" [value]="option.title">
+            <md-autocomplete #auto="mdAutocomplete">
+                <md-option *ngFor="let option of filteredOptions"  [value]="option.title">
                     {{ option.title }}
                 </md-option>
             </md-autocomplete>

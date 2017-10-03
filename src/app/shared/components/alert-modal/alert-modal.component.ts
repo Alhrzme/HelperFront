@@ -15,6 +15,10 @@ export class AlertModalComponent implements OnInit {
         this.dialogRef.close(true)
     }
 
+    onCloseClick() {
+        this.dialogRef.close(false)
+    }
+
     ngOnInit() {
     }
 

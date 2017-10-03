@@ -59,6 +59,7 @@ export class BuyItemsComponent implements OnInit {
                     this.buyItems = [];
                 }
                 this.buyItems.push(item);
+                this.buyItems = this.buyItems.slice(0);
             },
             error => console.log(error)
         );

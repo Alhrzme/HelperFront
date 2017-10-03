@@ -13,14 +13,15 @@ import {TimeHelper} from "../../../../shared/services/time-helper.service";
 
 export class TaskListComponent {
     @Input() lineLengths;
+    @Input() date;
     @Input() taskEntries: TaskEntry[];
     @Output() deleted: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
     @Output() edited: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
     @Output() confirmed: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
-    showAllTasks = true;
+    showAllTasks = false;
 
     getShownTasks() {
-        return !this.showAllTasks ? this.taskEntries : this.taskEntries.filter((taskEntry: TaskEntry) => {
+        return this.showAllTasks ? this.taskEntries : this.taskEntries.filter((taskEntry: TaskEntry) => {
             const currentTime = TimeHelper.getCurrentTime();
             const taskBeginTime = taskEntry.task.beginTime;
 

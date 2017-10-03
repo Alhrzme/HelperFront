@@ -6,7 +6,10 @@ import {TaskService} from "../../shared/services/tasks.service";
 import {FormsModule} from "@angular/forms";
 import {TaskMoveModalComponent} from "../task-list-item/task-move-modal/task-move-modal.component";
 import {AlertModalComponent} from "../../../../shared/components/alert-modal/alert-modal.component";
-import {MdSelectModule, MdTooltipModule, MdButtonModule, MdInputModule, MdIconModule} from '@angular/material';
+import {
+    MdSelectModule, MdTooltipModule, MdButtonModule, MdInputModule, MdIconModule,
+    MdButtonToggleModule
+} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -16,7 +19,8 @@ import {MdSelectModule, MdTooltipModule, MdButtonModule, MdInputModule, MdIconMo
         MdInputModule,
         MdTooltipModule,
         MdSelectModule,
-        MdIconModule
+        MdIconModule,
+        MdButtonToggleModule
     ],
     declarations: [
         TaskListComponent,

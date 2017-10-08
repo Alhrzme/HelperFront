@@ -3,8 +3,7 @@ import * as moment from 'moment';
 import {Task} from "../../shared/models/task.model";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
 import {DaysOfWeek} from "../../../../shared/common/DaysOfWeek";
-import {TaskService} from "../../shared/services/tasks.service";
-import {FormControl} from "@angular/forms";
+import {MdAutocompleteSelectedEvent} from "@angular/material";
 
 @Component({
     selector: 'repetitive-task-form',
@@ -19,7 +18,8 @@ export class RepetitiveTaskFormComponent implements OnInit {
     filteredOptions = [];
     @Output() created: EventEmitter<Task> = new EventEmitter<Task>();
     daysOfWeek = DaysOfWeek.getDaysOfWeek();
-    myControl: FormControl = new FormControl();
+    isSelected = false;
+    selectedTask: Task;
 
     weekFrequencyData = DaysOfWeek.getWeekFrequencyData();
 
@@ -36,7 +36,15 @@ export class RepetitiveTaskFormComponent implements OnInit {
     }
 
     onSubmit() {
+        if (this.selectedTask) {
+            this.task.title = this.selectedTask.title;
+        }
+        if (this.isSelected) {
+            this.task.id = this.selectedTask.id;
+        }
+
         this.task.description = this.task.title;
+
         if (this.task.condition.beginDate) {
             this.task.condition.beginDate = TimeHelper.getFormattedDateString(this.task.condition.beginDate);
         }
@@ -55,6 +63,16 @@ export class RepetitiveTaskFormComponent implements OnInit {
                 ? taskName.indexOf(this.task.title) > -1
                 : taskName.startsWith(this.task.title));
         });
+
+        const taskTitle = this.task.title['id'] ? this.task.title['title'] : this.task.title.replace(' ', '');
+        if (this.selectedTask) {
+            if (this.selectedTask.title != taskTitle) {
+                delete this.task.id;
+                this.isSelected = false;
+            } else {
+                this.setSelectedTask(this.selectedTask);
+            }
+        }
     }
 
     ngOnInit() {
@@ -65,5 +83,22 @@ export class RepetitiveTaskFormComponent implements OnInit {
     setInitDates() {
         this.task.condition.beginDate = moment().format(TimeHelper.INPUT_DATE_FORMAT);
         this.task.condition.endDate = moment().add(1, 'months').format(TimeHelper.INPUT_DATE_FORMAT);
+    }
+
+    displayFn(task: Task): string {
+        return task ? task.title : '';
+    }
+
+    onSelected(event: MdAutocompleteSelectedEvent) {
+        const selectedTask = event.option.value;
+
+        this.setSelectedTask(selectedTask);
+    }
+
+    setSelectedTask(selectedTask: Task) {
+        this.task.beginTime = selectedTask.beginTime;
+        this.task.endTime = selectedTask.endTime;
+        this.selectedTask = selectedTask;
+        this.isSelected = true;
     }
 }

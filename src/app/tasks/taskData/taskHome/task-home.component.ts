@@ -70,7 +70,7 @@ export class TaskHomeComponent implements OnInit {
     private loadAvailableTasks() {
         this.taskService.getTasks().subscribe(
             tasks => {
-                this.tasksOptions = tasks
+                this.tasksOptions = tasks;
             },
             error => console.log(error)
         );
@@ -103,18 +103,11 @@ export class TaskHomeComponent implements OnInit {
             )
     }
 
-    private getTaskOptionByName(taskName) {
-        return this.tasksOptions.find(task => {
-            return task.title == taskName;
-        });
-    }
-
     onRepetitiveTaskCreated(task : Task) : void {
-        const chosenTask = this.getTaskOptionByName(task);
-        if (chosenTask) {
-            task.id
+        if (!task.id) {
+            this.taskService.addTask(task)
         }
-        this.taskService.addTask(task)
+        this.taskService.addTask(task, )
             .subscribe(
                 tasks => tasks,
                 error => this.errorMessage = <any>error

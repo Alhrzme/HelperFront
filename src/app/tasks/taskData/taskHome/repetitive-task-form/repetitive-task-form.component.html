@@ -6,9 +6,8 @@
                 <input id="title" mdInput type="text" name="title" (keyup)="onTaskTitleChanged()"
                        floatingPlaceholder="false" maxlength="100" [mdAutocomplete]="auto" [(ngModel)]="task.title" required>
             </md-form-field>
-
-            <md-autocomplete #auto="mdAutocomplete">
-                <md-option *ngFor="let option of filteredOptions"  [value]="option.title">
+            <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelected($event)">
+                <md-option *ngFor="let option of filteredOptions"  [value]="option">
                     {{ option.title }}
                 </md-option>
             </md-autocomplete>
@@ -54,14 +53,14 @@
         </div>
         <div class="col-md-2">
             <md-form-field class="example-full-width">
-                <input mdInput type="time" [(ngModel)]="task.beginTime"
+                <input mdInput type="time" [(ngModel)]="task.beginTime" [disabled]="!!isSelected"
                        name="begin" class="validate" id="beginTime">
                 <label for="beginTime"></label>
             </md-form-field>
         </div>
         <div class="col-md-2">
             <md-form-field class="example-full-width">
-                <input mdInput type="time" name="endTime" [(ngModel)]="task.endTime" class="validate" id="endTime">
+                <input mdInput type="time" [disabled]="!!isSelected" name="endTime" [(ngModel)]="task.endTime" class="validate" id="endTime">
                 <label for="endTime"></label>
             </md-form-field>
         </div>

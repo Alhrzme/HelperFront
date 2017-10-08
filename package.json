@@ -54,7 +54,7 @@
     "node-gyp": "^3.6.2",
     "protractor": "5.1.1",
     "ts-node": "3.0.2",
-    "typescript": "^2.4.0",
+    "typescript": "^2.3.4",
     "webdriver-manager": "12.0.4",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-merge": "^4.1.0"

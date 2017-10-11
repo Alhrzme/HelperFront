@@ -104,10 +104,7 @@ export class TaskHomeComponent implements OnInit {
     }
 
     onRepetitiveTaskCreated(task : Task) : void {
-        if (!task.id) {
-            this.taskService.addTask(task)
-        }
-        this.taskService.addTask(task, )
+        this.taskService.addTask(task)
             .subscribe(
                 tasks => tasks,
                 error => this.errorMessage = <any>error

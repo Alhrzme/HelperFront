@@ -64,8 +64,8 @@ export class RepetitiveTaskFormComponent implements OnInit {
                 : taskName.startsWith(this.task.title));
         });
 
-        const taskTitle = this.task.title['id'] ? this.task.title['title'] : this.task.title.replace(' ', '');
-        if (this.selectedTask) {
+        if (this.selectedTask && this.task.title) {
+            const taskTitle = this.task.title['id'] ? this.task.title['title'] : this.task.title.replace(' ', '');
             if (this.selectedTask.title != taskTitle) {
                 delete this.task.id;
                 this.isSelected = false;
@@ -74,7 +74,7 @@ export class RepetitiveTaskFormComponent implements OnInit {
             }
         }
     }
-
+b
     ngOnInit() {
         this.setInitDates();
         this.task.condition.weekFrequency = 1;

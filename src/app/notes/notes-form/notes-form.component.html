@@ -12,9 +12,8 @@
         <div class="col-md-12">
             <md-form-field class="example-fill-space">
                 <label for="body">Содержание</label>
-                <textarea id="body" #body mdInput type="text" name="body"
-                          floatingPlaceholder="false" maxlength="500" [(ngModel)]="note.body"></textarea>
-                <md-hint align="end">{{body.value.length}} / 500</md-hint>
+                <textarea id="body" #body mdInput type="text" name="body" rows="10"
+                          floatingPlaceholder="false" [(ngModel)]="note.body"></textarea>
             </md-form-field>
         </div>
     </div>

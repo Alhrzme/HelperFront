@@ -70,7 +70,6 @@ export class BaseService {
 
         let body = isWithCondition ? this.convertWithCondition(result) : this.convertToString(result);
         console.log(body);
-
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers});
 

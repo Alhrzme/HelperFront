@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
                             continue;
                         }
 
-                        if (difference < 30) {
+                        if (difference < 30 && difference > -30) {
                             this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).subscribe(
                                 notification => {
                                     event.preventDefault(); // prevent the browser from focusing the Notification's tab

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
 import {Error} from "./error.model";
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ErrorsService extends BaseService {
@@ -9,7 +9,7 @@ export class ErrorsService extends BaseService {
     urlEnd:string = 'errors';
     entityName = 'error';
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 

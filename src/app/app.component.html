@@ -1,8 +1,8 @@
-<md-sidenav-container class="example-container" fullscreen>
-    <md-toolbar color="primary">
-        <md-menu></md-menu>
+<mat-sidenav-container class="example-container" fullscreen>
+    <mat-toolbar color="primary">
+        <mat-menu></mat-menu>
         <button md-icon-button (click)="sidenav.open()" *ngIf="isAuthorized()">
-            <md-icon>more_vert</md-icon>
+            <mat-icon>more_vert</mat-icon>
         </button>
         <span>Превозмогание</span>
         <span class="example-spacer"></span>
@@ -10,9 +10,9 @@
 
         <!-- This fills the remaining space of the current row -->
         <span class="example-fill-remaining-space"></span>
-    </md-toolbar>
+    </mat-toolbar>
     <div class="left-strip" (mouseenter)="sidenav.open()"></div>
-    <md-sidenav #sidenav class="example-sidenav" (mouseleave)="sidenav.close()">
+    <mat-sidenav #sidenav class="example-sidenav" (mouseleave)="sidenav.close()">
         <a md-menu-item routerLink="/schedule">Главная</a>
         <a md-menu-item routerLink="/tasks">Задачи</a>
         <a md-menu-item routerLink="/errors">Ошибки</a>
@@ -21,7 +21,7 @@
         <a md-menu-item routerLink="/food">Питание</a>
         <a md-menu-item routerLink="/challenges">Испытания</a>
         <a md-menu-item routerLink="/store/items">Хранилище</a>
-    </md-sidenav>
+    </mat-sidenav>
 
     <div class="container main-container">
         <div>
@@ -30,4 +30,4 @@
     </div>
     <simple-notifications [options]="options"></simple-notifications>
 
-</md-sidenav-container>
+</mat-sidenav-container>

@@ -1,7 +1,7 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
-import {HttpModule, JsonpModule} from '@angular/http';
+import {JsonpModule} from '@angular/http';
 import 'hammerjs';
 
 import {AppComponent} from './app.component';
@@ -16,11 +16,12 @@ import {NotesModule} from "./notes/notes.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FoodModule} from "./food/food.module";
 import {ChallengesModule} from "./challenges/challenges.module";
-import {SimpleNotificationsModule} from 'angular2-notifications';
+import {NotificationsService, SimpleNotificationsModule} from 'angular2-notifications';
 import {StoreModule} from "./store/store.module";
 import {StoreHomeComponent} from './store-home/store-home.component';
-import {PushNotificationsService} from "angular2-notifications";
-import {MdMenuModule, MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconModule} from "@angular/material";
+import {MatMenuModule, MatSidenavModule, MatToolbarModule, MatButtonModule, MatIconModule} from "@angular/material";
+import { CKEditorModule } from 'ng2-ckeditor';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -35,7 +36,7 @@ import {MdMenuModule, MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconMo
         ListenersModule,
         BrowserModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
         JsonpModule,
         AppRoutingModule,
         TasksModule,
@@ -45,14 +46,15 @@ import {MdMenuModule, MdSidenavModule, MdToolbarModule, MdButtonModule, MdIconMo
         BrowserAnimationsModule,
         ChallengesModule,
         SimpleNotificationsModule.forRoot(),
-        MdMenuModule,
-        MdSidenavModule,
-        MdToolbarModule,
-        MdButtonModule,
-        MdIconModule
+        MatMenuModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        CKEditorModule
     ],
     providers: [
-        PushNotificationsService
+        NotificationsService
     ],
     bootstrap: [AppComponent],
     exports: []

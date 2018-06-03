@@ -1,17 +1,19 @@
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Response} from "@angular/http";
 import {Injectable} from "@angular/core";
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/observable/of';
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {map, catchError} from 'rxjs/operators';
+import {Observable} from "rxjs/index";
+import { of } from 'rxjs';
 
 @Injectable()
 export class BaseService {
 
-    // protected baseApiUrl: string = 'https://api.twto.ru/web/api/v1/';
-    protected baseApiUrl: string = 'http://localhost:8080/app_dev.php/api/v1/';
+    protected baseApiUrl: string = 'https://api.twto.ru/web/api/v1/';
+    // protected baseApiUrl: string = 'http://localhost:8080/app_dev.php/api/v1/';
     protected urlEnd: string;
     protected entities;
     protected entityName: string;
-    protected http: Http;
+    protected http: HttpClient;
 
 
     public static handleError(error: any): Observable<any> {
@@ -20,8 +22,8 @@ export class BaseService {
     }
 
     public static extractData(res: Response) {
-        console.log(res.json());
-        return res.json().data;
+        console.log(res);
+        return res['data'];
     }
 
     public getSavedEntities(params?: string) {
@@ -30,7 +32,7 @@ export class BaseService {
             return this.gets(params);
         }
 
-        return Observable.of(this.entities[identifier]);
+        return of(this.entities[identifier]);
     }
 
     protected gets(params?: string) {
@@ -42,9 +44,9 @@ export class BaseService {
             url = this.addTokenToRequest(url);
         }
 
-        return this.http.get(url)
-            .map((res: Response) => {
-                let responseData = res.json().data;
+        return this.http.get(url).pipe(
+            map((res: Response) => {
+                let responseData = res.data;
                 console.log(responseData);
                 let identifier = params ? params : 'withoutParams';
                 if (!this.entities) {
@@ -52,17 +54,17 @@ export class BaseService {
                 }
                 this.entities[identifier] = responseData;
                 return responseData;
-            })
-            .catch(BaseService.handleError);
+            }),
+            catchError(BaseService.handleError));
     }
 
     protected get(id: number) {
         let url = this.baseApiUrl + this.urlEnd + '/' + id;
         url = this.addTokenToRequest(url);
 
-        return this.http.get(url)
-            .map(BaseService.extractData)
-            .catch(BaseService.handleError);
+        return this.http.get(url).pipe(
+            map(BaseService.extractData)
+            ,catchError(BaseService.handleError));
     }
 
     protected post(entity, url: string = this.baseApiUrl + this.urlEnd, isWithCondition = false) {
@@ -70,12 +72,11 @@ export class BaseService {
 
         let body = isWithCondition ? this.convertWithCondition(result) : this.convertToString(result);
         console.log(body);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-        return this.http.post(url, body, options)
-            .map(BaseService.extractData)
-            .catch(BaseService.handleError)
+        return this.http.post(url, body, {headers}).pipe(
+            map(BaseService.extractData)
+            , catchError(BaseService.handleError))
     }
 
     addTokenToObject(entity) {
@@ -99,24 +100,22 @@ export class BaseService {
         let result = this.addTokenToObject(entity);
         let body = this.convertToString(result);
 
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
 
-        return this.http.put(url, body, options)
-            .map(BaseService.extractData)
-            .catch(BaseService.handleError);
+        return this.http.put(url, body, {headers}).pipe(
+            map(BaseService.extractData)
+            ,catchError(BaseService.handleError));
     }
 
     protected httpDelete(entity) {
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
 
         let url = `${this.baseApiUrl + this.urlEnd}/${entity.id}`;
         url = this.addTokenToRequest(url, false);
 
-        return this.http.delete(url, options)
-            .map(BaseService.extractData)
-            .catch(BaseService.handleError);
+        return this.http.delete(url, {headers})
+            map(BaseService.extractData),
+            catchError(BaseService.handleError);
     }
 
     protected convertToString(entity) {

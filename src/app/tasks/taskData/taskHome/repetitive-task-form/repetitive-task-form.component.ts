@@ -3,7 +3,7 @@ import * as moment from 'moment';
 import {Task} from "../../shared/models/task.model";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
 import {DaysOfWeek} from "../../../../shared/common/DaysOfWeek";
-import {MdAutocompleteSelectedEvent} from "@angular/material";
+import {MatAutocompleteSelectedEvent} from "@angular/material";
 
 @Component({
     selector: 'repetitive-task-form',
@@ -89,7 +89,7 @@ b
         return task ? task.title : '';
     }
 
-    onSelected(event: MdAutocompleteSelectedEvent) {
+    onSelected(event: MatAutocompleteSelectedEvent) {
         const selectedTask = event.option.value;
 
         this.setSelectedTask(selectedTask);

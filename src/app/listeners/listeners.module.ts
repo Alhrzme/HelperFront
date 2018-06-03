@@ -7,16 +7,16 @@ import {CommonModule} from "@angular/common";
 import {ListenersComponent} from "./listeners.component";
 import { ListenersListItemComponent } from './listeners-list-item/listeners-list-item.component';
 import {ListenersService} from "../shared/listeners.service";
-import {MdInputModule, MdButtonModule, MdIconModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatIconModule} from '@angular/material';
 
 @NgModule({
     imports: [
-        MdButtonModule,
-        MdInputModule,
+        MatButtonModule,
+        MatInputModule,
         CommonModule,
         FormsModule,
         ListenersRoutingModule,
-        MdIconModule
+        MatIconModule
     ],
     declarations: [
         ListenersComponent,

@@ -1,11 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
 
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 import {Period} from "./period.model";
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class PeriodService extends BaseService {
@@ -13,25 +10,25 @@ export class PeriodService extends BaseService {
     entityName = 'period';
     urlEnd:string = 'periods';
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 
-    getPeriods(date: string): Observable<Period[]> {
+    getPeriods(date: string) {
         return this.gets('date=' + date);
     }
 
-    postPeriod(period:Period, date: string): Observable<Period> {
+    postPeriod(period:Period, date: string) {
         period.date = date;
 
         return this.post(period);
     }
 
-    putPeriod(period: Period): Observable<Period> {
+    putPeriod(period: Period) {
         return this.put(period);
     }
 
-    deletePeriod(period: Period): Observable<Period> {
+    deletePeriod(period: Period) {
         return this.httpDelete(period);
     }
 }

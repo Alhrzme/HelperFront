@@ -3,16 +3,16 @@ import {CommonModule} from '@angular/common';
 import {BuyItemListComponent} from './buy-item-list.component';
 import {BuyItemListItemComponent} from './buy-item-list-item/buy-item-list-item.component';
 import {KeysPipe} from "../../../shared/pipes/keys.pipe";
-import {MdInputModule, MdButtonModule, MdIconModule, MdTooltipModule, MdListModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule, MatListModule} from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
-        MdButtonModule,
-        MdInputModule,
-        MdIconModule,
-        MdTooltipModule,
-        MdListModule
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatListModule
     ],
     declarations: [
         BuyItemListComponent,

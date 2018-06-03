@@ -31,8 +31,8 @@ import { MealsComponent } from './meals/meals.component';
 import { MealsFormComponent } from './meals/meals-form/meals-form.component';
 import {MealTypesService} from "./shared/meal-types.service";
 import { MealsFormHomeComponent } from './meals/meals-form-home/meals-form-home.component';
-import {MdButtonModule, MdInputModule, MdTabsModule} from '@angular/material';
-import {MdSelectModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatTabsModule} from '@angular/material';
+import {MatSelectModule, MatIconModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -40,10 +40,12 @@ import {MdSelectModule} from '@angular/material';
         FormsModule,
         FoodRoutingModule,
         DayMealListModule,
-        MdInputModule,
-        MdSelectModule,
-        MdTabsModule,
-        MdButtonModule
+        MatInputModule,
+        MatSelectModule,
+        MatTabsModule,
+        MatButtonModule,
+        MatIconModule,
+        MatCheckboxModule
     ],
     declarations: [
         FoodHomeComponent,

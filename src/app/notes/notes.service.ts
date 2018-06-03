@@ -2,18 +2,18 @@ import {Injectable} from '@angular/core';
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
 import {Observable} from "rxjs";
 import {Note} from "./note.model";
-import {Http} from "@angular/http";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class NotesService extends BaseService {
     urlEnd:string = 'notes';
     entityName = 'note';
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 
-    addNote(note : Note): Observable<Note> {
+    addNote(note : Note) {
         return this.post(note);
     }
 
@@ -25,11 +25,11 @@ export class NotesService extends BaseService {
         return this.get(id);
     }
 
-    editNote(note: Note): Observable<Note> {
+    editNote(note: Note) {
         return this.put(note);
     }
 
-    deleteNote (note : Note): Observable<Note> {
+    deleteNote (note : Note) {
         return this.httpDelete(note);
     }
 }

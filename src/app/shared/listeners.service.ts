@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../tasks/taskData/shared/services/base-service.service";
-import {Http} from "@angular/http";
 import {Listener} from "../listeners/shared/listener.model";
 import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ListenersService extends BaseService {
@@ -10,7 +10,7 @@ export class ListenersService extends BaseService {
     protected urlEnd: string = 'listeners';
     entityName = 'listener';
 
-    constructor(protected http:Http) {
+    constructor(protected http:HttpClient) {
         super();
     }
 

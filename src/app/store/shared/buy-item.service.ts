@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
-import {Http} from "@angular/http";
 import {BuyItem} from "./buy-item.model";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/index";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class BuyItemService extends BaseService {
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 
@@ -18,18 +18,18 @@ export class BuyItemService extends BaseService {
         return this.gets();
     }
 
-    addItem(item: BuyItem): Observable<BuyItem> {
+    addItem(item: BuyItem) {
         return this.post(item);
     }
 
-    editBuyItem(item: BuyItem): Observable<BuyItem> {
+    editBuyItem(item: BuyItem) {
         const editedBuyItem = JSON.parse(JSON.stringify(item));
         editedBuyItem.item = editedBuyItem.item.id;
 
         return this.put(editedBuyItem);
     }
 
-    deleteBuyItem(item: BuyItem): Observable<BuyItem> {
+    deleteBuyItem(item: BuyItem) {
         return this.httpDelete(item);
     }
 

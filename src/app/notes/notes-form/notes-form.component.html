@@ -1,26 +1,26 @@
 <form (submit)="onSubmit()" #noteForm="ngForm">
     <div class="row">
         <div class="col-md-12 text-input-block">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <label for="title"></label>
-                <input id="title" mdInput type="text" name="title" placeholder="Заголовок"
+                <input id="title" matInput type="text" name="title" placeholder="Заголовок"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="note.title">
-            </md-form-field>
+            </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <md-form-field class="example-fill-space">
+            <mat-form-field class="example-fill-space">
                 <label for="body">Содержание</label>
-                <textarea id="body" #body mdInput type="text" name="body" rows="10"
+                <textarea id="body" #body matInput type="text" name="body" rows="10"
                           floatingPlaceholder="false" [(ngModel)]="note.body"></textarea>
-            </md-form-field>
+            </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class=" col-md-offset-9 col-md-3" style="padding-top: 1.5em">
             <button type="submit" md-raised-button id="addButton">
-                <md-icon class="material-icons">check</md-icon>
+                <mat-icon class="material-icons">check</mat-icon>
                 Добавить
             </button>
         </div>

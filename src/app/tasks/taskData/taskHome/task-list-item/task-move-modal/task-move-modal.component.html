@@ -1,11 +1,9 @@
 <h3 md-dialog-title>Перенести</h3>
-<md-dialog-content>
-    <md-select id="moveDay" placeholder="" name="dayOfWeek" [(ngModel)]="selectedVal">
-        <md-option *ngFor="let moveDayItem of getMoveDaysOptions()" [value]="moveDayItem.value">
-            {{ moveDayItem.title }}
-        </md-option>
-    </md-select>
-    <button md-icon-button type="button" (click)="moveTask()" mdTooltip="Перенести задачу">
-        <md-icon>find_replace</md-icon>
-    </button>
-</md-dialog-content>
+<mat-select id="moveDay" placeholder="" name="dayOfWeek" [(ngModel)]="selectedVal">
+    <mat-option *ngFor="let moveDayItem of getMoveDaysOptions()" [value]="moveDayItem.value">
+        {{ moveDayItem.title }}
+    </mat-option>
+</mat-select>
+<button md-icon-button type="button" (click)="moveTask()" matTooltip="Перенести задачу">
+    <mat-icon>find_replace</mat-icon>
+</button>

@@ -3,19 +3,19 @@
         <span class="time" *ngIf="taskEntry.task.beginTime || taskEntry.task.endTime">
             {{'(' +  (taskEntry.task.beginTime ? taskEntry.task.beginTime : '') + ' - ' + (taskEntry.task.endTime ? taskEntry.task.endTime : '') + ')'}}
         </span>
-        <span class="line-length-block" *ngIf="lineLength && lineLength > 0" mdTooltip="{{getTooltipText(lineLength)}}">
+        <span class="line-length-block" *ngIf="lineLength && lineLength > 0" matTooltip="{{getTooltipText(lineLength)}}">
             {{lineLength}}
         </span>
     </div>
     <div class="buttons col-md-4">
         <button *ngIf="!taskEntry.isCompleted" md-icon-button type="button" (click)="confirm()">
-            <md-icon>check</md-icon>
+            <mat-icon>check</mat-icon>
         </button>
         <button md-icon-button type="button" (click)="deleteTask()">
-            <md-icon>delete_forever</md-icon>
+            <mat-icon>delete_forever</mat-icon>
         </button>
         <button md-icon-button type="button" (click)="moveTask()" *ngIf="isDisplayMoveButton()">
-            <md-icon>find_replace</md-icon>
+            <mat-icon>find_replace</mat-icon>
         </button>
     </div>
 </div>

@@ -1,19 +1,19 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
 import {MealType} from "./mealType.model";
-import {Observable} from "rxjs/Observable";
-import {Http} from "@angular/http";
+import {Observable} from "rxjs/index";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class MealTypesService extends BaseService {
     urlEnd:string = 'mealtypes';
     entityName = 'mealType';
 
-    constructor( protected http: Http) {
+    constructor( protected http: HttpClient) {
         super();
     }
 
-    addMealType (mealType : MealType): Observable<MealType> {
+    addMealType (mealType : MealType) {
         return this.post(mealType);
     }
 
@@ -25,11 +25,11 @@ export class MealTypesService extends BaseService {
         return this.get(id);
     }
 
-    editMealType(mealType: MealType): Observable<MealType> {
+    editMealType(mealType: MealType) {
         return this.put(mealType);
     }
 
-    deleteMealType (mealType : MealType): Observable<MealType> {
+    deleteMealType (mealType : MealType) {
         return this.httpDelete(mealType);
     }
 }

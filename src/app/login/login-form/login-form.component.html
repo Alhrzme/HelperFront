@@ -1,22 +1,22 @@
 <form (submit)="onSubmit()" #loginForm="ngForm">
     <div class="row">
         <div class="col-md-4 text-input-block">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <label for="title"></label>
-                <input id="title" mdInput type="text" name="title" placeholder="Логин"
+                <input id="title" matInput type="text" name="title" placeholder="Логин"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="user.login">
-            </md-form-field>
+            </mat-form-field>
         </div>
         <div class="col-md-5 text-input-block">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <label for="password"></label>
-                <input id="password" mdInput type="text" name="login" placeholder="Пароль"
+                <input id="password" matInput type="text" name="login" placeholder="Пароль"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="user.password">
-            </md-form-field>
+            </mat-form-field>
         </div>
         <div class="col-md-3" style="padding-top: 1.5em">
             <button type="submit" md-raised-button id="addButton">
-                <md-icon class="material-icons">check</md-icon>
+                <mat-icon class="material-icons">check</mat-icon>
                 Войти
             </button>
         </div>

@@ -1,16 +1,16 @@
 <form (submit)="onSubmit()" #recipeForm="ngForm">
     <div class="row">
         <div class="col-md-6">
-            <md-select placeholder="" name="ingredient" [(ngModel)]="ingredientData.ingredient">
-                <md-option *ngFor="let ingredient of ingredients" [value]="ingredient">
+            <mat-select placeholder="" name="ingredient" [(ngModel)]="ingredientData.ingredient">
+                <mat-option *ngFor="let ingredient of ingredients" [value]="ingredient">
                     {{ ingredient.title }}
-                </md-option>
-            </md-select>
+                </mat-option>
+            </mat-select>
         </div>
         <div class="col-md-3">
-            <md-form-field>
-                <input mdInput type="number" name="ingredientsCount" [(ngModel)]="ingredientData.count">
-            </md-form-field>
+            <mat-form-field>
+                <input matInput type="number" name="ingredientsCount" [(ngModel)]="ingredientData.count">
+            </mat-form-field>
         </div>
         <div class="dimension col-md-1">
             <span *ngIf="ingredientData.ingredient">
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-2">
             <button type="submit" md-icon-button id="addButton">
-                <md-icon class="material-icons">add</md-icon>
+                <mat-icon class="material-icons">add</mat-icon>
             </button>
         </div>
     </div>

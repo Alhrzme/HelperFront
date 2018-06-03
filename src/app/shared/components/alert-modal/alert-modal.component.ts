@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 
 @Component({
     selector: 'app-alert-modal',
@@ -8,7 +8,7 @@ import {MdDialogRef} from "@angular/material";
 })
 export class AlertModalComponent implements OnInit {
 
-    constructor(private dialogRef: MdDialogRef<AlertModalComponent>) {
+    constructor(private dialogRef: MatDialogRef<AlertModalComponent>) {
     }
 
     onYesClick() {

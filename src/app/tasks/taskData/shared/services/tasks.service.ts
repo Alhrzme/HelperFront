@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Http, RequestOptions, Headers} from '@angular/http';
 
 import {Task} from "../models/task.model";
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
 import {BaseService} from "./base-service.service";
 import {TaskEntry} from "../models/task-entry.model";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {map, catchError} from 'rxjs/operators';
 
 @Injectable()
 export class TaskService extends BaseService {
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
     tasks : Task[] = [];
@@ -28,11 +24,11 @@ export class TaskService extends BaseService {
         return this.post(task, this.baseApiUrl + this.urlEnd, true);
     }
 
-    editTask(task: Task): Observable<Task> {
+    editTask(task: Task) {
         return this.put(task);
     }
 
-    deleteTask (task : Task): Observable<Task> {
+    deleteTask (task : Task) {
         return this.httpDelete(task);
     }
 
@@ -40,21 +36,20 @@ export class TaskService extends BaseService {
         let url = this.baseApiUrl + 'tasks_line_lengths';
         url = this.addTokenToRequest(url);
 
-        let headers = new Headers({'Content-Type': 'application/json'});
-        let options = new RequestOptions({headers});
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
         const body = JSON.stringify({tasksIds: tasksIds, date: date});
 
-        return this.http.post(url, body, options)
-            .map(BaseService.extractData)
-            .catch(BaseService.handleError);
+        return this.http.post(url, body, {headers}).pipe(
+            map(BaseService.extractData),
+            catchError(BaseService.handleError));
     }
 
     getNumberOfDaysWithCompletedTasks(date) {
         let url = this.baseApiUrl + 'length_of_completed_tasks?date=' + date;
         url = this.addTokenToRequest(url, true);
 
-        return this.http.get(url)
-            .map(BaseService.extractData)
-            .catch(BaseService.handleError);
+        return this.http.get(url).pipe(
+            map(BaseService.extractData),
+            catchError(BaseService.handleError));
     }
 }

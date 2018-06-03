@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
-import {Http} from "@angular/http";
 import {Dish} from "./dish.model";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/index";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class DishesService extends BaseService {
@@ -10,11 +10,11 @@ export class DishesService extends BaseService {
     protected urlEnd: string = 'dishes';
     protected entityName: string = 'dish';
 
-    constructor(protected http:Http) {
+    constructor(protected http:HttpClient) {
         super();
     }
 
-    addDish (dish : Dish): Observable<Dish> {
+    addDish (dish : Dish) {
         return this.post(dish);
     }
 
@@ -26,11 +26,11 @@ export class DishesService extends BaseService {
         return this.get(id);
     }
 
-    editDish(dish: Dish): Observable<Dish> {
+    editDish(dish: Dish) {
         return this.put(Dish);
     }
 
-    deleteDish (dish : Dish): Observable<Dish> {
+    deleteDish (dish : Dish) {
         return this.httpDelete(dish);
     }
 

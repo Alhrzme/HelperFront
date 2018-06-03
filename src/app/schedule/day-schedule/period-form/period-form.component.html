@@ -1,34 +1,34 @@
 <form (submit)="onSubmit()" #periodForm="ngForm">
     <div class="row">
         <div class="col-md-2">
-            <md-form-field class="example-full-width">
-                <input mdInput type="time" [(ngModel)]="period.begin"
+            <mat-form-field class="example-full-width">
+                <input matInput type="time" [(ngModel)]="period.begin"
                        name="begin" class="validate" id="begin" (change)="onBeginChange()" required>
                 <label for="begin"></label>
-            </md-form-field>
+            </mat-form-field>
         </div>
         <div class="col-md-2">
-            <md-form-field class="example-full-width">
-                <input mdInput type="time" name="end" [(ngModel)]="period.end" class="validate" id="end" required>
+            <mat-form-field class="example-full-width">
+                <input matInput type="time" name="end" [(ngModel)]="period.end" class="validate" id="end" required>
                 <label for="end"></label>
-            </md-form-field>
+            </mat-form-field>
         </div>
         <div class="col-md-5 text-input-block">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <label for="description"></label>
-                <input maxlength="100" floatingPlaceholder="false" mdInput type="text"
+                <input maxlength="100" floatingPlaceholder="false" matInput type="text"
                        [(ngModel)]="period.description"
                        name="description" id="description" placeholder="Что будем делать?"
                        required>
-            </md-form-field>
+            </mat-form-field>
         </div>
         <div class="col-md-2" style="padding-top: 1.5em">
             <button *ngIf="!isEdit" type="submit" md-raised-button>
-                <md-icon class="material-icons">check</md-icon>
+                <mat-icon class="material-icons">check</mat-icon>
                 Добавить
             </button>
             <button *ngIf="isEdit" type="submit" md-raised-button>
-                <md-icon class="material-icons">mode_edit</md-icon>
+                <mat-icon class="material-icons">mode_edit</mat-icon>
                 Изменить
             </button>
         </div>

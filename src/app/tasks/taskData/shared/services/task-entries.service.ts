@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "./base-service.service";
-import {Http} from "@angular/http";
 import {TaskEntry} from "../models/task-entry.model";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class TaskEntriesService extends BaseService {
 
     tasks: TaskEntry[];
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 

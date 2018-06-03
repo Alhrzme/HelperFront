@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <md-tab-group>
-            <md-tab label="Расписание">
+        <mat-tab-group>
+            <mat-tab label="Расписание">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <period-form [periods]="periods" (created)="onPeriodCreated($event)"></period-form>
@@ -9,8 +9,8 @@
                                      (changed)="onPeriodChanged($event)"></period-list>
                     </div>
                 </div>
-            </md-tab>
-            <md-tab label="Задачи">
+            </mat-tab>
+            <mat-tab label="Задачи">
                 <br>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-            </md-tab>
-        </md-tab-group>
+            </mat-tab>
+        </mat-tab-group>
     </div>
 </div>

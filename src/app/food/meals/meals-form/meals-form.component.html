@@ -1,64 +1,64 @@
 <form (submit)="onSubmit()" #form="ngForm">
     <div class="row">
         <div class="col-md-12">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <label for="title"></label>
-                <input id="title" mdInput type="text" name="title" placeholder="Название приема пищи"
+                <input id="title" matInput type="text" name="title" placeholder="Название приема пищи"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="rMeal.title" required>
-            </md-form-field>
+            </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <md-select id="dayOfweek" placeholder="День недели" #select [(ngModel)]="rMeal.daysOfWeek"
+            <mat-select id="dayOfweek" placeholder="День недели" #select [(ngModel)]="rMeal.daysOfWeek"
                        name="dayOfWeek" [multiple]="true">
-                <md-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
+                <mat-option *ngFor="let dayOfWeek of daysOfWeek" [value]="dayOfWeek.value">
                     {{ dayOfWeek.name }}
-                </md-option>
-            </md-select>
+                </mat-option>
+            </mat-select>
         </div>
         <div class="col-md-4">
-            <md-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="rMeal.weekFrequency"
+            <mat-select id="frequency" placeholder="Частота" #weekFrequency [(ngModel)]="rMeal.weekFrequency"
                        name="weekFrequency">
-                <md-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">
+                <mat-option *ngFor="let frequency of weekFrequencyData" [value]="frequency.value">
                     {{ frequency.name}}
-                </md-option>
-            </md-select>
+                </mat-option>
+            </mat-select>
         </div>
         <div class="col-md-4">
-            <md-select id="deadline" placeholder="Тип приема пищи" [(ngModel)]="rMeal.mealType" name="mealType">
-                <md-option *ngFor="let mealType of mealTypes" [value]="mealType">
+            <mat-select id="deadline" placeholder="Тип приема пищи" [(ngModel)]="rMeal.mealType" name="mealType">
+                <mat-option *ngFor="let mealType of mealTypes" [value]="mealType">
                     {{ mealType.title}}
-                </md-option>
-            </md-select>
+                </mat-option>
+            </mat-select>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4 dishes-select">
-            <md-select id="dishes" placeholder="Блюда" [multiple]="true" [(ngModel)]="rMeal.dishes" name="dishes">
-                <md-option *ngFor="let dish of dishes" [value]="dish">
+            <mat-select id="dishes" placeholder="Блюда" [multiple]="true" [(ngModel)]="rMeal.dishes" name="dishes">
+                <mat-option *ngFor="let dish of dishes" [value]="dish">
                     {{ dish.title }}
-                </md-option>
-            </md-select>
+                </mat-option>
+            </mat-select>
         </div>
         <div class="col-md-4">
-            <md-form-field class="example-fill-space">
+            <mat-form-field class="example-fill-space">
                 <label for="beginDate"></label>
-                <input type="date" mdInput name="beginDate" [(ngModel)]="rMeal.beginDate" id="beginDate" required>
-            </md-form-field>
+                <input type="date" matInput name="beginDate" [(ngModel)]="rMeal.beginDate" id="beginDate" required>
+            </mat-form-field>
         </div>
         <div class="col-md-4">
-            <md-form-field class="example-fill-space">
+            <mat-form-field class="example-fill-space">
                 <label for="endDate"></label>
-                <input type="date" mdInput name="endDate" [(ngModel)]="rMeal.endDate" id="endDate" required>
-            </md-form-field>
+                <input type="date" matInput name="endDate" [(ngModel)]="rMeal.endDate" id="endDate" required>
+            </mat-form-field>
         </div>
     </div>
-    <md-checkbox name="isFixed" [(ngModel)]="rMeal.newMealsCreateTask">Создать задачу создания новых приемов пищи?
-    </md-checkbox>
+    <mat-checkbox name="isFixed" [(ngModel)]="rMeal.newMealsCreateTask">Создать задачу создания новых приемов пищи?
+    </mat-checkbox>
     <div class="col-md-3 col-md-offset-9" style="padding-top: 1.5em">
         <button type="submit" md-raised-button id="addButton">
-            <md-icon class="material-icons">check</md-icon>
+            <mat-icon class="material-icons">check</mat-icon>
             Добавить
         </button>
     </div>

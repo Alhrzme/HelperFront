@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MdDialogRef} from "@angular/material";
+import {MatDialogRef} from "@angular/material";
 
 @Component({
     selector: 'app-task-move-modal',
@@ -26,7 +26,7 @@ export class TaskMoveModalComponent implements OnInit {
         });
     }
 
-    constructor(private dialogRef: MdDialogRef<TaskMoveModalComponent>) {
+    constructor(private dialogRef: MatDialogRef<TaskMoveModalComponent>) {
     }
 
     moveTask() {

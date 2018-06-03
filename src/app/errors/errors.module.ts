@@ -9,18 +9,19 @@ import {ErrorsService} from "./shared/errors.service";
 import { ErrorDetailsComponent } from './error-details/error-details.component';
 import { ErrorsExtendedFormComponent } from './errors-extended-form/errors-extended-form.component';
 import {ErrorsComponent} from "./errors.component";
-import {MdInputModule, MdSelectModule, MdButtonModule, MdCheckboxModule} from '@angular/material';
+import {MatInputModule, MatSelectModule, MatButtonModule, MatCheckboxModule, MatIconModule} from '@angular/material';
 
 @NgModule({
     imports: [
-        MdInputModule,
-        MdSelectModule,
-        MdButtonModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
         CommonModule,
         ErrorsRoutingModule,
         ErrorsListModule,
         FormsModule,
-        MdCheckboxModule
+        MatCheckboxModule,
+        MatIconModule
     ],
     declarations: [
         ErrorsComponent,

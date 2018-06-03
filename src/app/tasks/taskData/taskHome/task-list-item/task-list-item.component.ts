@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {DialogPosition, MdDialog} from "@angular/material";
+import {DialogPosition, MatDialog} from "@angular/material";
 import {TaskMoveModalComponent} from "./task-move-modal/task-move-modal.component";
 import {TimeHelper} from "../../../../shared/services/time-helper.service";
 import {TaskEntry} from "../../shared/models/task-entry.model";
@@ -18,7 +18,7 @@ export class TaskListItemComponent implements OnInit {
     @Output() edited: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
     @Output() confirmed: EventEmitter<TaskEntry> = new EventEmitter<TaskEntry>();
 
-    constructor(private dialog: MdDialog) {
+    constructor(private dialog: MatDialog) {
     }
 
     ngOnInit() {

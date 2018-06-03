@@ -12,7 +12,16 @@ import {RepetitiveTaskFormComponent} from "./taskData/taskHome/repetitive-task-f
 import {BaseService} from "./taskData/shared/services/base-service.service";
 import {TaskListModule} from "./taskData/taskHome/task-list/task-list.module";
 import {TaskEntriesService} from "./taskData/shared/services/task-entries.service";
-import {MdAutocompleteModule, MdSelectModule, MdButtonModule, MdInputModule, MdCheckboxModule} from '@angular/material';
+import {
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatIconModule
+} from '@angular/material';
+import {CKEditorModule} from "ng2-ckeditor";
 
 @NgModule({
     imports: [
@@ -20,11 +29,14 @@ import {MdAutocompleteModule, MdSelectModule, MdButtonModule, MdInputModule, MdC
         FormsModule,
         TasksRoutingModule,
         TaskListModule,
-        MdButtonModule,
-        MdInputModule,
-        MdSelectModule,
-        MdAutocompleteModule,
-        MdCheckboxModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSelectModule,
+        MatAutocompleteModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatIconModule,
+        CKEditorModule
     ],
     declarations: [
         TaskDataComponent,

@@ -1,14 +1,14 @@
-<md-list *ngFor="let category of (buyItemsByCategories|keys)">
+<mat-list *ngFor="let category of (buyItemsByCategories|keys)">
     <h3 md-subheader>{{category}}</h3>
-    <md-list-item *ngFor="let buyItem of buyItemsByCategories[category]">
-        <md-icon md-list-icon mdTooltip="{{buyItem.item.category.title}}" mdTooltipPosition="above">{{buyItem.item.category.icon}}</md-icon>
+    <mat-list-item *ngFor="let buyItem of buyItemsByCategories[category]">
+        <mat-icon md-list-icon matTooltip="{{buyItem.item.category.title}}" [matTooltipPosition]="above">{{buyItem.item.category.icon}}</mat-icon>
         <h4 md-line>{{buyItem.item.title}}</h4>
         <p md-line> {{buyItem.quantity}}{{buyItem.item.dimension}}</p>
         <div class="buttons" style="float: right;">
-            <button md-icon-button type="button" (click)="onBoughtButtonClick(buyItem)">
-                <md-icon>check</md-icon>
+            <button mat-icon-button type="button" (click)="onBoughtButtonClick(buyItem)">
+                <mat-icon>check</mat-icon>
             </button>
         </div>
-    </md-list-item>
-    <md-divider></md-divider>
-</md-list>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>

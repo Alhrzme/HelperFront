@@ -4,11 +4,11 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div id="form">
-            <md-select placeholder="Selected form" [(ngModel)]="selectedForm" name="selectedForm">
-                <md-option *ngFor="let form of formsList"  [value]="form.value">
+            <mat-select placeholder="Selected form" [(ngModel)]="selectedForm" name="selectedForm">
+                <mat-option *ngFor="let form of formsList"  [value]="form.value">
                     {{ form.title }}
-                </md-option>
-            </md-select>
+                </mat-option>
+            </mat-select>
             <task-form *ngIf="selectedForm == 'single'" (created)="onTaskCreated($event)"></task-form>
             <repetitive-task-form *ngIf="selectedForm == 'repetitive'" (created)="onRepetitiveTaskCreated($event)" [tasksOptions]="tasksOptions"></repetitive-task-form>
         </div>
@@ -16,4 +16,15 @@
             <task-list [taskEntries]="tasks" (deleted)="onTaskDeleted($event)" (edited)="onTaskEdited($event)" (confirmed)="onTaskEdited($event)"></task-list>
         </div>
     </div>
+    <ckeditor
+            [config]="{uiColor: '#99000'}">
+            [readonly]="false"
+            <!--(change)="onChange($event)"-->
+    <!--(ready)="onReady($event)"-->
+    <!--(focus)="onFocus($event)"-->
+    <!--(blur)="onBlur($event)"-->
+    <!--(contentDom)="onContentDom($event)"-->
+    <!--(fileUploadRequest)="onFileUploadRequest($event)"-->
+    <!--debounce="500">-->
+    </ckeditor>
 </div>

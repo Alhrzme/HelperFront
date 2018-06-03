@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {BaseService} from "../../tasks/taskData/shared/services/base-service.service";
 import {Meal} from "./meal.model";
-import {Observable} from "rxjs/Observable";
-import {Http} from "@angular/http";
+import {Observable} from "rxjs/index";
 import {RepetitiveMeal} from "./rMeal.model";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class MealsService extends BaseService {
@@ -11,15 +11,15 @@ export class MealsService extends BaseService {
     urlEnd:string = 'meals';
     entityName = 'meal';
 
-    constructor(protected http: Http) {
+    constructor(protected http: HttpClient) {
         super();
     }
 
-    addMeal (meal : Meal): Observable<Meal> {
+    addMeal (meal : Meal) {
         return this.post(meal);
     }
 
-    addMeals(rMeal: RepetitiveMeal): Observable<Meal> {
+    addMeals(rMeal: RepetitiveMeal) {
         return this.post(rMeal, this.baseApiUrl + 'rmeals');
     }
 
@@ -35,11 +35,11 @@ export class MealsService extends BaseService {
         return this.get(id);
     }
 
-    editMeal(meal: Meal): Observable<Meal> {
+    editMeal(meal: Meal) {
         return this.put(meal);
     }
 
-    deleteMeal (meal : Meal): Observable<Meal> {
+    deleteMeal (meal : Meal) {
         return this.httpDelete(meal);
     }
 

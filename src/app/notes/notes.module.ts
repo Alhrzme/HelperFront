@@ -8,16 +8,17 @@ import {NotesFormComponent} from './notes-form/notes-form.component';
 import {NotesListComponent} from './notes-list/notes-list.component';
 import {NotesListItemComponent} from './notes-list/notes-list-item/notes-list-item.component';
 import {NotesService} from "./notes.service";
-import {MdButtonModule} from '@angular/material';
-import {MdInputModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import {MatInputModule, MatIconModule} from '@angular/material';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         NotesRoutingModule,
-        MdInputModule,
-        MdButtonModule
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule
     ],
     declarations: [
         NotesComponent,

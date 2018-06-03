@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "./login/login.service";
-import {NotificationsService, PushNotificationsService} from "angular2-notifications/dist";
+import {NotificationsService} from "angular2-notifications";
 import {TimeHelper} from "./shared/services/time-helper.service";
 import {TaskEntriesService} from "./tasks/taskData/shared/services/task-entries.service";
-import { isDevMode } from '@angular/core';
+import {isDevMode} from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         if (!isDevMode()) {
-            this._push.requestPermission();
             this.checkTasks();
         }
         moment.locale('ru');
@@ -32,7 +31,7 @@ export class AppComponent implements OnInit {
     constructor(private loginService: LoginService,
                 private router: Router,
                 private tasksService: TaskEntriesService,
-                private _push: PushNotificationsService) {
+                private _push: NotificationsService) {
     }
 
     private checkTasks() {
@@ -44,7 +43,7 @@ export class AppComponent implements OnInit {
                 tasks => {
                     let currentTime = TimeHelper.getCurrentTime();
                     if (currentTime.isSameOrAfter(TimeHelper.getDate('23:00', TimeHelper.TIME_FORMAT))) {
-                        this._push.create('СПАТЬ ИДИ!!!', {body: 'ПОРА СПАТЬ!'}).subscribe(
+                        this._push.create('СПАТЬ ИДИ!!!', {body: 'ПОРА СПАТЬ!'}).click.subscribe(
                             res => {
                                 event.preventDefault(); // prevent the browser from focusing the Notification's tab
                                 console.log(res);
@@ -61,13 +60,11 @@ export class AppComponent implements OnInit {
                         }
 
                         if (difference < 30) {
-                            this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).subscribe(
+                            this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).click.subscribe(
                                 notification => {
                                     event.preventDefault(); // prevent the browser from focusing the Notification's tab
                                     // window.open('http://localhost:4200');
-                                    if (notification.event.type === 'click') {
-                                        this.pendingTasks[task.id] = TimeHelper.getCurrentTime().add(4, 'minutes');
-                                    }
+                                    this.pendingTasks[task.id] = TimeHelper.getCurrentTime().add(4, 'minutes');
                                 },
                                 err => console.log(err)
                             )

@@ -5,13 +5,14 @@ import {RouterModule} from "@angular/router";
 import { LoginFormComponent } from './login-form/login-form.component';
 import {FormsModule} from "@angular/forms";
 import {LoginService} from "./login.service";
-import {MdButtonModule} from '@angular/material';
-import {MdInputModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material';
+import {MatInputModule, MatIconModule} from '@angular/material';
 
 @NgModule({
     imports: [
-        MdButtonModule,
-        MdInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatInputModule,
         CommonModule,
         RouterModule.forRoot([
             {

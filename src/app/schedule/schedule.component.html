@@ -3,12 +3,12 @@
 </h2>
 <div class="row">
     <div class="col-md-2 col-md-offset-5">
-        <md-form-field>
+        <mat-form-field>
             <label for="date"></label>
-            <input [mdDatepicker]="datePicker" mdInput name="date" (click)="datePicker.open()" id="date" required>
-            <md-datepicker-toggle mdSuffix [for]="datePicker"></md-datepicker-toggle>
-        </md-form-field>
-        <md-datepicker #datePicker (selectedChanged)="onChange($event)"></md-datepicker>
+            <input [matDatepicker]="datePicker" matInput name="date" (click)="datePicker.open()" id="date" required>
+            <mat-datepicker-toggle mdSuffix [for]="datePicker"></mat-datepicker-toggle>
+        </mat-form-field>
+        <mat-datepicker #datePicker (selectedChanged)="onChange($event)"></mat-datepicker>
     </div>
 </div>
 

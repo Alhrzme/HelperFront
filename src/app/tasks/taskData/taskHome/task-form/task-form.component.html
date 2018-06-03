@@ -1,29 +1,29 @@
 <form (submit)="onSubmit()" #taskForm="ngForm">
     <div class="row">
         <div class="col-md-12 text-input-block">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <label for="title"></label>
-                <input id="title" mdInput type="text" name="title" placeholder="Что нужно сделать?"
+                <input id="title" matInput type="text" name="title" placeholder="Что нужно сделать?"
                        floatingPlaceholder="false" maxlength="100" [(ngModel)]="task.title">
-            </md-form-field>
+            </mat-form-field>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <md-form-field class="example-fill-space">
+            <mat-form-field class="example-fill-space">
                 <label for="date">Дата</label>
-                <input type="date" mdInput name="date" [(ngModel)]="date" id="date">
-            </md-form-field>
+                <input type="date" matInput name="date" [(ngModel)]="date" id="date">
+            </mat-form-field>
         </div>
         <div class="col-md-4">
-            <md-form-field class="example-fill-space">
+            <mat-form-field class="example-fill-space">
                 <label for="deadline">Крайний срок</label>
-                <input type="date" mdInput name="deadline" [(ngModel)]="deadline" id="deadline">
-            </md-form-field>
+                <input type="date" matInput name="deadline" [(ngModel)]="deadline" id="deadline">
+            </mat-form-field>
         </div>
         <div class="col-md-3"  style="padding-top: 1.5em">
             <button type="submit" md-raised-button id="addButton">
-                <md-icon class="material-icons">check</md-icon>
+                <mat-icon class="material-icons">check</mat-icon>
                 Добавить
             </button>
         </div>

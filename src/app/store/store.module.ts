@@ -13,7 +13,7 @@ import { BuyItemsComponent } from './buy-items/buy-items.component';
 import { ItemsComponent } from './items/items.component';
 import { BuyItemFormComponent } from './buy-items/buy-item-form/buy-item-form.component';
 import {ItemCategoryService} from "./shared/item-category.service";
-import {MdInputModule, MdButtonModule, MdIconModule, MdTooltipModule, MdSelectModule, MdTabsModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatIconModule, MatTooltipModule, MatSelectModule, MatTabsModule} from '@angular/material';
 
 @NgModule({
     imports: [
@@ -22,12 +22,12 @@ import {MdInputModule, MdButtonModule, MdIconModule, MdTooltipModule, MdSelectMo
         ItemListModule,
         BuyItemListModule,
         FormsModule,
-        MdInputModule,
-        MdButtonModule,
-        MdIconModule,
-        MdTooltipModule,
-        MdSelectModule,
-        MdTabsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        MatSelectModule,
+        MatTabsModule,
     ],
     declarations: [
         StoreComponent,

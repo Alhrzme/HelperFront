@@ -55,12 +55,12 @@ export class AppComponent implements OnInit {
                     for (let task of tasks) {
                         let endTimeString = task.task.endTime === '' ? '23:00' : task.task.endTime;
                         let taskEndTime = TimeHelper.getDate(endTimeString, TimeHelper.TIME_FORMAT);
-                        let difference = taskEndTime.diff(currentTime, 'minutes');
+                        let difference = Math.abs(taskEndTime.diff(currentTime, 'minutes'));
                         if (this.pendingTasks[task.id] && currentTime.isBefore(this.pendingTasks[task.id])) {
                             continue;
                         }
 
-                        if (difference < 30 && difference > -30) {
+                        if (difference < 30) {
                             this._push.create('ВЫПОЛНИ ЗАДАЧУ, ЛЕНТЯЙ(КА)', {body: 'Задача ' + task.task.title + ' не выполнена, времени в обрез!'}).subscribe(
                                 notification => {
                                     event.preventDefault(); // prevent the browser from focusing the Notification's tab
